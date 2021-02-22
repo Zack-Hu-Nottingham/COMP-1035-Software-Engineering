@@ -1,6 +1,6 @@
-#Name: Lyn
+Name: Lyn
 
-#Email:biylc2@nottingham.edu.cn
+Email:biylc2@nottingham.edu.cn
 
 
 
