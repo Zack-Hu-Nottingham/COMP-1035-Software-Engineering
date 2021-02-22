@@ -8,11 +8,11 @@
 <h3>Team Member:</h3>
 
 - [Leshan Tan (Frank)](contributors/Leshan_Tan.md)
-- [Lin Chen(Lyn)](contributors/LinCHEN.md)
-- [Ziyi Wang(Tina)](contributors/Scyzw-README.md)
-- [Zixiang Hu(Zack)](contributors/ZixiangHU.md)
+- [Lin Chen (Lyn)](contributors/LinCHEN.md)
+- [Ziyi Wang (Tina)](contributors/Scyzw-README.md)
+- [Zixiang Hu (Zack)](contributors/ZixiangHU.md)
 - [Yicun Duan](contributors/yicun_duan.md)
-- [Yingxiao HUO](contributors/Yingxiao_Huo.md)
+- [Yingxiao Huo](contributors/Yingxiao_Huo.md)
 
 
 ### Analyses from Labs
