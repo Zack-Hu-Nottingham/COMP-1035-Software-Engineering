@@ -16,7 +16,7 @@
 
 
 ### Analyses from Labs
-- Our aim is to protect the hairline while getting beauty and making acheivements
+- Our aim is to protect the hairline while getting more beautiful and making acheivements
 
 ### Assessment Deliverables
 - Today lab is also Git Projects!
