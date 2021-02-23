@@ -1,4 +1,4 @@
-<h3>Team Name: **Hairline Protection Association** </h3>
+<h3>Team Name: Hairline Protection Association </h3>
 
 <h3>Team Logo:</h3> 
 
