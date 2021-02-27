@@ -1,6 +1,6 @@
 ## Zixiang Hu
 
-- E-mail: [scyzh6@nottingham.edu.cn](scyzh6@nottingham.edu.cn)
+- E-mail: [scyzh6@nottingham.edu.cn](mailto:scyzh6@nottingham.edu.cn)
 - Grade: Y2
 - Major: CSAI
 - Is_single: Yes
