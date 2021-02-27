@@ -10,13 +10,13 @@
 - [Leshan Tan (Frank)](contributors/Leshan_Tan.md)
 - [Lin Chen (Lyn)](contributors/LinCHEN.md)
 - [Ziyi Wang (Tina)](contributors/Scyzw-README.md)
-- [Zixiang Hu (Zack)](contributors/ZixiangHU.md)
+- [Zixiang Hu (Zack)](contributors/Zixiang_Hu.md)
 - [Yicun Duan](contributors/yicun_duan.md)
 - [Yingxiao Huo](contributors/Yingxiao_Huo.md)
 
 
 ### Analyses from Labs
-- Our aim is to protect the hairline while getting beauty and making acheivements
+- Our aim is to protect the hairline while getting more beautiful and making acheivements
 
 ### Assessment Deliverables
 - Today lab is also Git Projects!
