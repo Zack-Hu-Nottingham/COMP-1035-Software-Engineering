@@ -7,16 +7,16 @@
 
 <h3>Team Member:</h3>
 
-- [Leshan Tan (Frank)](contributors/Leshan_Tan.md)
+- [Leshan Tan (Frank)](contributors/LeshanTAN.md)
 - [Lin Chen (Lyn)](contributors/LinCHEN.md)
-- [Ziyi Wang (Tina)](contributors/Scyzw-README.md)
+- [Ziyi Wang (Tina)](contributors/ZiyiWANG.md)
 - [Zixiang Hu (Zack)](contributors/ZixiangHU.md)
-- [Yicun Duan](contributors/yicun_duan.md)
-- [Yingxiao Huo](contributors/Yingxiao_Huo.md)
+- [Yicun Duan](contributors/YicunDUAN.md)
+- [Yingxiao Huo](contributors/YingxiaoHUO.md)
 
 
 ### Analyses from Labs
-- Our aim is to protect the hairline while getting beauty and making acheivements
+- Our aim is to protect the hairline while getting more beautiful and making acheivements
 
 ### Assessment Deliverables
 - Today lab is also Git Projects!
