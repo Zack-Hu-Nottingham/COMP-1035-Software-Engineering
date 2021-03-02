@@ -21,8 +21,11 @@
 ### Assessment Deliverables
 - Today lab is also Git Projects!
 
-### Source Code
+### Lab projects
 - [lab2 text analysis](docs/lab2textAnalysis.md)
+
+### Version log for projects
+- [version log for lab2](docs/version log for lab2.md)
 
 ### Enable Version Control
 - Added a git project.
