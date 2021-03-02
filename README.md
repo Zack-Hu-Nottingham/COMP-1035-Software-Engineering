@@ -22,6 +22,7 @@
 - Today lab is also Git Projects!
 
 ### Source Code
+- [lab2 text analysis](docs/lab2textAnalysis.md)
 
 ### Enable Version Control
 - Added a git project.
