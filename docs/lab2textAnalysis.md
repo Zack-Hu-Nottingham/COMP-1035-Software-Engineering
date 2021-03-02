@@ -1,6 +1,6 @@
 ## The Explanation for Lab02's Diagram
 
-![img](final_casediagram.jpg)
+![img](../images/lab02/final_casediagram.jpg)
 
 
 
@@ -20,12 +20,12 @@ The following is our **Explanation**.
 
 Text analysis
 
-![diagram](text_analysis.jpg)
+![diagram](../images/lab02/text_analysis.jpg)
 
 
 
 Actors and use case
 
-![case_diagram](actor_usecase.jpg)
+![case_diagram](../images/lab02/actor_usecase.jpg)
 
 
