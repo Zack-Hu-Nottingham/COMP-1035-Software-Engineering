@@ -12,7 +12,7 @@
 
 #### Pet?
 
- <img src="../images/gouzi.jpg" alt="dog" style="width:40%;" />
+ <img src="../images/gouzi.jpg" alt="dog" width="40%" />
 
 ##### Cute:heart_eyes: ?                   It's not mine :stuck_out_tongue_winking_eye: 
 
@@ -40,7 +40,7 @@
 
 ##### I'm a cute angel:innocent:
 
- <img src="C:\hairline-protection-association\images\wzyyy.jpg" alt="wzyyy" style="width:25%;" />
+ <img src="../images/wzyyy.jpg" alt="wzyyy" width="25%" />
 
 #####   :see_no_evil: Angels can't show their faces
 
@@ -48,5 +48,5 @@
 
 #### BYE​ :wave:
 
- <img src="C:\hairline-protection-association\images\heihei.gif" alt="heihei" style="width:10%;" />
+ <img src="../images/heihei.gif" alt="heihei" width="10%" />
 
