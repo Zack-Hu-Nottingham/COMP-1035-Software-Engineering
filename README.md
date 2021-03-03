@@ -18,9 +18,6 @@
 ### Analyses from Labs
 - Our aim is to protect the hairline while getting more beautiful and making acheivements
 
-### Assessment Deliverables
-- Today lab is also Git Projects!
-
 ### Lab projects
 - [lab2 text analysis](docs/lab2textAnalysis.md)
 
