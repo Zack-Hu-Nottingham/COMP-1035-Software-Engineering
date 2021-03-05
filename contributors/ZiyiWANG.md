@@ -14,9 +14,9 @@
 
  <img src="../images/gouzi.jpg" alt="dog" width="40%" />
 
-##### Cute:heart_eyes: ?                   It's not mine :stuck_out_tongue_winking_eye: 
+##### Cute :heart_eyes: ?                   It's not mine :stuck_out_tongue_winking_eye: 
 
-##### But I always wanted one:feet:
+##### But I always wanted one :feet:
 
 ---
 
@@ -28,7 +28,7 @@
 
 #####  I also love eating :cake: :ramen: :dango: :rice: :sushi: :pizza: :fried_shrimp: :spaghetti: :poultry_leg: :meat_on_bone: :ice_cream:
 
-##### The most favorite: :sleeping: :sleeping_bed:
+##### The most favorite: :sleeping:  :sleeping_bed:
 
 ---
 
@@ -38,7 +38,7 @@
 
 ##### I'm pretty :sparkles:
 
-##### I'm a cute angel:innocent:
+##### I'm a cute angel​ :innocent:
 
  <img src="../images/wzyyy.jpg" alt="wzyyy" width="25%" />
 
