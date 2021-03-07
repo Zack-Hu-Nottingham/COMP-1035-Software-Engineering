@@ -19,7 +19,7 @@
 - Our aim is to protect the hairline while getting more beautiful and making acheivements
 
 ### Lab projects
-- [lab2 text analysis](docs/lab2textAnalysis.md)
+- [lab2 text analysis](docs/lab02textAna-V2.md)
 
 ### Version log for projects
 - [version log for lab2](docs/version log for lab2.md)
