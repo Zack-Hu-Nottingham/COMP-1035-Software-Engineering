@@ -65,9 +65,15 @@ Although it is not directly listed in the article, but we can still infer this i
 &nbsp;
 ## **Use Case Analysis**
 ---
+<<<<<<< HEAD
 ![text_analysis](../lab02/diagram/text_analysis.jpg)
 
 ![actor_usecase](../lab02/diagram/actor_usecase.jpg)
+=======
+![text_analysis](../lab02/text_analysis.jpg)
+
+![actor_usecase](../lab02/actor_usecase.jpg)
+>>>>>>> 65a1f03f7e6fb319bd2137a26b4cc2bb5d0d6385
 
 - **Fill a form :** 
     ```
