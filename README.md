@@ -2,7 +2,7 @@
 
 <h3>Team Logo:</h3> 
 
-![alt text](./images/hairline.jpg "LOGO")
+![alt text](./images/contributors/hairline.jpg "LOGO")
 
 
 <h3>Team Member:</h3>
@@ -19,10 +19,10 @@
 - Our aim is to protect the hairline while getting more beautiful and making acheivements
 
 ### Lab projects
-- [lab2 text analysis](docs/lab02textAna-V2.md)
+- [lab2 text analysis](lab02/docs/lab02textAna-V2.md)
 
 ### Version log for projects
-- [version log for lab2](docs/version log for lab2.md)
+- [version log for lab2](lab02/docs/version log for lab2.md)
 
 ### Enable Version Control
 - Added a git project.
