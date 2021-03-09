@@ -4,7 +4,7 @@ Module Convener
 
 #### Photo
 
- ![photo](C:\hairline-protection-association\images\Boon-Gee-Lee.jpg)
+ ![photo](..\images\Boon-Gee-Lee.jpg)
 
 #### Fictional name
 
