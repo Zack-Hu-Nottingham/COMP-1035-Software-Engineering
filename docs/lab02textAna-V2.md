@@ -65,6 +65,10 @@ Although it is not directly listed in the article, but we can still infer this i
 &nbsp;
 ## **Use Case Analysis**
 ---
+![text_analysis](../images/lab02/text_analysis.jpg)
+
+![actor_usecase](../images/lab02/actor_usecase.jpg)
+
 - **Fill a form :** 
     ```
     Allow students to sign up to optional modules.students have to collect a form from student services, optionally attend an introduction lecture to a few options, write their choices on the form, and return it to student services.
