@@ -4,7 +4,7 @@ Module Convener
 
 #### Photo
 
- ![photo](..\images\Boon-Giin-Lee.jpg)
+ ![photo](..\perPhoto\Boon-Giin-Lee.jpg)
 
 #### Fictional name
 

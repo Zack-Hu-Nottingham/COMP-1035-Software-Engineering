@@ -1,5 +1,5 @@
 # **The Explanation for Lab's Diagram**
-![diagram](../diagram/final_casediagram.jpg)
+![diagram](../diagram/textAnalysis.jpg)
 
 ## **Overall**
 ---
@@ -9,7 +9,7 @@
 
  The Stakeholder Analysis is the explanation for why we choose them as stakeholders and why they are primary/secondary/tertiary stakeholders.
 
- The Use Case Analysis is specific use cases we summarized from the article, some of which may need some modifications to be more systemlike.
+ The Use Case Analysis is specific use cases we summarized from the article, some of which may need some modifications to be more system like.
 
  The Clarification is our understanding for some requirements that are indistinct in meaning or indirectly stated.
 
@@ -73,7 +73,7 @@ Although it is not directly listed in the article, but we can still infer this i
     * **Write a form** -- write their choices on the form 
     * **Submit a form** -- return it to the Student Service
     * **Select credit split** -- a student wishes to take a 50-70 credit split
-    * **Upload pre-requisite evidence (Optional)** --whether the student has the pre-requisite learning necessary to understand the classes
+    * **Upload pre-requisite evidence (Optional)** -- whether the student has the pre-requisite learning necessary to understand the classes
 
 - **View results**
 - **Check forms:**
@@ -103,12 +103,12 @@ These choices must be fed into other university software, two of which are: blue
 ```
 
 ### **Note:**
--  Searching a form is a use case that is more systemlike  than collecting a form
-- Checking students' grades is a use case that is more systemlike than seeing how well the students have been done.And this can be checked by Head of Teaching
-- Viewing class information is a use case that is more systemlike than checking the size of the class. And this can be done by the module convenor
+-  Searching a form is a use case that is more system like  than collecting a form
+- Checking students' grades is a use case that is more system like than seeing how well the students have been done. And this can be checked by Head of Teaching
+- Viewing class information is a use case that is more system like than checking the size of the class. And this can be done by the module convener
 - Only students who wants to take other modules are required to provide evidence
-- Retrieving results is a use case that is more systemlike than feeding these choices into other systems
-- Viewing results is not metioned in the article, but it is required based on the common sense
+- Retrieving results is a use case that is more system like than feeding these choices into other systems
+- Viewing results is not mentioned in the article, but it is required based on the common sense
 - Creating the form is implicitly mentioned since it is said that students get the form from the student service
 
 

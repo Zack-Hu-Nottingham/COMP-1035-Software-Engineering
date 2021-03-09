@@ -3,7 +3,7 @@
 
 The *portrait* of the student:
 
-<img src="../images/Zhen_Ding.jpg" width="50%" />
+<img src="../perPhoto/Zhen_Ding.jpg" width="50%" />
 
 **Personal information**
 * Name: Zhen Ding
