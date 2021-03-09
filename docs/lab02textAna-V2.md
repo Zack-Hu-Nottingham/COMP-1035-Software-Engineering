@@ -120,13 +120,11 @@ These choices must be fed into other university software, two of which are: blue
 
 &nbsp;
 ## **Clarification**
-&nbsp;
 ### ***Question:*** 
 Are other systems which can use the data transmitted from this system stakeholders?
 ### ***Solution:*** 
 Yes. By the definition, stakeholders can be an external system as long as they have interactions with this system.
 
-&nbsp;
 ### ***Question:*** 
 Why we don't divide students into normal students and cross-department students
 ### ***Solution:*** 
