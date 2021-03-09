@@ -1,5 +1,5 @@
 # **The Explanation for Lab's Diagram**
-![diagram](../images/lab02/final_casediagram.jpg)
+![diagram](..\lab02\diagram\finalCasediagram.png)
 
 ## **Overall**
 ---
@@ -65,9 +65,9 @@ Although it is not directly listed in the article, but we can still infer this i
 &nbsp;
 ## **Use Case Analysis**
 ---
-![text_analysis](../images/lab02/text_analysis.jpg)
+![text_analysis](..\lab02\text_analysis.jpg)
 
-![actor_usecase](../images/lab02/actor_usecase.jpg)
+![actor_usecase](..\lab02\actor_usecase.jpg)
 
 - **Fill a form :** 
     ```
