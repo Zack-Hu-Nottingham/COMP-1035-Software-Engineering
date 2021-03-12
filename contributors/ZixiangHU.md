@@ -14,6 +14,6 @@
   - lobster (Name for my favourite pagurian!!)
 - Here is my photo~
 
-![Zack Hu](../images/handsome.jpg "Zack")
+![Zack Hu](../images/contributors/handsome.jpg "Zack")
 
 

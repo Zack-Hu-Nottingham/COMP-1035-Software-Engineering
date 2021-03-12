@@ -1,5 +1,5 @@
 # Leshan Tan
-![My Photograph](../images/Leshan_Tan.jpeg)
+![My Photograph](../images/contributors/Leshan_Tan.jpeg)
 #### Location: Ningbo
 #### Email Address: sqylt2@nottingham.edu.cn
 

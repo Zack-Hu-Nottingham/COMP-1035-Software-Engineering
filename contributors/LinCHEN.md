@@ -4,4 +4,4 @@ Email:biylc2@nottingham.edu.cn
 
 
 
-![alt text](../images/LinCHEN.jpg "LinCHEN")
+![alt text](../images/contributors/LinCHEN.jpg "LinCHEN")

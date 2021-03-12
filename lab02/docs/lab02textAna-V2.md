@@ -1,20 +1,16 @@
 # **The Explanation for Lab's Diagram**
-<<<<<<< HEAD
-/*图*/
-=======
-![diagram](../lab02/diagram/finalCasediagram.png)
->>>>>>> ce6bb86507dc7f818291d1e67d7388b6b0b986a0
+![diagram](../diagram/textAnalysis.jpg)
 
 ## **Overall**
 ---
  &nbsp;
 
  Our explanation has been divided into three parts: Stakeholder Analysis, Use Case Analysis and Clarification.
- 
+
  The Stakeholder Analysis is the explanation for why we choose them as stakeholders and why they are primary/secondary/tertiary stakeholders.
- 
- The Use Case Analysis is specific use cases we summarized from the article, some of which may need some modifications to be more systemlike.
- 
+
+ The Use Case Analysis is specific use cases we summarized from the article, some of which may need some modifications to be more system like.
+
  The Clarification is our understanding for some requirements that are indistinct in meaning or indirectly stated.
 
 
@@ -23,18 +19,18 @@
 ---
 &nbsp;
  ```
- **Stackholder**
- Stakeholder is a person, an organization, or an external system that plays a role in one or more interactions with your system.
+**Stackholder**
+  Stakeholder is a person, an organization, or an external system that plays a role in one or more interactions with your system.
  
 **Primary stakeholder**
- A primary stakeholder can be direct users, to be more specific, a beneficiary or a target Beneficiaries refer to individuals who stand to gain something directly and personally. 
+  A primary stakeholder can be direct users, to be more specific, a beneficiary or a target Beneficiaries refer to individuals who stand to gain something directly and personally. 
  
- **Secondary stakeholder**
-Secondary stakeholders are people who would be indirectly affected by projects, either positive or negative.
+**Secondary stakeholder**
+  Secondary stakeholders are people who would be indirectly affected by projects, either positive or negative.
 	
 **Tertiary stakeholder**
-This category includes people and groups who pay for the system so that they may have an influence on this system.
-```
+  This category includes people and groups who pay for the system so that they may have an influence on this system.
+ ```
 &nbsp;
 
 ### In this use case diagram, there are  ? stakeholders:
@@ -49,7 +45,7 @@ This category includes people and groups who pay for the system so that they may
 - Student Service: On this system, it can create forms and 
 - Timetabling: will retrieve data transmitted by this system
 - Blue Castle: will retrieve data transmitted by this system
- 
+
  The above-listed individuals/departments will directly use the system by mentioned actions
 
 &nbsp;
@@ -65,17 +61,10 @@ This category includes people and groups who pay for the system so that they may
 - School: it will pay for the copyright of this system and purchase the right for using this system
 
 Although it is not directly listed in the article, but we can still infer this infomation
-  
+
 &nbsp;
 ## **Use Case Analysis**
 ---
-<<<<<<< HEAD
-=======
-![text_analysis](../lab02/diagram/text_analysis.jpg)
-
-![actor_usecase](../lab02/diagram/actor_usecase.jpg)
-
->>>>>>> ce6bb86507dc7f818291d1e67d7388b6b0b986a0
 - **Fill a form :** 
     ```
     Allow students to sign up to optional modules.students have to collect a form from student services, optionally attend an introduction lecture to a few options, write their choices on the form, and return it to student services.
@@ -84,7 +73,7 @@ Although it is not directly listed in the article, but we can still infer this i
     * **Write a form** -- write their choices on the form 
     * **Submit a form** -- return it to the Student Service
     * **Select credit split** -- a student wishes to take a 50-70 credit split
-    * **Upload pre-requisite evidence (Optional)** --whether the student has the pre-requisite learning necessary to understand the classes
+    * **Upload pre-requisite evidence (Optional)** -- whether the student has the pre-requisite learning necessary to understand the classes
 
 - **View results**
 - **Check forms:**
@@ -114,12 +103,12 @@ These choices must be fed into other university software, two of which are: blue
 ```
 
 ### **Note:**
--  Searching a form is a use case that is more systemlike  than collecting a form
-- Checking students' grades is a use case that is more systemlike than seeing how well the students have been done.And this can be checked by Head of Teaching
-- Viewing class information is a use case that is more systemlike than checking the size of the class. And this can be done by the module convenor
+-  Searching a form is a use case that is more system like  than collecting a form
+- Checking students' grades is a use case that is more system like than seeing how well the students have been done. And this can be checked by Head of Teaching
+- Viewing class information is a use case that is more system like than checking the size of the class. And this can be done by the module convener
 - Only students who wants to take other modules are required to provide evidence
-- Retrieving results is a use case that is more systemlike than feeding these choices into other systems
-- Viewing results is not metioned in the article, but it is required based on the common sense
+- Retrieving results is a use case that is more system like than feeding these choices into other systems
+- Viewing results is not mentioned in the article, but it is required based on the common sense
 - Creating the form is implicitly mentioned since it is said that students get the form from the student service
 
 
@@ -131,7 +120,6 @@ These choices must be fed into other university software, two of which are: blue
 
 &nbsp;
 ## **Clarification**
-<<<<<<< HEAD
 ---
 &nbsp;
 ### ***Question:*** *Are other systems which can use the data transmitted from this system stakeholders?*
@@ -140,15 +128,4 @@ These choices must be fed into other university software, two of which are: blue
 &nbsp;
 ### ***Question:*** Why we don't divide students into normal students and cross-department students
 ### ***Solution:*** Cause it is project oriented and it may be confused
-=======
-### ***Question:*** 
-Are other systems which can use the data transmitted from this system stakeholders?
-### ***Solution:*** 
-Yes. By the definition, stakeholders can be an external system as long as they have interactions with this system.
-
-### ***Question:*** 
-Why we don't divide students into normal students and cross-department students
-### ***Solution:*** 
-Cause it is project oriented and it may be confused
->>>>>>> ce6bb86507dc7f818291d1e67d7388b6b0b986a0
 
