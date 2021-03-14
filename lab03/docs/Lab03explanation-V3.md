@@ -1,4 +1,7 @@
-* [<strong>Lab03 Diagram Explanation</strong>](#lab03-diagram-explanation)
+# **Lab03 Diagram Explanation**
+
+## Catalog
+
 * [<em><strong>Activity Diagram</strong></em>](#activity-diagram)
   * [<strong>Overview</strong>](#overview)
   * [<strong>Detailed flows</strong>](#detailed-flows)
@@ -11,8 +14,6 @@
   * [<strong>Detailed Interaction</strong>](#detailed-interaction)
     * [<strong>Note</strong>](#note-1)
   * [<strong>Clarification</strong>](#clarification-1)
-
-# **Lab03 Diagram Explanation**
 
 # ***Activity Diagram***
 
