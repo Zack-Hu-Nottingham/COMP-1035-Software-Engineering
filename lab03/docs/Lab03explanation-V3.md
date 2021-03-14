@@ -1,22 +1,3 @@
-Header: Content-Type=text/html;charset=utf-8
-Header: X-Xss-Protection=1; mode=block
-Header: Vary=Accept-Encoding, Accept, X-Requested-With
-Header: Server=GitHub.com
-Header: X-Commonmarker-Version=0.21.0
-Header: Strict-Transport-Security=max-age=31536000; includeSubdomains; preload
-Header: Referrer-Policy=origin-when-cross-origin, strict-origin-when-cross-origin
-Header: Content-Security-Policy=default-src 'none'
-Header: X-Github-Request-Id=7F6F:7AD3:2E209B:32923B:604D9E28
-Header: Date=Sun, 14 Mar 2021 05:24:57 GMT
-Header: X-Ratelimit-Limit=60
-Header: Access-Control-Expose-Headers=ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset
-Header: X-Frame-Options=deny
-Header: X-Ratelimit-Remaining=58
-Header: X-Ratelimit-Reset=1615702123
-Header: X-Ratelimit-Used=2
-Header: Access-Control-Allow-Origin=*
-Header: X-Content-Type-Options=nosniff
-
 * [<strong>Lab03 Diagram Explanation</strong>](#lab03-diagram-explanation)
 * [<em><strong>Activity Diagram</strong></em>](#activity-diagram)
   * [<strong>Overview</strong>](#overview)
@@ -25,21 +6,11 @@ Header: X-Content-Type-Options=nosniff
     * [<strong>Steps:</strong>](#steps)
     * [<strong>Note:</strong>](#note)
   * [<strong>Clarification</strong>](#clarification)
-    * [<em><strong>Question:</strong></em> <em>Should the rejections from module convenor and head of teaching be performed in the diagram?</em>](#question-should-the-rejections-from-module-convenor-and-head-of-teaching-be-performed-in-the-diagram)
-    * [<em><strong>Answer:</strong></em> <em>Yes, since activity diagram is used to explain the decision points and tell the clients what the results would be like in different conditions, we hold the viewpoint that these rejections should be performed in the diagram\.</em>](#answer-yes-since-activity-diagram-is-used-to-explain-the-decision-points-and-tell-the-clients-what-the-results-would-be-like-in-different-conditions-we-hold-the-viewpoint-that-these-rejections-should-be-performed-in-the-diagram)
-    * [<em><strong>Question:</strong></em> <em>In this diagram, does student service need to send forms which require approval to either the head of teaching or module convenor? Or just let both the head of teaching and module convenor view all these forms and then make a decision?</em>](#question-in-this-diagram-does-student-service-need-to-send-forms-which-require-approval-to-either-the-head-of-teaching-or-module-convenor-or-just-let-both-the-head-of-teaching-and-module-convenor-view-all-these-forms-and-then-make-a-decision)
-    * [<em><strong>Answer:</strong></em> \*Because this is a completed system, we think that there is no need to 'send'\. Nevertheless, it is impossible for module convenors and the head of teaching to view all these forms\. Therefore, we decide to make this action be 'send the notification', which means inviting these teachers to view these particular forms\.](#answer-because-this-is-a-completed-system-we-think-that-there-is-no-need-to-send-nevertheless-it-is-impossible-for-module-convenors-and-the-head-of-teaching-to-view-all-these-forms-therefore-we-decide-to-make-this-action-be-send-the-notification-which-means-inviting-these-teachers-to-view-these-particular-forms)
 * [<em><strong>Sequence Diagram</strong></em>](#sequence-diagram)
   * [<strong>Overview</strong>](#overview-1)
   * [<strong>Detailed Interaction</strong>](#detailed-interaction)
-    * [<strong>Note:</strong>](#note-1)
+    * [<strong>Note</strong>](#note-1)
   * [<strong>Clarification</strong>](#clarification-1)
-    * [<em><strong>Question: Between Student and Student Service, which one is the actor?</strong></em>](#question-between-student-and-student-service-which-one-is-the-actor)
-    * [<em><strong>Answer: Though Student Service have interaction with many other objects, we still thought that student is the actor\. Because we thought student is the group of person who use this software while Student Service is a system\.</strong></em>](#answer-though-student-service-have-interaction-with-many-other-objects-we-still-thought-that-student-is-the-actor-because-we-thought-student-is-the-group-of-person-who-use-this-software-while-student-service-is-a-system)
-    * [<em><strong>Question: Is student ask for approval from Module Convenor or by the Student Service?</strong></em>](#question-is-student-ask-for-approval-from-module-convenor-or-by-the-student-service)
-    * [<em><strong>Answer: In this diagram we consider it is Student Service that ask for the further approval from Module Convenor and Head of Teaching, rather than by student themselves\. Because we thought that students simply need to fill in the form, as for asking for approval it is Student Service's task\.</strong></em>](#answer-in-this-diagram-we-consider-it-is-student-service-that-ask-for-the-further-approval-from-module-convenor-and-head-of-teaching-rather-than-by-student-themselves-because-we-thought-that-students-simply-need-to-fill-in-the-form-as-for-asking-for-approval-it-is-student-services-task)
-
-
 
 # **Lab03 Diagram Explanation**
 
