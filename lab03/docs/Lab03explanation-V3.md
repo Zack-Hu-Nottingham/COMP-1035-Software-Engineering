@@ -1,19 +1,8 @@
 # **Lab03 Diagram Explanation**
 
-## Catalog
 
-* [<em><strong>Activity Diagram</strong></em>](#activity-diagram)
-  * [<strong>Overview</strong>](#overview)
-  * [<strong>Detailed flows</strong>](#detailed-flows)
-    * [<strong>Actors/Actions</strong>](#actorsactions)
-    * [<strong>Steps</strong>](#steps)
-    * [<strong>Note</strong>](#note)
-  * [<strong>Clarification</strong>](#clarification)
-* [<em><strong>Sequence Diagram</strong></em>](#sequence-diagram)
-  * [<strong>Overview</strong>](#overview-1)
-  * [<strong>Detailed Interaction</strong>](#detailed-interaction)
-    * [<strong>Note</strong>](#note-1)
-  * [<strong>Clarification</strong>](#clarification-1)
+
+[TOC]
 
 # ***Activity Diagram***
 
@@ -99,13 +88,13 @@ In the Clarification, we state our solutions to the vague part of the requiremen
 
 ## **Clarification**
 
-#### ***Question:*** *Should the rejections from module convenor and head of teaching be performed in the diagram?*
+**Question:** Should the rejections from module convenor and head of teaching be performed in the diagram?
 
-#### ***Answer:*** *Yes, since activity diagram is used to explain the decision points and tell the clients what the results would be like in different conditions, we hold the viewpoint that these rejections should be performed in the diagram.*
+**Answer:** Yes, since activity diagram is used to explain the decision points and tell the clients what the results would be like in different conditions, we hold the viewpoint that these rejections should be performed in the diagram.
 
-#### ***Question:*** *In this diagram, does student service need to send forms which require approval to either the head of teaching or module convenor? Or just let both the head of teaching and module convenor view all these forms and then make a decision?*
+**Question:** In this diagram, does student service need to send forms which require approval to either the head of teaching or module convenor? Or just let both the head of teaching and module convenor view all these forms and then make a decision?
 
-#### ***Answer:*** *Because this is a completed system, we think that there is no need to 'send'. Nevertheless, it is impossible for module convenors and the head of teaching to view all these forms. Therefore, we decide to make this action be 'send the notification', which means inviting these teachers to view these particular forms.*
+**Answer:** Because this is a completed system, we think that there is no need to 'send'. Nevertheless, it is impossible for module convenors and the head of teaching to view all these forms. Therefore, we decide to make this action be 'send the notification', which means inviting these teachers to view these particular forms.
 
 
 
@@ -175,11 +164,11 @@ In the Clarification, we state our solutions to the vague part of the requiremen
 
 ## **Clarification**
 
-#### ***Question: Between Student and Student Service, which one is the actor?***
+**Question:** Between Student and Student Service, which one is the actor?
 
-#### ***Answer: Though Student Service have interaction with many other objects, we still thought that student is the actor. Because we thought student is the group of person who use this software while Student Service is a system.***
+**Answer:** Though Student Service have interaction with many other objects, we still thought that student is the actor. Because we thought student is the group of person who use this software while Student Service is a system.
 
-#### ***Question: Is student ask for approval from Module Convenor or by the Student Service?***
+**Question:** Is student ask for approval from Module Convenor or by the Student Service?
 
-#### ***Answer: In this diagram we consider it is Student Service that ask for the further approval from Module Convenor and Head of Teaching, rather than by student themselves. Because we thought that students simply need to fill in the form, as for asking for approval it is Student Service's task.***
+**Answer:** In this diagram we consider it is Student Service that ask for the further approval from Module Convenor and Head of Teaching, rather than by student themselves. Because we thought that students simply need to fill in the form, as for asking for approval it is Student Service's task.
 
