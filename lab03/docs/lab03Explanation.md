@@ -2,7 +2,7 @@
 
 
 
-[TOC]
+[[_TOC_]]
 
 # ***Activity Diagram***
 
