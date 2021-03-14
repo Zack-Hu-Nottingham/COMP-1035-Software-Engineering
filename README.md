@@ -20,7 +20,7 @@
 
 ### Lab projects
 - [lab2 text analysis](lab02/docs/lab02textAna-V2.md)
-- [lab3 sequence/activity diagram](lab03/docs/Lab03explanation-V3.md)
+- [lab3 sequence/activity diagram](lab03/docs/lab03Explanation.md)
 
 ### Version log for projects
 - [version log for lab2](lab02/docs/version log for lab2.md)
