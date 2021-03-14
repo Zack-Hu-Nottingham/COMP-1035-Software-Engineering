@@ -29,7 +29,7 @@ To achieve this goal, we analyze many diagrams. In the end, we discover that the
 
 **Here is our diagram:**
 
-![alt text](..\diagrams\activityDiagram.jpg)
+![alt text](../diagrams/activityDiagram.jpg)
 
 
 In the following part, we will discuss the Detailed Flows and Clarification. 
