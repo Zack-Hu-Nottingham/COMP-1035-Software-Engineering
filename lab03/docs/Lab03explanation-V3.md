@@ -5,9 +5,9 @@
 * [<em><strong>Activity Diagram</strong></em>](#activity-diagram)
   * [<strong>Overview</strong>](#overview)
   * [<strong>Detailed flows</strong>](#detailed-flows)
-    * [<strong>Actors/Actions:</strong>](#actorsactions)
-    * [<strong>Steps:</strong>](#steps)
-    * [<strong>Note:</strong>](#note)
+    * [<strong>Actors/Actions</strong>](#actorsactions)
+    * [<strong>Steps</strong>](#steps)
+    * [<strong>Note</strong>](#note)
   * [<strong>Clarification</strong>](#clarification)
 * [<em><strong>Sequence Diagram</strong></em>](#sequence-diagram)
   * [<strong>Overview</strong>](#overview-1)
@@ -99,21 +99,17 @@ In the Clarification, we state our solutions to the vague part of the requiremen
 
 ## **Clarification**
 
-&nbsp;
-
 #### ***Question:*** *Should the rejections from module convenor and head of teaching be performed in the diagram?*
 
 #### ***Answer:*** *Yes, since activity diagram is used to explain the decision points and tell the clients what the results would be like in different conditions, we hold the viewpoint that these rejections should be performed in the diagram.*
 
-&nbsp;
-
 #### ***Question:*** *In this diagram, does student service need to send forms which require approval to either the head of teaching or module convenor? Or just let both the head of teaching and module convenor view all these forms and then make a decision?*
 
-#### ***Answer:*** *Because this is a completed system, we think that there is no need to 'send'. Nevertheless, it is impossible for module convenors and the head of teaching to view all these forms. Therefore, we decide to make this action be 'send the notification', which means inviting these teachers to view these particular forms.
+#### ***Answer:*** *Because this is a completed system, we think that there is no need to 'send'. Nevertheless, it is impossible for module convenors and the head of teaching to view all these forms. Therefore, we decide to make this action be 'send the notification', which means inviting these teachers to view these particular forms.*
 
 
 
-
+&nbsp;
 
 # ***Sequence Diagram***
 
@@ -167,7 +163,7 @@ In the Clarification, we state our solutions to the vague part of the requiremen
 - Student Service -->Timetabling --- **send the result**
 - Student Service --> Student --- **release the result**
 
-
+&nbsp;
 
 ### **Note:**
 
@@ -175,7 +171,7 @@ In the Clarification, we state our solutions to the vague part of the requiremen
 - According to the last sentence of the article *"These choices must be fed into other university software, two of which are: blue castle (student records) and timetabling (for room sizes)."*, we infer that Blue Castle provides students' records and Timetabling provides class sizes, which Module Convenor and Head of Teaching can have access to.
 - We thought there is one more step: after all of the forms being checked, the results will be released from Student Service to students.
 
-
+&nbsp;
 
 ## **Clarification**
 
