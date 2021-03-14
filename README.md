@@ -20,9 +20,8 @@
 
 ### Lab projects
 - [lab2 text analysis](lab02/docs/lab02textAna-V2.md)
+- [lab3 sequence/activity diagram](lab03/docs/Lab03explanation-V2.md)
 
 ### Version log for projects
 - [version log for lab2](lab02/docs/version log for lab2.md)
-
-### Enable Version Control
-- Added a git project.
+- [version log for lab3](lab03/docs/versionLog.md)
