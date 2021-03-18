@@ -25,3 +25,7 @@
 ### Version log for projects
 - [version log for lab2](lab02/docs/version log for lab2.md)
 - [version log for lab3](lab03/docs/versionLog.md)
+
+### Exam projects
+- []()
+- []()
