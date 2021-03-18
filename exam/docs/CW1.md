@@ -86,7 +86,7 @@ Although it is not directly use the system by mentioned actions
 
 **Reasons**
 
-As we are designing an app for different kinds of users for Bank of China, we get to have a clearer view of who are going to use this app, why they get to use it (the pain point for the user) and what they expect from it. And as is known to all, for users with different backgrounds and financial habits, the requirements for this app differs a lot. Also A clearer view of our persona might help our team members to draw their UML diagram. From text analysis we divided the main users into three categories according to the accounts they hold, one is normal users, one is joint-account users, the other is multi-account users. 
+As we are designing an app for different kinds of users for Bank of China, we get to have a clearer view of who are going to use this app, why they get to use it (the pain point for the user) and what they expect from it. And as is known to all, for users with different backgrounds and financial habits, the requirements for this app differs a lot. Also A clearer view of our persona might help our team members to draw their UML diagram. From text analysis we divided the main users into three categories according to the accounts they hold, one is normal users, one is joint-account users, the other is multi-account users. For example, 37 years old Paul Ford may pay more attention of his family’s diet, which means checking the fixed expenditure in particular area without other categories (see how much money is fixed every month for food).
 
 
 
