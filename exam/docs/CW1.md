@@ -25,7 +25,7 @@ The **Clarification** is our understanding for some requirements that are indist
 
 ![Text Analysis1](./Text1.png)
 ![Text Analysis2](./Text2.png)
-![Use case diagram](./useCase.png)
+![Use case diagram](./useCase.jpg)
 
 
 
@@ -70,7 +70,7 @@ Although it is not directly use the system by mentioned actions
 &nbsp;
 
 ### ***Tertiary Stakeholders:***
- 
+
  Since it is a free downloaded software, except Bank of China,the government, there will be a small chance that other one will pay them.
 
  &nbsp;
@@ -82,6 +82,7 @@ Although it is not directly use the system by mentioned actions
 ## Part 3: Use Case Analysis
 
 - **Use spreadsheet**
+  
   ```
    Some customers they spoke to (even single-account-single-customers) use spreadsheets to see a total of how much money is exactly fixed every  month for bills. 
   ```
@@ -93,8 +94,8 @@ Although it is not directly use the system by mentioned actions
     ```
     They also use these spreadsheets to see which categories are scheduled to go out but are variable
     ```
-  - **Update spreadsheet ( optionally )**
-
+- **Update spreadsheet ( optionally )**
+  
     &nbsp;
     This optinoal actions include: Set average cost,Set usual cost,Set fixed cost,Set reserve money,Set reserve money.
     - **Set average cost**
@@ -126,8 +127,8 @@ Although it is not directly use the system by mentioned actions
     - **Input extra income ( optionally )**
       ```
       those have extra income sometimes add it to the month’s income.
-      ```
-
+    ```
+  
 - **Create seperate sheet**
   
   - **Add date**
@@ -158,7 +159,6 @@ Although it is not directly use the system by mentioned actions
     Multi-account-users might want to also see the above information as single summary that calculated across all accounts, while still seeing summary for each individual account.
     ```
 
-  
 - **View balance**
   ```
    view money left
