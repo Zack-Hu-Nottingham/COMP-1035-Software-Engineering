@@ -27,7 +27,6 @@ The **Clarification** is our understanding for some requirements that are indist
 ![Text Analysis2](./Text2.png)
 ![Use case diagram](./useCase.png)
 
-/photo 2/
 
 
 &nbsp;
@@ -81,7 +80,6 @@ Although it is not directly use the system by mentioned actions
 
 
 ## Part 3: Use Case Analysis
-/photo/
 
 - **Use spreadsheet**
   ```
