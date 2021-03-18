@@ -27,5 +27,5 @@
 - [version log for lab3](lab03/docs/versionLog.md)
 
 ### Exam projects
-- []()
-- []()
+- [CW1](exam/docs/CW1.md)
+- [version log for cw1](exam/docs/VLog.md)
