@@ -80,9 +80,9 @@ Although it is not directly use the system by mentioned actions
 
 ## Part 4: Persona
 
-- Persona for [normal user]()
-- Persona for [multi-account user]()
-- persona for [joint-account user]()
+- Persona for [normal user](../persona/normalUser.md)
+- Persona for [multi-account user](../persona/multiUser.md)
+- persona for [joint-account user](../persona/jointUser.md)
 
 **Reasons**
 
