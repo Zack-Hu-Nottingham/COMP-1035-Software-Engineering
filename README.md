@@ -29,3 +29,6 @@
 ### Exam projects
 - [CW1](exam/docs/CW1.md)
 - [version log for cw1](exam/docs/VLog.md)
+- [CW2](cw2/docs/cw2)
+- [version log for cw2](cw2/docs/versionLog.md)
+
