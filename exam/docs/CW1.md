@@ -116,7 +116,8 @@ Although it is not directly use the system by mentioned actions
       ```
       Some clients also create a standard amount that is 'set aside' for e.g., food or gifts or for going out, or indeed ‘for savings’, so that their spare money column doesn’t include those amounts
       ```
-  - **Input income**
+    
+    - **Input income**
   ```
   of course they also put in their ‘normal’ income into the spreadsheet, and those have extra income sometimes add it to the month’s income.
   ```
@@ -127,6 +128,9 @@ Although it is not directly use the system by mentioned actions
     - **Input extra income ( optionally )**
       ```
       those have extra income sometimes add it to the month’s income.
+      ```
+    ```
+  
     ```
   
 - **Create seperate sheet**
