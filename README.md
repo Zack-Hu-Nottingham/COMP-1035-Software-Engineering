@@ -21,7 +21,7 @@
 ### Lab projects
 - [lab2 text analysis](lab02/docs/lab02textAna-V2.md)
 - [lab3 sequence/activity diagram](lab03/docs/lab03Explanation.md)
-- [lab6 Yicun Duan](src/Lab06/Yicun_DUAN)
+- [lab6 personal work](src/Lab06/)
 
 ### Version log for projects
 - [version log for lab2](lab02/docs/version log for lab2.md)
