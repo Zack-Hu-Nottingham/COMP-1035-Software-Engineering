@@ -78,7 +78,7 @@ In the Clarification, we state our solutions to the vague part of the requiremen
 
 - After receiving forms, student service will first check students' choices. If some forms need to be approved, the head of teaching and module convenor will be notified to check these forms. For other forms, they will be automatically approved.
 
-- Module convenor will deal with forms that express the intention to take introductory module from another department or take credit split. By checking the class size and ensuring its feasibility, the module convenor will make a decision -- only the class size is availble and the evidence is sufficient will the form be approved.
+- Module convenor will deal with forms that express the intention to take introductory module from another department or take credit split. By checking the class size and ensuring its feasibility, the module convenor will make a decision -- only the class size is available and the evidence is sufficient will the form be approved.
 
 - Head of Teaching will deal with forms which express students' demands for taking other pre-requisite module or taking credit split. By checking the students' grades, the Head of Teaching will give a result -- only those who have good performance at school will be approved.
 
