@@ -45,6 +45,6 @@ public class TestMyMathModule {
                 return; // it passed
             }
         }
-//        fail("it failed");
+        fail("it failed");
     }
 }
