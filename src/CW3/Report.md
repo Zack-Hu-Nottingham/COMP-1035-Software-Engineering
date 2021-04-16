@@ -17,45 +17,37 @@ In each milestone, we would assign different issue to each team member
 and the guy who is responsible for the issue would create a new branch for that issue. Finally when all the job is done, 
 one of our teammate would manage merge all these branches.
 At the beginning of each milestone, we would hold a meeting. During that time, we would create issues, set a due date and assign to some people.   
-set a mile stone: 4. 18 finish test script before modify the code <br>
-split the member into three groups: <br>
-Ziyi Wang, Zixiang Hu: <br>
-Yicun Duan, Yingxiao Huo: <br>
-Leshan Tan, Lin Chen: <br>
+
+Split the member into three subgroups: <br>Group1: Ziyi Wang, Zixiang Hu <br>Group2: Yicun Duan, Yingxiao Huo <br>Group3: Leshan Tan, Lin Chen: <br>
 Report here, by the end of the assignment, how the team has managed the project, e.g.: used version control, organised meetings, divided work, used labels, milestones, issues, etc. etc.
 
 ## Test Plan
 **You should add rows and even columns, and indeed more tables, freely as you think will improve the report.**
 
-### Class:
+### Class: BoCTransactionTest
+
+#### Function: transactionCategory()
+
+|Test Date|Tester|Inputs|Expected Outcome|Test Outcome|Result|Reason for failure|What is done to make it pass|
+|----|----------------|------------|------|----|----|----|----|
+| 4/16/7:41 | hzx/wzy | 123 | 456 |789|Fail|balbalabl|(这里空着直到改对了再添)|
+| | | | |||||
+
+
 
 #### Function:
 
-|Test|Inputs|Expected Outcome|Test Outcome|Result|
-|----|------|----------------|------------|------|
-| | | |
-| | | |
+| Test Date | Tester | Inputs | Expected Outcome | Test Outcome | Result | Reason for failure | What is done to make it pass |
+| --------- | ------ | ------ | ---------------- | ------------ | ------ | ------------------ | ---------------------------- |
+|           |        |        |                  |              |        |                    |                              |
+|           |        |        |                  |              |        |                    |                              |
+
+
 
 #### Function:
 
-|Test|Inputs|Expected Outcome|Test Outcome|Result|
-|----|------|----------------|------------|------|
-| | | |
-| | | |
-
-### Class:
-
-#### Function:
-
-|Test|Inputs|Expected Outcome|Test Outcome|Result|
-|----|------|----------------|------------|------|
-| | | |
-| | | |
-
-#### Function:
-
-|Test|Inputs|Expected Outcome|Test Outcome|Result|
-|----|------|----------------|------------|------|
-| | | |
-| | | |
+| Test Date | Inputs | Expected Outcome | Test Outcome | Result | Reason for failure | What is done to make it pass |
+| --------- | ------ | ---------------- | ------------ | ------ | ------------------ | ---------------------------- |
+|           |        |                  |              |        |                    |                              |
+|           |        |                  |              |        |                    |                              |
 
