@@ -46,8 +46,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 #### Function:
 
-| Test Date | Inputs | Expected Outcome | Test Outcome | Result | Reason for failure | What is done to make it pass |
-| --------- | ------ | ---------------- | ------------ | ------ | ------------------ | ---------------------------- |
-|           |        |                  |              |        |                    |                              |
-|           |        |                  |              |        |                    |                              |
+| Test Date | Tester | Inputs | Expected Outcome | Test Outcome | Result | Reason for failure | What is done to make it pass |
+| --------- | ------ | ------ | ---------------- | ------------ | ------ | ------------------ | ---------------------------- |
+|           |        |        |                  |              |        |                    |                              |
+|           |        |        |                  |              |        |                    |                              |
 

@@ -8,10 +8,14 @@ class BoCTransactionTest {
 
     @BeforeEach
     void setUp() {
+        BoCTransaction instance1 = new BoCTransaction();
+        BoCTransaction instance2 = new BoCTransaction();
     }
 
     @AfterEach
     void tearDown() {
+        instance1 = null;
+        instance2 = null;
     }
 
     @Test
