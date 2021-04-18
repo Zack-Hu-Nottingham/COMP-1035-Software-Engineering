@@ -14,10 +14,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
-    private Object UnsupportedOperationException;
-
+    //Author: Yingxiao Huo
+    //Last modified on； 2021/4/18
     @Test
-    void transactionName() {
+    void transactionName() throws NoSuchFieldException, IllegalAccessException {
+        final BoCTransaction Test_getter = new BoCTransaction();
+        final Field field_getter = Test_getter.getClass().getDeclaredField("test0");
+        field_getter.setAccessible(true);
+        field_getter.set(Test_getter, "test0");
+        final String result = (String) Test_getter.transactionName();
+        assertEquals("field wasn't retrieved properly", result, "test0");
+
     }
 
     @Test
@@ -32,8 +39,18 @@ class BoCTransactionTest {
     void transactionTime() {
     }
 
-    @Test
-    void setTransactionName() {
+    //author: Yicun Duan
+    //Last modified on: 2021/4/18
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/setNameTest.csv"})
+    void setTransactionName(String name) throws NoSuchFieldException, IllegalAccessException {
+        final BoCTransaction test = new BoCTransaction();
+
+        test.setTransactionName(name);
+
+        final Field field = test.getClass().getDeclaredField("transactionName");
+        field.setAccessible(true);
+        assertEquals(name, field.get(test));
     }
 
     //Author: LinCHEN (biylc2)
@@ -168,7 +185,20 @@ class BoCTransactionTest {
     void setTransactionTime() {
     }
 
-    @Test
-    void testToString() {
+    //author: Yingxiao Huo
+    //Last modified on: 2021/4/18
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/toStringTest.csv"})
+    void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
+        final BoCTransaction Test_toString = new BoCTransaction();
+        final Field test1 = Test_toString.getClass().getDeclaredField("transactionName");
+        final Field test2 = Test_toString.getClass().getDeclaredField("transactionValue");
+        test1.setAccessible(true);
+        test2.setAccessible(true);
+        test1.set(Test_toString, transName);
+        test2.set(Test_toString, new BigDecimal(transValue));
+
+        final String foo = Test_toString.toString();
+        assertEquals(resultStr, foo);
     }
 }
