@@ -8,6 +8,12 @@ class BoCTransactionTest {
 
     @Test
     void transactionName() {
+    	final BoCTransaction Test_getter = new BoCTransaction();
+        final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
+        field_getter.setAccessible(true);
+        field_getter.set(Test_getter, "test0");
+        final String result = (String) Test_getter.transactionName();
+        assertEquals("test0", result, "field wasn't retrieved properly");
     }
 
     @Test
