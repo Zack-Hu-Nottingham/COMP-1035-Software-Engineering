@@ -44,7 +44,18 @@ class BoCTransactionTest {
     void setTransactionTime() {
     }
 
-    @Test
-    void testToString() {
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/toStringTest.csv"})
+    	void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
+        final BoCTransaction Test_toString = new BoCTransaction();
+        final Field test1 = Test_toString.getClass().getDeclaredField("transactionName");
+        final Field test2 = Test_toString.getClass().getDeclaredField("transactionValue");
+        test1.setAccessible(true);
+        test2.setAccessible(true);
+        test1.set(Test_toString, transName);
+        test2.set(Test_toString, new BigDecimal(transValue));
+
+        final String foo = Test_toString.toString();
+        assertEquals(resultStr, foo);
     }
 }
