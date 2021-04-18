@@ -10,44 +10,55 @@
 
 
 ## Team Management
-We split the whole project into 6 subtask: write the test script for three classes,
-fix the code for three classes and add test script as well.<br>
-Therefore, we set 6 milestone:  
-In each milestone, we would assign different issue to each team member
-and the guy who is responsible for the issue would create a new branch for that issue. Finally when all the job is done, 
-one of our teammate would manage merge all these branches.
-At the beginning of each milestone, we would hold a meeting. During that time, we would create issues, set a due date and assign to some people.   
+We split the whole project into 6 subtask: 
 
-Split the member into three subgroups: <br>Group1: Ziyi Wang, Zixiang Hu <br>Group2: Yicun Duan, Yingxiao Huo <br>Group3: Leshan Tan, Lin Chen: <br>
+- write the test script for three classes
+- fix the code for three classes and add test script as well.
+
+Therefore, we set 6 milestone. In each milestone, we would assign different issue to each team member
+and the guy who is responsible for the issue would create a new branch for that issue. Finally when all the job is done,  one of our teammate would manage merge all these branches.
+At the beginning of each milestone, we would hold a meeting. During that time, we would create issues, set a due date and assign to different people.   
+
+
 Report here, by the end of the assignment, how the team has managed the project, e.g.: used version control, organised meetings, divided work, used labels, milestones, issues, etc. etc.
 
 ## Test Plan
-**You should add rows and even columns, and indeed more tables, freely as you think will improve the report.**
+###*This is just an example!!*
 
-### Class: BoCTransactionTest
+#### Class: BoCTransactionTest
 
-#### Function: transactionCategory()
+#### Function: setTransactionCategory()
 
-|Test Date|Tester|Inputs|Expected Outcome|Test Outcome|Result|Reason for failure|What is done to make it pass|
-|----|----------------|------------|------|----|----|----|----|
-| 4/16/7:41 | hzx/wzy | 123 | 456 |789|Fail|balbalabl|(这里空着直到改对了再添)|
-| | | | |||||
-
-
-
-#### Function:
-
-| Test Date | Tester | Inputs | Expected Outcome | Test Outcome | Result | Reason for failure | What is done to make it pass |
-| --------- | ------ | ------ | ---------------- | ------------ | ------ | ------------------ | ---------------------------- |
-|           |        |        |                  |              |        |                    |                              |
-|           |        |        |                  |              |        |                    |                              |
-
+| Function                         | setTransactionCategory()                                 |
+| :------------------------------- | -------------------------------------------------------- |
+| **Test Date**                    | 4/17     12: 46                                          |
+| **Tester**                       | hzx                                                      |
+| **Constructor**                  | new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 1) |
+| **Inputs**                       | @ValueSource(ints = {-100, -5, -1, 0,})                  |
+| **Expected Outcome**             | 1                                                        |
+| **Test Outcome**                 | 1                                                        |
+| **Result**                       | P                                                        |
+| **Reason for Failure**           | /                                                        |
+| **What is Done to Make it Pass** | /                                                        |
+| **Note**                         | /                                                        |
 
 
-#### Function:
 
-| Test Date | Tester | Inputs | Expected Outcome | Test Outcome | Result | Reason for failure | What is done to make it pass |
-| --------- | ------ | ------ | ---------------- | ------------ | ------ | ------------------ | ---------------------------- |
-|           |        |        |                  |              |        |                    |                              |
-|           |        |        |                  |              |        |                    |                              |
 
+
+### Class:
+
+#### Function: 
+
+| Function:                        |      |
+| :------------------------------- | ---- |
+| **Test Date**                    |      |
+| **Tester**                       |      |
+| **Constructor**                  |      |
+| **Inputs**                       |      |
+| **Expected Outcome**             |      |
+| **Test Outcome**                 |      |
+| **Result**                       |      |
+| **Reason for Failure**           |      |
+| **What is Done to Make it Pass** |      |
+| **Note**                         |      |

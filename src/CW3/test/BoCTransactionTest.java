@@ -12,15 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
-    static BoCTransaction boc1= new BoCTransaction(null,new BigDecimal(1),1);
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void transactionName() {
     }
