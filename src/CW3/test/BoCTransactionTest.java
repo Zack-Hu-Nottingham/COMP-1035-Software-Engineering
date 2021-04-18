@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,6 +13,8 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
+
+    private Object UnsupportedOperationException;
 
     @Test
     void transactionName() {
@@ -32,6 +36,8 @@ class BoCTransactionTest {
     void setTransactionName() {
     }
 
+    //Author: LinCHEN (biylc2)
+    //Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
@@ -49,6 +55,8 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
+    //Author: LinCHEN (biylc2)
+    //Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
@@ -64,6 +72,8 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
+    //Author: LinCHEN (biylc2)
+    //Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
@@ -87,6 +97,8 @@ class BoCTransactionTest {
 
     }
 
+    //Author: LinCHEN (biylc2)
+    //Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueLong.csv"})
@@ -102,6 +114,8 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
+    //Author: LinCHEN (biylc2)
+    //Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueTwo.csv"})
@@ -120,10 +134,31 @@ class BoCTransactionTest {
         field.setAccessible(true);
         BigDecimal result = (BigDecimal) field.get(test5);
         int equals= result.compareTo(sndChar);
-        assertNotEquals(unexpected,equals);
+        assertNotEquals(unexpected,equals,"The function cannot be set twice.");
 
     }
 
+    //Author: LinCHEN (biylc2)
+    //Last modified: 2021/04/18
+    @Test
+    void setTransactionValue6(){
+        final BoCTransaction test6= new BoCTransaction(null,new BigDecimal(0),4);
+        int time=0;
+        BigDecimal big1= new BigDecimal("300.00");
+
+        while (true){
+            try{
+                test6.setTransactionValue(big1);
+                fail("UnsupportedOperationException is not thrown as expected");
+            }
+            catch (Exception e){
+                assertTrue(e instanceof UnsupportedOperationException);
+
+            }
+        }
+
+    }
+    
 
     @Test
     void setTransactionCategory() {
