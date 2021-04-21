@@ -75,10 +75,10 @@ class BoCTransactionTest {
     void transactionTime() {
     }
 
-    //author: Yicun Duan
-    //Last modified on: 2021/4/18
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/21
     @ParameterizedTest
-    @CsvFileSource(resources = {"/setNameTest.csv"})
+    @CsvFileSource(resources = {"setNameTest.csv"})
     void setTransactionName(String name) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction test = new BoCTransaction();
 
