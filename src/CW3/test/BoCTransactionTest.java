@@ -57,7 +57,7 @@ class BoCTransactionTest {
         final Field field = boc.getClass().getDeclaredField("transactionValue");
         BigDecimal expectValue = new BigDecimal(1);
         field.setAccessible(true);
-        field.set(boc, expectValue);
+        field.set(boc, expectValue);    
         final BigDecimal result = boc.transactionValue();
         assertEquals( expectValue, result, "Field transactionValue wasn't retrieved properly");
     }
@@ -215,7 +215,7 @@ class BoCTransactionTest {
     
 
     // Author: Zixiang Hu
-    // Last modified: 4/18
+    // Last modified: 2021/4/18
     @ParameterizedTest
     @CsvFileSource(resources = { "/Trans_setCategory.csv" })
 
