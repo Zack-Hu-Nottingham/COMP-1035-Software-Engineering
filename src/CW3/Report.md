@@ -25,24 +25,38 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## Test Plan
 ###*This is just an example!!*
 
-#### Class: BoCTransactionTest
+### **Class:** &nbsp; BoCCategory
 
-#### Function: setTransactionCategory()
+#### **Function :** &nbsp; toString()
 
-| Function                         | setTransactionCategory()                                 |
-| :------------------------------- | -------------------------------------------------------- |
-| **Test Date**                    | 4/17     12: 46                                          |
-| **Tester**                       | hzx                                                      |
-| **Constructor**                  | new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 1) |
-| **Inputs**                       | @ValueSource(ints = {-100, -5, -1, 0,})                  |
-| **Expected Outcome**             | 1                                                        |
-| **Test Outcome**                 | 1                                                        |
-| **Result**                       | P                                                        |
-| **Reason for Failure**           | /                                                        |
-| **What is Done to Make it Pass** | /                                                        |
-| **Note**                         | /                                                        |
+| Function : | toString()|
+| :-----------|--------------|
+| Test Date : | 2021/04/18 21:14 |
+| Tester : | LinCHEN (biylc2)|
 
+&nbsp;
 
+|Test1:  | TS-Category 12-1 |
+|:---------                 |-----------------            |
+| **Constructor**           |    Deault constructor       |
+| **Inputs**                |    No parameter             |
+| **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
+| **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
+| **Result**                       |  Pass    |
+| **Reason for Failure**           |  \   |
+| **What is Done to Make it Pass** |  \   |
+
+&nbsp;
+
+|Test2:  | TS-Category 12-2 |
+|:---------                 |-----------------           |
+| **Constructor**           |     Parameter constructor       |
+| **Inputs**                |    CategoryName: "Negative"; CategoryBudget: BigDecimal("10000.00"); CategorySpend: BigDecimal("20000.00")    |
+| **Expected Outcome**      |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)"    |
+| **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
+| **Result**                       |  Fail   |
+| **Reason for Failure**           | \     |
+| **What is Done to Make it Pass** |  \   |
 
 
 
@@ -50,15 +64,17 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 #### Function: 
 
-| Function:                        |      |
-| :------------------------------- | ---- |
-| **Test Date**                    |      |
-| **Tester**                       |      |
-| **Constructor**                  |      |
-| **Inputs**                       |      |
-| **Expected Outcome**             |      |
-| **Test Outcome**                 |      |
-| **Result**                       |      |
-| **Reason for Failure**           |      |
-| **What is Done to Make it Pass** |      |
-| **Note**                         |      |
+| Function : | |
+| :-----------|--------------|
+| Test Date : | |
+| Tester : | |
+
+|Test1:  | TS-ClassName FunctionNumber-Number ofTest |
+|:---------                 |-----------------           |
+| **Constructor**           |  |
+| **Inputs**                |  |
+| **Expected Outcome**      |  |
+| **Test Outcome**          |  |
+| **Result**                       |  |
+| **Reason for Failure**           |  |
+| **What is Done to Make it Pass** |  |
