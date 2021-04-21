@@ -32,7 +32,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Function : | toString()|
 | :-----------|--------------|
 | Test Date : | 2021/04/18 21:14 |
-| Tester : | LinCHEN (biylc2)|
+| Tester : | Lin CHEN (biylc2) |
 
 &nbsp;
 
@@ -60,21 +60,35 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-### Class:
+### Class: BoCTransaction
 
-#### Function: 
+#### Function: transactionTime()
 
-| Function : | |
+| Function : | transactionTime() |
 | :-----------|--------------|
-| Test Date : | |
-| Tester : | |
+| Test Date : | 2021/04/21 22:46 |
+| Tester : | Zixiang Hu (scyzh6) |
 
-|Test1:  | TS-ClassName FunctionNumber-Number ofTest |
+&nbsp;
+
+|Test1:  | TS-Transaction 6-1 |
 |:---------                 |-----------------           |
-| **Constructor**           |  |
-| **Inputs**                |  |
-| **Expected Outcome**      |  |
-| **Test Outcome**          |  |
-| **Result**                       |  |
-| **Reason for Failure**           |  |
-| **What is Done to Make it Pass** |  |
+| **Constructor**           | main constructor |
+| **Inputs**                | "wzy-hzx", new BigDecimal("2000"), 2 |
+| **Expected Outcome**      | test.transactionTime() != null |
+| **Test Outcome**          | test.transactionTime() != null |
+| **Result**                       | Passed |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+
+| Test1:                           | TS-Transaction 6-2             |
+| :------------------------------- | ------------------------------ |
+| **Constructor**                  | Deault constructor             |
+| **Inputs**                       | No parameter                   |
+| **Expected Outcome**             | test.transactionTime() == null |
+| **Test Outcome**                 | test.transactionTime() == null |
+| **Result**                       | Passed                         |
+| **Reason for Failure**           | \                              |
+| **What is Done to Make it Pass** | \                              |

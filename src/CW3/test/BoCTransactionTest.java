@@ -76,8 +76,20 @@ class BoCTransactionTest {
         assertEquals(expectation,num);
     }
 
+    // Author: Zixiang Hu
+    // Last modified: 2021/4/21 22:33
     @Test
-    void transactionTime() {
+    void transactionTime1() {
+        BoCTransaction test = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 2);
+        assertNotNull(test.transactionTime());
+    }
+
+    // Author: Zixiang Hu
+    // Last modified: 2021/4/21 22:50
+    @Test
+    void transactionTime2() {
+        BoCTransaction test = new BoCTransaction();
+        assertNull(test.transactionTime());
     }
 
     // Author: Yicun Duan
