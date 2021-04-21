@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,16 +36,16 @@ class BoCTransactionTest {
     }
 
     // Author: Leshan Tan
-    // Last Modified: 2021/4/18
-    @Test
-    void transactionValue() throws  NoSuchFieldException, IllegalAccessException{
+    // Last Modified: 2021/4/21
+    @ParameterizedTest
+    @CsvFileSource(resources = {"transactionValue.csv"})
+    void transactionValue(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
-        final Field field = boc.getClass().getDeclaredField("transactionValue");
-        BigDecimal expectValue = new BigDecimal(1);
-        field.setAccessible(true);
-        field.set(boc, expectValue);
+        final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
+        fieldValue.setAccessible(true);
+        fieldValue.set(boc, new BigDecimal(input));
         final BigDecimal result = boc.transactionValue();
-        assertEquals( expectValue, result, "Field transactionValue wasn't retrieved properly");
+        assertEquals( new BigDecimal(expectation), boc.transactionValue(), "Field transactionValue wasn't retrieved properly");
     }
 
     @Test
