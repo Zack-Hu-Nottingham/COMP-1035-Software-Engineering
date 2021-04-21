@@ -2,6 +2,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,7 +12,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+
 import java.util.Date;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,8 +40,8 @@ class BoCTransactionTest {
     }
 
 
-    //author: Yingxiao Huo
-    //last modified on； 2021/4/18
+    // Author: Yingxiao Huo
+    // Last modified: 2021/4/18
     @Test
     void transactionName() throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
@@ -50,16 +54,16 @@ class BoCTransactionTest {
     }
 
     // Author: Leshan Tan
-    // Last Modified: 2021/4/18
-    @Test
-    void transactionValue() throws  NoSuchFieldException, IllegalAccessException{
+    // Last Modified: 2021/4/21
+    @ParameterizedTest
+    @CsvFileSource(resources = {"transactionValue.csv"})
+    void transactionValue(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
-        final Field field = boc.getClass().getDeclaredField("transactionValue");
-        BigDecimal expectValue = new BigDecimal(1);
-        field.setAccessible(true);
-        field.set(boc, expectValue);
+        final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
+        fieldValue.setAccessible(true);
+        fieldValue.set(boc, new BigDecimal(input));
         final BigDecimal result = boc.transactionValue();
-        assertEquals( expectValue, result, "Field transactionValue wasn't retrieved properly");
+        assertEquals( new BigDecimal(expectation), boc.transactionValue(), "Field transactionValue wasn't retrieved properly");
     }
 
     // Author: Ziyi Wang
@@ -76,8 +80,8 @@ class BoCTransactionTest {
     void transactionTime() {
     }
 
-    //author: Yicun Duan
-    //Last modified on: 2021/4/18
+    // Author: Yicun Duan
+    // Last modified: 2021/4/18
     @ParameterizedTest
     @CsvFileSource(resources = {"/setNameTest.csv"})
     void setTransactionName(String name) throws NoSuchFieldException, IllegalAccessException {
@@ -90,8 +94,8 @@ class BoCTransactionTest {
         assertEquals(name, field.get(test));
     }
 
-    //Author: LinCHEN (biylc2)
-    //Last modified: 2021/04/18
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
@@ -109,8 +113,8 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
-    //Author: LinCHEN (biylc2)
-    //Last modified: 2021/04/18
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
@@ -126,8 +130,8 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
-    //Author: LinCHEN (biylc2)
-    //Last modified: 2021/04/18
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
@@ -151,8 +155,8 @@ class BoCTransactionTest {
 
     }
 
-    //Author: LinCHEN (biylc2)
-    //Last modified: 2021/04/18
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueLong.csv"})
@@ -168,8 +172,8 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
-    //Author: LinCHEN (biylc2)
-    //Last modified: 2021/04/18
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueTwo.csv"})
@@ -192,8 +196,8 @@ class BoCTransactionTest {
 
     }
 
-    //Author: LinCHEN (biylc2)
-    //Last modified: 2021/04/18
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
     @Test
     void setTransactionValue6(){
         final BoCTransaction test6= new BoCTransaction(null,new BigDecimal(0),4);
@@ -215,7 +219,7 @@ class BoCTransactionTest {
     
 
     // Author: Zixiang Hu
-    // Last modified: 4/18
+    // Last modified: 2021/4/18
     @ParameterizedTest
     @CsvFileSource(resources = { "/Trans_setCategory.csv" })
 
@@ -231,8 +235,8 @@ class BoCTransactionTest {
     void setTransactionTime() {
     }
 
-    //author: Yingxiao Huo
-    //Last modified on: 2021/4/18
+    // Author: Yingxiao Huo
+    // Last modified: 2021/4/18
     @ParameterizedTest
     @CsvFileSource(resources = {"/toStringTest.csv"})
     void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
