@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -10,9 +11,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import java.lang.reflect.Field;
-import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -216,8 +214,17 @@ class BoCTransactionTest {
     }
     
 
-    @Test
-    void setTransactionCategory() {
+    // Author: Zixiang Hu
+    // Last modified: 4/18
+    @ParameterizedTest
+    @CsvFileSource(resources = { "/Trans_setCategory.csv" })
+
+    void setTransactionCategory(int input, int expectation) throws NoSuchFieldException, IllegalAccessException {
+        final BoCTransaction trans = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 1);
+        trans.setTransactionCategory(input);
+        final Field field = trans.getClass().getDeclaredField("transactionCategory");
+        field.setAccessible(true);
+        assertEquals(expectation, field.get(trans), "Fields didn't match");
     }
 
     @Test
