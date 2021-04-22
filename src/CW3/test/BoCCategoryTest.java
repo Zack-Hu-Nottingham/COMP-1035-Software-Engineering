@@ -57,8 +57,23 @@ class BoCCategoryTest {
     void resetBudgetSpend() {
     }
 
-    @Test
-    void getRemainingBudget() {
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/21
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/getRemainingBudgetTest.csv"})
+    void getRemainingBudget(String budget, String spend, String remain) throws NoSuchFieldException, IllegalAccessException {
+        final BoCCategory remainTest =  new BoCCategory();
+        final Field field_budget = remainTest.getClass().getDeclaredField("CategoryBudget");
+        field_budget.setAccessible(true);
+        field_budget.set(remainTest, new BigDecimal(budget));
+        final Field field_spend = remainTest.getClass().getDeclaredField("CategorySpend");
+        field_spend.setAccessible(true);
+        field_spend.set(remainTest, new BigDecimal(spend));
+
+        final BigDecimal result = remainTest.getRemainingBudget();
+
+        assertEquals(result, new BigDecimal(remain));
+
     }
 
     @Test
