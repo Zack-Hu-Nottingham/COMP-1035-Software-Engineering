@@ -59,7 +59,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \         
 
 
-
+&nbsp;
 ### Class: BoCCategory
 
 #### Function: BocCategory()
@@ -80,8 +80,28 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Result**                       | Passed |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+### **Class:** &nbsp; BoCCategory
+
+#### **Function :** &nbsp; resetBudgetSpend()
 
 
+| Function : | resetBudgetSpend()|
+| :-----------|--------------|
+| Test Date : | 2021/04/18 21:14 |
+| Tester : | Lin CHEN (biylc2) |
+&nbsp;
+
+|Test1:  | TS-Category 10-1 |
+|:---------                 |-----------------            |
+| **Constructor**           |    Default constructor       |
+| **Inputs**                |    No parameter             |
+| **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
+| **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
+&nbsp;
 ### **Class:** &nbsp; BoCCategory
 
 #### **Function :** &nbsp; toString()
@@ -89,13 +109,13 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Function : | toString()|
 | :-----------|--------------|
 | Test Date : | 2021/04/18 21:14 |
-| Tester : | Lin CHEN (biylc2) |
+| Tester : | LinCHEN (biylc2)|
 
 &nbsp;
 
 |Test1:  | TS-Category 12-1 |
 |:---------                 |-----------------            |
-| **Constructor**           |    Default constructor       |
+| **Constructor**           |    Deault constructor       |
 | **Inputs**                |    No parameter             |
 | **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
 | **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
@@ -113,5 +133,16 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
 | **Result**                       |  Fail   |
 | **Reason for Failure**           | \     |
-| **What is Done to Make it Pass** |  \   |``
+| **What is Done to Make it Pass** |  \   |
 
+&nbsp;
+
+|Test2:  | TS-Category 12-3 |
+|:---------                 |-----------------           |
+| **Constructor**           |     Parameter constructor       |
+| **Inputs**                |    CategoryName: "Positive"; CategoryBudget: BigDecimal("3457834.023423"); CategorySpend: BigDecimal("667433.00564")    |
+| **Expected Outcome**      |  "Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)"    |
+| **Test Outcome**          |  "Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)"     |
+| **Result**                       |  Pass   |
+| **Reason for Failure**           | \     |
+| **What is Done to Make it Pass** |  \   |
