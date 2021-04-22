@@ -25,41 +25,6 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## Test Plan
 ###*This is just an example!!*
 
-### **Class:** &nbsp; BoCCategory
-
-#### **Function :** &nbsp; toString()
-
-| Function : | toString()|
-| :-----------|--------------|
-| Test Date : | 2021/04/18 21:14 |
-| Tester : | Lin CHEN (biylc2) |
-
-&nbsp;
-
-|Test1:  | TS-Category 12-1 |
-|:---------                 |-----------------            |
-| **Constructor**           |    Deault constructor       |
-| **Inputs**                |    No parameter             |
-| **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
-| **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
-| **Result**                       |  Pass    |
-| **Reason for Failure**           |  \   |
-| **What is Done to Make it Pass** |  \   |
-
-&nbsp;
-
-|Test2:  | TS-Category 12-2 |
-|:---------                 |-----------------           |
-| **Constructor**           |     Parameter constructor       |
-| **Inputs**                |    CategoryName: "Negative"; CategoryBudget: BigDecimal("10000.00"); CategorySpend: BigDecimal("20000.00")    |
-| **Expected Outcome**      |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)"    |
-| **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
-| **Result**                       |  Fail   |
-| **Reason for Failure**           | \     |
-| **What is Done to Make it Pass** |  \   |
-
-
-
 ### Class: BoCTransaction
 
 #### Function: transactionTime()
@@ -91,4 +56,62 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**                 | test.transactionTime() == null |
 | **Result**                       | Passed                         |
 | **Reason for Failure**           | \                              |
-| **What is Done to Make it Pass** | \                              |
+| **What is Done to Make it Pass** | \         
+
+
+
+### Class: BoCCategory
+
+#### Function: BocCategory()
+
+| Function : | BocCategory() |
+| :-----------|--------------|
+| Test Date : | 2021/04/22 9:20 |
+| Tester : | Leshan Tan (sqylt2) |
+
+&nbsp;
+
+|Test1:  | TS-Category 1-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | No parameter |
+| **Expected Outcome**      | test.CategoryName == "New Category", test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Test Outcome**          | test.CategoryName == "New Category", test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Result**                       | Passed |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+
+### **Class:** &nbsp; BoCCategory
+
+#### **Function :** &nbsp; toString()
+
+| Function : | toString()|
+| :-----------|--------------|
+| Test Date : | 2021/04/18 21:14 |
+| Tester : | Lin CHEN (biylc2) |
+
+&nbsp;
+
+|Test1:  | TS-Category 12-1 |
+|:---------                 |-----------------            |
+| **Constructor**           |    Default constructor       |
+| **Inputs**                |    No parameter             |
+| **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
+| **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
+| **Result**                       |  Pass    |
+| **Reason for Failure**           |  \   |
+| **What is Done to Make it Pass** |  \   |
+
+&nbsp;
+
+|Test2:  | TS-Category 12-2 |
+|:---------                 |-----------------           |
+| **Constructor**           |     Parameter constructor       |
+| **Inputs**                |    CategoryName: "Negative"; CategoryBudget: BigDecimal("10000.00"); CategorySpend: BigDecimal("20000.00")    |
+| **Expected Outcome**      |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)"    |
+| **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
+| **Result**                       |  Fail   |
+| **Reason for Failure**           | \     |
+| **What is Done to Make it Pass** |  \   |``
+
