@@ -29,8 +29,20 @@ class BoCCategoryTest {
     void categoryName() {
     }
 
-    @Test
-    void categoryBudget() {
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/21
+    @ParameterizedTest
+    @CsvFileSource(resources = {"getBudgetTest.csv"})
+    void categoryBudget(String budget) throws NoSuchFieldException, IllegalAccessException {
+        final BoCCategory budgetTest =  new BoCCategory();
+        final Field field = budgetTest.getClass().getDeclaredField("CategoryBudget");
+        field.setAccessible(true);
+        field.set(budgetTest, new BigDecimal(budget));
+
+        final BigDecimal result = budgetTest.CategoryBudget();
+
+        assertEquals(result, new BigDecimal(budget));
+
     }
 
     @Test
