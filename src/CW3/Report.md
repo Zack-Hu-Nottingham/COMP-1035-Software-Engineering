@@ -25,6 +25,63 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## Test Plan
 ###*This is just an example!!*
 
+### Class: BoCTransaction
+
+#### Function: transactionTime()
+
+| Function : | transactionTime() |
+| :-----------|--------------|
+| Test Date : | 2021/04/21 22:46 |
+| Tester : | Zixiang Hu (scyzh6) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 6-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | "wzy-hzx", new BigDecimal("2000"), 2 |
+| **Expected Outcome**      | test.transactionTime() != null |
+| **Test Outcome**          | test.transactionTime() != null |
+| **Result**                       | Passed |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+
+| Test1:                           | TS-Transaction 6-2             |
+| :------------------------------- | ------------------------------ |
+| **Constructor**                  | Deault constructor             |
+| **Inputs**                       | No parameter                   |
+| **Expected Outcome**             | test.transactionTime() == null |
+| **Test Outcome**                 | test.transactionTime() == null |
+| **Result**                       | Passed                         |
+| **Reason for Failure**           | \                              |
+| **What is Done to Make it Pass** | \         
+
+
+
+### Class: BoCCategory
+
+#### Function: BocCategory()
+
+| Function : | BocCategory() |
+| :-----------|--------------|
+| Test Date : | 2021/04/22 9:20 |
+| Tester : | Leshan Tan (sqylt2) |
+
+&nbsp;
+
+|Test1:  | TS-Category 1-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | No parameter |
+| **Expected Outcome**      | test.CategoryName == "New Category", test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Test Outcome**          | test.CategoryName == "New Category", test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Result**                       | Passed |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+
 ### **Class:** &nbsp; BoCCategory
 
 #### **Function :** &nbsp; toString()
@@ -32,13 +89,13 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Function : | toString()|
 | :-----------|--------------|
 | Test Date : | 2021/04/18 21:14 |
-| Tester : | LinCHEN (biylc2)|
+| Tester : | Lin CHEN (biylc2) |
 
 &nbsp;
 
 |Test1:  | TS-Category 12-1 |
 |:---------                 |-----------------            |
-| **Constructor**           |    Deault constructor       |
+| **Constructor**           |    Default constructor       |
 | **Inputs**                |    No parameter             |
 | **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
 | **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
@@ -56,25 +113,5 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
 | **Result**                       |  Fail   |
 | **Reason for Failure**           | \     |
-| **What is Done to Make it Pass** |  \   |
+| **What is Done to Make it Pass** |  \   |``
 
-
-
-### Class:
-
-#### Function: 
-
-| Function : | |
-| :-----------|--------------|
-| Test Date : | |
-| Tester : | |
-
-|Test1:  | TS-ClassName FunctionNumber-Number ofTest |
-|:---------                 |-----------------           |
-| **Constructor**           |  |
-| **Inputs**                |  |
-| **Expected Outcome**      |  |
-| **Test Outcome**          |  |
-| **Result**                       |  |
-| **Reason for Failure**           |  |
-| **What is Done to Make it Pass** |  |
