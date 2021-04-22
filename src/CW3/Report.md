@@ -38,7 +38,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Category 12-1 |
 |:---------                 |-----------------            |
-| **Constructor**           |    Deault constructor       |
+| **Constructor**           |    Default constructor      |
 | **Inputs**                |    No parameter             |
 | **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
 | **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
@@ -60,21 +60,41 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-### Class:
+### Class: &nbsp; BoCCategory
 
-#### Function: 
+#### Function:  removeExpense()
 
-| Function : | |
+| Function : removeExpense() | |
 | :-----------|--------------|
-| Test Date : | |
-| Tester : | |
+| Test Date : 2021/4/22 20:38 | |
+| Tester : Ziyi Wang | |
 
-|Test1:  | TS-ClassName FunctionNumber-Number ofTest |
+|Test1:  | TS-Category 9-1 |
 |:---------                 |-----------------           |
-| **Constructor**           |  |
-| **Inputs**                |  |
-| **Expected Outcome**      |  |
-| **Test Outcome**          |  |
-| **Result**                       |  |
-| **Reason for Failure**           |  |
+| **Constructor**           | Parameter constructor |
+| **Inputs**                | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=0.0\|1000.0\|1000.0\|1000.0\|1000.0\|1000.0\|1000.0\|100\|100\|100 \|2.0\|3.0\|10.0\|200.0\|10000\|1000000.0000;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 0.0\|100\|800\|200.02\|200.02\|200.02\|200.0002\|0.1\|0.01\|0.001\|2.0 \|3.0\|10.0\|200.0\|1314.1314521\|1000000.0000;<br>3. BigDecimal **expense** = new BigDecimal(*input3*); <br>where *input3* = 0.0\|900\|200\|799.98\|700\|800\|799.9998\|99.9\|99.99\|99.999\|0\|0\|0\|0\|7685.8685479\| 0; |
+| **Expected Outcome**      | **CategorySpend**(BigDecimal).`compareTo`(**expense**): <br>0\|0\|0\|0\|1\|-1\| 0\| 0\|0\| 0\|0\|0\|0\|0\|0\|0 |
+| **Test Outcome**          | 0\|0\|0\|1\|1\|-1\|-1\|-1\|1\|-1\|0\|0\|0\|0\|1\|0 |
+| **Result**                       | P P P F P P F F F F P P P P F P |
+| **Reason for Failure**           | Maybe sth. went wrong in **addExpense**() or **removeExpense**() |
 | **What is Done to Make it Pass** |  |
+
+| Test2:                           | TS-Category 9-2                                              |
+| :------------------------------- | ------------------------------------------------------------ |
+| **Constructor**                  | Parameter constructor                                        |
+| **Inputs**                       | 1. **removeExpense**(new BigDecimal(*input*)); <br>where *input* = -20.0; |
+| **Expected Outcome**             | throw InvalidParameterException("The expense must be >= 0")  |
+| **Test Outcome**                 | java.security.InvalidParameterException: The expense must be >= 0 |
+| **Result**                       | Pass                                                         |
+| **Reason for Failure**           | /                                                            |
+| **What is Done to Make it Pass** | /                                                            |
+
+| Test3:                           | TS-Category 9-3                                              |
+| :------------------------------- | ------------------------------------------------------------ |
+| **Constructor**                  | Parameter constructor                                        |
+| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=1000.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 10000.0; |
+| **Expected Outcome**             | throw new InvalidParameterException("The CategorySpend is must be >= 0"); |
+| **Test Outcome**                 | java.security.InvalidParameterException: The CategorySpend is must be >= 0 |
+| **Result**                       | Pass                                                         |
+| **Reason for Failure**           | /                                                            |
+| **What is Done to Make it Pass** | /                                                            |
