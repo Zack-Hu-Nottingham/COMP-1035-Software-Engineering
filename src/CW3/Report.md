@@ -239,6 +239,34 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
 | **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
 &nbsp;
+
+&nbsp;
+### Class: BoCCategory
+
+#### Function: getRemainingBudget()
+
+| Function : | getRemainingBudget() |
+| :-----------|--------------|
+| Test Date : | 2021/04/23 19:48 |
+| Tester : | Yicun Duan (scyyd3) |
+
+&nbsp;
+
+
+&nbsp;
+
+|Test1:  | TS-Category 11-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("3.1415926")</td></tr></table> <br/> <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("99")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("4.1415926")</td></tr></table>|
+| **Expected Outcome**      | <table border="1"><tr><th>RemainingBudget: </th></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("-1.0000000")</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>RemainingBudget: </th></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("-1.0000000")</td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
 ### **Class:** &nbsp; BoCCategory
 
 #### **Function :** &nbsp; toString()

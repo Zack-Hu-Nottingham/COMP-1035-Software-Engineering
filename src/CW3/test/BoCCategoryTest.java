@@ -64,7 +64,7 @@ class BoCCategoryTest {
     //Last Modified: 2021/4/23 18:36
     @ParameterizedTest
     @CsvFileSource(resources = {"getBudgetTest.csv"})
-    void categoryBudget(String budget) throws NoSuchFieldException, IllegalAccessException {
+    void categoryBudget(String budget, String expectBudget) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory budgetTest =  new BoCCategory();
         final Field field = budgetTest.getClass().getDeclaredField("CategoryBudget");
         field.setAccessible(true);
@@ -72,7 +72,7 @@ class BoCCategoryTest {
 
         final BigDecimal result = budgetTest.CategoryBudget();
 
-        assertEquals(result, new BigDecimal(budget), "CategoryBudget() function doesn't return an expected result.");
+        assertEquals(result, new BigDecimal(expectBudget), "CategoryBudget() function doesn't return an expected result.");
     }
 
     //Author: Yicun Duan (scyyd3)
@@ -208,7 +208,7 @@ class BoCCategoryTest {
     //Last Modified: 2021/4/21
     @ParameterizedTest
     @CsvFileSource(resources = {"/getRemainingBudgetTest.csv"})
-    void getRemainingBudget(String budget, String spend, String remain) throws NoSuchFieldException, IllegalAccessException {
+    void getRemainingBudget(String budget, String spend, String expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
         final Field field_budget = remainTest.getClass().getDeclaredField("CategoryBudget");
         field_budget.setAccessible(true);
@@ -219,7 +219,7 @@ class BoCCategoryTest {
 
         final BigDecimal result = remainTest.getRemainingBudget();
 
-        assertEquals(result, new BigDecimal(remain));
+        assertEquals(result, new BigDecimal(expectRemain));
 
     }
 
