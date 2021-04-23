@@ -147,6 +147,45 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 &nbsp;
+### Class: BoCCategory
+
+#### Function: categoryBudget()
+
+| Function : | categoryBudget() |
+| :-----------|--------------|
+| Test Date : | 2021/04/23 18:32 |
+| Tester : | Yicun Duan (scyyd3) |
+
+&nbsp;
+
+
+&nbsp;
+
+|Test1:  | TS-Category 4-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("7.77E+10")</td></tr><tr><td>BigDecimal("456e-9")</td></tr><tr><td>BigDecimal("01010101000")</td></tr><tr><td>BigDecimal("314.15926")</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("7.77E+10")</td></tr><tr><td>BigDecimal("456e-9")</td></tr><tr><td>BigDecimal("01010101000")</td></tr><tr><td>BigDecimal("314.15926")</td></tr></table> |
+| **Test Outcome**          |<table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("7.77E+10")</td></tr><tr><td>BigDecimal("456e-9")</td></tr><tr><td>BigDecimal("01010101000")</td></tr><tr><td>BigDecimal("314.15926")</td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+|Test2:  | TS-Category 4-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | No parameter |
+| **Expected Outcome**      | BigDecimal("0.00") |
+| **Test Outcome**          | BigDecimal("0.00") |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
 
 #### Function: CategorySpend()
 
