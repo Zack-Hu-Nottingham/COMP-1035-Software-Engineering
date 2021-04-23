@@ -60,21 +60,21 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-### Class:
+### Class:nbsp;  BoCCategory
 
-#### Function: 
+#### Function:  setCategoryBudget()
 
-| Function : | |
+| Function : | setCategoryBudget() |
 | :-----------|--------------|
-| Test Date : | |
-| Tester : | |
+| Test Date : | 2021/4/23 19：24 |
+| Tester : | Ziyi Wang |
 
-|Test1:  | TS-ClassName FunctionNumber-Number ofTest |
-|:---------                 |-----------------           |
-| **Constructor**           |  |
-| **Inputs**                |  |
-| **Expected Outcome**      |  |
-| **Test Outcome**          |  |
-| **Result**                       |  |
-| **Reason for Failure**           |  |
-| **What is Done to Make it Pass** |  |
+| Test1:                           | TS-Category7-1                                               |
+| :------------------------------- | ------------------------------------------------------------ |
+| **Constructor**                  | Parameter constructor                                        |
+| **Inputs**                       | 1. **setCategoryBudget**(*input*)<br>*input*= 20.0F;         |
+| **Expected Outcome**             | could not compile                                            |
+| **Test Outcome**                 | java: incompatible types: float cannot be converted to java.math.BigDecimal |
+| **Result**                       | Fail                                                         |
+| **Reason for Failure**           | the type of the parameter is different                       |
+| **What is Done to Make it Pass** | change the type of the argument of **setCategoryBudget**(BigDecimal newValue) in the **BoCCatrgory.java** to float type. |
