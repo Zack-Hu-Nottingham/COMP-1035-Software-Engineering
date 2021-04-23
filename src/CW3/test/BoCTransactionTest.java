@@ -93,7 +93,7 @@ class BoCTransactionTest {
     }
 
     // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23
+    // Last modified: 2021/4/23 14:00
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
     void setTransactionName(String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
@@ -107,7 +107,7 @@ class BoCTransactionTest {
     }
 
     // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23
+    // Last modified: 2021/4/23 14:05
     @Test
     void setTransactionName_ExcTest_1(){
         final BoCTransaction test_instance = new BoCTransaction();
@@ -125,7 +125,7 @@ class BoCTransactionTest {
     }
 
     // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23
+    // Last modified: 2021/4/23 14:10
     @Test
     void setTransactionName_ExcTest_2(){
         final BoCTransaction test_instance_1 = new BoCTransaction();

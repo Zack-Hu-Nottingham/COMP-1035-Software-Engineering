@@ -60,8 +60,8 @@ class BoCCategoryTest {
         assertEquals(result, expection);
     }
 
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/21
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/23 18:36
     @ParameterizedTest
     @CsvFileSource(resources = {"getBudgetTest.csv"})
     void categoryBudget(String budget) throws NoSuchFieldException, IllegalAccessException {
@@ -72,8 +72,16 @@ class BoCCategoryTest {
 
         final BigDecimal result = budgetTest.CategoryBudget();
 
-        assertEquals(result, new BigDecimal(budget));
+        assertEquals(result, new BigDecimal(budget), "CategoryBudget() function doesn't return an expected result.");
+    }
 
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/23 18:40
+    @Test
+    void categoryBudget_NullTest(){
+        final BoCCategory test_instance = new BoCCategory();
+
+        assertEquals(new BigDecimal("0.00"), test_instance.CategoryBudget(), "When using default constructor, CategoryBudget is not 0.00 (BigDecimal). Or it is not of type BigDecimal.");
     }
 
     // Author: Leshan Tan
