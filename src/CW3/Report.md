@@ -67,7 +67,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 | Function : | BocCategory() |
 | :-----------|--------------|
-| Test Date : | 2021/04/22 9:20 |
+| Test Date : | 2021/04/22 21:20 |
 | Tester : | Leshan Tan (sqylt2) |
 
 &nbsp;
@@ -76,10 +76,10 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | No parameter |
-| **Expected Outcome**      | test.CategoryName == "New Category", test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
-| **Test Outcome**          | test.CategoryName == "New Category", test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
-| **Result**                       | Passed |
-| **Reason for Failure**           | \ |
+| **Expected Outcome**      | test.CategoryName is unique among different instances, test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Test Outcome**          | test.CategoryName is the same among different instances, test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The implementation of Category Default Constructor is wrong, since it always create instances with the same name "New Category" |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
