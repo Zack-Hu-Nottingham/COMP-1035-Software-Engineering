@@ -61,6 +61,69 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
+### Class: BoCTransaction
+
+#### Function: setTransactionName()
+
+| Function : | setTransactionName() |
+| :-----------|--------------|
+| Test Date : | 2021/04/23 9:38 |
+| Tester : | Yicun Duan (scyyd3) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 7-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+|Test2:  | TS-Transaction 7-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnopqrst"</td></tr><tr><td>"What have you done? Eren! You killed all people! No, just 80%. Thank you, Eren."</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnop"</td></tr><tr><td>"What have you done? Eren!"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnopqrst"</td></tr><tr><td>"What have you done? Eren! You killed all people! No, just 80%. Thank you, Eren."</td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannnot truncate the string when it is longer than 25 characters. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+|Test3:  | TS-Transaction 7-3 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>""</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "The transactionName is invalid." |
+| **Test Outcome**          | "IllegalArgumentException is not thrown out." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannot throw out an exception when the input string is empty. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+|Test4:  | TS-Transaction 7-4 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Joker is myself"</td></tr><tr><td>"Joker is myself" (set again)</td></tr></table> |
+| **Expected Outcome**      | Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set." |
+| **Test Outcome**          | "UnsupportedOperationException is not thrown out." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannot throw out an exception when two transactions have the same name. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
+&nbsp;
 ### Class: BoCCategory
 
 #### Function: BocCategory()
