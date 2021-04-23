@@ -25,6 +25,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## Test Plan
 ###*This is just an example!!*
 
+<<<<<<< HEAD
 ### Class: BoCTransaction
 
 #### Function: transactionTime()
@@ -188,3 +189,5 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Result**                       | Pass                                                         |
 | **Reason for Failure**           | /                                                            |
 | **What is Done to Make it Pass** | /                                                            |
+| **What is Done to Make it Pass** |  \   |
+
