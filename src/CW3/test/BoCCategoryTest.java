@@ -1,12 +1,4 @@
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.lang.reflect.Field;
-import java.math.BigDecimal;
-import java.security.InvalidParameterException;
-import java.util.InputMismatchException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,9 +21,9 @@ class BoCCategoryTest {
     }
 
     // Author: Ziyi Wang
-    // Last modified: 2021/4/23 19:11
+    // Last modified: 2021/4/23 19:31
     @Test
-    void setCategoryBudget1(){
+    void setCategoryBudget(){
         final BoCCategory stest = new BoCCategory();    //new object
 
         float input = 20.00F;
