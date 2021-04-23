@@ -120,6 +120,50 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Result**                       | Fail |
 | **Reason for Failure**           | The program cannot throw out an exception when two transactions have the same name. |
 | **What is Done to Make it Pass** | \ |
+### Class: BoCTransaction
+
+$nbsp
+#### Function: transactionName()
+
+| Function : | transactionName() |
+| :-----------|--------------|
+| Test Date : | 2021/04/21 |
+| Tester : | Yingxiao Huo (scyyh9) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 8-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | "test0" |
+| **Expected Outcome**      | Test_getter.transactionName() == "test0" |
+| **Test Outcome**          | Test_getter.transactionName() == "test0" |
+| **Result**                       | Passed |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+### Class: BoCTransaction
+
+#### Function: toString()
+
+| Function : | toString() |
+| :-----------|--------------|
+| Test Date : | 2021/04/21 |
+| Tester : | Yingxiao Huo (scyyh9) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 9-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | "Boon Giin Lee" "0" |
+| **Expected Outcome**      | Test_toString.toString() == "Boon Giin Lee - ¥0" |
+| **Test Outcome**          | Test_toString.toString() == "Boon Giin Lee - ¥0" |
+| **Result**                       | Passed |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
 &nbsp;
 
 
@@ -355,3 +399,53 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | /                                                            |
 | **What is Done to Make it Pass** |  \   |
 
+&nbsp;
+### Class: BoCCategory
+
+#### Function: categoryName()
+
+| Function : | categoryName() |
+| :-----------|--------------|
+| Test Date : | 2021/04/23 20:36 |
+| Tester : | Yingxiao Huo (scyyh9) |
+
+&nbsp;
+
+
+&nbsp;
+
+|Test1:  | TS-Category 3-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/>|
+| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
+| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+&nbsp;
+### Class: BoCCategory
+
+#### Function: setCategoryName()
+
+| Function : | setCategoryName() |
+| :-----------|--------------|
+| Test Date : | 2021/04/23 20:41 |
+| Tester : | Yingxiao Huo (scyyh9) |
+
+&nbsp;
+
+
+&nbsp;
+
+|Test1:  | TS-Category 6-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/>|
+| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
+| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
