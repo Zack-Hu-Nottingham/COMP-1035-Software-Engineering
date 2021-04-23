@@ -47,20 +47,6 @@ class BoCCategoryTest {
         }
     }
 
-    @Test
-    void BocCategory()throws NoSuchFieldException, IllegalAccessException{
-        final BoCCategory boc = new BoCCategory();
-        final Field fieldName = boc.getClass().getDeclaredField("CategoryName");
-        final Field fieldBudget = boc.getClass().getDeclaredField("CategoryBudget");
-        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
-        fieldName.setAccessible(true);
-        fieldBudget.setAccessible(true);
-        fieldSpend.setAccessible(true);
-        assertEquals("New Category", fieldName.get(boc),"Field CategoryName didn't match");
-        assertEquals(new BigDecimal("0.00"),fieldBudget.get(boc),"Field CategoryBudget didn't match");
-        assertEquals(new BigDecimal("0.00"), fieldSpend.get(boc),"Field CategorySpend didn't match");
-    }
-
     //author: Yingxiao Huo
     //Last Modified time: 2021/4/21
     @ParameterizedTest
@@ -90,8 +76,24 @@ class BoCCategoryTest {
 
     }
 
+    // Author: Leshan Tan
+    // Last Modified: 2021/4/23
     @Test
-    void categorySpend() {
+    void categorySpend() throws  NoSuchFieldException{
+        final BoCCategory boc = new BoCCategory();
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
+        fieldSpend.setAccessible(true);
+        assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly");
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = {"categorySpend.csv"})
+    void categorySpendWithInputs(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
+        final BoCCategory boc = new BoCCategory();
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
+        fieldSpend.setAccessible(true);
+        fieldSpend.set(boc, new BigDecimal(input));
+        assertEquals( new BigDecimal(expectation), boc.CategorySpend(), "Field CategorySpend wasn't retrieved properly");
     }
 
     //author: Yingxiao Huo

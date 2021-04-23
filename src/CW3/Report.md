@@ -85,6 +85,40 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
+#### Function: CategorySpend()
+
+| Function : | CategorySpend() |
+| :-----------|--------------|
+| Test Date : | 2021/04/23 11:45 |
+| Tester : | Leshan Tan (sqylt2) |
+
+&nbsp;
+
+|Test1:  | TS-Category 5-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | No parameter |
+| **Expected Outcome**      | new BigDecimal("0.00") |
+| **Test Outcome**          | new BigDecimal("0.00") |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
+|Test2:  | TS-Category 5-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | set `CategorySpend` to new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table> |
+| **Expected Outcome**      | new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table>  |
+| **Test Outcome**          | new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table>  |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
 ### **Class:** &nbsp; BoCCategory
 
 #### **Function :** &nbsp; resetBudgetSpend()
