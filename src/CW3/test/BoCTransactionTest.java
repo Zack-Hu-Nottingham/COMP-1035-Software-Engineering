@@ -92,18 +92,56 @@ class BoCTransactionTest {
         assertNull(test.transactionTime());
     }
 
-    // Author: Yicun Duan
-    // Last modified: 2021/4/18
+    // Author: Yicun Duan (scyyd3)
+    // Last modified: 2021/4/23
     @ParameterizedTest
-    @CsvFileSource(resources = {"setNameTest.csv"})
-    void setTransactionName(String name) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction test = new BoCTransaction();
+    @CsvFileSource(resources = {"setTransactionNameTest.csv"})
+    void setTransactionName(String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
+        final BoCTransaction test_instance = new BoCTransaction();
 
-        test.setTransactionName(name);
+        test_instance.setTransactionName(giveName);
 
-        final Field field = test.getClass().getDeclaredField("transactionName");
+        final Field field = test_instance.getClass().getDeclaredField("transactionName");
         field.setAccessible(true);
-        assertEquals(name, field.get(test));
+        assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
+    }
+
+    // Author: Yicun Duan (scyyd3)
+    // Last modified: 2021/4/23
+    @Test
+    void setTransactionName_ExcTest_1(){
+        final BoCTransaction test_instance = new BoCTransaction();
+
+        try{
+            test_instance.setTransactionName("");
+            fail("IllegalArgumentException is not thrown out.");
+        } catch(Exception e){
+            if (e instanceof IllegalArgumentException){
+                assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
+            }else{
+                fail("Unexpected exception type.");
+            }
+        }
+    }
+
+    // Author: Yicun Duan (scyyd3)
+    // Last modified: 2021/4/23
+    @Test
+    void setTransactionName_ExcTest_2(){
+        final BoCTransaction test_instance_1 = new BoCTransaction();
+        final BoCTransaction test_instance_2 = new BoCTransaction();
+
+        try{
+            test_instance_1.setTransactionName("Joker is myself");
+            test_instance_2.setTransactionName("Joker is myself");
+            fail("UnsupportedOperationException is not thrown out.");
+        } catch(Exception e){
+            if (e instanceof UnsupportedOperationException){
+                assertEquals("Transaction name cannot be repeatedly set.", e.getMessage(), "The message in UnsupportedOperationException is not expected.");
+            }else{
+                fail("Unexpected exception type.");
+            }
+        }
     }
 
     // Author: LinCHEN (biylc2)
