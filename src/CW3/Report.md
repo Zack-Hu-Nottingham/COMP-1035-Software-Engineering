@@ -100,11 +100,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test3:  | TS-Transaction 7-3 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>""</td></tr></table> |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**      | Throw `[IllegalArgumentException]`: "The transactionName is invalid." |
 | **Test Outcome**          | "IllegalArgumentException is not thrown out." |
 | **Result**                       | Fail |
-| **Reason for Failure**           | The program cannot throw out an exception when the input string is empty. |
+| **Reason for Failure**           | The program cannot throw out an exception when the input string is null. |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
@@ -112,16 +112,33 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test4:  | TS-Transaction 7-4 |
 |:---------                 |-----------------           |
-| **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Joker is myself"</td></tr><tr><td>"Joker is myself" (set again)</td></tr></table> |
+| **Constructor**           | BoCTransaction("defaultname", BigDecimal(999.00), 1) |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr></table> |
 | **Expected Outcome**      | Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set." |
-| **Test Outcome**          | "UnsupportedOperationException is not thrown out." |
+| **Test Outcome**          | "Expected java.lang.Exception to be thrown, but nothing was thrown." |
 | **Result**                       | Fail |
-| **Reason for Failure**           | The program cannot throw out an exception when two transactions have the same name. |
+| **Reason for Failure**           | The program cannot throw out an exception when the transaction name is set twice. |
 | **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+|Test5:  | TS-Transaction 7-5 |
+|:---------                 |-----------------           |
+| **Constructor**           | BoCTransaction("defaultname", null, 2) |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"886"</td></tr></table> |
+| **Expected Outcome**      | Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set." |
+| **Test Outcome**          | "Expected java.lang.Exception to be thrown, but nothing was thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannot throw out an exception when the transaction name is set twice. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
+&nbsp;
 ### Class: BoCTransaction
 
-$nbsp
+&nbsp;
 #### Function: transactionName()
 
 | Function : | transactionName() |
