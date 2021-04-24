@@ -25,6 +25,9 @@ public class BoCTransaction {
 		if (transactionName == null){
 			throw new IllegalArgumentException("name is not set.");
 		}
+		else if (transactionName.length() > 25){
+			throw new IllegalArgumentException("Name can not longer than 25 characters.");
+		}
 		else{
 			return transactionName;
 		}

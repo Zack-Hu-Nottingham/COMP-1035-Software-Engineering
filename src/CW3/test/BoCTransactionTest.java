@@ -118,7 +118,8 @@ class BoCTransactionTest {
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
-            ", name is not set."
+            ", name is not set.",
+            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters."
     })
     void transactionName(String name, String expection) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
@@ -127,16 +128,27 @@ class BoCTransactionTest {
         if(name == null){
             try {
                 field_getter.set(Test_getter, name);
-                final String result = (String) Test_getter.transactionName();
+                final String result =  Test_getter.transactionName();
                 fail();
             }catch (Exception ex1){
                 assertEquals(expection, ex1.getMessage());
             }
         }
         else {
-            field_getter.set(Test_getter, name);
-            final String result = (String) Test_getter.transactionName();
-            assertEquals(expection, result);
+            if(name.length() > 25){
+                try {
+                    field_getter.set(Test_getter, name);
+                    final String result = (String) Test_getter.transactionName();
+                    fail();
+                }catch (Exception ex2){
+                    assertEquals(expection, ex2.getMessage());
+                }
+            }
+            else {
+                field_getter.set(Test_getter, name);
+                final String result = Test_getter.transactionName();
+                assertEquals(expection, result);
+            }
         }
     }
 
