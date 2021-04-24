@@ -54,7 +54,7 @@ class BoCTransactionTest {
 
     // test illegal trans name
     @Test
-    @DisplayName("Test2 for main constructor"
+    @DisplayName("Test2 for main constructor")
     void MainBoCTransaction2() {
         try {
             BoCTransaction boc = new BoCTransaction("", new BigDecimal(200), 2);
