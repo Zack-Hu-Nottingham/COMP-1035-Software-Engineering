@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
-    // Author: Leshan Tan
+    // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/18
     @Test
     void BoCTransaction() throws NoSuchFieldException, IllegalAccessException{
@@ -110,10 +110,7 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-
-
-
-    // Author: Yingxiao Huo
+    // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
     @ParameterizedTest
     @CsvSource({
@@ -127,10 +124,9 @@ class BoCTransactionTest {
         field_getter.set(Test_getter, name);
         final String result = (String) Test_getter.transactionName();
         assertEquals(expenction , result);
-
     }
 
-    // Author: Leshan Tan
+    // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/21
     @ParameterizedTest
     @CsvFileSource(resources = {"transactionValue.csv"})
@@ -155,18 +151,17 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
-    @Test
-    void transactionTime1() {
-        BoCTransaction test = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 2);
-        assertNotNull(test.transactionTime());
-    }
-
-    // Author: Zixiang Hu (scyzh6)
-    // Last modified: 2021/4/21 22:50
-    @Test
-    void transactionTime2() {
-        BoCTransaction test = new BoCTransaction();
-        assertNull(test.transactionTime());
+    @ParameterizedTest
+    @CsvSource({
+            "A test, 200, 2",
+            "Another test, 200, 3",
+            ", , 0"
+    })
+    void transactionTime(String transName, BigDecimal transValue, int transCate) {
+        BoCTransaction test1 = new BoCTransaction(transName, transValue, transCate);
+        Date testTime = new Date();
+        assertNotNull(test1.transactionTime());
+        assertEquals(test1.transactionTime().getTime(), testTime.getTime(), 1);
     }
 
     // Author: Yicun Duan (scyyd3)
