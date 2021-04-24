@@ -1,5 +1,5 @@
 
-"123hello", "Character h is neither a decimal digit number, decimal point, nor "e" notation exponential mark."
+"123hello", "The value is invalid and cannot be set"
 "test", "The value is invalid and cannot be set"
 " ","The value is invalid and cannot be set"
 "0e2","The value should be a positive number, the set fails"

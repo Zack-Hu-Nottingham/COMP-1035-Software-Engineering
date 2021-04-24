@@ -1,3 +1,4 @@
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -128,19 +129,50 @@ class BoCCategoryTest {
     @DisplayName("tests for add Expense")
     @Test
     @ParameterizedTest
-    @CsvSource({"-2.134,Illegal input"})
+    @CsvSource({"-2.134,Illegal input","0.00,0.00","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
     //Author : LinCHEN(biylc2)
     //Last Modify: 2021/04/24
     void addExpenseTest(String bigNumber,String expected) {
         BoCCategory addT1= new BoCCategory("Tester");
+        BigDecimal fiNum= null;
+        //only match positive numbers without negative sign
+
+        boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
+        boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]{0,16}");
 
         if(bigNumber == null){
             try{
                 addT1.addExpense(new BigDecimal(bigNumber));
             }catch (IllegalArgumentException e1){
-                assertThat(e1.getMessage(), containsString("Illegal input"));
+                assertThat(e1.getMessage(), containsString(expected));
+                return;
             }
         }
+        if(strResult1==false){
+            if (strResult2== false){
+                try{
+                    addT1.addExpense(new BigDecimal(bigNumber));
+                }catch (IllegalArgumentException e2){
+                    assertThat(e2.getMessage(), containsString(expected));
+                }
+                fail("The expected error messsage doesn't print as expected");
+            }
+        }
+        try{
+            fiNum= new BigDecimal(bigNumber);
+        }catch (Exception e3){
+            assertEquals(e3.getMessage(),"The big decimal cannot be created");
+        }
+
+
+
+        addT1.addExpense(fiNum);
+        BigDecimal expectedNum=new BigDecimal(expected);
+        assertEquals(0,expectedNum.compareTo(addT1.CategorySpend()));
+
+        //BigDecimal value = addT1.CategorySpend().add(fiNum);
+        //assertEquals(value,addT1.CategorySpend());
+
 
     }
 
