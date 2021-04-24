@@ -151,9 +151,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test1:  | TS-Transaction 8-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>null</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>name is not set</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>null</td></tr></table> |
+| **Inputs**                | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>name is not set</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
 | **Result**                       | failed: 1, passed: 1 |
 | **Reason for Failure**           | NUll is not detected |
 | **What is Done to Make it Pass** | \ |

@@ -17,25 +17,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCCategoryTest {
 
-    // Author: Leshan Tan
-    // Last Modified: 2021/4/22
+    // Author: Leshan Tan (sqylt2)
+    // Last Modified: 2021/4/24 21:17
     @Test
-    void BocCategory() throws NoSuchFieldException, IllegalAccessException{
-        List BoCCategoryNameList = new ArrayList();
-        int times = 0;
+    void BocCategory()throws NoSuchFieldException, IllegalAccessException{
+        List BoCCategoryNameList = new ArrayList(); // create a list to store the name of the category instances
+        int times = 0; // the count of instances to be created
         while(times < 10){
             BoCCategory instance = new BoCCategory();
             final Field fieldName = instance.getClass().getDeclaredField("CategoryName");
             final Field fieldBudget = instance.getClass().getDeclaredField("CategoryBudget");
             final Field fieldSpend = instance.getClass().getDeclaredField("CategorySpend");
-            fieldName.setAccessible(true);
+            fieldName.setAccessible(true); // get access to the private fields
             fieldBudget.setAccessible(true);
             fieldSpend.setAccessible(true);
-            String name = (String) fieldName.get(instance);
-            BoCCategoryNameList.add(name);
-            assertEquals(new BigDecimal("0.00"),fieldBudget.get(instance),"Field CategoryBudget didn't match");
-            assertEquals(new BigDecimal("0.00"), fieldSpend.get(instance),"Field CategorySpend didn't match");
-            for (int n=0;n<times;n++){
+            String name = (String) fieldName.get(instance); // get the CategoryName and assign it to name
+            BoCCategoryNameList.add(name); // add name to the list
+            assertEquals(new BigDecimal("0.00"),fieldBudget.get(instance),"Field CategoryBudget didn't match"); // check CategoryBudget
+            assertEquals(new BigDecimal("0.00"), fieldSpend.get(instance),"Field CategorySpend didn't match"); // check CategorySpend
+            for (int n=0;n<times;n++){ // to check if the CategoryName if unique, hence comparing each name with all previous instances' names in the list
                 assertNotEquals(BoCCategoryNameList.get(n), name,"Constructor did not create unique Category Name");
             }
             times++;
@@ -101,10 +101,29 @@ class BoCCategoryTest {
     @CsvFileSource(resources = {"/categoryNameSetter.csv"})
     void setCategoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_setter = new BoCCategory();
-        Test_setter.setCategoryName(name);
-        final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
-        field_setname.setAccessible(true);
-        assertEquals(expection, field_setname.get(Test_setter));
+            if (name == null){
+                try {
+                    Test_setter.setCategoryName(null);
+                    fail();
+                }catch (Exception ex1){
+                    assertEquals(expection, ex1.getMessage());
+                }
+            }
+            else {
+                if (name.length() > 15){
+                    try {
+                        Test_setter.setCategoryName(name);
+                        fail();
+                    }catch (Exception ex2){
+                        assertEquals(expection, ex2.getMessage());
+                    }
+                }else {
+                    Test_setter.setCategoryName(name);
+                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                    field_setname.setAccessible(true);
+                    assertEquals(expection, field_setname.get(Test_setter));
+                }
+            }
     }
     
 
