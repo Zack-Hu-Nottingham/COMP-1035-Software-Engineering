@@ -52,9 +52,31 @@ class BoCCategoryTest {
         final BoCCategory Test_getter = new BoCCategory();
         final Field field_getName = Test_getter.getClass().getDeclaredField("CategoryName");
         field_getName.setAccessible(true);
-        field_getName.set(Test_getter, name);
-        final String result = (String) Test_getter.CategoryName();
-        assertEquals(result, expection);
+        if (name == null){
+            try {
+                field_getName.set(Test_getter, name);
+                final String result = Test_getter.CategoryName();
+                fail();
+            }catch (Exception ex1){
+                assertEquals(expection, ex1.getMessage());
+            }
+        }
+        else{
+            if (name.length() > 15){
+                try {
+                    field_getName.set(Test_getter, name);
+                    final String result = (String) Test_getter.CategoryName();
+                    fail();
+                }catch (Exception ex2){
+                    assertEquals(expection, ex2.getMessage());
+                }
+            }
+            else {
+                field_getName.set(Test_getter, name);
+                final String result = Test_getter.CategoryName();
+                assertEquals(result, expection);
+            }
+        }
     }
 
     //Author: Yicun Duan (scyyd3)
