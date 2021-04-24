@@ -63,27 +63,22 @@ class BoCCategoryTest {
     }
 
     //Author: Yicun Duan (scyyd3)
-    //Last Modified: 2021/4/23 18:36
+    //Last Modified: 2021/4/24 15:41
     @ParameterizedTest
     @CsvFileSource(resources = {"getBudgetTest.csv"})
-    void categoryBudget(String budget, String expectBudget) throws NoSuchFieldException, IllegalAccessException {
-        final BoCCategory budgetTest =  new BoCCategory();
-        final Field field = budgetTest.getClass().getDeclaredField("CategoryBudget");
-        field.setAccessible(true);
-        field.set(budgetTest, new BigDecimal(budget));
+    void categoryBudget(BigDecimal budget, BigDecimal expectBudget) throws NoSuchFieldException, IllegalAccessException {
+        if (budget != null || expectBudget != null) {
+            final BoCCategory budgetTest = new BoCCategory();
+            final Field field = budgetTest.getClass().getDeclaredField("CategoryBudget");
+            field.setAccessible(true);
+            field.set(budgetTest, budget);
 
-        final BigDecimal result = budgetTest.CategoryBudget();
-
-        assertEquals(result, new BigDecimal(expectBudget), "CategoryBudget() function doesn't return an expected result.");
-    }
-
-    //Author: Yicun Duan (scyyd3)
-    //Last Modified: 2021/4/23 18:40
-    @Test
-    void categoryBudget_NullTest(){
-        final BoCCategory test_instance = new BoCCategory();
-
-        assertEquals(new BigDecimal("0.00"), test_instance.CategoryBudget(), "When using default constructor, CategoryBudget is not 0.00 (BigDecimal). Or it is not of type BigDecimal.");
+            final BigDecimal result = budgetTest.CategoryBudget();
+            assertEquals(result, expectBudget, "CategoryBudget() function doesn't return an expected result.");
+        } else {
+            final BoCCategory test_instance = new BoCCategory();
+            assertEquals(new BigDecimal("0.00"), test_instance.CategoryBudget(), "When using default constructor, CategoryBudget is not 0.00 (BigDecimal). Or it is not of type BigDecimal.");
+        }
     }
 
     // Author: Leshan Tan
@@ -206,22 +201,22 @@ class BoCCategoryTest {
 
     }
 
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/21
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/24 15:27
     @ParameterizedTest
     @CsvFileSource(resources = {"/getRemainingBudgetTest.csv"})
-    void getRemainingBudget(String budget, String spend, String expectRemain) throws NoSuchFieldException, IllegalAccessException {
+    void getRemainingBudget(BigDecimal budget, BigDecimal spend, BigDecimal expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
         final Field field_budget = remainTest.getClass().getDeclaredField("CategoryBudget");
         field_budget.setAccessible(true);
-        field_budget.set(remainTest, new BigDecimal(budget));
+        field_budget.set(remainTest, budget);
         final Field field_spend = remainTest.getClass().getDeclaredField("CategorySpend");
         field_spend.setAccessible(true);
-        field_spend.set(remainTest, new BigDecimal(spend));
+        field_spend.set(remainTest, spend);
 
         final BigDecimal result = remainTest.getRemainingBudget();
 
-        assertEquals(result, new BigDecimal(expectRemain));
+        assertEquals(result, expectRemain);
 
     }
 
