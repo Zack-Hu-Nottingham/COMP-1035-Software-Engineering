@@ -128,14 +128,9 @@ class BoCCategoryTest {
         stest.setCategoryBudget(input);    // set the budget with float type
     }
 
-<<<<<<< HEAD
     // Author : LinCHEN(biylc2)
     // Last Modify: 2021/04/24
     @DisplayName("tests for add Expense")
-=======
-
->>>>>>> 12-test-for-category-budget-setter
-    @Test
     @ParameterizedTest
     @CsvSource({"-2.134,Illegal input","0.00,0.00","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
     void addExpenseTest(String bigNumber,String expected) {
