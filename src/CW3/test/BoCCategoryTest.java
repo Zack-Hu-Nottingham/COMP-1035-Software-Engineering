@@ -43,6 +43,39 @@ class BoCCategoryTest {
         }
     }
 
+    // Author: Ziyi Wang (scyzw10)
+    // Last Modified: 2021/4/25 00:30
+    @ParameterizedTest
+    @CsvSource({"test1","test2","test3","testWithMoreThan15Chars"})
+    void MainBocCategory(String cName) throws NoSuchFieldException, IllegalAccessException {
+        if (cName.length() <= 15) {
+            BoCCategory cMain1 = new BoCCategory(cName);
+
+            // get access to the private variables
+            final Field fieldName = cMain1.getClass().getDeclaredField("CategoryName");
+            final Field fieldBudget = cMain1.getClass().getDeclaredField("CategoryBudget");
+            final Field fieldSpend = cMain1.getClass().getDeclaredField("CategorySpend");
+            fieldName.setAccessible(true);
+            fieldBudget.setAccessible(true);
+            fieldSpend.setAccessible(true);
+            // check CategoryBudget
+            assertEquals(new BigDecimal("0.00"),fieldBudget.get(cMain1),"CategoryBudget didn't match");
+            // check CategorySpend
+            assertEquals(new BigDecimal("0.00"), fieldSpend.get(cMain1),"CategorySpend didn't match");
+            // check CategoryName
+            assertEquals(cName, fieldName.get(cMain1), "CategoryName didn't match");
+        }else{
+            try {
+                BoCCategory cMain2 = new BoCCategory(cName);
+            }catch (Exception e){
+                assertThat(e.getMessage(),containsString("Category Name at most 15 characters."));
+            }
+            fail("it failed");
+        }
+
+    }
+
+
     //author: Yingxiao Huo
     //Last Modified time: 2021/4/21
     @ParameterizedTest
