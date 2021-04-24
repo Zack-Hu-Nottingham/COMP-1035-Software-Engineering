@@ -27,6 +27,52 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Class: BoCTransaction
 
+#### Function: BoCTransaction
+
+| Function : | BoCTransaction() |
+| :-----------|--------------|
+| Test Date : | 2021/04/18 16:54 |
+| Tester : | Leshan Tan (sqylt2) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 1-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default Constructor |
+| **Inputs**                | No parameter |
+| **Expected Outcome**      | <table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><td>test.transactionName == null</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The transactionName of the instance created by default constructor should be "[Pending Transaction]", not null |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+
+### Class: BoCTransaction
+
+#### Function: transactionValue()
+
+| Function : | transactionValue() |
+| :-----------|--------------|
+| Test Date : | 2021/04/18 14:35 |
+| Tester : | Leshan Tan (sqylt2) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 4-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default Constructor |
+| **Inputs**                | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+
+### Class: BoCTransaction
+
 #### Function: transactionTime()
 
 | Function : | transactionTime() |
@@ -199,8 +245,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | No parameter |
-| **Expected Outcome**      | test.CategoryName is unique among different instances, test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
-| **Test Outcome**          | test.CategoryName is the same among different instances, test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Expected Outcome**      | <table border="1"><tr><td>test.CategoryName is unique among different instances</td></tr><tr><td>test.CategoryBudget == new BigDecimal("0.00")</td></tr><tr><td>test.CategorySpend == new BigDecimal("0.00")</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><td>test.CategoryName is the same among different instances</td></tr><tr><td>test.CategoryBudget == new BigDecimal("0.00")</td></tr><tr><td>test.CategorySpend == new BigDecimal("0.00")</td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | The implementation of Category Default Constructor is wrong, since it always create instances with the same name "New Category" |
 | **What is Done to Make it Pass** | \ |
@@ -298,9 +344,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test2:  | TS-Category 5-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | set `CategorySpend` to new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table> |
-| **Expected Outcome**      | new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table>  |
-| **Test Outcome**          | new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table>  |
+| **Inputs**                | <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
