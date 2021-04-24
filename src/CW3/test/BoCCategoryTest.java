@@ -148,7 +148,7 @@ class BoCCategoryTest {
         }
         boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
         boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]{0,16}");
-        
+
         if(strResult1==false){
             if (strResult2== false){
                 try{
@@ -344,7 +344,7 @@ class BoCCategoryTest {
         field4.setAccessible(true);
         field4.set(boc3,new BigDecimal("20000.00"));
 
-        String c="Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)";
+        String c="Negative(¥10000.00) - Est. ¥20000.00 (¥10000.00 Overspent)";
         assertEquals(c,boc3.toString());
 
     }

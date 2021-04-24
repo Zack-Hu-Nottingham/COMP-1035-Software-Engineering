@@ -150,13 +150,113 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Transaction 8-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>null</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>name is not set</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>null</td></tr></table> |
+| **Constructor**           | parameter constructor |
+| **Inputs**                | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>name is not set</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
 | **Result**                       | failed: 1, passed: 1 |
 | **Reason for Failure**           | NUll is not detected |
 | **What is Done to Make it Pass** | \ |
+
+&nbsp;
+### Class: BocTransaction
+
+### Function: setTransactionValue()
+
+| Function : | setTransactionValue() |
+| :-----------|--------------|
+| Test Date : | 2021/04/24 |
+| Tester : | Lin Chen (biylc2) |
+
+|Test1:  | TS-Transaction 9-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | default constructor |
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>null</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NullPointerException]`:"The value cannot be null"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no Error message comes out </td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | Error message is not correct |
+| **What is Done to Make it Pass** | \ |
+
+|Test2:  | TS-Transaction 9-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | default constructor |
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"123hello"</td><td>"test"</td><td>" "</td></tr><tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value is invalid and cannot be set"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no IllegalArgumentException is thrown </td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | no IllegalArgumentException is thrown|
+| **What is Done to Make it Pass** | \ |
+
+|Test3:  | TS-Transaction 9-3 |
+|:---------                 |-----------------           |
+| **Constructor**           | default constructor |
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"-0e2"</td><td>""0e2"</td><td>"0e14"</td><td>"-0.0"--"-0.0000000000000000"</td></tr><tr><td>"0000"</td><td>"+0"</td><td>"-0"</td><td>"+.0"</td><td>"-.0"</td></tr><tr><td>"-214414123471.17649173641"</td><td>"-1.0"</td><td>"-209.00"</td><td>"-1.23E10"</td><td>"-0.1"--"-0.0000000000000001"</td></tr><tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value should be a positive number, the set fails"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no IllegalArgumentException is thrown </td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | no IllegalArgumentException is thrown |
+| **What is Done to Make it Pass** | \ |
+
+|Test4:  | TS-Transaction 9-4 |
+|:---------                 |-----------------           |
+| **Constructor**           | default constructor|
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>The test pass</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>The test pass </td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+|Test5:  | TS-Transaction 9-5 (setTwice)|
+|:---------                 |-----------------           |
+| **Constructor**           | default constructor with above set value /parameter constructer|
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[UnsupportedOperationException]`:"The value cannot be set twice"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[UnsupportedOperationException] is thrown</td></tr></table> |
+| **Result**                       |Fail |
+| **Reason for Failure**           | no`[UnsupportedOperationException] is thrown|
+| **What is Done to Make it Pass** | \ |
+
+|Test6:  | TS-Transaction 9-6 |
+|:---------                 |-----------------           |
+| **Constructor**           | default constructor|
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"0.00000000000000001"</td><td>"-0.00000000000000001"</td><td>"0.00000000000000000"</td><td>"0.000000000000000000"</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The data overflows"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[IllegalArgumentException]` is thrown</td></tr></table> |
+| **Result**                       |Fail |
+| **Reason for Failure**           | no`[IllegalArgumentException]` is thrown|
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+### Class: BoCTransaction
+
+#### Function: isComplete()
+| Function : | setTransactionValue() |
+| :-----------|--------------|
+| Test Date : | 2021/04/24 |
+| Tester : | Lin Chen (biylc2) |
+
+|Test1:  | TS-Transaction 10-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | default constructor |
+| **Inputs**                | none |
+| **Expected Outcome**      | False|
+| **Test Outcome**          | False|
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+|Test2:  | TS-Transaction 10-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | parameter constructor |
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>BoCTransaction("Tester","980.98",0)</td></tr><tr><td>BoCTransaction(null,"980.98",0)</td></tr><tr><td>BoCTransaction("Tester",null,0)</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
+| **Test Outcome**          |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
 
 &nbsp;
 ### Class: BoCTransaction
@@ -170,7 +270,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test1:  | TS-Transaction 9-1 |
+|Test1:  | TS-Transaction 11-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | main constructor |
 | **Inputs**                |  <table><tr><th>Name</th><th>Value</th><th>result</th></tr><tr><td>"Yingxiao Huo"</td><td>100</td><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan"</td><td>9999999</td><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Zixiang Hu"</td><td>-123123</td><td>"Value can not be negative number"</td></tr><tr><td>"Boon Giin Lee"</td><td>0</td><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>null</td><td>1</td><td>"Unknown Name - ¥1"</td></tr><tr><td>Bob</td><td>null</td><td>"Bob - ¥Uknown value"</td></tr><tr><td>null</td><td>null</td><td>"Unknown Name - ¥Uknown value"</td></tr></table>|
@@ -329,7 +429,51 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
 
 
+&nbsp;
 
+### **Class:** &nbsp; BoCCategory
+
+#### **Function :** &nbsp; resetBudgetSpend()
+
+
+| Function : | addExpense()|
+| :-----------|--------------|
+| Test Date : | 2021/04/24 |
+| Tester : | Lin CHEN (biylc2) |
+&nbsp;
+
+|Test1:  | TS-Category 8-1 |
+|:---------                 |-----------------            |
+| **Constructor**           |   Parameter constructor with settled categoryname("Tester")      |
+| **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>null</td></tr></table> |
+| **Expected Outcome**  | <table border="1"><tr><th>addExpense</th></tr><tr><td>`[NullPointerException]`:"Illegal input"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>addExpense</th></tr><tr><td>Error message is not correct </td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | Error message is not correct |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+|Test2:  | TS-Category 8-2 |
+|:---------                 |-----------------            |
+| **Constructor**           |   Parameter constructor with settled categoryname("Tester")      |
+| **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>"-2e12"</td><td>"-2.134"</td></tr></table> |
+| **Expected Outcome**  | <table border="1"><tr><th>addExpense</th></tr><tr><td>`[IllegalArgumentException]`:"Illegal input"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>addExpense</th></tr><tr><td>No exception caught</td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | No exception caught |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+|Test3:  | TS-Category 8-3 |
+|:---------                 |-----------------            |
+| **Constructor**           |  Parameter constructor with settled categoryname("Tester")      |
+| **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>"0.00</td><td>"2.13443343"</td><td>"2e12"</td><td>"2147483647.0012343</td><td>"+.0"</td></tr></table> |
+| **Expected Outcome**  | true |
+| **Test Outcome**          | true |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
 &nbsp;
 
 ### **Class:** &nbsp; BoCCategory
@@ -339,7 +483,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 | Function : | resetBudgetSpend()|
 | :-----------|--------------|
-| Test Date : | 2021/04/18 21:14 |
+| Test Date : | 2021/04/18 |
 | Tester : | Lin CHEN (biylc2) |
 &nbsp;
 
@@ -377,6 +521,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
+
+
+
+
+
 &nbsp;
 ### **Class:** &nbsp; BoCCategory
 
@@ -405,10 +554,10 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           |     Parameter constructor       |
 | **Inputs**                |    CategoryName: "Negative"; CategoryBudget: BigDecimal("10000.00"); CategorySpend: BigDecimal("20000.00")    |
-| **Expected Outcome**      |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)"    |
+| **Expected Outcome**      |  "Negative(¥10000.00) - Est. ¥20000.00 (¥10000.00 Overspent)"    |
 | **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
 | **Result**                       |  Fail   |
-| **Reason for Failure**           | \     |
+| **Reason for Failure**           | The category Number is negative  |
 | **What is Done to Make it Pass** |  \   |
 
 
