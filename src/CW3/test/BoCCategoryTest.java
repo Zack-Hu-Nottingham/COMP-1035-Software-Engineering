@@ -15,6 +15,8 @@ import java.security.InvalidParameterException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -256,6 +258,7 @@ class BoCCategoryTest {
 
         String c="Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)";
         assertEquals(c,boc3.toString());
+
     }
 
 

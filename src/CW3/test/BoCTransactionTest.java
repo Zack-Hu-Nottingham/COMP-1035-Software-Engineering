@@ -1,13 +1,11 @@
 import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.*;
 
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -148,6 +146,7 @@ class BoCTransactionTest {
     @Ignore
         // Author: LinCHEN (biylc2)
         // Last modified: 2021/04/18
+
         //@ParameterizedTest
         //@CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
 
@@ -164,11 +163,12 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
-    // Author: LinCHEN (biylc2)
-    // Last modified: 2021/04/18
+
     @Ignore
-//    @ParameterizedTest
-//    @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
+        // Author: LinCHEN (biylc2)
+        // Last modified: 2021/04/18
+        // @ParameterizedTest
+        // @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
 
     void setTransactionValue2(double input1,String input2,int expected) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction test2= new BoCTransaction(null,new BigDecimal(0),4);
@@ -181,9 +181,10 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
+    @Ignore
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
-    @Ignore
+
     // @ParameterizedTest
     // @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
 
@@ -210,14 +211,17 @@ class BoCTransactionTest {
 
 
 
-    // Author: LinCHEN (biylc2)
-    // Last modified: 2021/04/23
 
-    @DisplayName("tests for setTransactionValue")
-    @Test
-    @ParameterizedTest
-    @NullSource
-    @CsvFileSource(resources = "trans_setTransactionValueString.csv")
+
+        @DisplayName("tests for setTransactionValue")
+        @Test
+        @ParameterizedTest
+        @NullSource
+        @CsvFileSource(resources = "trans_setTransactionValueString.csv")
+
+        // Author: LinCHEN (biylc2)
+        // Last modified: 2021/04/23
+
     void setTransactionValue(String str1,String expected) throws NoSuchFieldException, IllegalAccessException {
 
         //The following code is to test different type of values,and whether the negative value can be set
@@ -343,5 +347,28 @@ class BoCTransactionTest {
 
         final String foo = Test_toString.toString();
         assertEquals(resultStr, foo);
+    }
+
+
+        @DisplayName("tests for isComplete function")
+        @Test
+
+        // Author: LinCHEN(biylc2)
+        // Last Modify: 2021/04/24 14:37
+
+    void isCompleteTest(){
+        String nameSet= "Tester";
+        BigDecimal numSet= new BigDecimal("980.08");
+        //Cases when using default constructor
+        BoCTransaction isCom1= new BoCTransaction();
+        BoCTransaction isCom2= new BoCTransaction(nameSet,null,0);
+        BoCTransaction isCom3= new BoCTransaction(null,numSet,0);
+        BoCTransaction isCom4= new BoCTransaction(nameSet,numSet,0);
+
+        assertEquals(isCom1.isComplete(),false);
+        assertEquals(isCom2.isComplete(),false);
+        assertEquals(isCom3.isComplete(),false);
+        assertEquals(isCom4.isComplete(),true);
+
     }
 }
