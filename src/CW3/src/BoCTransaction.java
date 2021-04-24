@@ -21,6 +21,9 @@ public class BoCTransaction {
 		transactionTime = new Date();
 	}
 
+	//author: Yingxiao Huo
+	//Last modify: 22021/4/24
+	//Reason: when transaction name is null or is longer than 25 characters, the program should report an error.
 	public String transactionName() throws IllegalArgumentException{
 		if (transactionName == null){
 			throw new IllegalArgumentException("name is not set.");
@@ -80,6 +83,9 @@ public class BoCTransaction {
 		}
 	}
 
+	//Yingxiao Huo (scyyh9)
+	//Last modify: 2021/4/24
+	//Reason: when transaction value is null, program should print Unknown value, and value can not be negative.
 	@Override
 	public String toString() throws IllegalArgumentException{
 		if (transactionValue == null){

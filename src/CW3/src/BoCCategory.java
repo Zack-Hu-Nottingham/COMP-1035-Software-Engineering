@@ -17,6 +17,9 @@ public class BoCCategory {
 		CategorySpend = new BigDecimal("0.00");
 	}
 
+	//author: Yingxiao Huo (scyyh9)
+	//Last modified time: 2021/4/24 23:25
+	//Reason: Name can not longer than 15 characters, and name can not be null
 	public String CategoryName() throws IllegalArgumentException{
 		if (CategoryName == null){
 			throw new IllegalArgumentException("Name is not set.");
