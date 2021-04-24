@@ -122,7 +122,6 @@ class BoCCategoryTest {
 
 
     @DisplayName("tests for add Expense")
-    @Test
     @ParameterizedTest
     @CsvSource({"-2e12,-Illegal input","-2.134,Illegal input","0.00,0.00","+.0,+.0","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
     //Author : LinCHEN(biylc2)
