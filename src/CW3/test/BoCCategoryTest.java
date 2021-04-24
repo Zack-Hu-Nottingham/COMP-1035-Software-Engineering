@@ -185,7 +185,7 @@ class BoCCategoryTest {
     }
 
     // Author: Ziyi Wang
-    // Last modified: 4/24 17:14
+    // Last modified: 4/24 21:48
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
     void removeExpense(float input1,float input2, float expect, int expectation) throws NoSuchFieldException, IllegalAccessException {
@@ -201,17 +201,23 @@ class BoCCategoryTest {
         final BigDecimal expexpense = new BigDecimal(expect);  //the expected amount of expense after remove
         BigDecimal result = (BigDecimal) field.get(removeE);  //store the private CategorySpend in the result
 
-        // if the input is correct then compare the result
-        if (input2 >=0 && input1 >= input2) {
-            int equals = result.compareTo(expexpense);   //compare the expected expense with the actual number
-            assertEquals(expectation, equals);   //the input expectation store the value of the expected compare value(equals)
-        }else {
+        if (input1 < input2) {
+            try {
+                removeE.removeExpense(new BigDecimal(input2));     // the actual value
+            } catch(Exception e) {
+                assertThat(e.getMessage(),containsString("The CategorySpend is must be >= 0"));
+            }
+            fail("it failed");
+        }else if (input2 < 0){
             try {
                 removeE.removeExpense(new BigDecimal(input2));
             } catch (Exception e) {
                 assertThat(e.getMessage(), containsString("The expense must be >= 0"));
             }
             fail("it failed");
+        }else{  // if the input is correct then compare the result
+            int equals = result.compareTo(expexpense);   //compare the expected expense with the actual number
+            assertEquals(expectation, equals);   //the input expectation store the value of the expected compare value(equals)
         }
     }
 
