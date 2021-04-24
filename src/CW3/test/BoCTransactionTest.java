@@ -69,11 +69,11 @@ class BoCTransactionTest {
     // Author: Ziyi Wang
     // Last modified: 2021/4/18 21:15
     @ParameterizedTest
-    @CsvFileSource(resources = { "/Trans_getCategory.csv" })
-    void transactionCategory(int input, int expectation) {
-        final BoCTransaction tCate = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), input);
+    @ValueSource(ints = {0,1,5,100})
+    void transactionCategory(int input) {
+        final BoCTransaction tCate = new BoCTransaction("wzy", new BigDecimal("2000"), input);
         int num = tCate.transactionCategory();
-        assertEquals(expectation,num);
+        assertEquals(input,num);
     }
 
     @Test

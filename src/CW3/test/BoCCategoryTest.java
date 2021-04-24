@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -37,6 +38,7 @@ class BoCCategoryTest {
 
     //Author: Ziyi Wang
     // 2021/04/22 16:58
+    @Ignore
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
     void removeExpense1(float input1,float input2, float input3, int expectation) throws NoSuchFieldException, IllegalAccessException {
@@ -56,6 +58,7 @@ class BoCCategoryTest {
 
     //Author: Ziyi Wang
     // 2021/04/22 19:45
+    @Ignore
     @Test
     // the input number could not be negative
     void removeExpense2() {
@@ -80,6 +83,7 @@ class BoCCategoryTest {
 
     //Author: Ziyi Wang
     // 2021/04/22 20:38
+    @Ignore
     @Test
     // the input number could not be larger than the original CategorySpend
     void removeExpense3() throws NoSuchFieldException, IllegalAccessException {
@@ -99,6 +103,40 @@ class BoCCategoryTest {
         if (comp == -1) {
             throw new InvalidParameterException("The CategorySpend is must be >= 0");
         }
+    }
+
+    // Author: Ziyi Wang
+    // Last modified: 4/24 17:14
+    @ParameterizedTest
+    @CsvFileSource(resources = {"cate_removeExpense.csv"})
+    void removeExpense(float input1,float input2, float expect, int expectation) throws NoSuchFieldException, IllegalAccessException {
+        final BoCCategory removeE = new BoCCategory();  //new object
+
+        //removeE.CategorySpend = new BigDecimal(20000);  ==> since the CategorySpend is private -> could not change
+        removeE.addExpense(new BigDecimal(input1));   //use addExpense() to save an initial value in it
+        removeE.removeExpense(new BigDecimal(input2));    // remove the expense
+        //get the private variable
+        final Field field = removeE.getClass().getDeclaredField("CategorySpend");
+        field.setAccessible(true);
+
+        final BigDecimal expexpense = new BigDecimal(expect);  //the expected amount of expense after remove
+        BigDecimal result = (BigDecimal) field.get(removeE);  //store the private CategorySpend in the result
+
+        //if input2(the value of expense need to remove) < 0, then comp = -1
+        int comp1 = (new BigDecimal(input2)).compareTo(new BigDecimal(0));
+        if (comp1 == -1) {
+            throw new InvalidParameterException("The expense must be >= 0");
+        }
+
+        //if result(the value of CategorySpend after remove) < 0, then comp = -1
+        int comp2 = result.compareTo(new BigDecimal(0));
+        if (comp2 == -1) {
+            throw new InvalidParameterException("The CategorySpend is must be >= 0");
+        }
+
+        // if the input is correct then compare the result
+        int equals= result.compareTo(expexpense);   //compare the expected expense with the actual number
+        assertEquals(expectation,equals);   //the input expectation store the value of the expected compare value(equals)
     }
 
     @Test
