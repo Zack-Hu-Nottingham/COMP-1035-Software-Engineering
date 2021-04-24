@@ -127,30 +127,9 @@ class BoCTransactionTest {
 
         final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
 
-        Exception e = assertThrows(Exception.class, ()->{test_instance.setTransactionName(giveName);});
+        UnsupportedOperationException e = assertThrows(UnsupportedOperationException.class, ()->{test_instance.setTransactionName(giveName);});
         assertEquals("Transaction name cannot be repeatedly set.", e.getMessage());
 
-    }
-
-
-    // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23 14:10
-    @Test
-    void setTransactionName_ExcTest_2(){
-        final BoCTransaction test_instance_1 = new BoCTransaction();
-        final BoCTransaction test_instance_2 = new BoCTransaction();
-
-        try{
-            test_instance_1.setTransactionName("Joker is myself");
-            test_instance_2.setTransactionName("Joker is myself");
-            fail("UnsupportedOperationException is not thrown out.");
-        } catch(Exception e){
-            if (e instanceof UnsupportedOperationException){
-                assertEquals("Transaction name cannot be repeatedly set.", e.getMessage(), "The message in UnsupportedOperationException is not expected.");
-            }else{
-                fail("Unexpected exception type.");
-            }
-        }
     }
 
 
