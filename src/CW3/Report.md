@@ -134,11 +134,11 @@ $nbsp
 |Test1:  | TS-Transaction 8-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | main constructor |
-| **Inputs**                | "test0" |
-| **Expected Outcome**      | Test_getter.transactionName() == "test0" |
-| **Test Outcome**          | Test_getter.transactionName() == "test0" |
-| **Result**                       | Passed |
-| **Reason for Failure**           | \ |
+| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>null</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>name is not set</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo</th></tr><tr><td>null</td></tr></table> |
+| **Result**                       | failed: 1, passed: 1 |
+| **Reason for Failure**           | NUll is not detected |
 | **What is Done to Make it Pass** | \ |
 
 &nbsp;
@@ -156,11 +156,11 @@ $nbsp
 |Test1:  | TS-Transaction 9-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | main constructor |
-| **Inputs**                | "Boon Giin Lee" "0" |
-| **Expected Outcome**      | Test_toString.toString() == "Boon Giin Lee - ¥0" |
-| **Test Outcome**          | Test_toString.toString() == "Boon Giin Lee - ¥0" |
-| **Result**                       | Passed |
-| **Reason for Failure**           | \ |
+| **Inputs**                |  <table><tr><th>Name</th><th>Value</th><th>result</th></tr><tr><td>"Yingxiao Huo"</td><td>100</td><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan"</td><td>9999999</td><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Zixiang Hu"</td><td>-123123</td><td>"Value can not be negative number"</td></tr><tr><td>"Boon Giin Lee"</td><td>0</td><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>null</td><td>1</td><td>"Unknown Name - ¥1"</td></tr><tr><td>Bob</td><td>null</td><td>"Bob - ¥Uknown value"</td></tr><tr><td>null</td><td>null</td><td>"Unknown Name - ¥Uknown value"</td></tr></table>|
+| **Expected Outcome**      | <table><tr><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Value can not be negative number"</td></tr><tr><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>"Unknown Name - ¥1"</td></tr><tr><td>"Bob - ¥Uknown value"</td></tr><tr><td>"Unknown Name - ¥Uknown value"</td></tr> </table>|
+| **Test Outcome**          | <table><tr><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Zixiang Hu - ¥-123123"</td></tr><tr><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>"null - ¥1"</td></tr><tr><td>"Bob - ¥null"</td></tr><tr><td>"null - ¥null"</td></tr> </table>|
+| **Result**                       | Passed :3, failed:4 |
+| **Reason for Failure**           | Negative number and NULL are not detected |
 | **What is Done to Make it Pass** | \ |
 
 &nbsp;

@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.*;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -40,14 +42,18 @@ class BoCTransactionTest {
 
     // Author: Yingxiao Huo
     // Last modified: 2021/4/18
-    @Test
-    void transactionName() throws NoSuchFieldException, IllegalAccessException {
+    @ParameterizedTest
+    @CsvSource({
+            "Yingxiao Huo, Yingxiao Huo",
+            "null, name is not set."
+    })
+    void transactionName(String name, String expenction) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
-        final Field field_getter = Test_getter.getClass().getDeclaredField("test0");
+        final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
         field_getter.setAccessible(true);
-        field_getter.set(Test_getter, "test0");
+        field_getter.set(Test_getter, name);
         final String result = (String) Test_getter.transactionName();
-        assertEquals("field wasn't retrieved properly", result, "test0");
+        assertEquals(expenction , result);
 
     }
 
@@ -214,7 +220,6 @@ class BoCTransactionTest {
 
 
         @DisplayName("tests for setTransactionValue")
-        @Test
         @ParameterizedTest
         @NullSource
         @CsvFileSource(resources = "trans_setTransactionValueString.csv")
