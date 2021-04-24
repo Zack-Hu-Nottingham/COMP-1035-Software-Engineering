@@ -93,6 +93,7 @@ class BoCCategoryTest {
         assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly");
     }
 
+
     @ParameterizedTest
     @CsvFileSource(resources = {"categorySpend.csv"})
     void categorySpendWithInputs(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
@@ -115,13 +116,25 @@ class BoCCategoryTest {
         assertEquals(expection, field_setname.get(Test_setter));
     }
     
+
+    // Author: Ziyi Wang
+    // Last modified: 2021/4/23 19:31
     @Test
-    void setCategoryBudget() {
+    void setCategoryBudget(){
+        final BoCCategory stest = new BoCCategory();    //new object
+
+        float input = 20.00F;
+        //argument passed to setCategoryBudget is incompatible with the type expected
+        stest.setCategoryBudget(input);    // set the budget with float type
     }
 
+<<<<<<< HEAD
     // Author : LinCHEN(biylc2)
     // Last Modify: 2021/04/24
     @DisplayName("tests for add Expense")
+=======
+
+>>>>>>> 12-test-for-category-budget-setter
     @Test
     @ParameterizedTest
     @CsvSource({"-2.134,Illegal input","0.00,0.00","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})

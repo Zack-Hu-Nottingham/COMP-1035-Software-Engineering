@@ -446,6 +446,27 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | /                                                            |
 
 
+
+### Class:nbsp;  BoCCategory
+
+#### Function:  setCategoryBudget()
+
+| Function : | setCategoryBudget() |
+| :-----------|--------------|
+| Test Date : | 2021/4/23 19：24 |
+| Tester : | Ziyi Wang |
+
+| Test1:                           | TS-Category7-1                                               |
+| :------------------------------- | ------------------------------------------------------------ |
+| **Constructor**                  | Parameter constructor                                        |
+| **Inputs**                       | 1. **setCategoryBudget**(*input*)<br>*input*= 20.0F;         |
+| **Expected Outcome**             | could not compile                                            |
+| **Test Outcome**                 | java: incompatible types: float cannot be converted to java.math.BigDecimal |
+| **Result**                       | Fail                                                         |
+| **Reason for Failure**           | the type of the parameter is different                       |
+| **What is Done to Make it Pass** | change the type of the argument of **setCategoryBudget**(BigDecimal newValue) in the **BoCCatrgory.java** to float type. |
+
+
 ### Class: &nbsp; BoCCategory
 
 #### Function:  removeExpense()
@@ -511,8 +532,6 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
-
-
 
 
 &nbsp;
@@ -594,4 +613,3 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | The source code do not support exception throw yet. |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
-
