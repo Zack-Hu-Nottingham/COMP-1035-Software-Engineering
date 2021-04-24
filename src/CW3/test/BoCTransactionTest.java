@@ -397,9 +397,8 @@ class BoCTransactionTest {
         if (transValue == null){
             try{
                 test1.set(Test_toString, transName);
-                test2.set(Test_toString, new BigDecimal(transValue));
+                test2.set(Test_toString, null);
                 final String foo = Test_toString.toString();
-                fail();
             }catch (Exception ex1){
                 assertEquals(resultStr, ex1.getMessage());
             }
