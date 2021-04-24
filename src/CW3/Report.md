@@ -252,6 +252,25 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
+### Class: BoCCategory
+
+#### Function: BocCategory(String newTitle)
+
+| Function :  | BocCategory()       |
+| :---------- | ------------------- |
+| Test Date : | 2021/04/24 23:07    |
+| Tester :    | Ziyi Wang (scyzw10) |
+
+| Test1:                           | TS-Category 2-1                                              |
+| :------------------------------- | ------------------------------------------------------------ |
+| **Constructor**                  | Main constructor                                             |
+| **Inputs**                       | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br>where *cName* = "test1" \| "test2" \| "test3" \| "testWithMoreThan15Chars" |
+| **Expected Outcome**             | 1~3. `cMain1.CategoryName` == cName;<br> `cMain1.CategorySpend` == new BigDecimal("0.00");<br>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br>4. Throw an exception *containsString("Category Name at most 15 characters.")* |
+| **Test Outcome**                 | 1~3. `cMain1.CategoryName` == cName;<br/> `cMain1.CategorySpend` == new BigDecimal("0.00");<br/>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br/>4. org.opentest4j.AssertionFailedError: it failed |
+| **Result**                       | P\| P \| P\| F                                               |
+| **Reason for Failure**           | The source code does not take the exception into account     |
+| **What is Done to Make it Pass** | /                                                            |
+
 &nbsp;
 ### Class: BoCCategory
 
