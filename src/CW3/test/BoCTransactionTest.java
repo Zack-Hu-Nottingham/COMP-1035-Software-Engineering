@@ -1,29 +1,21 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.Ignore;
-import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
-
-import org.junit.jupiter.api.function.Executable;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.File;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
-
 import java.util.Date;
-
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
-    // Author: Leshan Tan
+    // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/18
     @Test
     void BoCTransaction() throws NoSuchFieldException, IllegalAccessException{
@@ -118,27 +110,46 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-
-
-
-    // Author: Yingxiao Huo
+    // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
-            "null, name is not set."
+            ", name is not set.",
+            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters."
     })
-    void transactionName(String name, String expenction) throws NoSuchFieldException, IllegalAccessException {
+    void transactionName(String name, String expection) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
         final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
         field_getter.setAccessible(true);
-        field_getter.set(Test_getter, name);
-        final String result = (String) Test_getter.transactionName();
-        assertEquals(expenction , result);
-
+        if(name == null){
+            try {
+                field_getter.set(Test_getter, name);
+                final String result =  Test_getter.transactionName();
+                fail();
+            }catch (Exception ex1){
+                assertEquals(expection, ex1.getMessage());
+            }
+        }
+        else {
+            if(name.length() > 25){
+                try {
+                    field_getter.set(Test_getter, name);
+                    final String result = (String) Test_getter.transactionName();
+                    fail();
+                }catch (Exception ex2){
+                    assertEquals(expection, ex2.getMessage());
+                }
+            }
+            else {
+                field_getter.set(Test_getter, name);
+                final String result = Test_getter.transactionName();
+                assertEquals(expection, result);
+            }
+        }
     }
 
-    // Author: Leshan Tan
+    // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/21
     @ParameterizedTest
     @CsvFileSource(resources = {"transactionValue.csv"})
@@ -163,18 +174,17 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
-    @Test
-    void transactionTime1() {
-        BoCTransaction test = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 2);
-        assertNotNull(test.transactionTime());
-    }
-
-    // Author: Zixiang Hu (scyzh6)
-    // Last modified: 2021/4/21 22:50
-    @Test
-    void transactionTime2() {
-        BoCTransaction test = new BoCTransaction();
-        assertNull(test.transactionTime());
+    @ParameterizedTest
+    @CsvSource({
+            "A test, 200, 2",
+            "Another test, 200, 3",
+            ", , 0"
+    })
+    void transactionTime(String transName, BigDecimal transValue, int transCate) {
+        BoCTransaction test1 = new BoCTransaction(transName, transValue, transCate);
+        Date testTime = new Date();
+        assertNotNull(test1.transactionTime());
+        assertEquals(test1.transactionTime().getTime(), testTime.getTime(), 1);
     }
 
     // Author: Yicun Duan (scyyd3)
@@ -402,11 +412,33 @@ class BoCTransactionTest {
         final Field test2 = Test_toString.getClass().getDeclaredField("transactionValue");
         test1.setAccessible(true);
         test2.setAccessible(true);
-        test1.set(Test_toString, transName);
-        test2.set(Test_toString, new BigDecimal(transValue));
 
-        final String foo = Test_toString.toString();
-        assertEquals(resultStr, foo);
+        if (transValue == null){
+            try{
+                test1.set(Test_toString, transName);
+                test2.set(Test_toString, null);
+                final String foo = Test_toString.toString();
+            }catch (Exception ex1){
+                assertEquals(resultStr, ex1.getMessage());
+            }
+        }
+        else{
+            if (Integer.parseInt(transValue) >= 0) {
+                test1.set(Test_toString, transName);
+                test2.set(Test_toString, new BigDecimal(transValue));
+                final String foo = Test_toString.toString();
+                assertEquals(resultStr, foo);
+            } else {
+                try {
+                    test1.set(Test_toString, transName);
+                    test2.set(Test_toString, new BigDecimal(transValue));
+                    final String foo = Test_toString.toString();
+                    fail();
+                }catch (Exception ex){
+                    assertEquals(resultStr, ex.getMessage());
+                }
+            }
+        }
     }
 
 

@@ -27,6 +27,131 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Class: BoCTransaction
 
+#### Function: BoCTransaction
+
+| Function : | BoCTransaction() |
+| :-----------|--------------|
+| Test Date : | 2021/04/18 16:54 |
+| Tester : | Leshan Tan (sqylt2) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 1-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default Constructor |
+| **Inputs**                | No parameter |
+| **Expected Outcome**      | <table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><td>test.transactionName == null</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The transactionName of the instance created by default constructor should be "[Pending Transaction]", not null |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+&nbsp;
+### Class: BoCTransaction
+
+#### Function: setTransactionName()
+
+| Function : | setTransactionName() |
+| :-----------|--------------|
+| Test Date : | 2021/04/24 14:38 |
+| Tester : | Zixiang Hu (scyzh6) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 2-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> | |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+|Test2:  | TS-Transaction 2-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | Main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>""</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+|Test3:  | TS-Transaction 2-3 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Delta for two Date object created at the same time is less than 1 |
+| **Test Outcome**          | Delta for two Date object created at the same time is less than 1 |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+|Test4:  | TS-Transaction 2-4 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>-2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
+|Test5:  | TS-Transaction 2-5 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>-200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction budget should greater than zero." |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
+|Test6:  | TS-Transaction 2-6 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Transaction name with more than 25 char"</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should be shorter than 25 characters." |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+### Class: BoCTransaction
+
+#### Function: transactionValue()
+
+| Function : | transactionValue() |
+| :-----------|--------------|
+| Test Date : | 2021/04/18 14:35 |
+| Tester : | Leshan Tan (sqylt2) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 4-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default Constructor |
+| **Inputs**                | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+
+### Class: BoCTransaction
+
 #### Function: transactionTime()
 
 | Function : | transactionTime() |
@@ -38,7 +163,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Transaction 6-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | "wzy-hzx", new BigDecimal("2000"), 2 |
 | **Expected Outcome**      | test.transactionTime() != null |
 | **Test Outcome**          | test.transactionTime() != null |
@@ -150,7 +275,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Transaction 8-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | parameter constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>name is not set</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
@@ -170,7 +295,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Transaction 9-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | default constructor |
+| **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NullPointerException]`:"The value cannot be null"</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no Error message comes out </td></tr></table> |
@@ -180,7 +305,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test2:  | TS-Transaction 9-2 |
 |:---------                 |-----------------           |
-| **Constructor**           | default constructor |
+| **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"123hello"</td><td>"test"</td><td>" "</td></tr><tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value is invalid and cannot be set"</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no IllegalArgumentException is thrown </td></tr></table> |
@@ -190,7 +315,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test3:  | TS-Transaction 9-3 |
 |:---------                 |-----------------           |
-| **Constructor**           | default constructor |
+| **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"-0e2"</td><td>""0e2"</td><td>"0e14"</td><td>"-0.0"--"-0.0000000000000000"</td></tr><tr><td>"0000"</td><td>"+0"</td><td>"-0"</td><td>"+.0"</td><td>"-.0"</td></tr><tr><td>"-214414123471.17649173641"</td><td>"-1.0"</td><td>"-209.00"</td><td>"-1.23E10"</td><td>"-0.1"--"-0.0000000000000001"</td></tr><tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value should be a positive number, the set fails"</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no IllegalArgumentException is thrown </td></tr></table> |
@@ -198,9 +323,20 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | no IllegalArgumentException is thrown |
 | **What is Done to Make it Pass** | \ |
 
-|Test4:  | TS-Transaction 9-4 |
+|Test6:  | TS-Transaction 9-4 |
 |:---------                 |-----------------           |
-| **Constructor**           | default constructor|
+| **Constructor**           | Default constructor|
+| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"0.00000000000000001"</td><td>"-0.00000000000000001"</td><td>"0.00000000000000000"</td><td>"0.000000000000000000"</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The data overflows"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[IllegalArgumentException]` is thrown</td></tr></table> |
+| **Result**                       |Fail |
+| **Reason for Failure**           | no`[IllegalArgumentException]` is thrown|
+| **What is Done to Make it Pass** | \ |
+
+
+|Test4:  | TS-Transaction 9-5 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>The test pass</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>The test pass </td></tr></table> |
@@ -208,9 +344,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
-|Test5:  | TS-Transaction 9-5 (setTwice)|
+|Test5:  | TS-Transaction 9-6 (setTwice)|
 |:---------                 |-----------------           |
-| **Constructor**           | default constructor with above set value /parameter constructer|
+| **Constructor**           | Default constructor with above set value /parameter constructer|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[UnsupportedOperationException]`:"The value cannot be set twice"</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[UnsupportedOperationException] is thrown</td></tr></table> |
@@ -218,15 +354,6 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | no`[UnsupportedOperationException] is thrown|
 | **What is Done to Make it Pass** | \ |
 
-|Test6:  | TS-Transaction 9-6 |
-|:---------                 |-----------------           |
-| **Constructor**           | default constructor|
-| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"0.00000000000000001"</td><td>"-0.00000000000000001"</td><td>"0.00000000000000000"</td><td>"0.000000000000000000"</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The data overflows"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[IllegalArgumentException]` is thrown</td></tr></table> |
-| **Result**                       |Fail |
-| **Reason for Failure**           | no`[IllegalArgumentException]` is thrown|
-| **What is Done to Make it Pass** | \ |
 
 &nbsp;
 ### Class: BoCTransaction
@@ -239,7 +366,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Transaction 10-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | default constructor |
+| **Constructor**           | Default constructor |
 | **Inputs**                | none |
 | **Expected Outcome**      | False|
 | **Test Outcome**          | False|
@@ -249,7 +376,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test2:  | TS-Transaction 10-2 |
 |:---------                 |-----------------           |
-| **Constructor**           | parameter constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>BoCTransaction("Tester","980.98",0)</td></tr><tr><td>BoCTransaction(null,"980.98",0)</td></tr><tr><td>BoCTransaction("Tester",null,0)</td></tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
 | **Test Outcome**          |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
@@ -272,7 +399,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Transaction 11-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                |  <table><tr><th>Name</th><th>Value</th><th>result</th></tr><tr><td>"Yingxiao Huo"</td><td>100</td><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan"</td><td>9999999</td><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Zixiang Hu"</td><td>-123123</td><td>"Value can not be negative number"</td></tr><tr><td>"Boon Giin Lee"</td><td>0</td><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>null</td><td>1</td><td>"Unknown Name - ¥1"</td></tr><tr><td>Bob</td><td>null</td><td>"Bob - ¥Uknown value"</td></tr><tr><td>null</td><td>null</td><td>"Unknown Name - ¥Uknown value"</td></tr></table>|
 | **Expected Outcome**      | <table><tr><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Value can not be negative number"</td></tr><tr><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>"Unknown Name - ¥1"</td></tr><tr><td>"Bob - ¥Uknown value"</td></tr><tr><td>"Unknown Name - ¥Uknown value"</td></tr> </table>|
 | **Test Outcome**          | <table><tr><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Zixiang Hu - ¥-123123"</td></tr><tr><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>"null - ¥1"</td></tr><tr><td>"Bob - ¥null"</td></tr><tr><td>"null - ¥null"</td></tr> </table>|
@@ -299,8 +426,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | No parameter |
-| **Expected Outcome**      | test.CategoryName is unique among different instances, test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
-| **Test Outcome**          | test.CategoryName is the same among different instances, test.CategoryBudget == new BigDecimal("0.00"), test.CategorySpend == new BigDecimal("0.00") |
+| **Expected Outcome**      | <table border="1"><tr><td>test.CategoryName is unique among different instances</td></tr><tr><td>test.CategoryBudget == new BigDecimal("0.00")</td></tr><tr><td>test.CategorySpend == new BigDecimal("0.00")</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><td>test.CategoryName is the same among different instances</td></tr><tr><td>test.CategoryBudget == new BigDecimal("0.00")</td></tr><tr><td>test.CategorySpend == new BigDecimal("0.00")</td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | The implementation of Category Default Constructor is wrong, since it always create instances with the same name "New Category" |
 | **What is Done to Make it Pass** | \ |
@@ -398,9 +525,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test2:  | TS-Category 5-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | set `CategorySpend` to new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table> |
-| **Expected Outcome**      | new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table>  |
-| **Test Outcome**          | new BigDecimal() <table><td>0</td><td>0.000</td><td>1</td><td>1.00000</td><td>100000</td><td>100000.000000</td><td>999999999999999</td><td>999999999999999.999999999999999</td></table>  |
+| **Inputs**                | <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
@@ -444,7 +571,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Category 8-1 |
 |:---------                 |-----------------            |
-| **Constructor**           |   Parameter constructor with settled categoryname("Tester")      |
+| **Constructor**           |   Main constructor with settled categoryname("Tester")      |
 | **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**  | <table border="1"><tr><th>addExpense</th></tr><tr><td>`[NullPointerException]`:"Illegal input"</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>addExpense</th></tr><tr><td>Error message is not correct </td></tr></table> |
@@ -455,7 +582,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test2:  | TS-Category 8-2 |
 |:---------                 |-----------------            |
-| **Constructor**           |   Parameter constructor with settled categoryname("Tester")      |
+| **Constructor**           |   Main constructor with settled categoryname("Tester")      |
 | **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>"-2e12"</td><td>"-2.134"</td></tr></table> |
 | **Expected Outcome**  | <table border="1"><tr><th>addExpense</th></tr><tr><td>`[IllegalArgumentException]`:"Illegal input"</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>addExpense</th></tr><tr><td>No exception caught</td></tr></table> |
@@ -467,7 +594,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 |Test3:  | TS-Category 8-3 |
 |:---------                 |-----------------            |
-| **Constructor**           |  Parameter constructor with settled categoryname("Tester")      |
+| **Constructor**           |  Main constructor with settled categoryname("Tester")      |
 | **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>"0.00</td><td>"2.13443343"</td><td>"2e12"</td><td>"2147483647.0012343</td><td>"+.0"</td></tr></table> |
 | **Expected Outcome**  | true |
 | **Test Outcome**          | true |
@@ -552,7 +679,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test2:  | TS-Category 12-2 |
 |:---------                 |-----------------           |
-| **Constructor**           |     Parameter constructor       |
+| **Constructor**           |     Main constructor       |
 | **Inputs**                |    CategoryName: "Negative"; CategoryBudget: BigDecimal("10000.00"); CategorySpend: BigDecimal("20000.00")    |
 | **Expected Outcome**      |  "Negative(¥10000.00) - Est. ¥20000.00 (¥10000.00 Overspent)"    |
 | **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
@@ -565,7 +692,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test2:  | TS-Category 12-3 |
 |:---------                 |-----------------           |
-| **Constructor**           |     Parameter constructor       |
+| **Constructor**           |     Main constructor       |
 | **Inputs**                |    CategoryName: "Positive"; CategoryBudget: BigDecimal("3457834.023423"); CategorySpend: BigDecimal("667433.00564")    |
 | **Expected Outcome**      |  "Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)"    |
 | **Test Outcome**          |  "Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)"     |
@@ -582,7 +709,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Function :  | transactionCategory() |
 | :---------- | --------------------- |
 | Test Date : | 2021/4/18 21:15       |
-| Tester :    | Ziyi Wang             |
+| Tester :    | Ziyi Wang (scyzw10)             |
 
 | Test1:                           | TS-Transaction 5-1                                           |
 | :------------------------------- | ------------------------------------------------------------ |
@@ -603,11 +730,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Function : | setCategoryBudget() |
 | :-----------|--------------|
 | Test Date : | 2021/4/23 19：24 |
-| Tester : | Ziyi Wang |
+| Tester : | Ziyi Wang (scyzw10) |
 
 | Test1:                           | TS-Category7-1                                               |
 | :------------------------------- | ------------------------------------------------------------ |
-| **Constructor**                  | Parameter constructor                                        |
+| **Constructor**                  | Main constructor                                        |
 | **Inputs**                       | 1. **setCategoryBudget**(*input*)<br>*input*= 20.0F;         |
 | **Expected Outcome**             | could not compile                                            |
 | **Test Outcome**                 | java: incompatible types: float cannot be converted to java.math.BigDecimal |
@@ -623,12 +750,12 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Function: |removeExpense() |
 | :-----------|--------------|
 | Test Date: |2021/4/22 20:38 |
-| Tester: | Ziyi Wang |
+| Tester: | Ziyi Wang (scyzw10) |
 &nbsp;
 
 |Test1:  | TS-Category 9-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | Parameter constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=0.0\|1000.0\|1000.0\|1000.0\|1000.0\|1000.0\|1000.0\|100\|100\|100 \|2.0\|3.0\|10.0\|200.0\|10000\|1000000.0000;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 0.0\|100\|800\|200.02\|200.02\|200.02\|200.0002\|0.1\|0.01\|0.001\|2.0 \|3.0\|10.0\|200.0\|1314.1314521\|1000000.0000;<br>3. BigDecimal **expense** = new BigDecimal(*input3*); <br>where *input3* = 0.0\|900\|200\|799.98\|700\|800\|799.9998\|99.9\|99.99\|99.999\|0\|0\|0\|0\|7685.8685479\| 0; |
 | **Expected Outcome**      | **CategorySpend**(BigDecimal).`compareTo`(**expense**): <br>0\|0\|0\|0\|1\|-1\| 0\| 0\|0\| 0\|0\|0\|0\|0\|0\|0 |
 | **Test Outcome**          | 0\|0\|0\|1\|1\|-1\|-1\|-1\|1\|-1\|0\|0\|0\|0\|1\|0 |
@@ -638,24 +765,23 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 | Test2:                           | TS-Category 9-2                                              |
 | :------------------------------- | ------------------------------------------------------------ |
-| **Constructor**                  | Parameter constructor                                        |
-| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=200.0 \| 200.0 \|200.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= -20.0 \| -30.0 \| -50.0; |
+| **Constructor**                  | Main constructor                                        |
+| **Inputs**                       | **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= -20.0 \| -30.0 \| -50.0; |
 | **Expected Outcome**             | all 3 expected: throw InvalidParameterException("The expense must be >= 0") |
-| **Test Outcome**                 | all 3 outcome: java.security.InvalidParameterException: The expense must be >= 0 |
-| **Result**                       | Pass                                                         |
-| **Reason for Failure**           | /                                                            |
+| **Test Outcome**                 | all 3 outcome: org.opentest4j.AssertionFailedError: it failed |
+| **Result**                       | Fail                                                         |
+| **Reason for Failure**           | The source does not take the exception into account          |
 | **What is Done to Make it Pass** | /                                                            |
 
 | Test3:                           | TS-Category 9-3                                              |
 | :------------------------------- | ------------------------------------------------------------ |
-| **Constructor**                  | Parameter constructor                                        |
+| **Constructor**                  | Main constructor                                        |
 | **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=200.0 \| 200.0 \|1000.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 300.0 \| 400.0 \| 10000.0; |
-| **Expected Outcome**             | all 3 expected: throw new InvalidParameterException("The CategorySpend is must be >= 0"); |
-| **Test Outcome**                 | all 3 outcome: java.security.InvalidParameterException: The CategorySpend is must be >= 0 |
-| **Result**                       | Pass                                                         |
-| **Reason for Failure**           | /                                                            |
+| **Expected Outcome**             | all 3 expected: throw InvalidParameterException("The CategorySpend is must be >= 0") |
+| **Test Outcome**                 | all 3 outcome: org.opentest4j.AssertionFailedError: it failed |
+| **Result**                       | Fail                                                         |
+| **Reason for Failure**           | The source does not take the exception into account          |
 | **What is Done to Make it Pass** | /                                                            |
-| **What is Done to Make it Pass** |  \   |
 
 &nbsp;
 ### Class: BoCApp
@@ -683,82 +809,4 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 
-&nbsp;
-### Class: BoCTransaction
 
-#### Function: setTransactionName()
-
-| Function : | setTransactionName() |
-| :-----------|--------------|
-| Test Date : | 2021/04/24 14:38 |
-| Tester : | Zixiang Hu (scyzh6) |
-
-&nbsp;
-
-|Test1:  | TS-Transaction 2-1 |
-|:---------                 |-----------------           |
-| **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> | |
-| **Result**                       | Pass |
-| **Reason for Failure**           | \ |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
-
-|Test2:  | TS-Transaction 2-2 |
-|:---------                 |-----------------           |
-| **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>""</td><td>200</td><td>2</td></tr></table> |
-| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
-| **Test Outcome**          | Failed with message "No exception thrown." |
-| **Result**                       | Fail |
-| **Reason for Failure**           | The source code do not support exception throw yet. |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
-
-|Test3:  | TS-Transaction 2-3 |
-|:---------                 |-----------------           |
-| **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
-| **Expected Outcome**      | Delta for two Date object created at the same time is less than 1 |
-| **Test Outcome**          | Delta for two Date object created at the same time is less than 1 |
-| **Result**                       | Pass |
-| **Reason for Failure**           | \ |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
-
-|Test4:  | TS-Transaction 2-4 |
-|:---------                 |-----------------           |
-| **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>-2</td></tr></table> |
-| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
-| **Test Outcome**          | Failed with message "No exception thrown." |
-| **Result**                       | Fail |
-| **Reason for Failure**           | The source code do not support exception throw yet. |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
-
-
-|Test5:  | TS-Transaction 2-5 |
-|:---------                 |-----------------           |
-| **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>-200</td><td>2</td></tr></table> |
-| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction budget should greater than zero." |
-| **Test Outcome**          | Failed with message "No exception thrown." |
-| **Result**                       | Fail |
-| **Reason for Failure**           | The source code do not support exception throw yet. |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
-
-
-|Test5:  | TS-Transaction 2-6 |
-|:---------                 |-----------------           |
-| **Constructor**           | main constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Transaction name with more than 25 char"</td><td>200</td><td>2</td></tr></table> |
-| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should be shorter than 25 characters." |
-| **Test Outcome**          | Failed with message "No exception thrown." |
-| **Result**                       | Fail |
-| **Reason for Failure**           | The source code do not support exception throw yet. |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
