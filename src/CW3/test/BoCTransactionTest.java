@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
-    // Author: Leshan Tan
+    // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/18
     @Test
     void BoCTransaction() throws NoSuchFieldException, IllegalAccessException{
@@ -110,27 +110,46 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-
-
-
-    // Author: Yingxiao Huo
+    // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
-            "null, name is not set."
+            ", name is not set.",
+            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters."
     })
-    void transactionName(String name, String expenction) throws NoSuchFieldException, IllegalAccessException {
+    void transactionName(String name, String expection) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
         final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
         field_getter.setAccessible(true);
-        field_getter.set(Test_getter, name);
-        final String result = (String) Test_getter.transactionName();
-        assertEquals(expenction , result);
-
+        if(name == null){
+            try {
+                field_getter.set(Test_getter, name);
+                final String result =  Test_getter.transactionName();
+                fail();
+            }catch (Exception ex1){
+                assertEquals(expection, ex1.getMessage());
+            }
+        }
+        else {
+            if(name.length() > 25){
+                try {
+                    field_getter.set(Test_getter, name);
+                    final String result = (String) Test_getter.transactionName();
+                    fail();
+                }catch (Exception ex2){
+                    assertEquals(expection, ex2.getMessage());
+                }
+            }
+            else {
+                field_getter.set(Test_getter, name);
+                final String result = Test_getter.transactionName();
+                assertEquals(expection, result);
+            }
+        }
     }
 
-    // Author: Leshan Tan
+    // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/21
     @ParameterizedTest
     @CsvFileSource(resources = {"transactionValue.csv"})
@@ -155,18 +174,17 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
-    @Test
-    void transactionTime1() {
-        BoCTransaction test = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 2);
-        assertNotNull(test.transactionTime());
-    }
-
-    // Author: Zixiang Hu (scyzh6)
-    // Last modified: 2021/4/21 22:50
-    @Test
-    void transactionTime2() {
-        BoCTransaction test = new BoCTransaction();
-        assertNull(test.transactionTime());
+    @ParameterizedTest
+    @CsvSource({
+            "A test, 200, 2",
+            "Another test, 200, 3",
+            ", , 0"
+    })
+    void transactionTime(String transName, BigDecimal transValue, int transCate) {
+        BoCTransaction test1 = new BoCTransaction(transName, transValue, transCate);
+        Date testTime = new Date();
+        assertNotNull(test1.transactionTime());
+        assertEquals(test1.transactionTime().getTime(), testTime.getTime(), 1);
     }
 
     // Author: Yicun Duan (scyyd3)
@@ -267,36 +285,37 @@ class BoCTransactionTest {
 
         @DisplayName("tests for setTransactionValue")
         @ParameterizedTest
-        @NullSource
         @CsvFileSource(resources = "trans_setTransactionValueString.csv")
 
         // Author: LinCHEN (biylc2)
         // Last modified: 2021/04/23
 
     void setTransactionValue(String str1,String expected) throws NoSuchFieldException, IllegalAccessException {
-
-        //The following code is to test different type of values,and whether the negative value can be set
         BoCTransaction set1= new BoCTransaction();
         BigDecimal setData = null;
         final Field field = set1.getClass().getDeclaredField("transactionValue");
         field.setAccessible(true);
+
+        if(str1 == null) {
+            Exception e0 = assertThrows(NullPointerException.class, () -> {
+                set1.setTransactionValue(new BigDecimal(str1));
+            });
+            //"The value cannot be null"
+            assertEquals(expected, "e0.getMessage()");
+        }
+        //The following code is to test different type of values,and whether the negative value can be set
+
 
         boolean strResult1 = str1.matches("-?[0-9]+.?[0-9]*");
         boolean strResult2=str1.matches("[+-]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
         boolean strResult3 = str1.matches("-?[0-9]{0,12}+.?[0-9]{0,16}");
 
 
-        if(str1 == null) {
-            Exception e0 = assertThrows(IllegalArgumentException.class, () -> {
-                set1.setTransactionValue(new BigDecimal(str1));
-            });
-            //"The value cannot be null"
-            assertEquals(expected, "e0.getMessage()");
-        }
+
 
         if(strResult1 == false){
             if(strResult2 == false) {
-                Exception e1 = assertThrows(Exception.class, () -> {
+                Exception e1 = assertThrows(IllegalArgumentException.class, () -> {
                     set1.setTransactionValue(new BigDecimal(str1));
                 });
                 //"The value is invalid and cannot be set"
@@ -307,7 +326,7 @@ class BoCTransactionTest {
             }
         }else {
             if (strResult3 == false) {
-                Exception e2 = assertThrows(Exception.class, () -> {
+                Exception e2 = assertThrows(IllegalArgumentException.class, () -> {
                     set1.setTransactionValue(new BigDecimal(str1));
                 });
                 //"The data overflows"

@@ -21,8 +21,16 @@ public class BoCTransaction {
 		transactionTime = new Date();
 	}
 
-	public String transactionName() {
-		return transactionName;
+	public String transactionName() throws IllegalArgumentException{
+		if (transactionName == null){
+			throw new IllegalArgumentException("name is not set.");
+		}
+		else if (transactionName.length() > 25){
+			throw new IllegalArgumentException("Name can not longer than 25 characters.");
+		}
+		else{
+			return transactionName;
+		}
 	}
 
 	public BigDecimal transactionValue() {
