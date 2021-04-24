@@ -13,6 +13,7 @@ import java.util.List;
 import java.security.InvalidParameterException;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -130,14 +131,14 @@ class BoCCategoryTest {
 
     // Author: Ziyi Wang
     // Last modified: 2021/4/23 19:31
-    @Test
-    void setCategoryBudget(){
-        final BoCCategory stest = new BoCCategory();    //new object
-
-        float input = 20.00F;
-        //argument passed to setCategoryBudget is incompatible with the type expected
-        stest.setCategoryBudget(input);    // set the budget with float type
-    }
+//    @Test
+//    void setCategoryBudget(){
+//        final BoCCategory stest = new BoCCategory();    //new object
+//
+//        float input = 20.00F;
+//        //argument passed to setCategoryBudget is incompatible with the type expected
+//        stest.setCategoryBudget(input);    // set the budget with float type
+//    }
 
     // Author : LinCHEN(biylc2)
     // Last Modify: 2021/04/24
