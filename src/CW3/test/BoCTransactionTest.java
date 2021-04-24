@@ -240,7 +240,7 @@ class BoCTransactionTest {
                 set1.setTransactionValue(new BigDecimal(str1));
             });
             //"The value cannot be null"
-            assertEquals(expected, e0.getMessage());
+            assertEquals(expected, "e0.getMessage()");
         }
 
         if(strResult1 == false){
