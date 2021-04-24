@@ -21,8 +21,16 @@ public class BoCTransaction {
 		transactionTime = new Date();
 	}
 
-	public String transactionName() {
-		return transactionName;
+	public String transactionName() throws IllegalArgumentException{
+		if (transactionName == null){
+			throw new IllegalArgumentException("name is not set.");
+		}
+		else if (transactionName.length() > 25){
+			throw new IllegalArgumentException("Name can not longer than 25 characters.");
+		}
+		else{
+			return transactionName;
+		}
 	}
 
 	public BigDecimal transactionValue() {
@@ -37,10 +45,20 @@ public class BoCTransaction {
 		return transactionTime;
 	}
 
-	public void setTransactionName(String tName) {
-		if (tName != null) {
-			transactionName = tName;
+	public void setTransactionName(String tName) throws IllegalArgumentException, UnsupportedOperationException{
+		if (tName == null || tName.isBlank()) {
+			throw new IllegalArgumentException("The transactionName is invalid.");
 		}
+
+		if (transactionName != null) {
+			throw new UnsupportedOperationException("Transaction name cannot be repeatedly set.");
+		}
+
+		if (tName.length() > 25) {
+			tName.substring(0, 25);
+		}
+
+		transactionName = tName;
 	}
 
 	public void setTransactionValue(BigDecimal tValue) {
@@ -63,7 +81,13 @@ public class BoCTransaction {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() throws IllegalArgumentException{
+		if (transactionValue == null){
+			return transactionName + " - ¥" + "Unknownvalue".toString();
+		}
+		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+			throw new IllegalArgumentException("Value can not be negative number");
+		}
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
 
