@@ -17,8 +17,16 @@ public class BoCCategory {
 		CategorySpend = new BigDecimal("0.00");
 	}
 
-	public String CategoryName() {
-		return CategoryName;
+	public String CategoryName() throws IllegalArgumentException{
+		if (CategoryName == null){
+			throw new IllegalArgumentException("Name is not set.");
+ 		}
+		else if (CategoryName.length() > 15){
+			throw new IllegalArgumentException("Category name can not longer than 15 characters.");
+		}
+		else {
+			return CategoryName;
+		}
 	}
 
 	public BigDecimal CategoryBudget() {
