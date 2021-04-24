@@ -29,7 +29,7 @@ class BoCCategoryTest {
     // Author: Leshan Tan
     // Last Modified: 2021/4/22
     @Test
-    void BocCategory()throws NoSuchFieldException, IllegalAccessException{
+    void BocCategory() throws NoSuchFieldException, IllegalAccessException{
         List BoCCategoryNameList = new ArrayList();
         int times = 0;
         while(times < 10){
@@ -246,39 +246,17 @@ class BoCCategoryTest {
     }
 
 
-        //default constructor
         //Author:LinCHEN(biylc2)
-        //Last Modify:2021/04/21
+        //Last Modify:2021/04/24
+
     @Test
-    void testToString1() {
+    void testToString() throws IllegalAccessException, NoSuchFieldException {
+        //default constructor
         BoCCategory boc1= new BoCCategory();
         String a="New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)";
         assertEquals(a,boc1.toString());
-    }
 
         //constructor with parameter
-        //Author:LinCHEN(biylc2)
-        //Last Modify:2021/04/21
-    @Test
-    void testToString2() throws IllegalAccessException, NoSuchFieldException {
-        BoCCategory boc1= new BoCCategory("Negative");
-        Field field1=boc1.getClass().getDeclaredField("CategoryBudget");
-        field1.setAccessible(true);
-        field1.set(boc1,new BigDecimal("10000.00"));
-        Field field2=boc1.getClass().getDeclaredField("CategorySpend");
-        field2.setAccessible(true);
-        field2.set(boc1,new BigDecimal("20000.00"));
-
-
-        String a="Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)";
-        assertEquals(a,boc1.toString());
-    }
-
-        //constructor with parameter
-        //Author:LinCHEN(biylc2)
-        //Last Modify:2021/04/21
-    @Test
-    void testToString3() throws IllegalAccessException, NoSuchFieldException {
         BoCCategory boc2= new BoCCategory("Positive");
         Field field1=boc2.getClass().getDeclaredField("CategoryBudget");
         field1.setAccessible(true);
@@ -287,8 +265,20 @@ class BoCCategoryTest {
         field2.setAccessible(true);
         field2.set(boc2,new BigDecimal("667433.00564"));
 
-        String a="Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)";
-        assertEquals(a,boc2.toString());
+        String b="Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)";
+        assertEquals(b,boc2.toString());
+
+        BoCCategory boc3= new BoCCategory("Negative");
+        Field field3=boc3.getClass().getDeclaredField("CategoryBudget");
+        field3.setAccessible(true);
+        field3.set(boc3,new BigDecimal("10000.00"));
+        Field field4=boc3.getClass().getDeclaredField("CategorySpend");
+        field4.setAccessible(true);
+        field4.set(boc3,new BigDecimal("20000.00"));
+
+        String c="Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)";
+        assertEquals(c,boc3.toString());
+
     }
 
 
