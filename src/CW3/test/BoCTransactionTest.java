@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,8 +16,9 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
 import java.util.Date;
-import java.util.ResourceBundle;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
@@ -38,6 +41,84 @@ class BoCTransactionTest {
         assertEquals(0, fieldCategory.get(boc),"Field transactionCategory didn't match");
         assertNull(fieldTime.get(boc),"Field transactionTime didn't match");
     }
+
+    // Author: Zixiang Hu (scyzh6)
+    // Last Modified: 2021/4/19 20:24
+    // test the time
+    @ParameterizedTest
+    @CsvSource({
+            "A test, 200, 2"
+    })
+    @DisplayName("Test1 for main constructor")
+    void MainBoCTransaction1(String tName, BigDecimal tValue, int tCat) {
+        BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+        Date timeTest = new Date();
+        assertEquals(tName, boc.transactionName());
+        assertEquals(tValue, boc.transactionValue());
+        assertEquals(tCat, boc.transactionCategory());
+        assertEquals(boc.transactionTime().getTime(),timeTest.getTime(), 10);
+    }
+
+    // test illegal trans name
+    @Test
+    @DisplayName("Test2 for main constructor")
+    void MainBoCTransaction2() {
+        try {
+            BoCTransaction boc = new BoCTransaction("", new BigDecimal(200), 2);
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Transaction name should not be null.");
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+    // test whether the time created is correct
+    @Test
+    @DisplayName("Test3 for main constructor")
+    void MainBoCTransactio3() {
+        BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), 2);
+        Date timeTest = new Date();
+        assertNotNull(boc.transactionTime());
+        assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1);
+    }
+
+    @Test
+    @DisplayName("Test4 for main constructor")
+    void MainBoCTransaction4() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+    @Test
+    @DisplayName("Test5 for main constructor")
+    void MainBoCTransaction5() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+    @Test
+    @DisplayName("Test6 for main constructor")
+    void MainBoCTransaction6() {
+        try {
+            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+
 
 
     // Author: Yingxiao Huo
@@ -70,17 +151,17 @@ class BoCTransactionTest {
         assertEquals( new BigDecimal(expectation), boc.transactionValue(), "Field transactionValue wasn't retrieved properly");
     }
 
-    // Author: Ziyi Wang
+    // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/18 21:15
     @ParameterizedTest
-    @CsvFileSource(resources = { "/Trans_getCategory.csv" })
-    void transactionCategory(int input, int expectation) {
-        final BoCTransaction tCate = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), input);
+    @ValueSource(ints = {0,1,5,100})
+    void transactionCategory(int input) {
+        final BoCTransaction tCate = new BoCTransaction("wzy", new BigDecimal("2000"), input);
         int num = tCate.transactionCategory();
-        assertEquals(expectation,num);
+        assertEquals(input,num);
     }
 
-    // Author: Zixiang Hu
+    // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
     @Test
     void transactionTime1() {
@@ -88,7 +169,7 @@ class BoCTransactionTest {
         assertNotNull(test.transactionTime());
     }
 
-    // Author: Zixiang Hu
+    // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:50
     @Test
     void transactionTime2() {
@@ -127,40 +208,16 @@ class BoCTransactionTest {
 
         final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
 
-        Exception e = assertThrows(Exception.class, ()->{test_instance.setTransactionName(giveName);});
+        UnsupportedOperationException e = assertThrows(UnsupportedOperationException.class, ()->{test_instance.setTransactionName(giveName);});
         assertEquals("Transaction name cannot be repeatedly set.", e.getMessage());
 
     }
 
-
-    // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23 14:10
-    @Test
-    void setTransactionName_ExcTest_2(){
-        final BoCTransaction test_instance_1 = new BoCTransaction();
-        final BoCTransaction test_instance_2 = new BoCTransaction();
-
-        try{
-            test_instance_1.setTransactionName("Joker is myself");
-            test_instance_2.setTransactionName("Joker is myself");
-            fail("UnsupportedOperationException is not thrown out.");
-        } catch(Exception e){
-            if (e instanceof UnsupportedOperationException){
-                assertEquals("Transaction name cannot be repeatedly set.", e.getMessage(), "The message in UnsupportedOperationException is not expected.");
-            }else{
-                fail("Unexpected exception type.");
-            }
-        }
-    }
-
-
     @Ignore
-        // Author: LinCHEN (biylc2)
-        // Last modified: 2021/04/18
-
-        //@ParameterizedTest
-        //@CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
-
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
+    @ParameterizedTest
+    @CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
     void setTransactionValue1(int input,int expected) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction test1= new BoCTransaction(null,new BigDecimal(1),4);
 
@@ -174,13 +231,12 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
-
     @Ignore
-        // Author: LinCHEN (biylc2)
-        // Last modified: 2021/04/18
-        // @ParameterizedTest
-        // @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/18
 
+    @ParameterizedTest
+    @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
     void setTransactionValue2(double input1,String input2,int expected) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction test2= new BoCTransaction(null,new BigDecimal(0),4);
         test2.setTransactionValue(new BigDecimal(input1));
@@ -196,9 +252,8 @@ class BoCTransactionTest {
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
 
-    // @ParameterizedTest
-    // @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
-
+     @ParameterizedTest
+     @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
     void setTransactionValue3(String input1,int expected) throws NoSuchFieldException, IllegalAccessException {
 
            try {
@@ -217,12 +272,6 @@ class BoCTransactionTest {
 
 
     }
-
-
-
-
-
-
 
         @DisplayName("tests for setTransactionValue")
         @ParameterizedTest
