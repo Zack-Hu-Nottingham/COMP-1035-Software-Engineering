@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.security.InvalidParameterException;
@@ -330,7 +332,7 @@ class BoCCategoryTest {
         //constructor with parameter
         BoCCategory boc2= new BoCCategory("Positive");
         Field field1=boc2.getClass().getDeclaredField("CategoryBudget");
-        field1.setAccessible(true);
+        ((Field) field1).setAccessible(true);
         field1.set(boc2,new BigDecimal("3457834.023423"));
         Field field2=boc2.getClass().getDeclaredField("CategorySpend");
         field2.setAccessible(true);

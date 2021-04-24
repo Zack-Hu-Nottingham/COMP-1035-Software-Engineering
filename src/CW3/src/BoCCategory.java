@@ -57,10 +57,18 @@ public class BoCCategory {
 		return remainingBudget;
 	}
 
+	//Modifier: LinCHEN(biylc2)
+	//Last Modify:2021/04/24
+	//Reason: Cause when the remaining budget is negative, the previous function will have a wrong output
+
 	@Override
 	public String toString() {
-		return CategoryName + "(¥" + CategoryBudget.toPlainString() + ") - Est. ¥" + CategorySpend.toPlainString()
-				+ " (¥" + getRemainingBudget().toPlainString() + " Remaining)";
+		if (getRemainingBudget().compareTo(new BigDecimal("0.00")) > -1)
+			return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBudget.toPlainString() + ") - ¥" + CategorySpend.toPlainString()
+					+ " (¥" + getRemainingBudget().toPlainString() + " Remaining)";
+		else
+			return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBudget.toPlainString() + ") - ¥" + CategorySpend.toPlainString()
+					+ " (¥" + getRemainingBudget().abs().toPlainString() + " Overspent)";
 	}
 
 }
