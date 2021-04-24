@@ -393,11 +393,34 @@ class BoCTransactionTest {
         final Field test2 = Test_toString.getClass().getDeclaredField("transactionValue");
         test1.setAccessible(true);
         test2.setAccessible(true);
-        test1.set(Test_toString, transName);
-        test2.set(Test_toString, new BigDecimal(transValue));
 
-        final String foo = Test_toString.toString();
-        assertEquals(resultStr, foo);
+        if (transValue == null){
+            try{
+                test1.set(Test_toString, transName);
+                test2.set(Test_toString, new BigDecimal(transValue));
+                final String foo = Test_toString.toString();
+                fail();
+            }catch (Exception ex1){
+                assertEquals(resultStr, ex1.getMessage());
+            }
+        }
+        else{
+            if (Integer.parseInt(transValue) >= 0) {
+                test1.set(Test_toString, transName);
+                test2.set(Test_toString, new BigDecimal(transValue));
+                final String foo = Test_toString.toString();
+                assertEquals(resultStr, foo);
+            } else {
+                try {
+                    test1.set(Test_toString, transName);
+                    test2.set(Test_toString, new BigDecimal(transValue));
+                    final String foo = Test_toString.toString();
+                    fail();
+                }catch (Exception ex){
+                    assertEquals(resultStr, ex.getMessage());
+                }
+            }
+        }
     }
 
 
