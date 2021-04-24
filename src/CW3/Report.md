@@ -51,9 +51,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 ### Class: BoCTransaction
 
-#### Function: setTransactionName()
+#### Function: MainBoCTransaction()
 
-| Function : | setTransactionName() |
+| Function : | MainBoCTransaction() |
 | :-----------|--------------|
 | Test Date : | 2021/04/24 14:38 |
 | Tester : | Zixiang Hu (scyzh6) |
