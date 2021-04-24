@@ -21,8 +21,13 @@ public class BoCTransaction {
 		transactionTime = new Date();
 	}
 
-	public String transactionName() {
-		return transactionName;
+	public String transactionName() throws IllegalArgumentException{
+		if (transactionName == null){
+			throw new IllegalArgumentException("name is not set.");
+		}
+		else{
+			return transactionName;
+		}
 	}
 
 	public BigDecimal transactionValue() {
@@ -73,7 +78,13 @@ public class BoCTransaction {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() throws IllegalArgumentException{
+		if (transactionValue == null){
+			return transactionName + " - ¥" + "Unknownvalue".toString();
+		}
+		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+			throw new IllegalArgumentException("Value can not be negative number");
+		}
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
 
