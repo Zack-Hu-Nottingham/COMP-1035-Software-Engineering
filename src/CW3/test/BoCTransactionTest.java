@@ -118,16 +118,26 @@ class BoCTransactionTest {
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
-            "null, name is not set."
+            ", name is not set."
     })
-    void transactionName(String name, String expenction) throws NoSuchFieldException, IllegalAccessException {
+    void transactionName(String name, String expection) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
         final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
         field_getter.setAccessible(true);
-        field_getter.set(Test_getter, name);
-        final String result = (String) Test_getter.transactionName();
-        assertEquals(expenction , result);
-
+        if(name == null){
+            try {
+                field_getter.set(Test_getter, name);
+                final String result = (String) Test_getter.transactionName();
+                fail();
+            }catch (Exception ex1){
+                assertEquals(expection, ex1.getMessage());
+            }
+        }
+        else {
+            field_getter.set(Test_getter, name);
+            final String result = (String) Test_getter.transactionName();
+            assertEquals(expection, result);
+        }
     }
 
     // Author: Leshan Tan
