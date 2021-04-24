@@ -1,21 +1,17 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import org.junit.jupiter.api.function.Executable;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
 import java.util.Date;
-import java.util.ResourceBundle;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
@@ -38,6 +34,84 @@ class BoCTransactionTest {
         assertEquals(0, fieldCategory.get(boc),"Field transactionCategory didn't match");
         assertNull(fieldTime.get(boc),"Field transactionTime didn't match");
     }
+
+    // Author: Zixiang Hu
+    // Last Modified: 2021/4/19 20:24
+    // test the time
+    @ParameterizedTest
+    @CsvSource({
+            "A test, 200, 2"
+    })
+    @DisplayName("Test1 for main constructor")
+    void MainBoCTransaction1(String tName, BigDecimal tValue, int tCat) {
+        BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+        Date timeTest = new Date();
+        assertEquals(tName, boc.transactionName());
+        assertEquals(tValue, boc.transactionValue());
+        assertEquals(tCat, boc.transactionCategory());
+        assertEquals(boc.transactionTime().getTime(),timeTest.getTime(), 10);
+    }
+
+    // test illegal trans name
+    @Test
+    @DisplayName("Test2 for main constructor"
+    void MainBoCTransaction2() {
+        try {
+            BoCTransaction boc = new BoCTransaction("", new BigDecimal(200), 2);
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Transaction name should not be null.");
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+    // test whether the time created is correct
+    @Test
+    @DisplayName("Test3 for main constructor")
+    void MainBoCTransactio3() {
+        BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), 2);
+        Date timeTest = new Date();
+        assertNotNull(boc.transactionTime());
+        assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1);
+    }
+
+    @Test
+    @DisplayName("Test4 for main constructor")
+    void MainBoCTransaction4() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+    @Test
+    @DisplayName("Test5 for main constructor")
+    void MainBoCTransaction5() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+    @Test
+    @DisplayName("Test6 for main constructor")
+    void MainBoCTransaction6() {
+        try {
+            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
+
 
 
     // Author: Yingxiao Huo
