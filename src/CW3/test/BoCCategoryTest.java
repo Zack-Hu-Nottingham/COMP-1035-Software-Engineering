@@ -100,10 +100,29 @@ class BoCCategoryTest {
     @CsvFileSource(resources = {"/categoryNameSetter.csv"})
     void setCategoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_setter = new BoCCategory();
-        Test_setter.setCategoryName(name);
-        final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
-        field_setname.setAccessible(true);
-        assertEquals(expection, field_setname.get(Test_setter));
+            if (name == null){
+                try {
+                    Test_setter.setCategoryName(null);
+                    fail();
+                }catch (Exception ex1){
+                    assertEquals(expection, ex1.getMessage());
+                }
+            }
+            else {
+                if (name.length() > 15){
+                    try {
+                        Test_setter.setCategoryName(name);
+                        fail();
+                    }catch (Exception ex2){
+                        assertEquals(expection, ex2.getMessage());
+                    }
+                }else {
+                    Test_setter.setCategoryName(name);
+                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                    field_setname.setAccessible(true);
+                    assertEquals(expection, field_setname.get(Test_setter));
+                }
+            }
     }
     
 
