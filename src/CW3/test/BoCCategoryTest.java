@@ -2,6 +2,8 @@ import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -150,24 +152,16 @@ class BoCCategoryTest {
     //Author: Ziyi Wang
     // 2021/04/22 19:45
     @Ignore
-    @Test
+    @ParameterizedTest
+    @ValueSource(floats = {-20.0F, -30.0F, -50.0F})
     // the input number could not be negative
-    void removeExpense2() {
+    void removeExpense2(float input) {
         BoCCategory tcate = new BoCCategory();  //new object
 
-        double input = -20.0;
-        BigDecimal expense = new BigDecimal(input); //the amount of expense need to be removed
-        int comp = expense.compareTo(new BigDecimal(0));    //if expense < 0, then comp = -1
-
-        if (comp == -1) {
-            throw new InvalidParameterException("The expense must be >= 0");
-        }
-
         try {
-            tcate.removeExpense(expense);    // the actual value
-            //fail("it failed");
-        } catch(InvalidParameterException e) {
-                System.out.println("Exception is thrown!");
+            tcate.removeExpense(new BigDecimal(input));    // the actual value
+        } catch(Exception e) {
+            assertThat(e.getMessage(),containsString("The expense must be >= 0"));
         }
         fail("it failed");
     }
@@ -175,25 +169,19 @@ class BoCCategoryTest {
     //Author: Ziyi Wang
     // 2021/04/22 20:38
     @Ignore
-    @Test
+    @ParameterizedTest
+    @CsvSource({"200.0, 300.0","200.0,400.0","1000.0,10000.0"})
     // the input number could not be larger than the original CategorySpend
-    void removeExpense3() throws NoSuchFieldException, IllegalAccessException {
+    void removeExpense3(float input1,float input2) throws NoSuchFieldException, IllegalAccessException {
         BoCCategory ttt= new BoCCategory();
 
-        double input1 = 1000.0;
-        double input2 = 10000.0;
         ttt.addExpense(new BigDecimal(input1)); //origin amount in the spend
-        ttt.removeExpense(new BigDecimal(input2));  // the actual value after subtract
-        //try to access the private value CategorySpend
-        final Field field = ttt.getClass().getDeclaredField("CategorySpend");
-        field.setAccessible(true);
-
-        BigDecimal result = (BigDecimal) field.get(ttt);    //store the CategorySpend in result
-        int comp = result.compareTo(new BigDecimal(0)); //if result < 0, then comp = -1
-
-        if (comp == -1) {
-            throw new InvalidParameterException("The CategorySpend is must be >= 0");
+        try {
+            ttt.removeExpense(new BigDecimal(input2));     // the actual value
+        } catch(Exception e) {
+            assertThat(e.getMessage(),containsString("The CategorySpend is must be >= 0"));
         }
+        fail("it failed");
     }
 
     // Author: Ziyi Wang
@@ -213,21 +201,18 @@ class BoCCategoryTest {
         final BigDecimal expexpense = new BigDecimal(expect);  //the expected amount of expense after remove
         BigDecimal result = (BigDecimal) field.get(removeE);  //store the private CategorySpend in the result
 
-        //if input2(the value of expense need to remove) < 0, then comp = -1
-        int comp1 = (new BigDecimal(input2)).compareTo(new BigDecimal(0));
-        if (comp1 == -1) {
-            throw new InvalidParameterException("The expense must be >= 0");
-        }
-
-        //if result(the value of CategorySpend after remove) < 0, then comp = -1
-        int comp2 = result.compareTo(new BigDecimal(0));
-        if (comp2 == -1) {
-            throw new InvalidParameterException("The CategorySpend is must be >= 0");
-        }
-
         // if the input is correct then compare the result
-        int equals= result.compareTo(expexpense);   //compare the expected expense with the actual number
-        assertEquals(expectation,equals);   //the input expectation store the value of the expected compare value(equals)
+        if (input2 >=0 && input1 >= input2) {
+            int equals = result.compareTo(expexpense);   //compare the expected expense with the actual number
+            assertEquals(expectation, equals);   //the input expectation store the value of the expected compare value(equals)
+        }else {
+            try {
+                removeE.removeExpense(new BigDecimal(input2));
+            } catch (Exception e) {
+                assertThat(e.getMessage(), containsString("The expense must be >= 0"));
+            }
+            fail("it failed");
+        }
     }
 
     //Author:LinCHEN(biylc2)

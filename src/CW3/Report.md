@@ -452,23 +452,22 @@ $nbsp
 | Test2:                           | TS-Category 9-2                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Parameter constructor                                        |
-| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=200.0 \| 200.0 \|200.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= -20.0 \| -30.0 \| -50.0; |
+| **Inputs**                       | **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= -20.0 \| -30.0 \| -50.0; |
 | **Expected Outcome**             | all 3 expected: throw InvalidParameterException("The expense must be >= 0") |
-| **Test Outcome**                 | all 3 outcome: java.security.InvalidParameterException: The expense must be >= 0 |
-| **Result**                       | Pass                                                         |
-| **Reason for Failure**           | /                                                            |
+| **Test Outcome**                 | all 3 outcome: org.opentest4j.AssertionFailedError: it failed |
+| **Result**                       | Fail                                                         |
+| **Reason for Failure**           | The source does not take the exception into account          |
 | **What is Done to Make it Pass** | /                                                            |
 
 | Test3:                           | TS-Category 9-3                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Parameter constructor                                        |
 | **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=200.0 \| 200.0 \|1000.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 300.0 \| 400.0 \| 10000.0; |
-| **Expected Outcome**             | all 3 expected: throw new InvalidParameterException("The CategorySpend is must be >= 0"); |
-| **Test Outcome**                 | all 3 outcome: java.security.InvalidParameterException: The CategorySpend is must be >= 0 |
-| **Result**                       | Pass                                                         |
-| **Reason for Failure**           | /                                                            |
+| **Expected Outcome**             | all 3 expected: throw InvalidParameterException("The CategorySpend is must be >= 0") |
+| **Test Outcome**                 | all 3 outcome: org.opentest4j.AssertionFailedError: it failed |
+| **Result**                       | Fail                                                         |
+| **Reason for Failure**           | The source does not take the exception into account          |
 | **What is Done to Make it Pass** | /                                                            |
-| **What is Done to Make it Pass** |  \   |
 
 &nbsp;
 ### Class: BoCApp
