@@ -426,6 +426,26 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
+### Class: &nbsp; BoCTransaction
+
+#### Function:  transactionCategory()
+
+| Function :  | transactionCategory() |
+| :---------- | --------------------- |
+| Test Date : | 2021/4/18 21:15       |
+| Tester :    | Ziyi Wang             |
+
+| Test1:                           | TS-Transaction 5-1                                           |
+| :------------------------------- | ------------------------------------------------------------ |
+| **Constructor**                  | Default constructor                                          |
+| **Inputs**                       | **BoCTransaction**("wzy", new BigDecimal("2000"), *input*);<br>where *input* = 0 \| 1 \| 5 \| 100 |
+| **Expected Outcome**             | *.**transactionCategory()** =  0 \| 1 \| 5 \| 100;           |
+| **Test Outcome**                 | 0 \| 1 \| 5 \| 100                                           |
+| **Result**                       | Pass                                                         |
+| **Reason for Failure**           | /                                                            |
+| **What is Done to Make it Pass** | /                                                            |
+
+
 ### Class: &nbsp; BoCCategory
 
 #### Function:  removeExpense()
@@ -444,14 +464,14 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | 0\|0\|0\|1\|1\|-1\|-1\|-1\|1\|-1\|0\|0\|0\|0\|1\|0 |
 | **Result**                       | P P P F P P F F F F P P P P F P |
 | **Reason for Failure**           | Maybe sth. went wrong in **addExpense**() or **removeExpense**() |
-| **What is Done to Make it Pass** |  |
+| **What is Done to Make it Pass** | / |
 
 | Test2:                           | TS-Category 9-2                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Parameter constructor                                        |
-| **Inputs**                       | 1. **removeExpense**(new BigDecimal(*input*)); <br>where *input* = -20.0; |
-| **Expected Outcome**             | throw InvalidParameterException("The expense must be >= 0")  |
-| **Test Outcome**                 | java.security.InvalidParameterException: The expense must be >= 0 |
+| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=200.0 \| 200.0 \|200.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= -20.0 \| -30.0 \| -50.0; |
+| **Expected Outcome**             | all 3 expected: throw InvalidParameterException("The expense must be >= 0") |
+| **Test Outcome**                 | all 3 outcome: java.security.InvalidParameterException: The expense must be >= 0 |
 | **Result**                       | Pass                                                         |
 | **Reason for Failure**           | /                                                            |
 | **What is Done to Make it Pass** | /                                                            |
@@ -459,9 +479,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Test3:                           | TS-Category 9-3                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Parameter constructor                                        |
-| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=1000.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 10000.0; |
-| **Expected Outcome**             | throw new InvalidParameterException("The CategorySpend is must be >= 0"); |
-| **Test Outcome**                 | java.security.InvalidParameterException: The CategorySpend is must be >= 0 |
+| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=200.0 \| 200.0 \|1000.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 300.0 \| 400.0 \| 10000.0; |
+| **Expected Outcome**             | all 3 expected: throw new InvalidParameterException("The CategorySpend is must be >= 0"); |
+| **Test Outcome**                 | all 3 outcome: java.security.InvalidParameterException: The CategorySpend is must be >= 0 |
 | **Result**                       | Pass                                                         |
 | **Reason for Failure**           | /                                                            |
 | **What is Done to Make it Pass** | /                                                            |
