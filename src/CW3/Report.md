@@ -121,7 +121,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 ### Class: BoCTransaction
 
-$nbsp
+&nbsp;
 #### Function: transactionName()
 
 | Function : | transactionName() |

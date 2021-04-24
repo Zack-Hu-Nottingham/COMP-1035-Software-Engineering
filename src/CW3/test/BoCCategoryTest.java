@@ -1,6 +1,8 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -15,6 +17,8 @@ import java.security.InvalidParameterException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -120,12 +124,29 @@ class BoCCategoryTest {
     void setCategoryBudget() {
     }
 
+
+    @DisplayName("tests for add Expense")
     @Test
-    void addExpense() {
+    @ParameterizedTest
+    @CsvSource({"-2.134,Illegal input"})
+    //Author : LinCHEN(biylc2)
+    //Last Modify: 2021/04/24
+    void addExpenseTest(String bigNumber,String expected) {
+        BoCCategory addT1= new BoCCategory("Tester");
+
+        if(bigNumber == null){
+            try{
+                addT1.addExpense(new BigDecimal(bigNumber));
+            }catch (IllegalArgumentException e1){
+                assertThat(e1.getMessage(), containsString("Illegal input"));
+            }
+        }
+
     }
 
     //Author: Ziyi Wang
     // 2021/04/22 16:58
+    @Test
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
     void removeExpense1(float input1,float input2, float input3, int expectation) throws NoSuchFieldException, IllegalAccessException {
@@ -200,7 +221,8 @@ class BoCCategoryTest {
         field1.set(reset1,new BigDecimal("20000.0292"));
         reset1.resetBudgetSpend();
         BigDecimal result1= (BigDecimal) field1.get(reset1);
-        assertEquals(new BigDecimal("0.00"),result1);
+
+        assertTrue(result1.compareTo(new BigDecimal("0.00"))==0,"Respend test pass");
 
     }
 
@@ -268,6 +290,7 @@ class BoCCategoryTest {
         String a="Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)";
         assertEquals(a,boc2.toString());
     }
+
 
 
 }
