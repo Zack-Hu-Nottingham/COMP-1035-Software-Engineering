@@ -47,20 +47,6 @@ class BoCCategoryTest {
         }
     }
 
-    @Test
-     void BocCategory1() throws NoSuchFieldException, IllegalAccessException{
-        final BoCCategory boc = new BoCCategory();
-        final Field fieldName = boc.getClass().getDeclaredField("CategoryName");
-        final Field fieldBudget = boc.getClass().getDeclaredField("CategoryBudget");
-        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
-        fieldName.setAccessible(true);
-        fieldBudget.setAccessible(true);
-        fieldSpend.setAccessible(true);
-        assertEquals("New Category", fieldName.get(boc),"Field CategoryName didn't match");
-        assertEquals(new BigDecimal("0.00"),fieldBudget.get(boc),"Field CategoryBudget didn't match");
-        assertEquals(new BigDecimal("0.00"), fieldSpend.get(boc),"Field CategorySpend didn't match");
-    }
-
     //author: Yingxiao Huo
     //Last Modified time: 2021/4/21
     @ParameterizedTest
@@ -74,11 +60,11 @@ class BoCCategoryTest {
         assertEquals(result, expection);
     }
 
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/21
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/23 18:36
     @ParameterizedTest
     @CsvFileSource(resources = {"getBudgetTest.csv"})
-    void categoryBudget(String budget) throws NoSuchFieldException, IllegalAccessException {
+    void categoryBudget(String budget, String expectBudget) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory budgetTest =  new BoCCategory();
         final Field field = budgetTest.getClass().getDeclaredField("CategoryBudget");
         field.setAccessible(true);
@@ -86,12 +72,36 @@ class BoCCategoryTest {
 
         final BigDecimal result = budgetTest.CategoryBudget();
 
-        assertEquals(result, new BigDecimal(budget));
-
+        assertEquals(result, new BigDecimal(expectBudget), "CategoryBudget() function doesn't return an expected result.");
     }
 
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/23 18:40
     @Test
-    void categorySpend() {
+    void categoryBudget_NullTest(){
+        final BoCCategory test_instance = new BoCCategory();
+
+        assertEquals(new BigDecimal("0.00"), test_instance.CategoryBudget(), "When using default constructor, CategoryBudget is not 0.00 (BigDecimal). Or it is not of type BigDecimal.");
+    }
+
+    // Author: Leshan Tan
+    // Last Modified: 2021/4/23
+    @Test
+    void categorySpend() throws  NoSuchFieldException{
+        final BoCCategory boc = new BoCCategory();
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
+        fieldSpend.setAccessible(true);
+        assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly");
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = {"categorySpend.csv"})
+    void categorySpendWithInputs(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
+        final BoCCategory boc = new BoCCategory();
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
+        fieldSpend.setAccessible(true);
+        fieldSpend.set(boc, new BigDecimal(input));
+        assertEquals( new BigDecimal(expectation), boc.CategorySpend(), "Field CategorySpend wasn't retrieved properly");
     }
 
     //author: Yingxiao Huo
@@ -198,7 +208,7 @@ class BoCCategoryTest {
     //Last Modified: 2021/4/21
     @ParameterizedTest
     @CsvFileSource(resources = {"/getRemainingBudgetTest.csv"})
-    void getRemainingBudget(String budget, String spend, String remain) throws NoSuchFieldException, IllegalAccessException {
+    void getRemainingBudget(String budget, String spend, String expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
         final Field field_budget = remainTest.getClass().getDeclaredField("CategoryBudget");
         field_budget.setAccessible(true);
@@ -209,7 +219,7 @@ class BoCCategoryTest {
 
         final BigDecimal result = remainTest.getRemainingBudget();
 
-        assertEquals(result, new BigDecimal(remain));
+        assertEquals(result, new BigDecimal(expectRemain));
 
     }
 
