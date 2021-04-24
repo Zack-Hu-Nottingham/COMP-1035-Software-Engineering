@@ -73,7 +73,13 @@ public class BoCTransaction {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() throws IllegalArgumentException{
+		if (transactionValue == null){
+			return transactionName + " - ¥" + "Unknownvalue".toString();
+		}
+		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+			throw new IllegalArgumentException("Value can not be negative number");
+		}
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
 
