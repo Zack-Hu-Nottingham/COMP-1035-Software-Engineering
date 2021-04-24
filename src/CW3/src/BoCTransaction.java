@@ -67,4 +67,18 @@ public class BoCTransaction {
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
 
+	//Author :LinCHEN(biylc2)
+	//Last Modify:2021/04/24 14:37
+
+	public boolean isComplete(){
+
+		if (transactionName != "[Pending Transaction]"&& transactionName != null){
+			if (transactionValue!= null){
+				return true;
+			}
+		}
+		return false;
+
+	}
+
 }
