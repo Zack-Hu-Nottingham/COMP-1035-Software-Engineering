@@ -97,36 +97,41 @@ class BoCTransactionTest {
     }
 
     // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23 14:00
+    // Last modified: 2021/4/23 16:50
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
-    void setTransactionName(String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction test_instance = new BoCTransaction();
+    void setTransactionName(String transName, BigDecimal transValue, int transCate, String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
+        if (transName == null && transValue == null && transCate == 0) {
+            final BoCTransaction test_instance = new BoCTransaction();
+            if (giveName == null) {
+                try {
+                    test_instance.setTransactionName(null);
+                    fail("IllegalArgumentException is not thrown out.");
+                } catch (Exception e) {
+                    if (e instanceof IllegalArgumentException) {
+                        assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
+                    } else {
+                        fail("Unexpected exception type.");
+                    }
+                }
+            } else {
+                test_instance.setTransactionName(giveName);
 
-        test_instance.setTransactionName(giveName);
-
-        final Field field = test_instance.getClass().getDeclaredField("transactionName");
-        field.setAccessible(true);
-        assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
-    }
-
-    // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23 14:05
-    @Test
-    void setTransactionName_ExcTest_1(){
-        final BoCTransaction test_instance = new BoCTransaction();
-
-        try{
-            test_instance.setTransactionName("");
-            fail("IllegalArgumentException is not thrown out.");
-        } catch(Exception e){
-            if (e instanceof IllegalArgumentException){
-                assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
-            }else{
-                fail("Unexpected exception type.");
+                final Field field = test_instance.getClass().getDeclaredField("transactionName");
+                field.setAccessible(true);
+                assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
             }
+
+            return;
         }
+
+        final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
+
+        Exception e = assertThrows(Exception.class, ()->{test_instance.setTransactionName(giveName);});
+        assertEquals("Transaction name cannot be repeatedly set.", e.getMessage());
+
     }
+
 
     // Author: Yicun Duan (scyyd3)
     // Last modified: 2021/4/23 14:10
