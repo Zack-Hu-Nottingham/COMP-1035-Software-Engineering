@@ -25,7 +25,6 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## Test Plan
 ###*This is just an example!!*
 
-<<<<<<< HEAD
 ### Class: BoCTransaction
 
 #### Function: transactionTime()
@@ -355,3 +354,29 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | /                                                            |
 | **What is Done to Make it Pass** |  \   |
 
+
+&nbsp;
+### Class: BoCApp
+
+#### Function: categoryOverview()
+
+| Function : | categoryOverview() |
+| :-----------|--------------|
+| Test Date : | 2021/04/24 10:09 |
+| Tester : | Yicun Duan (scyyd3) |
+
+&nbsp;
+
+
+&nbsp;
+
+|Test1:  | TS-App 3-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Default constructor |
+| **Inputs**                | <table><tr><th>CategoryName: </th><th>CategoryBudget: </th></tr><tr><td>"Unknown"</td><td>&nbsp;</td></tr><tr><td>"Bills"</td><td>BigDecimal("120.00")</td></tr><tr><td>"Groceries"</td><td>BigDecimal("75.00")</td></tr><tr><td>"Soical"</td><td>BigDecimal("100.00")</td></tr></table> |
+| **Expected Outcome**      | <p>1) Unknown(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)<br>2) Bills(¥120.00) - Est. ¥0.00 (¥120.00 Remaining)<br>3) Groceries(¥75.00) - Est. ¥0.00 (¥75.00 Remaining)<br>4) Social(¥100.00) - Est. ¥0.00 (¥100.00 Remaining)</p> |
+| **Test Outcome**          | <p>1) Unknown(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)<br>2) Bills(¥120.00) - Est. ¥0.00 (¥120.00 Remaining)<br>3) Groceries(¥75.00) - Est. ¥0.00 (¥75.00 Remaining)<br>4) Social(¥100.00) - Est. ¥0.00 (¥100.00 Remaining)</p> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
