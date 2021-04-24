@@ -52,9 +52,31 @@ class BoCCategoryTest {
         final BoCCategory Test_getter = new BoCCategory();
         final Field field_getName = Test_getter.getClass().getDeclaredField("CategoryName");
         field_getName.setAccessible(true);
-        field_getName.set(Test_getter, name);
-        final String result = (String) Test_getter.CategoryName();
-        assertEquals(result, expection);
+        if (name == null){
+            try {
+                field_getName.set(Test_getter, name);
+                final String result = Test_getter.CategoryName();
+                fail();
+            }catch (Exception ex1){
+                assertEquals(expection, ex1.getMessage());
+            }
+        }
+        else{
+            if (name.length() > 15){
+                try {
+                    field_getName.set(Test_getter, name);
+                    final String result = (String) Test_getter.CategoryName();
+                    fail();
+                }catch (Exception ex2){
+                    assertEquals(expection, ex2.getMessage());
+                }
+            }
+            else {
+                field_getName.set(Test_getter, name);
+                final String result = Test_getter.CategoryName();
+                assertEquals(result, expection);
+            }
+        }
     }
 
     //Author: Yicun Duan (scyyd3)
@@ -141,26 +163,30 @@ class BoCCategoryTest {
 //    }
 
     // Author : LinCHEN(biylc2)
-    // Last Modify: 2021/04/24
+    // Last Modify: 2021/04/24 20:44
     @DisplayName("tests for add Expense")
     @ParameterizedTest
-    @CsvSource({"-2.134,Illegal input","0.00,0.00","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
+    @CsvSource({",Illegal input","-2e12,-Illegal input","-2.134,Illegal input","0.00,0.00","+.0,+.0","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
+
     void addExpenseTest(String bigNumber,String expected) {
+
         BoCCategory addT1= new BoCCategory("Tester");
         BigDecimal fiNum= null;
         //only match positive numbers without negative sign
 
-        boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
-        boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]{0,16}");
+
 
         if(bigNumber == null){
             try{
                 addT1.addExpense(new BigDecimal(bigNumber));
-            }catch (IllegalArgumentException e1){
+            }catch (NullPointerException e1){
                 assertThat(e1.getMessage(), containsString(expected));
                 return;
             }
         }
+        boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
+        boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]{0,16}");
+
         if(strResult1==false){
             if (strResult2== false){
                 try{
@@ -328,7 +354,7 @@ class BoCCategoryTest {
         //constructor with parameter
         BoCCategory boc2= new BoCCategory("Positive");
         Field field1=boc2.getClass().getDeclaredField("CategoryBudget");
-        field1.setAccessible(true);
+        ((Field) field1).setAccessible(true);
         field1.set(boc2,new BigDecimal("3457834.023423"));
         Field field2=boc2.getClass().getDeclaredField("CategorySpend");
         field2.setAccessible(true);
@@ -345,7 +371,7 @@ class BoCCategoryTest {
         field4.setAccessible(true);
         field4.set(boc3,new BigDecimal("20000.00"));
 
-        String c="Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Overspent)";
+        String c="Negative(¥10000.00) - Est. ¥20000.00 (¥10000.00 Overspent)";
         assertEquals(c,boc3.toString());
 
     }
