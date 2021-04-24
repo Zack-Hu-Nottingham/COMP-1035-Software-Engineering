@@ -20,8 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCCategoryTest {
 
-
-
     // Author: Leshan Tan
     // Last Modified: 2021/4/22
     @Test

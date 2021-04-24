@@ -394,6 +394,7 @@ $nbsp
 | **Reason for Failure**           | \     |
 | **What is Done to Make it Pass** |  \   |
 
+
 &nbsp;
 
 |Test2:  | TS-Category 12-3 |
@@ -473,3 +474,87 @@ $nbsp
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
+
+
+
+
+&nbsp;
+### Class: BoCTransaction
+
+#### Function: setTransactionName()
+
+| Function : | setTransactionName() |
+| :-----------|--------------|
+| Test Date : | 2021/04/24 14:38 |
+| Tester : | Zixiang Hu (scyzh6) |
+
+&nbsp;
+
+|Test1:  | TS-Transaction 2-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> | |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+|Test2:  | TS-Transaction 2-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>""</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+|Test3:  | TS-Transaction 2-3 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Delta for two Date object created at the same time is less than 1 |
+| **Test Outcome**          | Delta for two Date object created at the same time is less than 1 |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+|Test4:  | TS-Transaction 2-4 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>-2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
+|Test5:  | TS-Transaction 2-5 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>-200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction budget should greater than zero." |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+
+|Test5:  | TS-Transaction 2-6 |
+|:---------                 |-----------------           |
+| **Constructor**           | main constructor |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Transaction name with more than 25 char"</td><td>200</td><td>2</td></tr></table> |
+| **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should be shorter than 25 characters." |
+| **Test Outcome**          | Failed with message "No exception thrown." |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The source code do not support exception throw yet. |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
