@@ -17,7 +17,7 @@ class BoCAppTest {
     //Last Modified: 2021/4/25 19:52
     private static String ln = System.lineSeparator();
     private static String appMenu = ln + "What do you want to do?" + ln
-            + "O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
+            + " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
             + ln;
 
     private static String appExit = "Goodbye!" + ln;
