@@ -68,25 +68,23 @@ public class BoCTransaction {
 	//Last Modify:2021/04/25
 	//Reason: The previous function cannot handle the situation that when the value is non-positive and does not throw an expection as expected
 	public void setTransactionValue(BigDecimal tValue) throws UnsupportedOperationException,NullPointerException,IllegalArgumentException,UnsupportedOperationException {
-//		if(tValue== null){
-//			throw new NullPointerException("The value cannot be null.");
-//		}else if(tValue.compareTo(BigDecimal.ZERO) <=0){
-//			throw new IllegalArgumentException("The value should be a positive number, the set fails");
-//		}else if(isComplete()==1 || isComplete()==3) {
-//			throw new UnsupportedOperationException("The value cannot be set twice");
-//		}else{
-//			transactionValue = tValue;
-//			if(transactionValue!=tValue){
-//				throw new UnsupportedOperationException( "The set value is not the same as the expected one");
-//			}
-//		}
 
-
-
-		if (tValue.compareTo(new BigDecimal("0.00")) == 1) {
-			// 1 means bigger, -1 means smaller, 0 means same
+		if(tValue== null){
+			throw new NullPointerException("The value cannot be null.");
+		}else if(tValue.compareTo(BigDecimal.ZERO) <=0){
+			throw new IllegalArgumentException("The value should be a positive number, the set fails");
+		}else if(isComplete()==1 || isComplete()==3) {
+			throw new UnsupportedOperationException("The value cannot be set twice");
+		}else{
 			transactionValue = tValue;
+			if(transactionValue!=tValue){
+				throw new UnsupportedOperationException( "The set value is not the same as the expected one");
+			}
 		}
+
+
+
+
 	}
 
 	public void setTransactionCategory(int tCat) {
@@ -107,11 +105,15 @@ public class BoCTransaction {
 	@Override
 	public String toString() throws IllegalArgumentException{
 		if (transactionValue == null){
-			return transactionName + " - ¥" + "Unknownvalue".toString();
+			return transactionName + " - ¥" + "Unknownvalue";
 		}
-		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+//		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+//			throw new IllegalArgumentException("Value can not be negative number");
+//		}
+		if (transactionValue.compareTo(new BigDecimal("0.00")) == -1) {
 			throw new IllegalArgumentException("Value can not be negative number");
 		}
+
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
 

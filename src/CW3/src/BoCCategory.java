@@ -66,8 +66,20 @@ public class BoCCategory {
 		}
 	}
 
-	public void addExpense(BigDecimal valueToAdd) {
-		CategorySpend = CategorySpend.add(valueToAdd);
+	//Modifier: LinCHEN(biylc2)
+	//Last Modify:2021/04/25 11:20
+	//Reason: Cause when the valueToAdd is negative or null, it cannot be set. the previous function cannot catch the exception and print useful error message.
+
+	public void addExpense(BigDecimal valueToAdd) throws NullPointerException,IllegalArgumentException {
+		if(valueToAdd == null){
+			throw new NullPointerException("Illegal input");
+		}
+		if (valueToAdd.compareTo(BigDecimal.ZERO)==-1) {
+			throw new IllegalArgumentException("Illegal input");
+		}else {
+			CategorySpend = CategorySpend.add(valueToAdd);
+		}
+
 	}
 
 	// Author: Ziyi Wang (scyzw10)
