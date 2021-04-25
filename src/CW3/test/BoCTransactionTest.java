@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+//import org.junit.Test;
 import org.junit.Ignore;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
@@ -9,6 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.stream.Stream;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +20,28 @@ class BoCTransactionTest {
 
     // Author: Leshan Tan
     // Last Modified: 2021/4/18
+    // This is the latest version of testing for default constructor
+    static Stream<Arguments> transactionStream() {
+        Date currentTime = new Date();
+        return Stream.of(
+                Arguments.of(new BoCTransaction())
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("transactionStream")
+    void BoCTransaction(BoCTransaction boc) {
+        assertNull( boc.transactionName(), "Field transactionName didn't match");
+//        assertEquals(value, boc.transactionValue(), "Field transactionValue didn't match");
+//        assertEquals(category, boc.transactionCategory(), "Field transactionCategory didn't match");
+//        assertEquals(time.getTime(), boc.transactionTime().getTime(), 10, "Field transactionTime didn't match");
+//        , BigDecimal value, int category, Date time
+    }
+
+
+
+    // This one is the old version of testing for default constructor
+    @Ignore
     @Test
     void BoCTransaction() throws NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
@@ -31,7 +56,8 @@ class BoCTransactionTest {
         assertEquals("[Pending Transaction]", fieldName.get(boc),"Field transactionName didn't match");
         assertNull( fieldValue.get(boc),"Field transactionValue didn't match");
         assertEquals(0, fieldCategory.get(boc),"Field transactionCategory didn't match");
-        assertNull(fieldTime.get(boc),"Field transactionTime didn't match");
+        Date time = new Date();
+        assertEquals(time.getTime(),boc.transactionTime().getTime(),10,"Field transactionTime didn't match");
     }
 
     // Author: Zixiang Hu (scyzh6)
