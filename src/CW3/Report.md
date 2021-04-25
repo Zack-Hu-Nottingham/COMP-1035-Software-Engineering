@@ -438,7 +438,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Test1:                           | TS-Category 2-1                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Main constructor                                             |
-| **Inputs**                       | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br><table> <th colspan = "4">cName</th> <tr><td>"test1"</td><td>"test2" </td><td>"test3" </td><td>"testWithMoreThan15Chars" </td></tr></table>
+| **Inputs**                       | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br><table> <th colspan = "4">cName</th> <tr><td>"test1"</td><td>"test2" </td><td>"test3" </td><td>"testWithMoreThan15Chars" </td></tr></table>|
 | **Expected Outcome**             | <table> <tr><th rowspan = "3">1~3.</th> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><th>4. </th><td>Throw an exception *containsString("Category Name at most 15 characters.")* </td></tr></table>|
 | **Test Outcome**                 | <table> <tr><th rowspan = "3">1~3.</th> <td> `cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><th>4. </th><td>org.opentest4j.AssertionFailedError: it failed </td></tr></table>|
 | **Result**                       | <table> <tr><td>P</td><td> P</td><td> P</td><td> F </td></table> |
@@ -450,7 +450,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Test1:               | TS-Category 2-1                                              |
 | :------------------- | ------------------------------------------------------------ |
 | **Constructor**      | Main constructor                                             |
-| **Inputs**           | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br>where *cName* = "test1" \| "test2" \| "test3" \| "testWithMoreThan15Chars" |
+| **Inputs**           | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br><table> <th colspan = "4">cName</th> <tr><td>"test1"</td><td>"test2" </td><td>"test3" </td><td>"testWithMoreThan15Chars" </td></tr></table>|
 | **Expected Outcome** | <table> <tr><td rowspan = "3">1~3.</td> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>print *"The Exception has been thrown!"*</td></tr></table> |
 | **Test Outcome**     | <table> <tr><td rowspan = "3">1~3.</td> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>*"The Exception has been thrown!"*</td></tr></table>|
 | **Result**           | Pass                                                         |
@@ -737,9 +737,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Test1:                           | TS-Transaction 5-1                                           |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Default constructor                                          |
-| **Inputs**                       | **BoCTransaction**("wzy", new BigDecimal("2000"), *input*);<br>where *input* = 0 \| 1 \| 5 \| 100 |
-| **Expected Outcome**             | *.**transactionCategory()** =  0 \| 1 \| 5 \| 100;           |
-| **Test Outcome**                 | 0 \| 1 \| 5 \| 100                                           |
+| **Inputs**                       | **BoCTransaction**("wzy", new BigDecimal("2000"), *input*);<table><tr><th colspan = "4">*input*</th></tr> <tr> <td>0</td><td> 1</td><td>5</td><td> 100</td></tr></table> |
+| **Expected Outcome**             | <table> <tr><th colspan = "4">*.**transactionCategory()**</th></td><tr><td> 0 </td><td> 1 </td><td>  5</td><td>100</td></tr></table>           |
+| **Test Outcome**                 | <table> <tr><td>0 </td><td> 1 </td><td>5</td><td>100 </td></tr></table>     |
 | **Result**                       | Pass                                                         |
 | **Reason for Failure**           | /                                                            |
 | **What is Done to Make it Pass** | /                                                            |
