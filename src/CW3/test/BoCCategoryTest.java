@@ -167,12 +167,16 @@ class BoCCategoryTest {
             }
             else {
                 if (name.length() > 15){
-                    try {
-                        Test_setter.setCategoryName(name);
-                        fail();
-                    }catch (Exception ex2){
-                        assertEquals(expection, ex2.getMessage());
-                    }
+                    //try {
+                    //    Test_setter.setCategoryName(name);
+                    //    fail();
+                    //}catch (Exception ex2){
+                    //    assertEquals(expection, ex2.getMessage());
+                    //}
+                    Test_setter.setCategoryName(name);
+                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                    field_setname.setAccessible(true);
+                    assertEquals(expection, field_setname.get(Test_setter));
                 }else {
                     Test_setter.setCategoryName(name);
                     final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
