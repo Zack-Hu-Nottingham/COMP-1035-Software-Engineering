@@ -107,11 +107,15 @@ public class BoCTransaction {
 	@Override
 	public String toString() throws IllegalArgumentException{
 		if (transactionValue == null){
-			return transactionName + " - ¥" + "Unknownvalue".toString();
+			return transactionName + " - ¥" + "Unknownvalue";
 		}
-		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+//		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+//			throw new IllegalArgumentException("Value can not be negative number");
+//		}
+		if (transactionValue.compareTo(new BigDecimal("0.00")) == -1) {
 			throw new IllegalArgumentException("Value can not be negative number");
 		}
+
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
 
