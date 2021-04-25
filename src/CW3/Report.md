@@ -291,19 +291,19 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NullPointerException]`:"The value cannot be null"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no Error message comes out </td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no `[NullPointerException]` is thrown</td></tr></table> |
 | **Result**                       | Fail |
-| **Reason for Failure**           | Error message is not correct |
+| **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
 |Test2:  | TS-Transaction 9-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"123hello"</td><td>"test"</td><td>" "</td></tr><tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value is invalid and cannot be set"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no IllegalArgumentException is thrown </td></tr></table> |
-| **Result**                       | Fail |
-| **Reason for Failure**           | no IllegalArgumentException is thrown|
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NumberFormatException]`:to be thrown</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> `[NumberFormatException]` is thrown </td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
 |Test3:  | TS-Transaction 9-3 |
@@ -316,19 +316,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | no IllegalArgumentException is thrown |
 | **What is Done to Make it Pass** | \ |
 
-|Test6:  | TS-Transaction 9-4 |
-|:---------                 |-----------------           |
-| **Constructor**           | Default constructor|
-| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"0.00000000000000001"</td><td>"-0.00000000000000001"</td><td>"0.00000000000000000"</td><td>"0.000000000000000000"</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The data overflows"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[IllegalArgumentException]` is thrown</td></tr></table> |
-| **Result**                       |Fail |
-| **Reason for Failure**           | no`[IllegalArgumentException]` is thrown|
-| **What is Done to Make it Pass** | \ |
-
 
 |Test4:  | TS-Transaction 9-5 |
-|:---------                 |-----------------           |
+|:---------                 |-----------------   |
 | **Constructor**           | Default constructor|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>The test pass</td></tr></table> |
@@ -337,7 +327,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
-|Test5:  | TS-Transaction 9-6 (setTwice)|
+
+|Test5:  | TS-Transaction 9-5 (setTwice)|
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor with above set value /parameter constructer|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
@@ -361,8 +352,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | none |
-| **Expected Outcome**      | False|
-| **Test Outcome**          | False|
+| **Expected Outcome**      | 4 |
+| **Test Outcome**          | 4 |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
@@ -371,8 +362,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>BoCTransaction("Tester","980.98",0)</td></tr><tr><td>BoCTransaction(null,"980.98",0)</td></tr><tr><td>BoCTransaction("Tester",null,0)</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
-| **Test Outcome**          |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>1</td></tr><tr><td>3</td></tr><tr><td>2</td></tr></table>|
+| **Test Outcome**          |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>1</td></tr><tr><td>3</td></tr><tr><td>2</td></tr></table>|
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
@@ -629,9 +620,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test1:  | TS-Category 10-1 |
 |:---------                 |-----------------            |
 | **Constructor**           |    Default constructor       |
-| **Inputs**                |    No parameter             |
+| **Inputs**                |    CategorySpend = new BigDecimal("20000.0292")         |
 | **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
-| **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
+| **Test Outcome**          |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
 &nbsp;
 
 &nbsp;
