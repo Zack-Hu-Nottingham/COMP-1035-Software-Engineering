@@ -64,7 +64,25 @@ public class BoCTransaction {
 		transactionName = tName;
 	}
 
-	public void setTransactionValue(BigDecimal tValue) {
+	//Author: LinCHEN(biylc2)
+	//Last Modify:2021/04/25
+	//Reason: The previous function cannot handle the situation that when the value is non-positive and does not throw an expection as expected
+	public void setTransactionValue(BigDecimal tValue) throws UnsupportedOperationException,NullPointerException,IllegalArgumentException,UnsupportedOperationException {
+//		if(tValue== null){
+//			throw new NullPointerException("The value cannot be null.");
+//		}else if(tValue.compareTo(BigDecimal.ZERO) <=0){
+//			throw new IllegalArgumentException("The value should be a positive number, the set fails");
+//		}else if(isComplete()==1 || isComplete()==3) {
+//			throw new UnsupportedOperationException("The value cannot be set twice");
+//		}else{
+//			transactionValue = tValue;
+//			if(transactionValue!=tValue){
+//				throw new UnsupportedOperationException( "The set value is not the same as the expected one");
+//			}
+//		}
+
+
+
 		if (tValue.compareTo(new BigDecimal("0.00")) == 1) {
 			// 1 means bigger, -1 means smaller, 0 means same
 			transactionValue = tValue;
@@ -99,15 +117,26 @@ public class BoCTransaction {
 
 	//Author :LinCHEN(biylc2)
 	//Last Modify:2021/04/24 14:37
-
-	public boolean isComplete(){
+	//Reason: isComplete function is not
+	public int isComplete(){
 
 		if (transactionName != "[Pending Transaction]"&& transactionName != null){
+
 			if (transactionValue!= null){
-				return true;
+				return 1;
+			}
+			else{
+				return 2;
 			}
 		}
-		return false;
+		else {
+			if (transactionValue!= null){
+				return 3;
+			}
+			else{
+				return 4;
+			}
+		}
 
 	}
 

@@ -296,50 +296,45 @@ class BoCTransactionTest {
         final Field field = set1.getClass().getDeclaredField("transactionValue");
         field.setAccessible(true);
 
-        if(str1 == null) {
-            Exception e0 = assertThrows(NullPointerException.class, () -> {
+        if(str1==null) {
+            try {
                 set1.setTransactionValue(new BigDecimal(str1));
-            });
-            //"The value cannot be null"
-            assertEquals(expected, "e0.getMessage()");
+                assertNotNull(str1, "The input Number cannot be null");
+            } catch (NullPointerException e1) {
+                try{
+                    set1.setTransactionValue(null);
+                    }catch(NullPointerException e2) {
+                    assertTrue(e2.getMessage().contains(expected));
+                    return;
+                }
+            }
         }
         //The following code is to test different type of values,and whether the negative value can be set
 
-
         boolean strResult1 = str1.matches("-?[0-9]+.?[0-9]*");
         boolean strResult2=str1.matches("[+-]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
-        boolean strResult3 = str1.matches("-?[0-9]{0,12}+.?[0-9]{0,16}");
-
-
-
 
         if(strResult1 == false){
             if(strResult2 == false) {
-                Exception e1 = assertThrows(IllegalArgumentException.class, () -> {
-                    set1.setTransactionValue(new BigDecimal(str1));
-                });
-                //"The value is invalid and cannot be set"
-                assertEquals(expected, e1.getMessage());
-            }
-            else{
-
-            }
-        }else {
-            if (strResult3 == false) {
-                Exception e2 = assertThrows(IllegalArgumentException.class, () -> {
-                    set1.setTransactionValue(new BigDecimal(str1));
-                });
-                //"The data overflows"
-                assertEquals(expected, e2.getMessage());
-            } else {
                 try {
-                    setData = new BigDecimal(str1);
-                    if (setData.compareTo(new BigDecimal("0.00")) <= 0) {
-                        Exception e3 = assertThrows(IllegalArgumentException.class, () -> {
+                    set1.setTransactionValue(new BigDecimal(str1));
+                    fail("No NumberFormat exception is caught");
+                } catch (Exception e1) {
+                    assertTrue(e1 instanceof NumberFormatException, "Illegal value set is caught");
+                    return;
+                }
+            }
+        }
+        else{
+            try {
+                setData = new BigDecimal(str1);
+                if (setData.compareTo(new BigDecimal("0.00")) <= 0) {
+                    Exception e3 = assertThrows(IllegalArgumentException.class, () -> {
                             set1.setTransactionValue(new BigDecimal(str1));
                         });
                         //"The value should be a positive number, the set fails"
                         assertEquals(expected, e3.getMessage());
+                        return;
                     } else {
                         set1.setTransactionValue(setData);
                         BigDecimal result = (BigDecimal) field.get(set1);
@@ -353,9 +348,9 @@ class BoCTransactionTest {
                             assertEquals(expected, e4.getMessage());
                         }
                     }
-                    }catch(Exception e){
-                        assertEquals(expected, "The data cannot be set. An error occurs");
-                    }
+                    }catch(Exception e) {
+                    assertEquals(expected, "The data cannot be set. An error occurs");
+                    return;
                 }
 
             }
@@ -457,10 +452,10 @@ class BoCTransactionTest {
         BoCTransaction isCom3= new BoCTransaction(null,numSet,0);
         BoCTransaction isCom4= new BoCTransaction(nameSet,numSet,0);
 
-        assertEquals(isCom1.isComplete(),false);
-        assertEquals(isCom2.isComplete(),false);
-        assertEquals(isCom3.isComplete(),false);
-        assertEquals(isCom4.isComplete(),true);
+        assertEquals(isCom1.isComplete(),4);
+        assertEquals(isCom2.isComplete(),2);
+        assertEquals(isCom3.isComplete(),3);
+        assertEquals(isCom4.isComplete(),1);
 
     }
 }
