@@ -451,8 +451,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 | :------------------- | ------------------------------------------------------------ |
 | **Constructor**      | Main constructor                                             |
 | **Inputs**           | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br><table> <th colspan = "4">cName</th> <tr><td>"test1"</td><td>"test2" </td><td>"test3" </td><td>"testWithMoreThan15Chars" </td></tr></table>|
-| **Expected Outcome** | <table> <tr><td rowspan = "3">1~3.</td> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>print *"The Exception has been thrown!"*</td></tr></table> |
-| **Test Outcome**     | <table> <tr><td rowspan = "3">1~3.</td> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>*"The Exception has been thrown!"*</td></tr></table>|
+| **Expected Outcome** | <table> <tr><th rowspan = "3">1~3.</th> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><th>4. </th><td>print *"The Exception has been thrown!"*</td></tr></table> |
+| **Test Outcome**     | <table> <tr><th rowspan = "3">1~3.</th> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><th>4. </th><td>*"The Exception has been thrown!"*</td></tr></table>|
 | **Result**           | Pass                                                         |
 
 
@@ -758,7 +758,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Test1:                           | TS-Category7-1                                               |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Main constructor                                        |
-| **Inputs**                       | 1. **setCategoryBudget**(*input*)<br>*input*= 20.0F;         |
+| **Inputs**                       | 1. **setCategoryBudget**(*input*)<table> <tr><th>*input*</th><td> 20.0F</td></tr></table>         |
 | **Expected Outcome**             | could not compile                                            |
 | **Test Outcome**                 | java: incompatible types: float cannot be converted to java.math.BigDecimal |
 | **Result**                       | Fail                                                         |
