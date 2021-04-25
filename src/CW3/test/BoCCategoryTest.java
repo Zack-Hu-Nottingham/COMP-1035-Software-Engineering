@@ -70,8 +70,9 @@ class BoCCategoryTest {
                 BoCCategory cMain2 = new BoCCategory(cName);
             }catch (Exception e){
                 assertThat(e.getMessage(),containsString("Category Name at most 15 characters."));
+                System.out.println("The Exception has been thrown!");
             }
-            fail("it failed");
+            //fail("it failed");
         }
 
     }

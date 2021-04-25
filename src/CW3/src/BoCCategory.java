@@ -12,10 +12,20 @@ public class BoCCategory {
 		CategorySpend = new BigDecimal("0.00");
 	}
 
-	public BoCCategory(String newTitle) {
-		CategoryName = newTitle;
+	// Author: Ziyi Wang (scyzw10)
+	// Last modified: 2021/4/25
+	// Reason: The length of the Category Name should be no more than 15 characters
+	// 		   Add exception to the source code
+	public BoCCategory(String newTitle) throws InvalidParameterException{
 		CategoryBudget = new BigDecimal("0.00");
 		CategorySpend = new BigDecimal("0.00");
+		//if the length of the newTitle > 15 , then throw exception
+		if (newTitle.length() > 15){
+			throw new InvalidParameterException("Category Name at most 15 characters.");
+		}else{
+			CategoryName = newTitle;
+		}
+
 	}
 
 	//author: Yingxiao Huo (scyyh9)
@@ -69,8 +79,9 @@ public class BoCCategory {
 		int comp1 = valueToRemove.compareTo(new BigDecimal(0));
 		if (comp1 == -1){
 			throw new InvalidParameterException("The valueToRemove must be >= 0");
+		}else{
+			CategorySpend = CategorySpend.subtract(valueToRemove);
 		}
-		CategorySpend = CategorySpend.subtract(valueToRemove);
 		//if result(the value of CategorySpend after remove) < 0, then comp = -1
 		int comp2 = CategorySpend.compareTo(new BigDecimal(0));
 		if (comp2 == -1) {
