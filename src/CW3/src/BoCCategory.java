@@ -58,13 +58,20 @@ public class BoCCategory {
 	// Author: Ziyi Wang (scyzw10)
 	// Last modified: 2021/4/25 11:00
 	// Reason: The type of the parameter should be Float
+//original code
 	public void setCategoryBudget(BigDecimal newValue) {
-//		BigDecimal newV = new BigDecimal(newValue);		//convert the Float type to BigDecimal
 		// 1 means bigger, -1 means smaller, 0 means same
 		if (newValue.compareTo(new BigDecimal("0.00")) == 1) {
 			CategoryBudget = newValue;
 		}
 	}
+//	public void setCategoryBudget(float newValue) {
+//		BigDecimal newV = new BigDecimal("newValue");		//convert the Float type to BigDecimal
+//		// 1 means bigger, -1 means smaller, 0 means same
+//		if (newV.compareTo(new BigDecimal("0.00")) == 1) {
+//			CategoryBudget = newV;
+//		}
+//	}
 
 	//Modifier: LinCHEN(biylc2)
 	//Last Modify:2021/04/25 11:20
