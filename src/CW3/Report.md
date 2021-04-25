@@ -438,10 +438,10 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Test1:                           | TS-Category 2-1                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Main constructor                                             |
-| **Inputs**                       | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br>where *cName* = "test1" \| "test2" \| "test3" \| "testWithMoreThan15Chars" |
-| **Expected Outcome**             | 1~3. `cMain1.CategoryName` == cName;<br> `cMain1.CategorySpend` == new BigDecimal("0.00");<br>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br>4. Throw an exception *containsString("Category Name at most 15 characters.")* |
-| **Test Outcome**                 | 1~3. `cMain1.CategoryName` == cName;<br/> `cMain1.CategorySpend` == new BigDecimal("0.00");<br/>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br/>4. org.opentest4j.AssertionFailedError: it failed |
-| **Result**                       | P\| P \| P\| F                                               |
+| **Inputs**                       | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br><table> <caption>cName</caption> <tr><td>"test1"</td><td>"test2" </td><td>"test3" </td><td>"testWithMoreThan15Chars" </td></tr></table>
+| **Expected Outcome**             | <table> <tr><td rowspan = "3">1~3.</td> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>Throw an exception *containsString("Category Name at most 15 characters.")* </td></tr></table>|
+| **Test Outcome**                 | <table> <tr><td rowspan = "3">1~3.</td> <td> `cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>org.opentest4j.AssertionFailedError: it failed </td></tr></table>|
+| **Result**                       | <table> <tr><td>P</td><td> P</td><td> P</td><td> F </td></table> |
 | **Reason for Failure**           | The source code does not take the exception into account     |
 | **What is Done to Make it Pass** | Add exception to the source code                             |
 
@@ -451,8 +451,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 | :------------------- | ------------------------------------------------------------ |
 | **Constructor**      | Main constructor                                             |
 | **Inputs**           | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br>where *cName* = "test1" \| "test2" \| "test3" \| "testWithMoreThan15Chars" |
-| **Expected Outcome** | 1~3. `cMain1.CategoryName` == cName;<br> `cMain1.CategorySpend` == new BigDecimal("0.00");<br>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br>4. print *"The Exception has been thrown!"* |
-| **Test Outcome**     | 1~3. `cMain1.CategoryName` == cName;<br/> `cMain1.CategorySpend` == new BigDecimal("0.00");<br/>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br/>4. *"The Exception has been thrown!"* |
+| **Expected Outcome** | <table> <tr><td rowspan = "3">1~3.</td> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>print *"The Exception has been thrown!"*</td></tr></table> |
+| **Test Outcome**     | <table> <tr><td rowspan = "3">1~3.</td> <td>`cMain1.CategoryName` == cName;</td> </tr><tr><td>`cMain1.CategorySpend` == new BigDecimal("0.00");</td></tr><tr><td>`cMain1.CategoryBudget` == new BigDecimal("0.00");</td></tr><tr><td>4. </td><td>*"The Exception has been thrown!"*</td></tr></table>|
 | **Result**           | Pass                                                         |
 
 
