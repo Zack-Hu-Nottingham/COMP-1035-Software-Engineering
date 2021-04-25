@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -88,19 +89,6 @@ class BoCAppTest {
                               "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
                               "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln, result, "The overview is unexpected.");
 
-    }
-
-    // Author: Zixiang Hu
-    // Last modified: 4/18
-    @ParameterizedTest
-    @CsvFileSource(resources = { "/Trans_setCategory.csv" })
-
-    void setTransactionCategory(int input, int expectation) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction trans = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 1);
-        trans.setTransactionCategory(input);
-        final Field field = trans.getClass().getDeclaredField("transactionCategory");
-        field.setAccessible(true);
-        assertEquals(expectation, field.get(trans), "Fields didn't match");
     }
 
     @Test
@@ -216,6 +204,14 @@ class BoCAppTest {
         }
 
         return;
+    }
+
+    // Author: Ziyi Wang (scyzw10)
+    // Last modified: 2021/4/25 20:
+    @DisplayName("Test for AddTransaction function.")
+    @Test
+    void AddTransaction(){
+
     }
 
     private void testOutcome(String designedInput, String expectedOutcome) {
