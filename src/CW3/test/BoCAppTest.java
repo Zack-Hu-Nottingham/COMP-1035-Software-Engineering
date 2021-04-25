@@ -214,7 +214,7 @@ class BoCAppTest {
 
 
     // Author: Ziyi Wang (scyzw10)
-    // Last modified: 2021/4/25 20:
+    // Last modified: 2021/4/25 22:43
     @DisplayName("Test for AddTransaction function.")
     //@ParameterizedTest
     @Test
