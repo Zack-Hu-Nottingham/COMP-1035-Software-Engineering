@@ -2,6 +2,7 @@
 
 |Contents|
 |--------|
+|[Timeline / Milestone](#milestone-and-the-time-line-of-our-project)|
 |[Team Management](#team-management)|
 |[Test Plan](#test-plan)|
 |[Jump to Class:](#class)|
@@ -9,19 +10,41 @@
 |[Jump to Class:](#class)|
 
 
-## Team Management
-We split the whole project into 6 subtask: 
 
-- write the test script for three classes
-- fix the code for three classes and add test script as well.
+### MileStone and the Time Line of our project
+![timeline.png](\timeline.png)
+### What is the processing flow of our group?
+We split the whole project can be split into ***two phase***: **unit test**  and **integration test**. <br>
+In the **unit test part**, we set 4 milestone in total. Firstly is write test script and test plan for the two class and then is fix the code according to the test result eg. which test failed and what made the test fail. <br>
+In the **integration part**, we mainly focus on **write test script** and **fix code** for **BoCAPP.java**, which would invoke a lot of predefined method. Thankfully, as all the predefined method(BoCTransaction.java BoCCategory.java) are fixed and work properly(***I think it would be best if it is the case, hhh***), there would not have error raised by these method . In this part, we would set two milestones, the first one is write test script and test the code, the second one is fix the code and make it pass the test.
+### Three main stage:
+- Write test script and fix the source code for BoCTransaction.java
+- Write test script and fix the source code for BoCCategory.java
+- Write test script and fix the source code for BoCApp.java
 
-Therefore, we set 6 milestone. In each milestone, we would assign different issue to each team member
-and the guy who is responsible for the issue would create a new branch for that issue. Finally when all the job is done,  one of our teammate would manage merge all these branches.
-At the beginning of each milestone, we would hold a meeting. During that time, we would create issues, set a due date and assign to different people.   
+### Team management 
+- **Working team:**
+  - Team A: Ziyi Wang, Zixiang Hu
+  - Team B: Yingxiao Huo, Yicun Duan
+  - Team C: Leshan Tan, Lin Chen 
+- **QA team:**
+  - Zixiang Hu
+#### Explanation for teams:
+1. Each working team has two members, though they work for different part of the project parallely, but when they solved merge conflicts by themselves and raise merge request, the other member **should have a look** and check if he did the wrong thing (delete someone else's code by mistake).
+2. We would suggest to let member who raise merge request to deal with merge conflicts by themselves, as he is the one who knows what changes are made and should responsible for the merge. After he solved the conflict, his teammate should **cross validate** his merge request, that is why we have two members in one group.
+#### When and how often we have meetings?
+**Normally**, before starting to work on a new milestone, we would have a meeting at library. 
+If an **emergency** occurs we would hold a meeting as well. For example, Bryan said that for one test we are supposed to write in a test method... We had a long (horrible) meeting that day try to figure out how to make it.
+
+#### What we do during the meeting?
+During the meeting we would together figure out what are the codes doing, how are we going to write the test script and reach consensus on the interface of different method. After that, create all the issues and add corresponding discription, labels and milestone. We would also evaluate the work load of each issue and accoring to that assign to different team. 
+#### How group members cooperate use gitlab?
+When some one met with bug/problem that he can not solve, he could raise an issue and assign to QA team or someone who know, other group member if have suggestions could comment as well.
+
+#### How do we make use of version control?
 
 
 Report here, by the end of the assignment, how the team has managed the project, e.g.: used version control, organised meetings, divided work, used labels, milestones, issues, etc. etc.
-
 ## Test Plan
 ###*This is just an example!!*
 
