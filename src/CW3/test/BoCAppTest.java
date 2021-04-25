@@ -20,7 +20,37 @@ class BoCAppTest {
     private static String appExit = "Goodbye!" + ln;
 
     @BeforeEach
-    void setUp() {
+    void setUpBeforeEach() {
+        BoCApp.UserCategories = new ArrayList<BoCCategory>();
+        BoCApp.UserTransactions = new ArrayList<BoCTransaction>();
+
+        // SETUP EXAMPLE DATA //
+        BoCApp.UserCategories.add(new BoCCategory("Unknown"));
+        BoCCategory BillsCategory = new BoCCategory("Bills");
+        BillsCategory.setCategoryBudget(new BigDecimal("120.00"));
+        BoCApp.UserCategories.add(BillsCategory);
+        BoCCategory Groceries = new BoCCategory("Groceries");
+        Groceries.setCategoryBudget(new BigDecimal("75.00"));
+        BoCApp.UserCategories.add(Groceries);
+        BoCCategory SocialSpending = new BoCCategory("Social");
+        SocialSpending.setCategoryBudget(new BigDecimal("100.00"));
+        BoCApp.UserCategories.add(SocialSpending);
+
+        BoCApp.UserTransactions.add(new BoCTransaction("Rent", new BigDecimal("850.00"), 0));
+        BoCApp.UserTransactions.add(new BoCTransaction("Phone Bill", new BigDecimal("37.99"), 1));
+        BoCApp.UserTransactions.add(new BoCTransaction("Electricity Bill", new BigDecimal("75.00"), 1));
+        BoCApp.UserTransactions.add(new BoCTransaction("Sainsbury's Checkout", new BigDecimal("23.76"), 2));
+        BoCApp.UserTransactions.add(new BoCTransaction("Tesco's Checkout", new BigDecimal("7.24"), 2));
+        BoCApp.UserTransactions.add(new BoCTransaction("RockCity Drinks", new BigDecimal("8.50"), 3));
+        BoCApp.UserTransactions.add(new BoCTransaction("The Mooch", new BigDecimal("13.99"), 3));
+
+        for (int x = 0; x < BoCApp.UserTransactions.size(); x++) {
+            BoCTransaction temp = BoCApp.UserTransactions.get(x);
+            int utCat = temp.transactionCategory();
+            BoCCategory temp2 = BoCApp.UserCategories.get(utCat);
+            temp2.addExpense(temp.transactionValue());
+            BoCApp.UserCategories.set(utCat, temp2);
+        }
     }
 
     @AfterEach
@@ -44,19 +74,6 @@ class BoCAppTest {
 
         BoCApp test_instance = new BoCApp();
 
-        BoCApp.UserCategories = new ArrayList<BoCCategory>();
-
-        BoCApp.UserCategories.add(new BoCCategory("Unknown"));
-        BoCCategory BillsCategory = new BoCCategory("Bills");
-        BillsCategory.setCategoryBudget(new BigDecimal("120.00"));
-        BoCApp.UserCategories.add(BillsCategory);
-        BoCCategory Groceries = new BoCCategory("Groceries");
-        Groceries.setCategoryBudget(new BigDecimal("75.00"));
-        BoCApp.UserCategories.add(Groceries);
-        BoCCategory SocialSpending = new BoCCategory("Social");
-        SocialSpending.setCategoryBudget(new BigDecimal("100.00"));
-        BoCApp.UserCategories.add(SocialSpending);
-
         Method m_categoryOverview = test_instance.getClass().getDeclaredMethod("CategoryOverview");
         m_categoryOverview.setAccessible(true);
 
@@ -64,15 +81,12 @@ class BoCAppTest {
 
         String result = outContent.toString();
 
-        System.setOut(null);
+        System.setOut(System.out);
 
-        BoCApp.UserCategories = null;
-
-        assertEquals("1) Unknown(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)" + System.lineSeparator() +
-                "2) Bills(¥120.00) - Est. ¥0.00 (¥120.00 Remaining)" + System.lineSeparator() +
-                "3) Groceries(¥75.00) - Est. ¥0.00 (¥75.00 Remaining)" + System.lineSeparator() +
-                "4) Social(¥100.00) - Est. ¥0.00 (¥100.00 Remaining)"
-                + System.lineSeparator(), result, "The overview is unexpected.");
+        assertEquals("1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)"+ ln +
+                              "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
+                              "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
+                              "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln, result, "The overview is unexpected.");
 
     }
 
@@ -117,6 +131,58 @@ class BoCAppTest {
             case 1:
                 testOutcome(designedInput,
                             defaultCategoryOverview
+                                          + appMenu
+                                          + defaultTransactionOverview +
+                        "Which transaction ID?" + ln
+                                          + "\t- " + BoCApp.UserTransactions.get(0).toString() + ln
+                                          + defaultCategoryOverview +
+                        "Which category will it move to?" + ln
+                                          + "[Social](Budget: ¥100.00) - ¥872.49 (¥772.49 Overspent)" + ln
+                                          + "[Unknown](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)" + ln
+
+                                          + appMenu +
+                                          "1) Rent (Social) - ¥850.00" + ln +
+                                          "2) Phone Bill (Bills) - ¥37.99" + ln +
+                                          "3) Electricity Bill (Bills) - ¥75.00" + ln +
+                                          "4) Sainsbury's Checkout (Groceries) - ¥23.76" + ln +
+                                          "5) Tesco's Checkout (Groceries) - ¥7.24" + ln +
+                                          "6) RockCity Drinks (Social) - ¥8.50" + ln +
+                                          "7) The Mooch (Social) - ¥13.99" + ln +
+                        "Which transaction ID?" + ln
+                                          + "\t- " + BoCApp.UserTransactions.get(2).toString() + ln +
+                                          "1) [Unknown](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"+ ln +
+                                          "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
+                                          "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
+                                          "4) [Social](Budget: ¥100.00) - ¥872.49 (¥772.49 Overspent)" + ln +
+                        "Which category will it move to?" + ln
+                                          + "[Unknown](Budget: ¥0.00) - ¥75.00 (¥75.00 Overspent)" + ln
+                                          + "[Bills](Budget: ¥120.00) - ¥37.99 (¥82.01 Remaining)" + ln
+
+                                          + appMenu +
+                                          "1) Rent (Social) - ¥850.00" + ln +
+                                          "2) Phone Bill (Bills) - ¥37.99" + ln +
+                                          "3) Electricity Bill (Unknown) - ¥75.00" + ln +
+                                          "4) Sainsbury's Checkout (Groceries) - ¥23.76" + ln +
+                                          "5) Tesco's Checkout (Groceries) - ¥7.24" + ln +
+                                          "6) RockCity Drinks (Social) - ¥8.50" + ln +
+                                          "7) The Mooch (Social) - ¥13.99" + ln +
+                        "Which transaction ID?" + ln
+                                          + "\t- " + BoCApp.UserTransactions.get(5).toString() + ln +
+                                          "1) [Unknown](Budget: ¥0.00) - ¥75.00 (¥75.00 Overspent)"+ ln +
+                                          "2) [Bills](Budget: ¥120.00) - ¥37.99 (¥82.01 Remaining)" + ln +
+                                          "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
+                                          "4) [Social](Budget: ¥100.00) - ¥872.49 (¥772.49 Overspent)" + ln +
+                        "Which category will it move to?" + ln
+                                          + "[Groceries](Budget: ¥75.00) - ¥39.50 (¥35.50 Remaining)" + ln
+                                          + "[Social](Budget: ¥100.00) - ¥863.99 (¥763.99 Overspent)" + ln
+
+                                          + appMenu
+                                          + appExit);
+
+
+            case 2:
+                testOutcome(designedInput,
+                            defaultCategoryOverview
                                          + appMenu
                                          + defaultTransactionOverview +
                         "Which transaction ID?" + ln + "Invalid input. Please input a valid integer." + ln
@@ -139,10 +205,10 @@ class BoCAppTest {
                         "Which category will it move to?" + ln + "Category doesn't exist. Please input again." + ln
                                          + defaultCategoryOverview +
                         "Which category will it move to?" + ln
-                                + "[Social](Budget: ¥100.00) - ¥872.49 (¥772.49 Overspent)" + ln
-                                + "[Unknown](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)" + ln
-                                + appMenu
-                                + appExit);
+                                         + "[Social](Budget: ¥100.00) - ¥872.49 (¥772.49 Overspent)" + ln
+                                         + "[Unknown](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)" + ln
+                                         + appMenu
+                                         + appExit);
                 break;
 
             default:

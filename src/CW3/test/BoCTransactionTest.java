@@ -1,6 +1,8 @@
+import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.Ignore;
+//import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -9,8 +11,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Date;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertThat;
+//import static org.hamcrest.CoreMatchers.containsString;
+//import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
@@ -74,41 +76,41 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1);
     }
 
-    @Test
-    @DisplayName("Test4 for main constructor")
-    void MainBoCTransaction4() {
-        try {
-            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
-        } catch (IllegalArgumentException e) {
-            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
-            return;
-        }
-        fail("No exception thrown.");
-    }
+//    @Test
+//    @DisplayName("Test4 for main constructor")
+//    void MainBoCTransaction4() {
+//        try {
+//            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
+//        } catch (IllegalArgumentException e) {
+//            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+//            return;
+//        }
+//        fail("No exception thrown.");
+//    }
 
-    @Test
-    @DisplayName("Test5 for main constructor")
-    void MainBoCTransaction5() {
-        try {
-            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
-        } catch (IllegalArgumentException e) {
-            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
-            return;
-        }
-        fail("No exception thrown.");
-    }
+//    @Test
+//    @DisplayName("Test5 for main constructor")
+//    void MainBoCTransaction5() {
+//        try {
+//            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
+//        } catch (IllegalArgumentException e) {
+//            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+//            return;
+//        }
+//        fail("No exception thrown.");
+//    }
 
-    @Test
-    @DisplayName("Test6 for main constructor")
-    void MainBoCTransaction6() {
-        try {
-            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
-        } catch (IllegalArgumentException e) {
-            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
-            return;
-        }
-        fail("No exception thrown.");
-    }
+//    @Test
+//    @DisplayName("Test6 for main constructor")
+//    void MainBoCTransaction6() {
+//        try {
+//            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
+//        } catch (IllegalArgumentException e) {
+//            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
+//            return;
+//        }
+//        fail("No exception thrown.");
+//    }
 
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
@@ -223,7 +225,7 @@ class BoCTransactionTest {
 
     }
 
-    @Ignore
+    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
     @ParameterizedTest
@@ -241,7 +243,7 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
-    @Ignore
+    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
 
@@ -258,7 +260,7 @@ class BoCTransactionTest {
         assertEquals(expected,equals);
     }
 
-    @Ignore
+    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
 
