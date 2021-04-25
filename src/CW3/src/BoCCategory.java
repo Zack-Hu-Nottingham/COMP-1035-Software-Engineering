@@ -51,8 +51,16 @@ public class BoCCategory {
 		return CategorySpend;
 	}
 
-	public void setCategoryName(String newName) {
-		CategoryName = newName;
+	public void setCategoryName(String newName) throws IllegalArgumentException{
+		if (newName == null || newName.isBlank()){
+			throw new IllegalArgumentException("Name can not be null");
+		}
+		else if (newName.length() > 15){
+			CategoryName = newName.substring(0,15);
+		}
+		else {
+			CategoryName = newName;
+		}
 	}
 
 	// Author: Ziyi Wang (scyzw10)
