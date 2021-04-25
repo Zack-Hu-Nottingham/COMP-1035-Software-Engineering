@@ -14,7 +14,23 @@ public class BoCTransaction {
 		transactionTime = null;
 	}
 
-	public BoCTransaction(String tName, BigDecimal tValue, int tCat) {
+	// Author: Zixiang Hu (20215538)
+	// Last modified: 4/25 19:01
+	// Reason to change:
+	public BoCTransaction(String tName, BigDecimal tValue, int tCat) throws IllegalArgumentException{
+		if (tName == null) {
+			throw new IllegalArgumentException("Transaction name should not be null.");
+		}
+		if (tName.length() > 25) {
+			throw new IllegalArgumentException("Transaction budget should greater than zero.");
+		}
+		if (tCat < 0) {
+			throw new IllegalArgumentException("Transaction category should not be minus.");
+		}
+		if (tValue.compareTo(new BigDecimal(0)) < 1) {
+			throw new IllegalArgumentException("Transaction budget should greater than zero.");
+		}
+
 		transactionName = tName;
 		transactionValue = tValue;
 		transactionCategory = tCat;
