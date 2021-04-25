@@ -911,12 +911,47 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |TestID:  | TS-App 3-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | Default constructor |
+| **Constructor**           | setUpBeforeEach() |
 | **Inputs**                | <table><tr><th>CategoryName: </th><th>CategoryBudget: </th></tr><tr><td>"Unknown"</td><td>&nbsp;</td></tr><tr><td>"Bills"</td><td>BigDecimal("120.00")</td></tr><tr><td>"Groceries"</td><td>BigDecimal("75.00")</td></tr><tr><td>"Soical"</td><td>BigDecimal("100.00")</td></tr></table> |
-| **Expected Outcome**      | <p>1) Unknown(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)<br>2) Bills(¥120.00) - Est. ¥0.00 (¥120.00 Remaining)<br>3) Groceries(¥75.00) - Est. ¥0.00 (¥75.00 Remaining)<br>4) Social(¥100.00) - Est. ¥0.00 (¥100.00 Remaining)</p> |
-| **Test Outcome**          | <p>1) Unknown(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)<br>2) Bills(¥120.00) - Est. ¥0.00 (¥120.00 Remaining)<br>3) Groceries(¥75.00) - Est. ¥0.00 (¥75.00 Remaining)<br>4) Social(¥100.00) - Est. ¥0.00 (¥100.00 Remaining)</p> |
+| **Expected Outcome**      | <p>1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)<br>2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)<br>3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)<br>4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining) </p> |
+| **Test Outcome**          | <p>1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)<br>2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)<br>3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)<br>4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining) </p> |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+ ### **Function:** &nbsp; ChangeTransactionCategory(Scanner in)
+
+| Test Plan | ChangeTransactionCategory(Scanner in) |
+| :-----------|--------------|
+| Test Date : | 2021/04/25 20:03 |
+| Tester : | Yicun Duan (scyyd3) |
+
+&nbsp;
+
+&nbsp;
+
+|TestID:  | TS-App 5-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | setUpBeforeEach() |
+| **Inputs**                | <center>C<br>1<br>4<br>C<br>3<br>1<br>C<br>6<br>3<br>X</center> |
+| **Expected Outcome**      | \ |
+| **Test Outcome**          | \ |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannot generate expected output |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+|TestID:  | TS-App 5-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | setUpBeforeEach() |
+| **Inputs**                | <center>C<br>jbl<br>-23<br>-12345678912345689<br>'\ue250'<br>1<br>-199<br>233<br>123456789123456789<br>4<br>X</center> |
+| **Expected Outcome**      | \ |
+| **Test Outcome**          | \ |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannot generate expected output <br> And it cannot deal with invalid input|
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 

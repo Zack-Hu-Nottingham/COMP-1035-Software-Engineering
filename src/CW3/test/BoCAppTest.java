@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCAppTest {
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/25 19:52
     private static String ln = System.lineSeparator();
     private static String appMenu = ln + "What do you want to do?" + ln
             + "O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
@@ -19,6 +22,8 @@ class BoCAppTest {
 
     private static String appExit = "Goodbye!" + ln;
 
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/25 19:52
     @BeforeEach
     void setUpBeforeEach() {
         BoCApp.UserCategories = new ArrayList<BoCCategory>();
@@ -108,11 +113,11 @@ class BoCAppTest {
     }
 
     //Author: Yicun Duan
-    //Last Modified: 2021/4/24 21:51
+    //Last Modified: 2021/4/25 19:51
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
-    @CsvFileSource(resources = "changeTransactionCategoryTest.csv")
-    void ChangeTransactionCategory(String designedInput, int testNumber) {
+    @ValueSource(ints = {1, 2})
+    void ChangeTransactionCategory(int testNumber) {
         String defaultCategoryOverview =
                         "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)"+ ln +
                         "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
@@ -129,7 +134,7 @@ class BoCAppTest {
 
         switch (testNumber) {
             case 1:
-                testOutcome(designedInput,
+                testOutcome("C\n1\n4\nC\n3\n1\nC\n6\n3\nX\n",
                             defaultCategoryOverview
                                           + appMenu
                                           + defaultTransactionOverview +
@@ -181,7 +186,7 @@ class BoCAppTest {
 
 
             case 2:
-                testOutcome(designedInput,
+                testOutcome("C\njbl\n-23\n-12345678912345689\n'\ue250'\n1\n-199\n233\n123456789123456789\n4\nX\n",
                             defaultCategoryOverview
                                          + appMenu
                                          + defaultTransactionOverview +
@@ -218,6 +223,8 @@ class BoCAppTest {
         return;
     }
 
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/25 19:55
     private void testOutcome(String designedInput, String expectedOutcome) {
 
         InputStream alterInput = new ByteArrayInputStream(designedInput.getBytes());
