@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
@@ -215,9 +216,35 @@ class BoCAppTest {
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/25 20:
     @DisplayName("Test for AddTransaction function.")
+    //@ParameterizedTest
     @Test
+    //@CsvSource({"A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n"})
     void AddTransaction(){
-
+        String defaultCategoryOverview =
+                        "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)"+ ln +
+                        "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
+                        "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
+                        "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln ;
+        String invitesInput = "What is the title of the transaction?" + ln +
+                                "What is the value of the transaction?";
+//        testOutcome("A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n",
+//                defaultCategoryOverview + appMenu + invitesInput + ln +
+//                        "Invalid input. Please enter a valid number" + ln + "What is the value of the transaction?"+ ln
+//                        + defaultCategoryOverview + "Which category do you want to add?" + ln +
+//                        "Invalid input. Please enter a valid integer" + ln +
+//                        defaultCategoryOverview + "Which category do you want to add?"+ ln +
+//                        "Invalid input. Category not exist" + ln + defaultCategoryOverview +
+//                        "Which category do you want to add?"+ ln + "Invalid number. Category not exist" + ln
+//                        +  defaultCategoryOverview +  "Which category do you want to add?\n[Water Bill](¥9.00) was added to [Bills]\n"+
+//                        appMenu + appExit
+//                );
+        testOutcome("A\nWater Bill\n9.00\n2\nX\n",
+                defaultCategoryOverview + appMenu + invitesInput + ln +
+                        "Invalid input. Please enter a valid number" + ln + "What is the value of the transaction?"+ ln
+                        + defaultCategoryOverview + "Which category do you want to add?" + ln +
+                          "[Water Bill](¥9.00) was added to [Bills]\n"+
+                        appMenu + appExit
+        );
     }
 
 
