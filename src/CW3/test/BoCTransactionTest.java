@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 //import static org.hamcrest.CoreMatchers.containsString;
 //import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
@@ -76,41 +78,41 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1);
     }
 
-//    @Test
-//    @DisplayName("Test4 for main constructor")
-//    void MainBoCTransaction4() {
-//        try {
-//            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
-//        } catch (IllegalArgumentException e) {
-//            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
-//            return;
-//        }
-//        fail("No exception thrown.");
-//    }
+    @Test
+    @DisplayName("Test4 for main constructor")
+    void MainBoCTransaction4() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
 
-//    @Test
-//    @DisplayName("Test5 for main constructor")
-//    void MainBoCTransaction5() {
-//        try {
-//            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
-//        } catch (IllegalArgumentException e) {
-//            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
-//            return;
-//        }
-//        fail("No exception thrown.");
-//    }
+    @Test
+    @DisplayName("Test5 for main constructor")
+    void MainBoCTransaction5() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
 
-//    @Test
-//    @DisplayName("Test6 for main constructor")
-//    void MainBoCTransaction6() {
-//        try {
-//            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
-//        } catch (IllegalArgumentException e) {
-//            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
-//            return;
-//        }
-//        fail("No exception thrown.");
-//    }
+    @Test
+    @DisplayName("Test6 for main constructor")
+    void MainBoCTransaction6() {
+        try {
+            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
 
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
