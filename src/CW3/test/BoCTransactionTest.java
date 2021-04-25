@@ -120,7 +120,8 @@ class BoCTransactionTest {
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
             ", name is not set.",
-            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters."
+            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters.",
+            "U+1F605,U+1F605"
     })
     void transactionName(String name, String expection) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
