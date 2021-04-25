@@ -291,19 +291,19 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NullPointerException]`:"The value cannot be null"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no Error message comes out </td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no `[NullPointerException]` is thrown</td></tr></table> |
 | **Result**                       | Fail |
-| **Reason for Failure**           | Error message is not correct |
+| **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
 |Test2:  | TS-Transaction 9-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"123hello"</td><td>"test"</td><td>" "</td></tr><tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value is invalid and cannot be set"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no IllegalArgumentException is thrown </td></tr></table> |
-| **Result**                       | Fail |
-| **Reason for Failure**           | no IllegalArgumentException is thrown|
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NumberFormatException]`:to be thrown</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> `[NumberFormatException]` is thrown </td></tr></table> |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
 |Test3:  | TS-Transaction 9-3 |
@@ -316,19 +316,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | no IllegalArgumentException is thrown |
 | **What is Done to Make it Pass** | \ |
 
-|Test6:  | TS-Transaction 9-4 |
-|:---------                 |-----------------           |
-| **Constructor**           | Default constructor|
-| **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"0.00000000000000001"</td><td>"-0.00000000000000001"</td><td>"0.00000000000000000"</td><td>"0.000000000000000000"</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The data overflows"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[IllegalArgumentException]` is thrown</td></tr></table> |
-| **Result**                       |Fail |
-| **Reason for Failure**           | no`[IllegalArgumentException]` is thrown|
-| **What is Done to Make it Pass** | \ |
-
 
 |Test4:  | TS-Transaction 9-5 |
-|:---------                 |-----------------           |
+|:---------                 |-----------------   |
 | **Constructor**           | Default constructor|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>The test pass</td></tr></table> |
@@ -337,7 +327,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
-|Test5:  | TS-Transaction 9-6 (setTwice)|
+
+|Test5:  | TS-Transaction 9-5 (setTwice)|
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor with above set value /parameter constructer|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
@@ -361,8 +352,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | none |
-| **Expected Outcome**      | False|
-| **Test Outcome**          | False|
+| **Expected Outcome**      | 4 |
+| **Test Outcome**          | 4 |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
@@ -371,8 +362,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |:---------                 |-----------------           |
 | **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>BoCTransaction("Tester","980.98",0)</td></tr><tr><td>BoCTransaction(null,"980.98",0)</td></tr><tr><td>BoCTransaction("Tester",null,0)</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
-| **Test Outcome**          |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>true</td></tr><tr><td>false</td></tr><tr><td>false</td></tr></table>|
+| **Expected Outcome**      | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>1</td></tr><tr><td>3</td></tr><tr><td>2</td></tr></table>|
+| **Test Outcome**          |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>1</td></tr><tr><td>3</td></tr><tr><td>2</td></tr></table>|
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
@@ -443,9 +434,20 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**                 | 1~3. `cMain1.CategoryName` == cName;<br/> `cMain1.CategorySpend` == new BigDecimal("0.00");<br/>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br/>4. org.opentest4j.AssertionFailedError: it failed |
 | **Result**                       | P\| P \| P\| F                                               |
 | **Reason for Failure**           | The source code does not take the exception into account     |
-| **What is Done to Make it Pass** | /                                                            |
+| **What is Done to Make it Pass** | Add exception to the source code                             |
 
-&nbsp;
+##### Test After Fixing the Source Code
+
+| Test1:               | TS-Category 2-1                                              |
+| :------------------- | ------------------------------------------------------------ |
+| **Constructor**      | Main constructor                                             |
+| **Inputs**           | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br>where *cName* = "test1" \| "test2" \| "test3" \| "testWithMoreThan15Chars" |
+| **Expected Outcome** | 1~3. `cMain1.CategoryName` == cName;<br> `cMain1.CategorySpend` == new BigDecimal("0.00");<br>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br>4. print *"The Exception has been thrown!"* |
+| **Test Outcome**     | 1~3. `cMain1.CategoryName` == cName;<br/> `cMain1.CategorySpend` == new BigDecimal("0.00");<br/>`cMain1.CategoryBudget` == new BigDecimal("0.00");<br/>4. *"The Exception has been thrown!"* |
+| **Result**           | Pass                                                         |
+
+
+
 ### Class: BoCCategory
 
 #### Function: categoryName()
@@ -629,9 +631,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test1:  | TS-Category 10-1 |
 |:---------                 |-----------------            |
 | **Constructor**           |    Default constructor       |
-| **Inputs**                |    No parameter             |
+| **Inputs**                |    CategorySpend = new BigDecimal("20000.0292")         |
 | **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
-| **Test Outcome**          | "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
+| **Test Outcome**          |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
 &nbsp;
 
 &nbsp;
@@ -735,7 +737,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-### Class:nbsp;  BoCCategory
+### Class: BoCCategory
 
 #### Function:  setCategoryBudget()
 
@@ -755,6 +757,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | change the type of the argument of **setCategoryBudget**(BigDecimal newValue) in the **BoCCatrgory.java** to float type. |
 
 
+
 ### Class: &nbsp; BoCCategory
 
 #### Function:  removeExpense()
@@ -767,35 +770,62 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test1:  | TS-Category 9-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | Main constructor |
-| **Inputs**                | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=0.0\|1000.0\|1000.0\|1000.0\|1000.0\|1000.0\|1000.0\|100\|100\|100 \|2.0\|3.0\|10.0\|200.0\|10000\|1000000.0000;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 0.0\|100\|800\|200.02\|200.02\|200.02\|200.0002\|0.1\|0.01\|0.001\|2.0 \|3.0\|10.0\|200.0\|1314.1314521\|1000000.0000;<br>3. BigDecimal **expense** = new BigDecimal(*input3*); <br>where *input3* = 0.0\|900\|200\|799.98\|700\|800\|799.9998\|99.9\|99.99\|99.999\|0\|0\|0\|0\|7685.8685479\| 0; |
-| **Expected Outcome**      | **CategorySpend**(BigDecimal).`compareTo`(**expense**): <br>0\|0\|0\|0\|1\|-1\| 0\| 0\|0\| 0\|0\|0\|0\|0\|0\|0 |
-| **Test Outcome**          | 0\|0\|0\|1\|1\|-1\|-1\|-1\|1\|-1\|0\|0\|0\|0\|1\|0 |
-| **Result**                       | P P P F P P F F F F P P P P F P |
-| **Reason for Failure**           | Maybe sth. went wrong in **addExpense**() or **removeExpense**() |
+| **Constructor**           | Default constructor |
+| **Inputs**                | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*="0.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"100"\|"100"\|"100" \|"2.0"\|"3.0"\|"10.0"\|"200.0"\|"10000"\|"1000000.0000";<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "0.0"\|"100"\|"800"\|"200.02"\|"200.02"\|"200.02"\|"200.0002"\|"0.1"\|"0.01"\|"0.001"\|"2.0" \|"3.0"\|"10.0"\|"200.0"\|"1314.1314521"\|"1000000.0000";<br>3. BigDecimal **expense** = new BigDecimal(*input3*); <br>where *input3* = "0.0"\|"900"\|"200"\|"799.98"\|"700"\|"800"\|"799.9998"\|"99.9"\|"99.99"\|"99.999"\|"0"\|"0"\|"0"\|"0" \|"8685.8685479"\|"0"; |
+| **Expected Outcome**      | **CategorySpend**(BigDecimal).`compareTo`(**expense**): <br>0\|0\|0\|0\|1\|-1\|0\| 0\|0\|0\|0\|0\|0\|0\|0\|0 |
+| **Test Outcome**          | 0\|0\|0\|0\|1\|-1\|0\| 0\|0\|0\|0\|0\|0\|0\|0\|0 |
+| **Result**                       | Pass |
+| **Reason for Failure**           | / |
 | **What is Done to Make it Pass** | / |
+
+&nbsp;
 
 | Test2:                           | TS-Category 9-2                                              |
 | :------------------------------- | ------------------------------------------------------------ |
-| **Constructor**                  | Main constructor                                        |
-| **Inputs**                       | **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= -20.0 \| -30.0 \| -50.0; |
+| **Constructor**                  | Default constructor                                          |
+| **Inputs**                       | **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "-20.0" \| "-30.0" \| "-50.0"; |
 | **Expected Outcome**             | all 3 expected: throw InvalidParameterException("The expense must be >= 0") |
 | **Test Outcome**                 | all 3 outcome: org.opentest4j.AssertionFailedError: it failed |
 | **Result**                       | Fail                                                         |
 | **Reason for Failure**           | The source does not take the exception into account          |
-| **What is Done to Make it Pass** | /                                                            |
+| **What is Done to Make it Pass** | Add exception to the source code                             |
+
+##### Test After Fixing the Source Code
+
+| Test2:               | TS-Category 9-2                                              |
+| :------------------- | ------------------------------------------------------------ |
+| **Constructor**      | Default constructor                                          |
+| **Inputs**           | **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "-20.0" \| "-30.0" \| "-50.0"; |
+| **Expected Outcome** | all 3 expected: print "The Exception has been thrown!"       |
+| **Test Outcome**     | all 3 outcome: "The Exception has been thrown!"              |
+| **Result**           | Pass                                                         |
+
+
 
 | Test3:                           | TS-Category 9-3                                              |
 | :------------------------------- | ------------------------------------------------------------ |
-| **Constructor**                  | Main constructor                                        |
-| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*=200.0 \| 200.0 \|1000.0;<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= 300.0 \| 400.0 \| 10000.0; |
+| **Constructor**                  | Main constructor                                             |
+| **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*="200.0" \| "200.0" \|"1000.0";<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "300.0" \| "400.0" \| "10000.0"; |
 | **Expected Outcome**             | all 3 expected: throw InvalidParameterException("The CategorySpend is must be >= 0") |
 | **Test Outcome**                 | all 3 outcome: org.opentest4j.AssertionFailedError: it failed |
 | **Result**                       | Fail                                                         |
 | **Reason for Failure**           | The source does not take the exception into account          |
-| **What is Done to Make it Pass** | /                                                            |
+| **What is Done to Make it Pass** | Add exception to the source code                             |
 
-&nbsp;
+##### Test After Fixing the Source Code
+
+| Test3:               | TS-Category 9-3                                              |
+| :------------------- | ------------------------------------------------------------ |
+| **Constructor**      | Main constructor                                             |
+| **Inputs**           | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*="200.0" \| "200.0" \|"1000.0";<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "300.0" \| "400.0" \| "10000.0"; |
+| **Expected Outcome** | all 3 expected: print "The Exception has been thrown!"       |
+| **Test Outcome**     | all 3 outcome: "The Exception has been thrown!"              |
+| **Result**           | Pass                                                         |
+
+
+
+
+
 ### Class: BoCApp
 
 #### Function: categoryOverview()

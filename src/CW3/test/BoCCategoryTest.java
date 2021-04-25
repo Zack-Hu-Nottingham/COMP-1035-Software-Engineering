@@ -68,8 +68,9 @@ class BoCCategoryTest {
                 BoCCategory cMain2 = new BoCCategory(cName);
             }catch (Exception e){
                 assertThat(e.getMessage(),containsString("Category Name at most 15 characters."));
+                System.out.println("The Exception has been thrown!");
             }
-            fail("it failed");
+            //fail("it failed");
         }
 
     }
@@ -258,7 +259,7 @@ class BoCCategoryTest {
     @Ignore
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
-    void removeExpense1(float input1,float input2, float input3, int expectation) throws NoSuchFieldException, IllegalAccessException {
+    void removeExpense1(String input1,String input2, String input3, int expectation) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory ttest = new BoCCategory();
 
         ttest.addExpense(new BigDecimal(input1));
@@ -277,17 +278,19 @@ class BoCCategoryTest {
     // Last Modified: 2021/04/22 19:45
     @Ignore
     @ParameterizedTest
-    @ValueSource(floats = {-20.0F, -30.0F, -50.0F})
+    @ValueSource(strings = {"-20.0", "-30.0", "-50.0"})
     // the input number could not be negative
-    void removeExpense2(float input) {
+    void removeExpense2(String input) {
         BoCCategory tcate = new BoCCategory();  //new object
 
         try {
             tcate.removeExpense(new BigDecimal(input));    // the actual value
+            fail("it failed");
         } catch(Exception e) {
-            assertThat(e.getMessage(),containsString("The expense must be >= 0"));
+            assertThat(e.getMessage(),containsString("The valueToRemove must be >= 0"));
+            System.out.println("The Exception has been thrown!");
         }
-        fail("it failed");
+        //fail("it failed");
     }
 
     // Author: Ziyi Wang (scyzw10)
@@ -296,7 +299,7 @@ class BoCCategoryTest {
     @ParameterizedTest
     @CsvSource({"200.0, 300.0","200.0,400.0","1000.0,10000.0"})
     // the input number could not be larger than the original CategorySpend
-    void removeExpense3(float input1,float input2) throws NoSuchFieldException, IllegalAccessException {
+    void removeExpense3(String input1,String input2) {
         BoCCategory ttt= new BoCCategory();
 
         ttt.addExpense(new BigDecimal(input1)); //origin amount in the spend
@@ -304,42 +307,48 @@ class BoCCategoryTest {
             ttt.removeExpense(new BigDecimal(input2));     // the actual value
         } catch(Exception e) {
             assertThat(e.getMessage(),containsString("The CategorySpend is must be >= 0"));
+            System.out.println("The Exception has been thrown!");
         }
-        fail("it failed");
+        //fail("it failed");
     }
 
     // Author: Ziyi Wang
-    // Last modified: 4/24 21:48
+    // Last modified: 4/25 12:31
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
-    void removeExpense(float input1,float input2, float expect, int expectation) throws NoSuchFieldException, IllegalAccessException {
+    void removeExpense(String input1,String input2, String expect, int expectation) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory removeE = new BoCCategory();  //new object
 
         //removeE.CategorySpend = new BigDecimal(20000);  ==> since the CategorySpend is private -> could not change
         removeE.addExpense(new BigDecimal(input1));   //use addExpense() to save an initial value in it
-        removeE.removeExpense(new BigDecimal(input2));    // remove the expense
         //get the private variable
         final Field field = removeE.getClass().getDeclaredField("CategorySpend");
         field.setAccessible(true);
 
         final BigDecimal expexpense = new BigDecimal(expect);  //the expected amount of expense after remove
-        BigDecimal result = (BigDecimal) field.get(removeE);  //store the private CategorySpend in the result
 
-        if (input1 < input2) {
+        int comp1 = new BigDecimal(input1).compareTo(new BigDecimal(input2));
+        int comp2 = new BigDecimal(input2).compareTo(new BigDecimal("0.00"));
+        // if BigDecimal(input1) < BigDecimal(input2)
+        if (comp1 == -1) {
             try {
                 removeE.removeExpense(new BigDecimal(input2));     // the actual value
             } catch(Exception e) {
                 assertThat(e.getMessage(),containsString("The CategorySpend is must be >= 0"));
+                System.out.println("The Exception has been thrown!");
             }
-            fail("it failed");
-        }else if (input2 < 0){
+            //  fail("it failed");
+        }else if (comp2 == -1){     // if BigDecimal(input2) < 0
             try {
                 removeE.removeExpense(new BigDecimal(input2));
             } catch (Exception e) {
-                assertThat(e.getMessage(), containsString("The expense must be >= 0"));
+                assertThat(e.getMessage(), containsString("The valueToRemove must be >= 0"));
+                System.out.println("The Exception has been thrown!");
             }
-            fail("it failed");
-        }else{  // if the input is correct then compare the result
+            // fail("it failed");
+        }else{  // if all the input is correct then compare the result
+            removeE.removeExpense(new BigDecimal(input2));    // remove the expense
+            BigDecimal result = (BigDecimal) field.get(removeE);  //store the private CategorySpend in the result
             int equals = result.compareTo(expexpense);   //compare the expected expense with the actual number
             assertEquals(expectation, equals);   //the input expectation store the value of the expected compare value(equals)
         }

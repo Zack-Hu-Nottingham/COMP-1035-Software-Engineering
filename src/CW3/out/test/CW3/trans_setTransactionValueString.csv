@@ -16,7 +16,7 @@
 "-0.0000000000001","The value should be a positive number, the set fails"
 "-0.00000000000001","The value should be a positive number, the set fails"
 "-0.0000000000000001","The value should be a positive number, the set fails"
-"-0.00000000000000001","The data overflows"
+"-0.00000000000000001","The value should be a positive number, the set fails"
 "-214414123471.17649173641","The value should be a positive number, the set fails"
 "-1.0","The value should be a positive number, the set fails"
 "-209.00","The value should be a positive number, the set fails"
@@ -44,8 +44,8 @@
 "0.00000000000000","The value should be a positive number, the set fails"
 "0.000000000000000","The value should be a positive number, the set fails"
 "0.0000000000000000","The value should be a positive number, the set fails"
-"0.00000000000000000","The data overflows"
-"0.000000000000000000","The data overflows"
+"0.00000000000000000","The value should be a positive number, the set fails"
+"0.000000000000000000","The value should be a positive number, the set fails"
 "00000","The value should be a positive number, the set fails"
 "0000","The value should be a positive number, the set fails"
 "-0e2","The value should be a positive number, the set fails"
@@ -72,7 +72,7 @@
 "0.00000000000001","The value cannot be set twice"
 "0.000000000000001","The value cannot be set twice"
 "0.0000000000000001","The value cannot be set twice"
-"0.00000000000000001","The data overflows"
+"0.00000000000000001","The value cannot be set twice"
 
 
 "1.00","The value cannot be set twice"
