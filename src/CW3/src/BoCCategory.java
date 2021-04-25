@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.security.InvalidParameterException;
 
 public class BoCCategory {
 	private String CategoryName;
@@ -44,7 +45,11 @@ public class BoCCategory {
 		CategoryName = newName;
 	}
 
+	// Author: Ziyi Wang (scyzw10)
+	// Last modified: 2021/4/25 11:00
+	// Reason: The type of the parameter should be Float
 	public void setCategoryBudget(BigDecimal newValue) {
+//		BigDecimal newV = new BigDecimal(newValue);		//convert the Float type to BigDecimal
 		// 1 means bigger, -1 means smaller, 0 means same
 		if (newValue.compareTo(new BigDecimal("0.00")) == 1) {
 			CategoryBudget = newValue;
@@ -55,8 +60,22 @@ public class BoCCategory {
 		CategorySpend = CategorySpend.add(valueToAdd);
 	}
 
-	public void removeExpense(BigDecimal valueToRemove) {
+	// Author: Ziyi Wang (scyzw10)
+	// Last modified: 2021/4/25 11:19
+	// Reason: Both value of valueToRemove and the CategorySpend after remove could not less than zero
+	// 		   Add exception to the source code
+	public void removeExpense(BigDecimal valueToRemove)throws InvalidParameterException {
+		//if valueToRemove < 0, then comp = -1
+		int comp1 = valueToRemove.compareTo(new BigDecimal(0));
+		if (comp1 == -1){
+			throw new InvalidParameterException("The valueToRemove must be >= 0");
+		}
 		CategorySpend = CategorySpend.subtract(valueToRemove);
+		//if result(the value of CategorySpend after remove) < 0, then comp = -1
+		int comp2 = CategorySpend.compareTo(new BigDecimal(0));
+		if (comp2 == -1) {
+			throw new InvalidParameterException("The CategorySpend is must be >= 0");
+		}
 	}
 
 	public void resetBudgetSpend() {
