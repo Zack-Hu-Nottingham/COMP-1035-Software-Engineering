@@ -2,9 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -195,28 +193,33 @@ class BoCCategoryTest {
 //        stest.setCategoryBudget(input);    // set the budget with float type
 //    }
 
+
     // Author : LinCHEN(biylc2)
     // Last Modify: 2021/04/24 20:44
     @DisplayName("tests for add Expense")
     @ParameterizedTest
-    @CsvSource({",Illegal input","-2e12,-Illegal input","-2.134,Illegal input","0.00,0.00","+.0,+.0","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
+    @CsvSource({",Illegal input","-2e12,Illegal input","-2.134,Illegal input","0.00,0.00","+.0,+.0","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
 
     void addExpenseTest(String bigNumber,String expected) {
 
         BoCCategory addT1= new BoCCategory("Tester");
         BigDecimal fiNum= null;
-        //only match positive numbers without negative sign
-
-
-
-        if(bigNumber == null){
-            try{
+        if(bigNumber==null) {
+            try {
                 addT1.addExpense(new BigDecimal(bigNumber));
-            }catch (NullPointerException e1){
-                assertThat(e1.getMessage(), containsString(expected));
-                return;
+                assertNotNull(bigNumber, "The input Number cannot be null");
+            } catch (NullPointerException e1) {
+                try{
+                    addT1.addExpense(null);
+                }catch(NullPointerException e2) {
+                    assertTrue(e2.getMessage().contains(expected));
+                    return;
+                }
             }
         }
+
+
+
         boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
         boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]{0,16}");
 
@@ -224,10 +227,12 @@ class BoCCategoryTest {
             if (strResult2== false){
                 try{
                     addT1.addExpense(new BigDecimal(bigNumber));
+                    fail("Illegal argument haven't been caught");
                 }catch (IllegalArgumentException e2){
-                    assertThat(e2.getMessage(), containsString(expected));
+                    assertTrue(e2.getMessage().contains(expected));
+                    return;
                 }
-                fail("The expected error messsage doesn't print as expected");
+
             }
         }
         try{
