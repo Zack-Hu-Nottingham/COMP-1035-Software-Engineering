@@ -22,7 +22,7 @@ public class BoCTransaction {
 			throw new IllegalArgumentException("Transaction name should not be null.");
 		}
 		if (tName.length() > 25) {
-			throw new IllegalArgumentException("Transaction budget should greater than zero.");
+			throw new IllegalArgumentException("Transaction name should be limited to 25 characters.");
 		}
 		if (tCat < 0) {
 			throw new IllegalArgumentException("Transaction category should not be minus.");

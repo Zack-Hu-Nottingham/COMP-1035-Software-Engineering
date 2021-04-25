@@ -60,7 +60,7 @@ class BoCTransactionTest {
     @DisplayName("Test2 for main constructor")
     void MainBoCTransaction2() {
         try {
-            BoCTransaction boc = new BoCTransaction("", new BigDecimal(200), 2);
+            BoCTransaction boc = new BoCTransaction(null, new BigDecimal(200), 2);
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "Transaction name should not be null.");
             return;
@@ -108,7 +108,7 @@ class BoCTransactionTest {
         try {
             BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
         } catch (IllegalArgumentException e) {
-            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
+            assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
             return;
         }
         fail("No exception thrown.");
