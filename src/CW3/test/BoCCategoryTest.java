@@ -205,6 +205,7 @@ class BoCCategoryTest {
 
         BoCCategory addT1= new BoCCategory("Tester");
         BigDecimal fiNum= null;
+        //If bigNumber is null,the exception is expected with correct error message "Illegal input"
         if(bigNumber==null) {
             try {
                 addT1.addExpense(new BigDecimal(bigNumber));
@@ -220,11 +221,11 @@ class BoCCategoryTest {
         }
 
 
-
         boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
-        boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]{0,16}");
-
+        boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]*");
+        // If the bigNumber is not using scientific notation or negative
         if(strResult1==false){
+            //If the bigNumber is negative
             if (strResult2== false){
                 try{
                     addT1.addExpense(new BigDecimal(bigNumber));
@@ -236,14 +237,8 @@ class BoCCategoryTest {
 
             }
         }
-        try{
-            fiNum= new BigDecimal(bigNumber);
-        }catch (Exception e3){
-            assertEquals(e3.getMessage(),"The big decimal cannot be created");
-        }
 
-
-
+        // Compare the result with expected number
         addT1.addExpense(fiNum);
         BigDecimal expectedNum=new BigDecimal(expected);
         assertEquals(0,expectedNum.compareTo(addT1.CategorySpend()));
