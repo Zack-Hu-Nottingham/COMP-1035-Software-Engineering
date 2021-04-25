@@ -285,12 +285,12 @@ class BoCTransactionTest {
 
     }
 
-        @DisplayName("tests for setTransactionValue")
-        @ParameterizedTest
-        @CsvFileSource(resources = "trans_setTransactionValueString.csv")
 
         // Author: LinCHEN (biylc2)
         // Last modified: 2021/04/23
+        @DisplayName("tests for setTransactionValue")
+        @ParameterizedTest
+        @CsvFileSource(resources = "trans_setTransactionValueString.csv")
 
     void setTransactionValue(String str1,String expected) throws NoSuchFieldException, IllegalAccessException {
         BoCTransaction set1= new BoCTransaction();
@@ -298,6 +298,7 @@ class BoCTransactionTest {
         final Field field = set1.getClass().getDeclaredField("transactionValue");
         field.setAccessible(true);
 
+        // if the string is null, the NullPointerException is expected with the correct error message"The input Number cannot be null"
         if(str1==null) {
             try {
                 set1.setTransactionValue(new BigDecimal(str1));
@@ -312,7 +313,7 @@ class BoCTransactionTest {
             }
         }
         //The following code is to test different type of values,and whether the negative value can be set
-
+        // If the value is non-positive, the IllegalArgumentException is expected and the error message should be "The value should be a positive number, the set fails"
         boolean strResult1 = str1.matches("-?[0-9]+.?[0-9]*");
         boolean strResult2=str1.matches("[+-]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
 
@@ -362,6 +363,7 @@ class BoCTransactionTest {
             set1.setTransactionValue(new BigDecimal("300.00"));
 
         }
+
         //The following code is to test the value can only be set once in the condition of two constructors.
 
             final BoCTransaction set2 = new BoCTransaction(null,new BigDecimal("200.00"),4);
@@ -438,13 +440,10 @@ class BoCTransactionTest {
         }
     }
 
-
-        @DisplayName("tests for isComplete function")
-        @Test
-
         // Author: LinCHEN(biylc2)
         // Last Modify: 2021/04/24 14:37
-
+        @DisplayName("tests for isComplete function")
+        @Test
     void isCompleteTest(){
         String nameSet= "Tester";
         BigDecimal numSet= new BigDecimal("980.08");

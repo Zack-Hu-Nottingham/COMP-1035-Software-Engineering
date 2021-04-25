@@ -22,21 +22,20 @@ At the beginning of each milestone, we would hold a meeting. During that time, w
 
 Report here, by the end of the assignment, how the team has managed the project, e.g.: used version control, organised meetings, divided work, used labels, milestones, issues, etc. etc.
 
-## Test Plan
-###*This is just an example!!*
+# **Test Plan && Test Log**
 
-### Class: BoCTransaction
+## **Class : BoCTransaction**
 
-#### Function: BoCTransaction
+ ### **Function:** &nbsp; &nbsp; **BoCTransaction**
 
-| Function : | BoCTransaction() |
+| Test Plan  |            |
 | :-----------|--------------|
 | Test Date : | 2021/04/18 16:54 |
 | Tester : | Leshan Tan (sqylt2) |
 
 &nbsp;
 
-|Test1:  | TS-Transaction 1-1 |
+|TestID:  | TS-Transaction 1-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default Constructor |
 | **Inputs**                | No parameter |
@@ -48,20 +47,20 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 &nbsp;
-### Class: BoCTransaction
+ 
 
-#### Function: MainBoCTransaction()
+ ### **Function:** &nbsp; &nbsp; **MainBoCTransaction()**
 
-| Function : | MainBoCTransaction() |
+| Test Plan | |
 | :-----------|--------------|
 | Test Date : | 2021/04/24 14:38 |
 | Tester : | Zixiang Hu (scyzh6) |
 
 &nbsp;
 
-|Test1:  | TS-Transaction 2-1 |
+|TestID:  | TS-Transaction 2-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
 | **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> |
 | **Test Outcome**          | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><th>transactionTime</th><tr><td>"A test"</td><td>200</td><td>2</td><td>current time</td></tr></table> | |
@@ -70,9 +69,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
-|Test2:  | TS-Transaction 2-2 |
+|TestID:  | TS-Transaction 2-2 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>""</td><td>200</td><td>2</td></tr></table> |
 | **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
 | **Test Outcome**          | Failed with message "No exception thrown." |
@@ -81,9 +80,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
-|Test3:  | TS-Transaction 2-3 |
+|TestID:  | TS-Transaction 2-3 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr></table> |
 | **Expected Outcome**      | Delta for two Date object created at the same time is less than 1 |
 | **Test Outcome**          | Delta for two Date object created at the same time is less than 1 |
@@ -92,9 +91,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
-|Test4:  | TS-Transaction 2-4 |
+|TestID:  | TS-Transaction 2-4 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>-2</td></tr></table> |
 | **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should not be null. " |
 | **Test Outcome**          | Failed with message "No exception thrown." |
@@ -104,9 +103,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 
-|Test5:  | TS-Transaction 2-5 |
+|TestID:  | TS-Transaction 2-5 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>-200</td><td>2</td></tr></table> |
 | **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction budget should greater than zero." |
 | **Test Outcome**          | Failed with message "No exception thrown." |
@@ -116,9 +115,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 
-|Test5:  | TS-Transaction 2-6 |
+|TestID:  | TS-Transaction 2-6 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Transaction name with more than 25 char"</td><td>200</td><td>2</td></tr></table> |
 | **Expected Outcome**      | Throw `[IllegalArgumentException]`: "Transaction name should be shorter than 25 characters." |
 | **Test Outcome**          | Failed with message "No exception thrown." |
@@ -129,18 +128,18 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-### Class: BoCTransaction
+ 
 
-#### Function: transactionValue()
+ ### **Function:** &nbsp; **transactionValue()**
 
-| Function : | transactionValue() |
+| Test Plan |  |
 | :-----------|--------------|
 | Test Date : | 2021/04/18 14:35 |
 | Tester : | Leshan Tan (sqylt2) |
 
 &nbsp;
 
-|Test1:  | TS-Transaction 4-1 |
+|TestID:  | TS-Transaction 4-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default Constructor |
 | **Inputs**                | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
@@ -152,20 +151,20 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-### Class: BoCTransaction
+ 
 
-#### Function: transactionTime()
+ ### **Function:** &nbsp; **transactionTime()**
 
-| Function : | transactionTime() |
+| Test Plan |  |
 | :-----------|--------------|
 | Test Date : | 2021/04/21 22:46 |
 | Tester : | Zixiang Hu (scyzh6) |
 
 &nbsp;
 
-|Test1:  | TS-Transaction 6-1 |
+|TestID:  | TS-Transaction 6-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | main constructor |
+| **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"A test"</td><td>200</td><td>2</td></tr><tr><td>"Another test"</td><td>200</td><td>3</td></tr><tr><td>null</td><td>null</td><td>2</td></tr></table> |
 | **Expected Outcome**      | current time |
 | **Test Outcome**          | current time |
@@ -178,18 +177,18 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
-### Class: BoCTransaction
+ 
 
-#### Function: setTransactionName()
+ ### **Function:** &nbsp; **setTransactionName()**
 
-| Function : | setTransactionName() |
+| Test Plan |  |
 | :-----------|--------------|
 | Test Date : | 2021/04/23 9:38 |
 | Tester : | Yicun Duan (scyyd3) |
 
 &nbsp;
 
-|Test1:  | TS-Transaction 7-1 |
+|TestID:  | TS-Transaction 7-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
@@ -202,7 +201,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test2:  | TS-Transaction 7-2 |
+|TestID:  | TS-Transaction 7-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnopqrst"</td></tr><tr><td>"What have you done? Eren! You killed all people! No, just 80%. Thank you, Eren."</td></tr></table> |
@@ -215,7 +214,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test3:  | TS-Transaction 7-3 |
+|TestID:  | TS-Transaction 7-3 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>null</td></tr></table> |
@@ -228,7 +227,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test4:  | TS-Transaction 7-4 |
+|TestID:  | TS-Transaction 7-4 |
 |:---------                 |-----------------           |
 | **Constructor**           | BoCTransaction("defaultname", BigDecimal(999.00), 1) |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr></table> |
@@ -241,7 +240,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test5:  | TS-Transaction 7-5 |
+|TestID:  | TS-Transaction 7-5 |
 |:---------                 |-----------------           |
 | **Constructor**           | BoCTransaction("defaultname", null, 2) |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"886"</td></tr></table> |
@@ -254,19 +253,19 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
-### Class: BoCTransaction
+ 
 
 &nbsp;
-#### Function: transactionName()
+ ### **Function:** &nbsp; **transactionName()**
 
-| Function : | transactionName() |
+| Test Plan |  |
 | :-----------|--------------|
 | Test Date : | 2021/04/21 |
 | Tester : | Yingxiao Huo (scyyh9) |
 
 &nbsp;
 
-|Test1:  | TS-Transaction 8-1 |
+|TestID:  | TS-Transaction 8-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
@@ -277,16 +276,16 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 
 &nbsp;
-### Class: BocTransaction
 
-### Function: setTransactionValue()
 
-| Function : | setTransactionValue() |
+### **Function:** &nbsp; **setTransactionValue()**
+
+| Test Plan |  |
 | :-----------|--------------|
 | Test Date : | 2021/04/24 |
 | Tester : | Lin Chen (biylc2) |
 
-|Test1:  | TS-Transaction 9-1 |
+|TestID:  | TS-Transaction 9-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>null</td></tr></table> |
@@ -294,9 +293,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no `[NullPointerException]` is thrown</td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | \ |
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** | Judge whether the input is null. If it is null throw a **NullPointerException** with the correct error message:"The value cannot be null"  |
 
-|Test2:  | TS-Transaction 9-2 |
+
+
+|TestID:  | TS-Transaction 9-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"123hello"</td><td>"test"</td><td>" "</td></tr><tr></table> |
@@ -306,7 +307,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
-|Test3:  | TS-Transaction 9-3 |
+|TestID:  | TS-Transaction 9-3 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"-0e2"</td><td>""0e2"</td><td>"0e14"</td><td>"-0.0"--"-0.0000000000000000"</td></tr><tr><td>"0000"</td><td>"+0"</td><td>"-0"</td><td>"+.0"</td><td>"-.0"</td></tr><tr><td>"-214414123471.17649173641"</td><td>"-1.0"</td><td>"-209.00"</td><td>"-1.23E10"</td><td>"-0.1"--"-0.0000000000000001"</td></tr><tr></table> |
@@ -314,10 +315,10 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>no IllegalArgumentException is thrown </td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | no IllegalArgumentException is thrown |
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** | Judge whether the input is non-positive. If it is, throw an **IllegalArgumentException** with the correct error message:"The value should be a positive number, the set fails"  |
 
 
-|Test4:  | TS-Transaction 9-5 |
+|TestID:  | TS-Transaction 9-4 |
 |:---------                 |-----------------   |
 | **Constructor**           | Default constructor|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
@@ -328,7 +329,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 
 
-|Test5:  | TS-Transaction 9-5 (setTwice)|
+|TestID:  | TS-Transaction 9-5 (setTwice)|
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor with above set value /parameter constructer|
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr></tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td><tr></table> |
@@ -336,19 +337,28 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td> no`[UnsupportedOperationException] is thrown</td></tr></table> |
 | **Result**                       |Fail |
 | **Reason for Failure**           | no`[UnsupportedOperationException] is thrown|
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** |Using `[isComplete]` function to judge whether the transaction value has been set. If it has been set, an **UnsupportedOperationException** will be thrown with error message "The value cannot be set twice" |
 
 
 &nbsp;
-### Class: BoCTransaction
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Transaction 9-1|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/25 11:34 |\  |Fail| Pass+ |
+| TS-Transaction 9-2|\ |\ |Pass+ | Pass+ |
+| TS-Transaction 9-3|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/25 11:34 |\ |Fail| Pass+ |
+| TS-Transaction 9-4|\ | \ |Pass+ | Pass+ |
+| TS-Transaction 9-5|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/25 11:34 |\ |Fail| Pass+ |
+ 
+&nbsp;
 
-#### Function: isComplete()
-| Function : | setTransactionValue() |
+ ### **Function:** &nbsp; isComplete()
+| Test Plan |  |
 | :-----------|--------------|
 | Test Date : | 2021/04/24 |
 | Tester : | Lin Chen (biylc2) |
 
-|Test1:  | TS-Transaction 10-1 |
+|TestID:  | TS-Transaction 10-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | none |
@@ -358,7 +368,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 
-|Test2:  | TS-Transaction 10-2 |
+|TestID:  | TS-Transaction 10-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Main constructor |
 | **Inputs**                | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>BoCTransaction("Tester","980.98",0)</td></tr><tr><td>BoCTransaction(null,"980.98",0)</td></tr><tr><td>BoCTransaction("Tester",null,0)</td></tr></table> |
@@ -370,18 +380,25 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
-### Class: BoCTransaction
 
-#### Function: toString()
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Transaction 10-1|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/24 14:25|\  |Pass+ | Pass+ |
+| TS-Transaction 10-2|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/24 14:25 |\ |Pass+ | Pass+ |
 
-| Function : | toString() |
+ 
+
+ ### **Function:** &nbsp; toString()
+
+| Test Plan | toString() |
 | :-----------|--------------|
 | Test Date : | 2021/04/21 |
 | Tester : | Yingxiao Huo (scyyh9) |
 
 &nbsp;
 
-|Test1:  | TS-Transaction 11-1 |
+|TestID:  | TS-Transaction 11-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Main constructor |
 | **Inputs**                |  <table><tr><th>Name</th><th>Value</th><th>result</th></tr><tr><td>"Yingxiao Huo"</td><td>100</td><td>"Yingxiao Huo - ¥100"</td></tr><tr><td>"Yicun Duan"</td><td>9999999</td><td>"Yicun Duan - ¥9999999"</td></tr><tr><td>"Zixiang Hu"</td><td>-123123</td><td>"Value can not be negative number"</td></tr><tr><td>"Boon Giin Lee"</td><td>0</td><td>"Boon Giin Lee - ¥0"</td></tr><tr><td>null</td><td>1</td><td>"Unknown Name - ¥1"</td></tr><tr><td>Bob</td><td>null</td><td>"Bob - ¥Uknown value"</td></tr><tr><td>null</td><td>null</td><td>"Unknown Name - ¥Uknown value"</td></tr></table>|
@@ -395,18 +412,18 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
-### Class: BoCCategory
+  
 
-#### Function: BocCategory()
+ ### **Function:** &nbsp; BocCategory()
 
-| Function : | BocCategory() |
+| Test Plan | BocCategory() |
 | :-----------|--------------|
 | Test Date : | 2021/04/22 21:20 |
 | Tester : | Leshan Tan (sqylt2) |
 
 &nbsp;
 
-|Test1:  | TS-Category 1-1 |
+|TestID:  | TS-Category 1-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | No parameter |
@@ -417,16 +434,16 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
-### Class: BoCCategory
+  
 
-#### Function: BocCategory(String newTitle)
+ ### **Function:** &nbsp; BocCategory(String newTitle)
 
 | Function :  | BocCategory()       |
 | :---------- | ------------------- |
 | Test Date : | 2021/04/24 23:07    |
 | Tester :    | Ziyi Wang (scyzw10) |
 
-| Test1:                           | TS-Category 2-1                                              |
+| TestID:                           | TS-Category 2-1                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Main constructor                                             |
 | **Inputs**                       | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br>where *cName* = "test1" \| "test2" \| "test3" \| "testWithMoreThan15Chars" |
@@ -438,7 +455,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ##### Test After Fixing the Source Code
 
-| Test1:               | TS-Category 2-1                                              |
+| TestID:               | TS-Category 2-1                                              |
 | :------------------- | ------------------------------------------------------------ |
 | **Constructor**      | Main constructor                                             |
 | **Inputs**           | BoCCategory *<u>cMain1</u>* =**BoCCategory**(*cName*);<br>where *cName* = "test1" \| "test2" \| "test3" \| "testWithMoreThan15Chars" |
@@ -448,11 +465,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-### Class: BoCCategory
+  
 
-#### Function: categoryName()
+ ### **Function:** &nbsp; categoryName()
 
-| Function : | categoryName() |
+| Test Plan | categoryName() |
 | :-----------|--------------|
 | Test Date : | 2021/04/23 20:36 |
 | Tester : | Yingxiao Huo (scyyh9) |
@@ -462,7 +479,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test1:  | TS-Category 3-1 |
+|TestID:  | TS-Category 3-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/>|
@@ -475,11 +492,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
-### Class: BoCCategory
+  
 
-#### Function: categoryBudget()
+ ### **Function:** &nbsp; categoryBudget()
 
-| Function : | categoryBudget() |
+| Test Plan | categoryBudget() |
 | :-----------|--------------|
 | Test Date : | 2021/04/23 18:32 |
 | Tester : | Yicun Duan (scyyd3) |
@@ -489,7 +506,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test1:  | TS-Category 4-1 |
+|TestID:  | TS-Category 4-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("7.77E+10")</td></tr><tr><td>BigDecimal("456e-9")</td></tr><tr><td>BigDecimal("01010101000")</td></tr><tr><td>BigDecimal("314.15926")</td></tr></table> |
@@ -502,7 +519,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test2:  | TS-Category 4-2 |
+|TestID:  | TS-Category 4-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | No parameter |
@@ -515,16 +532,16 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-#### Function: CategorySpend()
+ ### **Function:** &nbsp; CategorySpend()
 
-| Function : | CategorySpend() |
+| Test Plan | CategorySpend() |
 | :-----------|--------------|
 | Test Date : | 2021/04/23 11:45 |
 | Tester : | Leshan Tan (sqylt2) |
 
 &nbsp;
 
-|Test1:  | TS-Category 5-1 |
+|TestID:  | TS-Category 5-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | No parameter |
@@ -536,7 +553,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 
-|Test2:  | TS-Category 5-2 |
+|TestID:  | TS-Category 5-2 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> |
@@ -549,11 +566,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
-### Class: BoCCategory
+  
 
-#### Function: setCategoryName()
+ ### **Function:** &nbsp; setCategoryName()
 
-| Function : | setCategoryName() |
+| Test Plan | setCategoryName() |
 | :-----------|--------------|
 | Test Date : | 2021/04/23 20:41 |
 | Tester : | Yingxiao Huo (scyyh9) |
@@ -562,7 +579,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test1:  | TS-Category 6-1 |
+|TestID:  | TS-Category 6-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/>|
@@ -572,18 +589,18 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-### **Class:** &nbsp; BoCCategory
+ 
 
-#### **Function :** &nbsp; resetBudgetSpend()
+#### **Function :** &nbsp; addExpense()
 
 
-| Function : | addExpense()|
+| Test Plan | addExpense()|
 | :-----------|--------------|
 | Test Date : | 2021/04/24 |
-| Tester : | Lin CHEN (biylc2) |
+| Tester : | Lin Chen (biylc2) |
 &nbsp;
 
-|Test1:  | TS-Category 8-1 |
+|TestID:  | TS-Category 8-1 |
 |:---------                 |-----------------            |
 | **Constructor**           |   Main constructor with settled categoryname("Tester")      |
 | **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>null</td></tr></table> |
@@ -591,10 +608,10 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><th>addExpense</th></tr><tr><td>Error message is not correct </td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | Error message is not correct |
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** | Judge when the input is null, then the function will throw a NullPointerException with error message "Illegal input"  |
 &nbsp;
 
-|Test2:  | TS-Category 8-2 |
+|TestID:  | TS-Category 8-2 |
 |:---------                 |-----------------            |
 | **Constructor**           |   Main constructor with settled categoryname("Tester")      |
 | **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>"-2e12"</td><td>"-2.134"</td></tr></table> |
@@ -602,46 +619,64 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><th>addExpense</th></tr><tr><td>No exception caught</td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | No exception caught |
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** | Judge whether the input contains a negative sign, then the function will throw an IllegalArgumentTransaction with error message "Illegal input" |
 &nbsp;
 
 &nbsp;
-|Test3:  | TS-Category 8-3 |
+|TestID:  | TS-Category 8-3 |
 |:---------                 |-----------------            |
 | **Constructor**           |  Main constructor with settled categoryname("Tester")      |
 | **Inputs**    |<table border="1"><tr><th>addExpense</th></tr><tr><td>"0.00</td><td>"2.13443343"</td><td>"2e12"</td><td>"2147483647.0012343</td><td>"+.0"</td></tr></table> |
-| **Expected Outcome**  | true |
-| **Test Outcome**          | true |
+| **Expected Outcome**  | <table border="1"><tr><th>addExpense</th></tr><tr><td>"0.00</td><td>"2.13443343"</td><td>"2e12"</td><td>"2147483647.0012343</td><td>"+.0"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>addExpense</th></tr><tr><td>"0.00</td><td>"2.13443343"</td><td>"2e12"</td><td>"2147483647.0012343</td><td>"+.0"</td></tr></table> |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
-### **Class:** &nbsp; BoCCategory
+&nbsp;
+
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Category 8-1|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/25 15:16 |\  |Fail| Pass+ |
+| TS-Category 8-2|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/25 15:16 |\ |Fail| Pass+ |
+| TS-Category 8-3|\ |\ |Pass+| Pass+ |
+
+&nbsp;
+
+
+
+ 
 
 #### **Function :** &nbsp; resetBudgetSpend()
 
 
-| Function : | resetBudgetSpend()|
+| Test Plan | resetBudgetSpend()|
 | :-----------|--------------|
 | Test Date : | 2021/04/18 |
-| Tester : | Lin CHEN (biylc2) |
+| Tester : | Lin Chen (biylc2) |
 &nbsp;
 
-|Test1:  | TS-Category 10-1 |
+|TestID:  | TS-Category 10-1 |
 |:---------                 |-----------------            |
 | **Constructor**           |    Default constructor       |
 | **Inputs**                |    CategorySpend = new BigDecimal("20000.0292")         |
 | **Expected Outcome**      |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"      |
 | **Test Outcome**          |   "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"     |
+| **Result**                       | Pass |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
 &nbsp;
 
 &nbsp;
-### Class: BoCCategory
+  
 
-#### Function: getRemainingBudget()
+ ### **Function:** &nbsp; getRemainingBudget()
 
-| Function : | getRemainingBudget() |
+| Test Plan | getRemainingBudget() |
 | :-----------|--------------|
 | Test Date : | 2021/04/23 19:48 |
 | Tester : | Yicun Duan (scyyd3) |
@@ -651,7 +686,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test1:  | TS-Category 11-1 |
+|TestID:  | TS-Category 11-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("3.1415926")</td></tr></table> <br/> <table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("99")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("4.1415926")</td></tr></table>|
@@ -668,18 +703,18 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 &nbsp;
-### **Class:** &nbsp; BoCCategory
+ 
 
 #### **Function :** &nbsp; toString()
 
-| Function : | toString()|
+| Test Plan | toString()|
 | :-----------|--------------|
 | Test Date : | 2021/04/18 21:14 |
-| Tester : | LinCHEN (biylc2)|
+| Tester : | Lin Chen (biylc2)|
 
 &nbsp;
 
-|Test1:  | TS-Category 12-1 |
+|TestID:  | TS-Category 12-1 |
 |:---------                 |-----------------            |
 | **Constructor**           |    Default constructor      |
 | **Inputs**                |    No parameter             |
@@ -691,7 +726,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test2:  | TS-Category 12-2 |
+|TestID:  | TS-Category 12-2 |
 |:---------                 |-----------------           |
 | **Constructor**           |     Main constructor       |
 | **Inputs**                |    CategoryName: "Negative"; CategoryBudget: BigDecimal("10000.00"); CategorySpend: BigDecimal("20000.00")    |
@@ -699,12 +734,12 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          |  "Negative(¥10000.00) - Est. ¥20000.00 (¥-10000.00 Remaining)"     |
 | **Result**                       |  Fail   |
 | **Reason for Failure**           | The category Number is negative  |
-| **What is Done to Make it Pass** |  \   |
+| **What is Done to Make it Pass** | Detect when the budget number is negative,change the printed message  |
 
 
 &nbsp;
 
-|Test2:  | TS-Category 12-3 |
+|TestID:  | TS-Category 12-3 |
 |:---------                 |-----------------           |
 | **Constructor**           |     Main constructor       |
 | **Inputs**                |    CategoryName: "Positive"; CategoryBudget: BigDecimal("3457834.023423"); CategorySpend: BigDecimal("667433.00564")    |
@@ -716,16 +751,27 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-### Class: &nbsp; BoCTransaction
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Category 12-1|\ |\  |Fail| Pass+ |
+| TS-Category 12-2|**Modifier:** Lin Chen(biylc2) **Modify Time:** 2021/04/24 23:27 |\ |Fail| Pass+ |
+| TS-Category 12-3|\ |\ |Pass+| Pass+ |
 
-#### Function:  transactionCategory()
+&nbsp;
+
+&nbsp;
+
+  
+
+ ### **Function:** &nbsp;  transactionCategory()
 
 | Function :  | transactionCategory() |
 | :---------- | --------------------- |
 | Test Date : | 2021/4/18 21:15       |
 | Tester :    | Ziyi Wang (scyzw10)             |
 
-| Test1:                           | TS-Transaction 5-1                                           |
+| TestID:                           | TS-Transaction 5-1                                           |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Default constructor                                          |
 | **Inputs**                       | **BoCTransaction**("wzy", new BigDecimal("2000"), *input*);<br>where *input* = 0 \| 1 \| 5 \| 100 |
@@ -737,16 +783,16 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-### Class: BoCCategory
+  
 
-#### Function:  setCategoryBudget()
+ ### **Function:** &nbsp;  setCategoryBudget()
 
-| Function : | setCategoryBudget() |
+| Test Plan | setCategoryBudget() |
 | :-----------|--------------|
 | Test Date : | 2021/4/23 19：24 |
 | Tester : | Ziyi Wang (scyzw10) |
 
-| Test1:                           | TS-Category7-1                                               |
+| TestID:                           | TS-Category7-1                                               |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Main constructor                                        |
 | **Inputs**                       | 1. **setCategoryBudget**(*input*)<br>*input*= 20.0F;         |
@@ -760,7 +806,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Class: &nbsp; BoCCategory
 
-#### Function:  removeExpense()
+ ### **Function:** &nbsp;  removeExpense()
 
 | Function: |removeExpense() |
 | :-----------|--------------|
@@ -768,7 +814,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | Tester: | Ziyi Wang (scyzw10) |
 &nbsp;
 
-|Test1:  | TS-Category 9-1 |
+|TestID:  | TS-Category 9-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*="0.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"1000.0"\|"100"\|"100"\|"100" \|"2.0"\|"3.0"\|"10.0"\|"200.0"\|"10000"\|"1000000.0000";<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "0.0"\|"100"\|"800"\|"200.02"\|"200.02"\|"200.02"\|"200.0002"\|"0.1"\|"0.01"\|"0.001"\|"2.0" \|"3.0"\|"10.0"\|"200.0"\|"1314.1314521"\|"1000000.0000";<br>3. BigDecimal **expense** = new BigDecimal(*input3*); <br>where *input3* = "0.0"\|"900"\|"200"\|"799.98"\|"700"\|"800"\|"799.9998"\|"99.9"\|"99.99"\|"99.999"\|"0"\|"0"\|"0"\|"0" \|"8685.8685479"\|"0"; |
@@ -780,7 +826,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-| Test2:                           | TS-Category 9-2                                              |
+| TestID:                           | TS-Category 9-2                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Default constructor                                          |
 | **Inputs**                       | **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "-20.0" \| "-30.0" \| "-50.0"; |
@@ -792,7 +838,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ##### Test After Fixing the Source Code
 
-| Test2:               | TS-Category 9-2                                              |
+| TestID:               | TS-Category 9-2                                              |
 | :------------------- | ------------------------------------------------------------ |
 | **Constructor**      | Default constructor                                          |
 | **Inputs**           | **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "-20.0" \| "-30.0" \| "-50.0"; |
@@ -802,7 +848,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-| Test3:                           | TS-Category 9-3                                              |
+| TestID:                           | TS-Category 9-3                                              |
 | :------------------------------- | ------------------------------------------------------------ |
 | **Constructor**                  | Main constructor                                             |
 | **Inputs**                       | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*="200.0" \| "200.0" \|"1000.0";<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "300.0" \| "400.0" \| "10000.0"; |
@@ -814,7 +860,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ##### Test After Fixing the Source Code
 
-| Test3:               | TS-Category 9-3                                              |
+| TestID:               | TS-Category 9-3                                              |
 | :------------------- | ------------------------------------------------------------ |
 | **Constructor**      | Main constructor                                             |
 | **Inputs**           | 1. **addExpense**(new BigDecimal(*input1*)); <br>where *input1*="200.0" \| "200.0" \|"1000.0";<br>2. **removeExpense**(new BigDecimal(*input2*)); <br>*input2*= "300.0" \| "400.0" \| "10000.0"; |
@@ -828,9 +874,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Class: BoCApp
 
-#### Function: categoryOverview()
+ ### **Function:** &nbsp; categoryOverview()
 
-| Function : | categoryOverview() |
+| Test Plan | categoryOverview() |
 | :-----------|--------------|
 | Test Date : | 2021/04/24 10:09 |
 | Tester : | Yicun Duan (scyyd3) |
@@ -839,7 +885,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 &nbsp;
 
-|Test1:  | TS-App 3-1 |
+|TestID:  | TS-App 3-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
 | **Inputs**                | <table><tr><th>CategoryName: </th><th>CategoryBudget: </th></tr><tr><td>"Unknown"</td><td>&nbsp;</td></tr><tr><td>"Bills"</td><td>BigDecimal("120.00")</td></tr><tr><td>"Groceries"</td><td>BigDecimal("75.00")</td></tr><tr><td>"Soical"</td><td>BigDecimal("100.00")</td></tr></table> |
@@ -850,3 +896,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
+## Test Log
+&nbsp;
+
+### Class BoCTransaction
