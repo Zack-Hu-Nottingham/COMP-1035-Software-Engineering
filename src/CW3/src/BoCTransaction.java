@@ -7,11 +7,14 @@ public class BoCTransaction {
 	private int transactionCategory;
 	private Date transactionTime;
 
+	// Author: Leshan Tan (sqylt2)
+	// Last modified: 4/26 9:05
+	// Reason to change: the initial transactionName should be "Pending Transaction]" and transaction Date should be the current time
 	public BoCTransaction() {
-		transactionName = null;
+		transactionName = "[Pending Transaction]";
 		transactionValue = null;
 		transactionCategory = 0;
-		transactionTime = null;
+		transactionTime = new Date();
 	}
 
 	// Author: Zixiang Hu (20215538)
