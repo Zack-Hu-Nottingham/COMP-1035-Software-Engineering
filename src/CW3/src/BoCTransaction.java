@@ -14,16 +14,38 @@ public class BoCTransaction {
 		transactionTime = null;
 	}
 
-	public BoCTransaction(String tName, BigDecimal tValue, int tCat) {
+	// Author: Zixiang Hu (20215538)
+	// Last modified: 4/25 19:01
+	// Reason to change:
+	public BoCTransaction(String tName, BigDecimal tValue, int tCat) throws IllegalArgumentException{
+		if (tName == null) {
+			throw new IllegalArgumentException("Transaction name should not be null.");
+		}
+		if (tName.length() > 25) {
+			throw new IllegalArgumentException("Transaction name should be limited to 25 characters.");
+		}
+		if (tCat < 0) {
+			throw new IllegalArgumentException("Transaction category should not be minus.");
+		}
+		if (tValue.compareTo(new BigDecimal(0)) < 1) {
+			throw new IllegalArgumentException("Transaction budget should greater than zero.");
+		}
+
 		transactionName = tName;
 		transactionValue = tValue;
 		transactionCategory = tCat;
 		transactionTime = new Date();
 	}
 
+	//author: Yingxiao Huo
+	//Last modify: 22021/4/24
+	//Reason: when transaction name is null or is longer than 25 characters, the program should report an error.
 	public String transactionName() throws IllegalArgumentException{
 		if (transactionName == null){
 			throw new IllegalArgumentException("name is not set.");
+		}
+		else if (transactionName.length() > 25){
+			throw new IllegalArgumentException("Name can not longer than 25 characters.");
 		}
 		else{
 			return transactionName;
@@ -52,17 +74,33 @@ public class BoCTransaction {
 		}
 
 		if (tName.length() > 25) {
-			tName.substring(0, 25);
+			tName = tName.substring(0, 25);
 		}
 
 		transactionName = tName;
 	}
 
-	public void setTransactionValue(BigDecimal tValue) {
-		if (tValue.compareTo(new BigDecimal("0.00")) == 1) {
-			// 1 means bigger, -1 means smaller, 0 means same
+	//Author: LinCHEN(biylc2)
+	//Last Modify:2021/04/25
+	//Reason: The previous function cannot handle the situation that when the value is non-positive and does not throw an expection as expected
+	public void setTransactionValue(BigDecimal tValue) throws UnsupportedOperationException,NullPointerException,IllegalArgumentException,UnsupportedOperationException {
+
+		if(tValue== null){
+			throw new NullPointerException("The value cannot be null.");
+		}else if(tValue.compareTo(BigDecimal.ZERO) <=0){
+			throw new IllegalArgumentException("The value should be a positive number, the set fails");
+		}else if(isComplete()==1 || isComplete()==3) {
+			throw new UnsupportedOperationException("The value cannot be set twice");
+		}else{
 			transactionValue = tValue;
+			if(transactionValue!=tValue){
+				throw new UnsupportedOperationException( "The set value is not the same as the expected one");
+			}
 		}
+
+
+
+
 	}
 
 	public void setTransactionCategory(int tCat) {
@@ -77,28 +115,46 @@ public class BoCTransaction {
 		}
 	}
 
+	//Yingxiao Huo (scyyh9)
+	//Last modify: 2021/4/24
+	//Reason: when transaction value is null, program should print Unknown value, and value can not be negative.
 	@Override
 	public String toString() throws IllegalArgumentException{
 		if (transactionValue == null){
-			return transactionName + " - ¥" + "Unknownvalue".toString();
+			return transactionName + " - ¥" + "Unknownvalue";
 		}
-		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+//		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
+//			throw new IllegalArgumentException("Value can not be negative number");
+//		}
+		if (transactionValue.compareTo(new BigDecimal("0.00")) == -1) {
 			throw new IllegalArgumentException("Value can not be negative number");
 		}
+
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
 
 	//Author :LinCHEN(biylc2)
 	//Last Modify:2021/04/24 14:37
-
-	public boolean isComplete(){
+	//Reason: isComplete function is not
+	public int isComplete(){
 
 		if (transactionName != "[Pending Transaction]"&& transactionName != null){
+
 			if (transactionValue!= null){
-				return true;
+				return 1;
+			}
+			else{
+				return 2;
 			}
 		}
-		return false;
+		else {
+			if (transactionValue!= null){
+				return 3;
+			}
+			else{
+				return 4;
+			}
+		}
 
 	}
 
