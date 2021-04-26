@@ -23,7 +23,7 @@ class BoCTransactionTest {
     // Last Modified: 2021/4/26 9:10
     // latest version of testing default constructor
     @Test
-    @DisplayName("Test1 for default constructor")
+    @DisplayName("Test for default constructor")
     void BoCTransaction(){
         BoCTransaction boc = new BoCTransaction(); // create an instance with default constructor
         assertEquals("[Pending Transaction]", boc.transactionName(), "Field transactionName didn't match");
