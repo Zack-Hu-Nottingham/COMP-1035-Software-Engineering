@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
@@ -82,21 +81,13 @@ class BoCAppTest {
     //Author: Lin Chen(biylc2)
     //Last Modify:2021/04/25 20:27
     @DisplayName("Test for list transactions")
-
     @Test
 
-    void listTransactions(String expected) {
-
+    void listTransactions() {
+    testOutcome("T\nX\n",appMenu+defaultTransactionOverview+appMenu+appExit);
 
     }
-//    static Stream <String> stringProvider() {
-//        return Stream.of("1) Rent (Unknown) - ¥850.00",
-//                         "2) Phone Bill (Bills) - ¥37.99",
-//                         "3) Electricity Bill (Bills) - ¥75.00",
-//                         "4) Sainsbury's Checkout (Groceries) - ¥23.76",
-//                         "5) Tesco's Checkout (Groceries) - ¥7.24",
-//                         "6) RockCity Drinks (Social) - ¥8.50",
-//                          "7) The Mooch (Social) - ¥13.99" );//   }
+
 
     //Author: Yicun Duan (scyyd3)
     //Last Modified: 2021/4/23 20:50
@@ -139,19 +130,6 @@ class BoCAppTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2})
     void ChangeTransactionCategory(int testNumber) {
-        String defaultCategoryOverview =
-                        "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)"+ ln +
-                        "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
-                        "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
-                        "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln ;
-        String defaultTransactionOverview =
-                        "1) Rent (Unknown) - ¥850.00" + ln +
-                        "2) Phone Bill (Bills) - ¥37.99" + ln +
-                        "3) Electricity Bill (Bills) - ¥75.00" + ln +
-                        "4) Sainsbury's Checkout (Groceries) - ¥23.76" + ln +
-                        "5) Tesco's Checkout (Groceries) - ¥7.24" + ln +
-                        "6) RockCity Drinks (Social) - ¥8.50" + ln +
-                        "7) The Mooch (Social) - ¥13.99" + ln;
 
         switch (testNumber) {
             case 1:
