@@ -250,35 +250,33 @@ class BoCAppTest {
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/25 22:43
     @DisplayName("Test for AddTransaction function.")
-    //@ParameterizedTest
-    @Test
-    //@CsvSource({"A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n"})
-    void AddTransaction(){
-        String defaultCategoryOverview =
-                        "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)"+ ln +
-                        "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
-                        "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
-                        "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln ;
-        String invitesInput = "What is the title of the transaction?" + ln +
-                                "What is the value of the transaction?";
-//        testOutcome("A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n",
-//                defaultCategoryOverview + appMenu + invitesInput + ln +
-//                        "Invalid input. Please enter a valid number" + ln + "What is the value of the transaction?"+ ln
-//                        + defaultCategoryOverview + "Which category do you want to add?" + ln +
-//                        "Invalid input. Please enter a valid integer" + ln +
-//                        defaultCategoryOverview + "Which category do you want to add?"+ ln +
-//                        "Invalid input. Category not exist" + ln + defaultCategoryOverview +
-//                        "Which category do you want to add?"+ ln + "Invalid number. Category not exist" + ln
-//                        +  defaultCategoryOverview +  "Which category do you want to add?\n[Water Bill](¥9.00) was added to [Bills]\n"+
-//                        appMenu + appExit
-//                );
-        testOutcome("A\nWater Bill\n9.00\n2\nX\n",
-                defaultCategoryOverview + appMenu + invitesInput + ln +
-                        "Invalid input. Please enter a valid number" + ln + "What is the value of the transaction?"+ ln
-                        + defaultCategoryOverview + "Which category do you want to add?" + ln +
-                          "[Water Bill](¥9.00) was added to [Bills]\n"+
-                        appMenu + appExit
-        );
+    @ParameterizedTest
+    @ValueSource(ints = {1,2})
+    void AddTransaction(int input){
+        String invitesTitle = "What is the title of the transaction?\n";
+        String invitesValue = "What is the value of the transaction?\n";
+        String invitesCategory = "Which category do you want to add?\n";
+        String invitesVaild = "Invalid input. Please enter a valid number\n";
+
+        switch (input) {
+            case 1:
+                testOutcome("A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n",
+                        defaultCategoryOverview + appMenu + invitesTitle + invitesValue +
+                                invitesVaild + invitesValue + defaultCategoryOverview +
+                                invitesCategory + invitesVaild + defaultCategoryOverview +
+                                invitesCategory + invitesVaild + defaultCategoryOverview +
+                                invitesCategory+ "Invalid number. Category not exist" + ln
+                                + defaultCategoryOverview + invitesCategory +
+                                "[Water Bill](¥9.00) was added to [Bills]\n" + appMenu + appExit );
+                break;
+            case 2:
+                testOutcome("A\nElectricity Bill\n9.00\n2\nX\n",
+                        defaultCategoryOverview + appMenu + invitesTitle + invitesValue
+                                + defaultCategoryOverview + invitesCategory +
+                                "[Electricity Bill](¥9.00) was added to [Bills]\n" +
+                                appMenu + appExit );
+                break;
+        }
     }
 
 
