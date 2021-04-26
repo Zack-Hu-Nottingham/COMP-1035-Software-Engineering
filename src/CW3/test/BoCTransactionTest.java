@@ -19,10 +19,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
-    // Author: Leshan Tan (sqylt2), Zixiang Hu
-    // Last Modified: 2021/4/18
+    // Author: Leshan Tan (sqylt2)
+    // Last Modified: 2021/4/26 9:10
+    // latest version of testing default constructor
     @Test
-    void BoCTransaction() throws NoSuchFieldException, IllegalAccessException{
+    @DisplayName("Test1 for default constructor")
+    void BoCTransaction(){
+        BoCTransaction boc = new BoCTransaction(); // create an instance with default constructor
+        assertEquals("[Pending Transaction]", boc.transactionName(), "Field transactionName didn't match");
+        assertNull( boc.transactionValue(),"Field transactionValue didn't match");
+        assertEquals(0, boc.transactionCategory(),"Field transactionCategory didn't match");
+        Date currentTime = new Date();
+        assertEquals(currentTime.getTime(),boc.transactionTime().getTime(),10,"Field transactionTime didn't match");
+    }
+
+    // old version of testing default constructor, disabled
+    @Disabled
+    @Test
+    void BoCTransactionIgnored() throws NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
         final Field fieldName = boc.getClass().getDeclaredField("transactionName");
         final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
@@ -42,7 +56,7 @@ class BoCTransactionTest {
     // Author: Zixiang Hu (scyzh6)
     // Last Modified: 2021/4/19 20:24
     // test the time
-    @Ignore // Later we put it into one method
+    @Disabled // Older version, so we disabled it
     @ParameterizedTest
     @CsvSource({
             "A test, 200, 2"
@@ -58,7 +72,7 @@ class BoCTransactionTest {
     }
 
     // test null trans name
-    @Ignore // Later we put it into one method
+    @Disabled // Older version, so we disabled it
     @Test
     @DisplayName("Test2 for main constructor")
     void MainBoCTransaction2() {
@@ -71,7 +85,7 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-    @Ignore // Later we put it into one method
+    @Disabled // Older version, so we disabled it
     // test whether the time created is correct
     @Test
     @DisplayName("Test3 for main constructor")
@@ -82,7 +96,7 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1);
     }
 
-    @Ignore // Later we put it into one method
+    @Disabled // Older version, so we disabled it
     @Test
     @DisplayName("Test4 for main constructor")
     void MainBoCTransaction4() {
@@ -95,7 +109,7 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-    @Ignore // Later we put it into one method
+    @Disabled // Older version, so we disabled it
     @Test
     @DisplayName("Test5 for main constructor")
     void MainBoCTransaction5() {
@@ -108,7 +122,7 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-    @Ignore // Later we put it into one method
+    @Disabled // Older version, so we disabled it
     @Test
     @DisplayName("Test6 for main constructor")
     void MainBoCTransaction6() {
