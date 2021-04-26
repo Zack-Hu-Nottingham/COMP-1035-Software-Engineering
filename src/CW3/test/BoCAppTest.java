@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
@@ -10,6 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -221,6 +223,40 @@ class BoCAppTest {
 
         return;
     }
+
+
+    // Author: Ziyi Wang (scyzw10)
+    // Last modified: 2021/4/26 14；39
+    @DisplayName("Test for AddTransaction function.")
+    @ParameterizedTest
+    @ValueSource(ints = {1,2})
+    void AddTransaction(int input){
+        String invitesTitle = "What is the title of the transaction?\n";
+        String invitesValue = "What is the value of the transaction?\n";
+        String invitesCategory = "Which category do you want to add?\n";
+        String invitesVaild = "Invalid input. Please enter a valid number\n";
+
+        switch (input) {
+            case 1:
+                testOutcome("A\nElectricity Bill\n9.00\n2\nX\n",
+                        defaultCategoryOverview + appMenu + invitesTitle + invitesValue
+                                + defaultCategoryOverview + invitesCategory +
+                                "[Electricity Bill](¥9.00) was added to [Bills]\n" +
+                                appMenu + appExit );
+                break;
+            case 2:
+                testOutcome("A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n",
+                        defaultCategoryOverview + appMenu + invitesTitle + invitesValue +
+                                invitesVaild + invitesValue + defaultCategoryOverview +
+                                invitesCategory + invitesVaild + defaultCategoryOverview +
+                                invitesCategory + invitesVaild + defaultCategoryOverview +
+                                invitesCategory+ "Invalid number. Category not exist" + ln
+                                + defaultCategoryOverview + invitesCategory +
+                                "[Water Bill](¥9.00) was added to [Bills]\n" + appMenu + appExit );
+                break;
+        }
+    }
+
 
     //Author: Yicun Duan
     //Last Modified: 2021/4/25 19:55
