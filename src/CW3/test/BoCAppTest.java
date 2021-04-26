@@ -154,12 +154,37 @@ class BoCAppTest {
     }
 
 
+    //Author: Leshan Tan (sqylt2)
+    //Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
-    @Test
-
-    void listTransactionsForCategory() {
-
-
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void listTransactionsForCategory(int categoryNumber) {
+        String expectedOutput0 = "1) Rent - ¥850.00" + ln;
+        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln +
+                                 "3) Electricity Bill - ¥75.00" + ln;
+        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln +
+                                 "5) Tesco's Checkout - ¥7.24" + ln;
+        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln +
+                                 "7) The Mooch - ¥13.99" + ln;
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        BoCApp boc = new BoCApp();
+        boc.ListTransactionsForCategory(categoryNumber);
+        switch(categoryNumber){
+            case 0:
+                assertEquals(expectedOutput0, outContent.toString(), "The transaction list for category 0 is unexpected");
+                break;
+            case 1:
+                assertEquals(expectedOutput1, outContent.toString(), "The transaction list for category 1 is unexpected");
+                break;
+            case 2:
+                 assertEquals(expectedOutput2, outContent.toString(), "The transaction list for category 2 is unexpected");
+                break;
+            case 3:
+                assertEquals(expectedOutput3, outContent.toString(), "The transaction list for category 3 is unexpected");
+                break;
+        }
 
     }
 
