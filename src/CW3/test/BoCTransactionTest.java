@@ -20,7 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoCTransactionTest {
 
     // Author: Leshan Tan (sqylt2)
-    // Last Modified: 2021/4/26 9:10
+    // Last modified: 2021/4/26 9:10
+
     // latest version of testing default constructor
     @Test
     @DisplayName("Test for default constructor")
@@ -32,6 +33,7 @@ class BoCTransactionTest {
         Date currentTime = new Date();
         assertEquals(currentTime.getTime(),boc.transactionTime().getTime(),10,"Field transactionTime didn't match");
     }
+
 
     // old version of testing default constructor, disabled
     @Disabled
@@ -54,9 +56,10 @@ class BoCTransactionTest {
 
 
     // Author: Zixiang Hu (scyzh6)
-    // Last Modified: 2021/4/19 20:24
-    // test the time
+    // Last modified: 2021/4/19 20:24
+
     @Disabled // Older version, so we disabled it
+    // Test the time
     @ParameterizedTest
     @CsvSource({
             "A test, 200, 2"
@@ -71,8 +74,8 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(),timeTest.getTime(), 10);
     }
 
-    // test null trans name
-    @Disabled // Older version, so we disabled it
+    @Disabled // Older version
+    // Test if transaction name is null
     @Test
     @DisplayName("Test2 for main constructor")
     void MainBoCTransaction2() {
@@ -85,8 +88,8 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-    @Disabled // Older version, so we disabled it
-    // test whether the time created is correct
+    @Disabled // Older version
+    // Test whether the time created is not null and accurate
     @Test
     @DisplayName("Test3 for main constructor")
     void MainBoCTransactio3() {
@@ -96,7 +99,8 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1);
     }
 
-    @Disabled // Older version, so we disabled it
+    @Disabled // Older version
+    // Test if category is less than 0
     @Test
     @DisplayName("Test4 for main constructor")
     void MainBoCTransaction4() {
@@ -109,7 +113,8 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-    @Disabled // Older version, so we disabled it
+    @Disabled // Older version
+    // Test if transaction value less than 0
     @Test
     @DisplayName("Test5 for main constructor")
     void MainBoCTransaction5() {
@@ -122,7 +127,8 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-    @Disabled // Older version, so we disabled it
+    @Disabled // Older version
+    // Test if transaction name is longer than 25 char
     @Test
     @DisplayName("Test6 for main constructor")
     void MainBoCTransaction6() {
@@ -137,7 +143,8 @@ class BoCTransactionTest {
 
 
     // Author: Zixiang Hu (scyzh6)
-    // Last Modified: 2021/4/23 16:06
+    // Last modified: 2021/4/23 16:06
+
     // test the time
     @ParameterizedTest
     @CsvSource({
@@ -161,7 +168,7 @@ class BoCTransactionTest {
                 assertEquals(e.getMessage(), "Transaction name should not be null.");
             }
         }
-        else if (tName.length() > 25) {
+        else if (tName.length() > 25) { // Test if name is more than 25 char
             try {
                 BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
                 fail("No exception thrown.");
@@ -170,7 +177,7 @@ class BoCTransactionTest {
                 assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
             }
         }
-        else if (tCat < 0) {
+        else if (tCat < 0) { // Test if category is less than 0
             try {
                 BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
                 fail("No exception thrown.");
@@ -179,7 +186,7 @@ class BoCTransactionTest {
                 assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
             }
         }
-        else if (tValue.compareTo(new BigDecimal(0)) < 1 ) {
+        else if (tValue.compareTo(new BigDecimal(0)) < 1 ) { // Test if transaction value is <= 0
             try {
                 BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
                 fail("No exception thrown.");
@@ -199,7 +206,6 @@ class BoCTransactionTest {
                     () -> assertEquals(tCat, boc.transactionCategory())
             ); // Normal test with input
         }
-
     }
 
 
@@ -244,8 +250,10 @@ class BoCTransactionTest {
         }
     }
 
+
     // Author: Leshan Tan (sqylt2)
-    // Last Modified: 2021/4/21
+    // Last modified: 2021/4/21
+
     @ParameterizedTest
     @CsvFileSource(resources = {"transactionValue.csv"})
     @DisplayName("Test for transaction value getter")
@@ -258,8 +266,10 @@ class BoCTransactionTest {
         assertEquals( new BigDecimal(expectation), boc.transactionValue(), "Field transactionValue wasn't retrieved properly");
     }
 
+
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/18 21:15
+
     @ParameterizedTest
     @ValueSource(ints = {0,1,5,100})
     @DisplayName("Test for transaction category getter")
@@ -269,8 +279,10 @@ class BoCTransactionTest {
         assertEquals(input,num);
     }
 
+
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
+
     @ParameterizedTest
     @CsvSource({
             "Buy a bunch of flower, 20, 4",
@@ -284,8 +296,10 @@ class BoCTransactionTest {
         assertEquals(test1.transactionTime().getTime(), testTime.getTime(), 1); // Check if the Date object is accurate
     }
 
+
     // Author: Yicun Duan (scyyd3)
     // Last modified: 2021/4/25 23:36
+
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
     @DisplayName("Test for transaction name setter")
@@ -313,12 +327,13 @@ class BoCTransactionTest {
 
         UnsupportedOperationException e = assertThrows(UnsupportedOperationException.class, ()->{test_instance.setTransactionName(giveName);});
         assertEquals("Transaction name cannot be repeatedly set.", e.getMessage());
-
     }
+
 
     @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
+
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
     void setTransactionValue1(int input,int expected) throws NoSuchFieldException, IllegalAccessException {
@@ -333,6 +348,7 @@ class BoCTransactionTest {
         int equals= result.compareTo(changedVal1);
         assertEquals(expected,equals);
     }
+
 
     @Disabled
     // Author: LinCHEN (biylc2)
@@ -350,6 +366,7 @@ class BoCTransactionTest {
         int equals= result.compareTo(changedVal2);
         assertEquals(expected,equals);
     }
+
 
     @Disabled
     // Author: LinCHEN (biylc2)
@@ -379,6 +396,7 @@ class BoCTransactionTest {
 
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/23
+
     @ParameterizedTest
     @CsvFileSource(resources = "trans_setTransactionValueString.csv")
     @DisplayName("Test for transaction value setter")
@@ -476,6 +494,7 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/18 21:49
+
     @ParameterizedTest
     @CsvFileSource(resources = { "/Trans_setCategory.csv" })
     @DisplayName("Test for transaction category setter")
@@ -487,16 +506,20 @@ class BoCTransactionTest {
         assertEquals(expectation, field.get(trans), "Fields didn't match");
     }
 
+
     @Disabled
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/25 22:03
+
     // Disabled this method because the time should not be set after the transaction is created
     @Test
     void setTransactionTime() {
     }
 
+
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/21 16:44
+
     @ParameterizedTest
     @CsvFileSource(resources = {"/toStringTest.csv"})
     @DisplayName("Test for method toString")
@@ -535,8 +558,10 @@ class BoCTransactionTest {
         }
     }
 
-    // Author: LinCHEN(biylc2)
+
+    // Author: LinCHEN (biylc2)
     // Last Modify: 2021/04/24 14:37
+
     @Test
     @DisplayName("Test for method isComplete")
     void isCompleteTest(){
