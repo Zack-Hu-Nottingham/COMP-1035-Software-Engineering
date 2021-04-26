@@ -1,24 +1,41 @@
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BoCAppTest {
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/25 19:52
     private static String ln = System.lineSeparator();
     private static String appMenu = ln + "What do you want to do?" + ln
-            + "O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
+            + " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
             + ln;
+    private static String appExit="Goodbye!"+ln;
 
-    private static String appExit = "Goodbye!" + ln;
-
+    private static String defaultCategoryOverview =
+            "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)"+ ln +
+            "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
+            "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
+            "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln ;
+    private static String defaultTransactionOverview =
+            "1) Rent (Unknown) - ¥850.00" + ln +
+                    "2) Phone Bill (Bills) - ¥37.99" + ln +
+                    "3) Electricity Bill (Bills) - ¥75.00" + ln +
+                    "4) Sainsbury's Checkout (Groceries) - ¥23.76" + ln +
+                    "5) Tesco's Checkout (Groceries) - ¥7.24" + ln +
+                    "6) RockCity Drinks (Social) - ¥8.50" + ln +
+                    "7) The Mooch (Social) - ¥13.99" + ln;
     @BeforeEach
     void setUpBeforeEach() {
         BoCApp.UserCategories = new ArrayList<BoCCategory>();
@@ -61,9 +78,25 @@ class BoCAppTest {
     void main() {
     }
 
+
+    //Author: Lin Chen(biylc2)
+    //Last Modify:2021/04/25 20:27
+    @DisplayName("Test for list transactions")
+
     @Test
-    void listTransactions() {
+
+    void listTransactions(String expected) {
+
+
     }
+//    static Stream <String> stringProvider() {
+//        return Stream.of("1) Rent (Unknown) - ¥850.00",
+//                         "2) Phone Bill (Bills) - ¥37.99",
+//                         "3) Electricity Bill (Bills) - ¥75.00",
+//                         "4) Sainsbury's Checkout (Groceries) - ¥23.76",
+//                         "5) Tesco's Checkout (Groceries) - ¥7.24",
+//                         "6) RockCity Drinks (Social) - ¥8.50",
+//                          "7) The Mooch (Social) - ¥13.99" );//   }
 
     //Author: Yicun Duan (scyyd3)
     //Last Modified: 2021/4/23 20:50
@@ -90,29 +123,22 @@ class BoCAppTest {
 
     }
 
-    // Author: Zixiang Hu
-    // Last modified: 4/18
-    @ParameterizedTest
-    @CsvFileSource(resources = { "/Trans_setCategory.csv" })
 
-    void setTransactionCategory(int input, int expectation) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction trans = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 1);
-        trans.setTransactionCategory(input);
-        final Field field = trans.getClass().getDeclaredField("transactionCategory");
-        field.setAccessible(true);
-        assertEquals(expectation, field.get(trans), "Fields didn't match");
-    }
-
+    @DisplayName("Test for ListTransactionsForCategory")
     @Test
+
     void listTransactionsForCategory() {
+
+
+
     }
 
     //Author: Yicun Duan
-    //Last Modified: 2021/4/24 21:51
+    //Last Modified: 2021/4/25 19:51
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
-    @CsvFileSource(resources = "changeTransactionCategoryTest.csv")
-    void ChangeTransactionCategory(String designedInput, int testNumber) {
+    @ValueSource(ints = {1, 2})
+    void ChangeTransactionCategory(int testNumber) {
         String defaultCategoryOverview =
                         "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)"+ ln +
                         "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
@@ -129,7 +155,7 @@ class BoCAppTest {
 
         switch (testNumber) {
             case 1:
-                testOutcome(designedInput,
+                testOutcome("C\n1\n4\nC\n3\n1\nC\n6\n3\nX\n",
                             defaultCategoryOverview
                                           + appMenu
                                           + defaultTransactionOverview +
@@ -181,7 +207,7 @@ class BoCAppTest {
 
 
             case 2:
-                testOutcome(designedInput,
+                testOutcome("C\njbl\n-23\n-12345678912345689\n'\ue250'\n1\n-199\n233\n123456789123456789\n4\nX\n",
                             defaultCategoryOverview
                                          + appMenu
                                          + defaultTransactionOverview +
@@ -218,6 +244,8 @@ class BoCAppTest {
         return;
     }
 
+    //Author: Yicun Duan
+    //Last Modified: 2021/4/25 19:55
     private void testOutcome(String designedInput, String expectedOutcome) {
 
         InputStream alterInput = new ByteArrayInputStream(designedInput.getBytes());

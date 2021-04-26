@@ -167,12 +167,16 @@ class BoCCategoryTest {
             }
             else {
                 if (name.length() > 15){
-                    try {
-                        Test_setter.setCategoryName(name);
-                        fail();
-                    }catch (Exception ex2){
-                        assertEquals(expection, ex2.getMessage());
-                    }
+                    //try {
+                    //    Test_setter.setCategoryName(name);
+                    //    fail();
+                    //}catch (Exception ex2){
+                    //    assertEquals(expection, ex2.getMessage());
+                    //}
+                    Test_setter.setCategoryName(name);
+                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                    field_setname.setAccessible(true);
+                    assertEquals(expection, field_setname.get(Test_setter));
                 }else {
                     Test_setter.setCategoryName(name);
                     final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
@@ -390,7 +394,7 @@ class BoCCategoryTest {
     void testToString() throws IllegalAccessException, NoSuchFieldException {
         //default constructor
         BoCCategory boc1= new BoCCategory();
-        String a="New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)";
+        String a="New Category(¥0.00) - ¥0.00 (¥0.00 Remaining)";
         assertEquals(a,boc1.toString());
 
         //constructor with parameter
@@ -402,7 +406,7 @@ class BoCCategoryTest {
         field2.setAccessible(true);
         field2.set(boc2,new BigDecimal("667433.00564"));
 
-        String b="Positive(¥3457834.023423) - Est. ¥667433.00564 (¥2790401.017783 Remaining)";
+        String b="Positive(¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)";
         assertEquals(b,boc2.toString());
 
         BoCCategory boc3= new BoCCategory("Negative");
@@ -413,7 +417,7 @@ class BoCCategoryTest {
         field4.setAccessible(true);
         field4.set(boc3,new BigDecimal("20000.00"));
 
-        String c="Negative(¥10000.00) - Est. ¥20000.00 (¥10000.00 Overspent)";
+        String c="Negative(¥10000.00) - ¥20000.00 (¥10000.00 Overspent)";
         assertEquals(c,boc3.toString());
 
     }

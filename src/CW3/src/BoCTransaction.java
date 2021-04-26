@@ -74,7 +74,7 @@ public class BoCTransaction {
 		}
 
 		if (tName.length() > 25) {
-			tName.substring(0, 25);
+			tName = tName.substring(0, 25);
 		}
 
 		transactionName = tName;
