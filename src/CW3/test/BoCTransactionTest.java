@@ -195,7 +195,8 @@ class BoCTransactionTest {
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
             ", name is not set.",
-            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters."
+            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters.",
+            "U+1F605,U+1F605"
     })
     @DisplayName("Test for transaction name getter")
     void transactionName(String name, String expection) throws NoSuchFieldException, IllegalAccessException {
@@ -270,34 +271,29 @@ class BoCTransactionTest {
     }
 
     // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23 16:50
+    // Last modified: 2021/4/25 23:36
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
     @DisplayName("Test for transaction name setter")
     void setTransactionName(String transName, BigDecimal transValue, int transCate, String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
         if (transName == null && transValue == null && transCate == 0) {
             final BoCTransaction test_instance = new BoCTransaction();
-            if (giveName == null) {
-                try {
-                    test_instance.setTransactionName(null);
-                    fail("IllegalArgumentException is not thrown out.");
-                } catch (Exception e) {
+                try{
+                    test_instance.setTransactionName(giveName);
+                }catch (Exception e) {
                     if (e instanceof IllegalArgumentException) {
                         assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
                     } else {
                         fail("Unexpected exception type.");
                     }
                 }
-            } else {
-                test_instance.setTransactionName(giveName);
 
                 final Field field = test_instance.getClass().getDeclaredField("transactionName");
                 field.setAccessible(true);
                 assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
-            }
 
             return;
-        }
+            }
 
         final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
 

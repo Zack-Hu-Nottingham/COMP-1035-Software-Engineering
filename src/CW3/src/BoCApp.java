@@ -40,9 +40,9 @@ public class BoCApp {
 
 		// MAIN FUNCTION LOOP
 
-		CategoryOverview();
+		//CategoryOverview();
 		System.out.println(
-				"\nWhat do you want to do?\n T = List All [T]ransactions, [num] = Show Category [num], A = [A]dd Transaction, X = E[x]it");
+				"\nWhat do you want to do?\n O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it");
 		Scanner in = new Scanner(System.in);
 		while (in.hasNextLine()) {
 			String s = in.next();
@@ -110,19 +110,67 @@ public class BoCApp {
 	}
 
 	private static void ChangeTransactionCategory(Scanner in) {
-		System.out.println("Which transaction ID?");
 		in.nextLine();
-		int tID = Integer.parseInt(in.nextLine());
+		int tID = 0;
+		int newCat = 0;
+		boolean runAgain = true;
+
+		while (runAgain) {
+			ListTransactions();
+			System.out.println("Which transaction ID?");
+			try{
+				tID = Integer.parseInt(in.nextLine());
+			} catch (NumberFormatException e){
+				System.out.println("Invalid input. Please input a valid integer.");
+				continue;
+			}
+
+			if (tID <= 0 || tID > UserTransactions.size()) {
+				System.out.println("Transaction doesn't exist. Please input again.");
+				continue;
+			}
+
+			runAgain = false;
+		}
+
 		System.out.println("\t- " + UserTransactions.get(tID - 1).toString());
-		System.out.println("Which category will it move to?");
-		CategoryOverview();
-		int newCat = Integer.parseInt(in.nextLine());
-		BoCTransaction temp = UserTransactions.get(tID);
-		temp.setTransactionCategory(newCat);
-		UserTransactions.set(tID, temp);
-		BoCCategory temp2 = UserCategories.get(newCat);
-		temp2.addExpense(temp.transactionValue());
-		UserCategories.set(newCat, temp2);
+
+		runAgain = true;
+
+		while (runAgain) {
+			CategoryOverview();
+			System.out.println("Which category will it move to?");
+			try{
+				newCat = Integer.parseInt(in.nextLine());
+			}catch (NumberFormatException e){
+				System.out.println("Invalid input. Please input a valid integer.");
+				continue;
+			}
+
+			if (newCat <= 0 || newCat > UserCategories.size()) {
+				System.out.println("Category doesn't exist. Please input again.");
+				continue;
+			}
+			runAgain = false;
+		}
+
+		int newCatNum = newCat - 1;
+
+		BoCTransaction curTrans = UserTransactions.get(tID - 1);
+		int oldCatNum = curTrans.transactionCategory();
+		curTrans.setTransactionCategory(newCatNum);
+		UserTransactions.set(tID - 1, curTrans);
+
+		BoCCategory newCategory = UserCategories.get(newCatNum);
+		newCategory.addExpense(curTrans.transactionValue());
+		UserCategories.set(newCatNum, newCategory);
+
+		BoCCategory oldCategory = UserCategories.get(oldCatNum);
+		oldCategory.removeExpense(curTrans.transactionValue());
+		UserCategories.set(oldCatNum, oldCategory);
+
+		System.out.println(newCategory.toString());
+		System.out.println(oldCategory.toString());
 	}
 
 	private static void AddCategory(Scanner in) {

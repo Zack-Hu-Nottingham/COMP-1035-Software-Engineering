@@ -51,13 +51,22 @@ public class BoCCategory {
 		return CategorySpend;
 	}
 
-	public void setCategoryName(String newName) {
-		CategoryName = newName;
+	public void setCategoryName(String newName) throws IllegalArgumentException{
+		if (newName == null || newName.isBlank()){
+			throw new IllegalArgumentException("Name can not be null");
+		}
+		else if (newName.length() > 15){
+			CategoryName = newName.substring(0,15);
+		}
+		else {
+			CategoryName = newName;
+		}
 	}
 
 	// Author: Ziyi Wang (scyzw10)
 	// Last modified: 2021/4/25 11:00
 	// Reason: The type of the parameter should be Float
+
 	public void setCategoryBudget(BigDecimal newValue) {
 //		BigDecimal newV = new BigDecimal(newValue);		//convert the Float type to BigDecimal
 		// 1 means bigger, -1 means smaller, 0 means same

@@ -151,6 +151,45 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 
+&nbsp;
+### **Function:** &nbsp; **transactionName()**
+
+| Test Plan |  |
+| :-----------|--------------|
+| Test Date : | 2021/04/21 |
+| Tester : | Yingxiao Huo (scyyh9) |
+
+&nbsp;
+
+|TestID:  | TS-Transaction 3-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | Main constructor |
+| **Inputs**                | Yingxiao Huo |
+| **Expected Outcome**      | Yingxiao Huo |
+| **Test Outcome**          | Yingxiao Huo |
+| **Result**                       | passed |
+| **Reason for Failure**           | \ |
+| **What is Done to Make it Pass** | \ |
+
+&nbsp;
+### **Function:** &nbsp; **transactionName()**
+
+| Test Plan |  |
+| :-----------|--------------|
+| Test Date : | 2021/04/21 |
+| Tester : | Yingxiao Huo (scyyh9) |
+
+&nbsp;
+
+|TestID:  | TS-Transaction 3-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | Main constructor |
+| **Inputs**                | null |
+| **Expected Outcome**      | name is not set |
+| **Test Outcome**          | null |
+| **Result**                       | failed |
+| **Reason for Failure**           | NUll is not detected |
+| **What is Done to Make it Pass** | \ |
 
  
 
@@ -215,9 +254,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |TestID:  | TS-Transaction 7-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table> |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
@@ -241,7 +280,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |TestID:  | TS-Transaction 7-3 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>null</td></tr></table> |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>" "</td></tr><tr><td>""</td></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**      | Throw `[IllegalArgumentException]`: "The transactionName is invalid." |
 | **Test Outcome**          | "IllegalArgumentException is not thrown out." |
 | **Result**                       | Fail |
@@ -253,7 +292,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |TestID:  | TS-Transaction 7-4 |
 |:---------                 |-----------------           |
-| **Constructor**           | BoCTransaction("defaultname", BigDecimal(999.00), 1) |
+| **Constructor**           | BoCTransaction("alreadyHaveName", BigDecimal(999.00), 1) |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr></table> |
 | **Expected Outcome**      | Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set." |
 | **Test Outcome**          | "Expected java.lang.Exception to be thrown, but nothing was thrown." |
@@ -263,41 +302,15 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 &nbsp;
-
-|TestID:  | TS-Transaction 7-5 |
-|:---------                 |-----------------           |
-| **Constructor**           | BoCTransaction("defaultname", null, 2) |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"886"</td></tr></table> |
-| **Expected Outcome**      | Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set." |
-| **Test Outcome**          | "Expected java.lang.Exception to be thrown, but nothing was thrown." |
-| **Result**                       | Fail |
-| **Reason for Failure**           | The program cannot throw out an exception when the transaction name is set twice. |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Transaction 7-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Pass+ | Pass+ |
+| TS-Transaction 7-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Pass+ | Pass+ |
+| TS-Transaction 7-3|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Fail | Pass+ |
+| TS-Transaction 7-4|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Fail | Pass+ |
 
 
-&nbsp;
- 
-
-&nbsp;
- ### **Function:** &nbsp; **transactionName()**
-
-| Test Plan |  |
-| :-----------|--------------|
-| Test Date : | 2021/04/21 |
-| Tester : | Yingxiao Huo (scyyh9) |
-
-&nbsp;
-
-|TestID:  | TS-Transaction 8-1 |
-|:---------                 |-----------------           |
-| **Constructor**           | Main constructor |
-| **Inputs**                | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>name is not set</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><td>Yingxiao Huo</td></tr><tr><td>null</td></tr></table> |
-| **Result**                       | failed: 1, passed: 1 |
-| **Reason for Failure**           | NUll is not detected |
-| **What is Done to Make it Pass** | \ |
 
 &nbsp;
 
@@ -506,11 +519,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 |TestID:  | TS-Category 3-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/>|
-| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
-| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
-| **Result**                       | Pass |
-| **Reason for Failure**           | \ |
+| **Inputs**                |<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/>|
+| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>Category name can not longer than 15 characters.</td></tr></table> <br/> |
+| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/> |
+| **Result**                       | failed: 1 |
+| **Reason for Failure**           | Not handle the case when string length > 15 |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
@@ -606,9 +619,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |TestID:  | TS-Category 6-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/>|
-| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
-| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>null</td></tr></table> <br/> |
+| **Inputs**                | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawdasdascsgrsrgdrsgdgg</td></tr><tr><td>null</td></tr></table> <br/>|
+| **Expected Outcome**      | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawda</td></tr><tr><td>name can not be null</td></tr></table> <br/> |
+| **Test Outcome**          | <table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawdasdascsgrsrgdrsgdgg</td></tr><tr><td>null</td></tr></table> <br/> |
 
 
 &nbsp;
@@ -911,14 +924,57 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |TestID:  | TS-App 3-1 |
 |:---------                 |-----------------           |
-| **Constructor**           | Default constructor |
+| **Constructor**           | setUpBeforeEach() |
 | **Inputs**                | <table><tr><th>CategoryName: </th><th>CategoryBudget: </th></tr><tr><td>"Unknown"</td><td>&nbsp;</td></tr><tr><td>"Bills"</td><td>BigDecimal("120.00")</td></tr><tr><td>"Groceries"</td><td>BigDecimal("75.00")</td></tr><tr><td>"Soical"</td><td>BigDecimal("100.00")</td></tr></table> |
-| **Expected Outcome**      | <p>1) Unknown(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)<br>2) Bills(¥120.00) - Est. ¥0.00 (¥120.00 Remaining)<br>3) Groceries(¥75.00) - Est. ¥0.00 (¥75.00 Remaining)<br>4) Social(¥100.00) - Est. ¥0.00 (¥100.00 Remaining)</p> |
-| **Test Outcome**          | <p>1) Unknown(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)<br>2) Bills(¥120.00) - Est. ¥0.00 (¥120.00 Remaining)<br>3) Groceries(¥75.00) - Est. ¥0.00 (¥75.00 Remaining)<br>4) Social(¥100.00) - Est. ¥0.00 (¥100.00 Remaining)</p> |
+| **Expected Outcome**      | <p>1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)<br>2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)<br>3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)<br>4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining) </p> |
+| **Test Outcome**          | <p>1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)<br>2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)<br>3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)<br>4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining) </p> |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
+
+ ### **Function:** &nbsp; ChangeTransactionCategory(Scanner in)
+
+| Test Plan | ChangeTransactionCategory(Scanner in) |
+| :-----------|--------------|
+| Test Date : | 2021/04/25 20:03 |
+| Tester : | Yicun Duan (scyyd3) |
+
+&nbsp;
+
+&nbsp;
+
+|TestID:  | TS-App 5-1 |
+|:---------                 |-----------------           |
+| **Constructor**           | setUpBeforeEach() |
+| **Inputs**                | <center>C<br>1<br>4<br>C<br>3<br>1<br>C<br>6<br>3<br>X</center> |
+| **Expected Outcome**      | \ |
+| **Test Outcome**          | \ |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannot generate expected output |
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+
+|TestID:  | TS-App 5-2 |
+|:---------                 |-----------------           |
+| **Constructor**           | setUpBeforeEach() |
+| **Inputs**                | <center>C<br>jbl<br>-23<br>-12345678912345689<br>'\ue250'<br>1<br>-199<br>233<br>123456789123456789<br>4<br>X</center> |
+| **Expected Outcome**      | \ |
+| **Test Outcome**          | \ |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The program cannot generate expected output <br> And it cannot deal with invalid input|
+| **What is Done to Make it Pass** | \ |
+&nbsp;
+
+&nbsp;
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Transaction 5-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 22:32 | \ | Fail | \ |
+| TS-Transaction 5-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 22:32 | \ | Fail | \ |
+
 
 ## Test Log
 &nbsp;
