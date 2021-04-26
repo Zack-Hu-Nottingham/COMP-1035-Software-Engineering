@@ -84,7 +84,7 @@ class BoCAppTest {
     @Test
 
     void listTransactions() {
-    testOutcome("T\nX\n",defaultCategoryOverview);
+    testOutcome("T\nX\n",appMenu+defaultTransactionOverview+appMenu+appExit);
 
     }
 
