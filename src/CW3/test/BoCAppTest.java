@@ -88,9 +88,10 @@ class BoCAppTest {
 
         switch (input) {
             case 1:
-                testOutcome("O\nT\n1\nX\n", appMenu + defaultCategoryOverview +
+                testOutcome("O\nT\n1\n\nX\n", appMenu + defaultCategoryOverview +
                         appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
-                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu + appExit);
+                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu + "Command not recognised" + ln +
+                        "Please Input again." + ln + appMenu + appExit);
                 break;
             case 2:
                 testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
