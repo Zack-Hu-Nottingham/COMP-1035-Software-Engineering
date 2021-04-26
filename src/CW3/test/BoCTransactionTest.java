@@ -56,6 +56,74 @@ class BoCTransactionTest {
 
 
     // Author: Zixiang Hu (scyzh6)
+    // Last modified: 2021/4/23 16:06
+
+    // test the time
+    @ParameterizedTest
+    @CsvSource({
+            "Buy an apple, 2, 2",
+            "Buy an apple pen, 998, 3",
+            "Go to Apple store and buy an apple pen, 998, 3",
+            ", 998, 3",
+            "Buy an apple pen, 998, -3",
+            "Buy an apple pen, 0, 3",
+            "Buy an apple pen, -998, -3"
+    })
+    @DisplayName("Test for main constructor")
+    void MainBoCTransaction(String tName, BigDecimal tValue, int tCat) {
+        int isCaught = 0; // A flag indicate whether exception is caught
+        if (tName == null) { // Test if tName input is null
+            try {
+                BoCTransaction boc = new BoCTransaction(null, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertEquals(e.getMessage(), "Transaction name should not be null.");
+            }
+        }
+        else if (tName.length() > 25) { // Test if name is more than 25 char
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
+            }
+        }
+        else if (tCat < 0) { // Test if category is less than 0
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+            }
+        }
+        else if (tValue.compareTo(new BigDecimal(0)) < 1 ) { // Test if transaction value is <= 0
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+            }
+        }
+
+        if (isCaught == 0) {
+            BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+            Date timeTest = new Date();
+            assertNotNull(boc.transactionTime()); // Test if time is created
+            assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1); // Test whether time is accurate
+            assertAll("", () -> assertEquals(tName, boc.transactionName()),
+                    () -> assertEquals(tValue.compareTo(boc.transactionValue()), 0) ,
+                    () -> assertEquals(tCat, boc.transactionCategory())
+            ); // Normal test with input
+        }
+    }
+
+
+
+    // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/19 20:24
 
     @Disabled // Older version, so we disabled it
@@ -142,75 +210,9 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Zixiang Hu (scyzh6)
-    // Last modified: 2021/4/23 16:06
-
-    // test the time
-    @ParameterizedTest
-    @CsvSource({
-            "Buy an apple, 2, 2",
-            "Buy an apple pen, 998, 3",
-            "Go to Apple store and buy an apple pen, 998, 3",
-            ", 998, 3",
-            "Buy an apple pen, 998, -3",
-            "Buy an apple pen, 0, 3",
-            "Buy an apple pen, -998, -3"
-    })
-    @DisplayName("Test for main constructor")
-    void MainBoCTransaction(String tName, BigDecimal tValue, int tCat) {
-        int isCaught = 0; // A flag indicate whether exception is caught
-        if (tName == null) { // Test if tName input is null
-            try {
-                BoCTransaction boc = new BoCTransaction(null, tValue, tCat);
-                fail("No exception thrown.");
-            } catch (IllegalArgumentException e) {
-                isCaught = 1;
-                assertEquals(e.getMessage(), "Transaction name should not be null.");
-            }
-        }
-        else if (tName.length() > 25) { // Test if name is more than 25 char
-            try {
-                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
-                fail("No exception thrown.");
-            } catch (IllegalArgumentException e) {
-                isCaught = 1;
-                assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
-            }
-        }
-        else if (tCat < 0) { // Test if category is less than 0
-            try {
-                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
-                fail("No exception thrown.");
-            } catch (IllegalArgumentException e) {
-                isCaught = 1;
-                assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
-            }
-        }
-        else if (tValue.compareTo(new BigDecimal(0)) < 1 ) { // Test if transaction value is <= 0
-            try {
-                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
-                fail("No exception thrown.");
-            } catch (IllegalArgumentException e) {
-                isCaught = 1;
-                assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
-            }
-        }
-
-        if (isCaught == 0) {
-            BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
-            Date timeTest = new Date();
-            assertNotNull(boc.transactionTime()); // Test if time is created
-            assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1); // Test whether time is accurate
-            assertAll("", () -> assertEquals(tName, boc.transactionName()),
-                    () -> assertEquals(tValue.compareTo(boc.transactionValue()), 0) ,
-                    () -> assertEquals(tCat, boc.transactionCategory())
-            ); // Normal test with input
-        }
-    }
-
-
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
+
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
@@ -496,14 +498,22 @@ class BoCTransactionTest {
     // Last modified: 2021/4/18 21:49
 
     @ParameterizedTest
-    @CsvFileSource(resources = { "/Trans_setCategory.csv" })
+    @CsvSource({"-100", "-50", "-25", "0", "1", "2", "3"})
     @DisplayName("Test for transaction category setter")
-    void setTransactionCategory(int input, int expectation) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction trans = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 1);
-        trans.setTransactionCategory(input);
-        final Field field = trans.getClass().getDeclaredField("transactionCategory");
-        field.setAccessible(true);
-        assertEquals(expectation, field.get(trans), "Fields didn't match");
+    void setTransactionCategory(int tCat) {
+        BoCTransaction defaultBoc = new BoCTransaction();
+        BoCTransaction parameterizedBoc = new BoCTransaction("Buy an apple pen", new BigDecimal("1000"), 3);
+        if (tCat <= 0) {
+            try {
+                parameterizedBoc.setTransactionCategory(tCat);
+                fail("No exception thrown");
+            } catch (IllegalArgumentException e) {
+                assertThat(e.getMessage(), containsString("Transaction category should greater than zero."));
+                return;
+            }
+        }
+        parameterizedBoc.setTransactionCategory(tCat);
+        assertEquals(parameterizedBoc.transactionCategory(), tCat);
     }
 
 

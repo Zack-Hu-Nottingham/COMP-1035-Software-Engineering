@@ -7,9 +7,10 @@ public class BoCTransaction {
 	private int transactionCategory;
 	private Date transactionTime;
 
+
 	// Author: Leshan Tan (sqylt2)
 	// Last modified: 4/26 9:05
-	// Reason to change: the initial transactionName should be "Pending Transaction]" and transaction Date should be the current time
+	// Reason: The initial transactionName should be "Pending Transaction]" and transaction Date should be the current time.
 	public BoCTransaction() {
 		transactionName = "[Pending Transaction]";
 		transactionValue = null;
@@ -17,9 +18,10 @@ public class BoCTransaction {
 		transactionTime = new Date();
 	}
 
-	// Author: Zixiang Hu (20215538)
+
+	// Author: Zixiang Hu (scyzh6)
 	// Last modified: 4/25 19:01
-	// Reason to change:
+	// Reason: If illegal value are entered it should throw exception to handle it.
 	public BoCTransaction(String tName, BigDecimal tValue, int tCat) throws IllegalArgumentException{
 		if (tName == null) {
 			throw new IllegalArgumentException("Transaction name should not be null.");
@@ -40,9 +42,10 @@ public class BoCTransaction {
 		transactionTime = new Date();
 	}
 
-	//author: Yingxiao Huo
-	//Last modify: 22021/4/24
-	//Reason: when transaction name is null or is longer than 25 characters, the program should report an error.
+
+	// Author: Yingxiao Huo
+	// Last modify: 22021/4/24
+	// Reason: When transaction name is null or is longer than 25 characters, the program should report an error.
 	public String transactionName() throws IllegalArgumentException{
 		if (transactionName == null){
 			throw new IllegalArgumentException("name is not set.");
@@ -55,17 +58,21 @@ public class BoCTransaction {
 		}
 	}
 
+
 	public BigDecimal transactionValue() {
 		return transactionValue;
 	}
+
 
 	public int transactionCategory() {
 		return transactionCategory;
 	}
 
+
 	public Date transactionTime() {
 		return transactionTime;
 	}
+
 
 	public void setTransactionName(String tName) throws IllegalArgumentException, UnsupportedOperationException{
 		if (tName == null || tName.isBlank()) {
@@ -83,9 +90,10 @@ public class BoCTransaction {
 		transactionName = tName;
 	}
 
-	//Author: LinCHEN(biylc2)
-	//Last Modify:2021/04/25
-	//Reason: The previous function cannot handle the situation that when the value is non-positive and does not throw an expection as expected
+
+	// Author: LinCHEN (biylc2)
+	// Last Modify: 2021/04/25
+	// Reason: The previous function cannot handle the situation that when the value is non-positive and does not throw an exception as expected.
 	public void setTransactionValue(BigDecimal tValue) throws UnsupportedOperationException,NullPointerException,IllegalArgumentException,UnsupportedOperationException {
 
 		if(tValue== null){
@@ -100,23 +108,24 @@ public class BoCTransaction {
 				throw new UnsupportedOperationException( "The set value is not the same as the expected one");
 			}
 		}
-
-
-
-
 	}
+
 
 	public void setTransactionCategory(int tCat) {
 		if (tCat > 0) {
 			transactionCategory = tCat;
+		} else {
+			throw new IllegalArgumentException("Transaction category should greater than zero.");
 		}
 	}
+
 
 	public void setTransactionTime(Date tTime) {
 		if (tTime != null) {
 			transactionTime = tTime;
 		}
 	}
+
 
 	//Yingxiao Huo (scyyh9)
 	//Last modify: 2021/4/24
@@ -135,6 +144,7 @@ public class BoCTransaction {
 
 		return transactionName + " - ¥" + transactionValue.toString();
 	}
+
 
 	//Author :LinCHEN(biylc2)
 	//Last Modify:2021/04/24 14:37
