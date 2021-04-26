@@ -254,9 +254,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |TestID:  | TS-Transaction 7-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
-| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
-| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr></table> |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table> |
+| **Expected Outcome**      | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table> |
+| **Test Outcome**          | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table> |
 | **Result**                       | Pass |
 | **Reason for Failure**           | \ |
 | **What is Done to Make it Pass** | \ |
@@ -280,7 +280,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |TestID:  | TS-Transaction 7-3 |
 |:---------                 |-----------------           |
 | **Constructor**           | Default constructor |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>null</td></tr></table> |
+| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>" "</td></tr><tr><td>""</td></tr><tr><td>null</td></tr></table> |
 | **Expected Outcome**      | Throw `[IllegalArgumentException]`: "The transactionName is invalid." |
 | **Test Outcome**          | "IllegalArgumentException is not thrown out." |
 | **Result**                       | Fail |
@@ -292,7 +292,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |TestID:  | TS-Transaction 7-4 |
 |:---------                 |-----------------           |
-| **Constructor**           | BoCTransaction("defaultname", BigDecimal(999.00), 1) |
+| **Constructor**           | BoCTransaction("alreadyHaveName", BigDecimal(999.00), 1) |
 | **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr></table> |
 | **Expected Outcome**      | Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set." |
 | **Test Outcome**          | "Expected java.lang.Exception to be thrown, but nothing was thrown." |
@@ -302,18 +302,14 @@ Report here, by the end of the assignment, how the team has managed the project,
 &nbsp;
 
 &nbsp;
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Transaction 7-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Pass+ | Pass+ |
+| TS-Transaction 7-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Pass+ | Pass+ |
+| TS-Transaction 7-3|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Fail | Pass+ |
+| TS-Transaction 7-4|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Fail | Pass+ |
 
-|TestID:  | TS-Transaction 7-5 |
-|:---------                 |-----------------           |
-| **Constructor**           | BoCTransaction("defaultname", null, 2) |
-| **Inputs**                | <table border="1"><tr><th>transactionName: </th></tr><tr><td>"886"</td></tr></table> |
-| **Expected Outcome**      | Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set." |
-| **Test Outcome**          | "Expected java.lang.Exception to be thrown, but nothing was thrown." |
-| **Result**                       | Fail |
-| **Reason for Failure**           | The program cannot throw out an exception when the transaction name is set twice. |
-| **What is Done to Make it Pass** | \ |
-&nbsp;
- 
 
 
 &nbsp;
