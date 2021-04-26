@@ -75,8 +75,45 @@ class BoCAppTest {
     void tearDown() {
     }
 
-    @Test
-    void main() {
+    // Author: Ziyi Wang (scyzw10)
+    // Last modified: 2021/4/26 21:32
+    @DisplayName("Test for Main Method.")
+    @ParameterizedTest
+    @ValueSource(ints = {1,2})
+    void main(int input) {
+        String inviteAddCategory = "What is the title of the category?" + ln + "What is the budget for this category?" + ln;
+        String inviteAddTransaction = "What is the title of the transaction?"+ ln + "What is the value of the transaction?" + ln;
+        String inviteChangeTCate1 = "Which transaction ID?" + ln;
+        String inviteChangeTcate2 = "Which category will it move to?" + ln;
+
+        switch (input) {
+            case 1:
+                testOutcome("O\nT\n1\nX\n", appMenu + defaultCategoryOverview +
+                        appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
+                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu + appExit);
+                break;
+            case 2:
+                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
+                        appMenu + defaultTransactionOverview + appMenu +    // list Transaction overview
+                        inviteAddCategory + "[Category added]" + ln + defaultCategoryOverview +  // new category -> add category first and print the new category overview
+                        "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +       // add transaction
+                        inviteAddTransaction + "Which category do you want to add?" + ln + "[Breakfast](¥5.00) was added to [Food]" +
+                        ln + appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +    // check the new transaction list after adding
+                        appMenu + defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +  //check the new category list after adding
+                        appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +     // change the category -> first print the transaction list
+                        inviteChangeTCate1 + "\t- " + "Breakfast - ¥5.00 date: "+ BoCApp.UserTransactions.get(5).transactionTime() + ln +   // the Transaction that the user want to change
+                        defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +    // print the category list and let the user to choose
+                        inviteChangeTcate2 + "[Unknown](Budget: ¥0.00) - ¥855.00 (¥855.00 Overspent)"+ ln +  // print the result of new cate and the old one
+                        "[Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +
+                        defaultTransactionOverview + "8) Breakfast (Unknown) - ¥5.00" + ln + appMenu +   // check the Transaction list after changing
+                        "1) [Unknown](Budget: ¥0.00) - ¥855.00 (¥855.00 Overspent)"+ ln +
+                        "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
+                        "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
+                        "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln +
+                        "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln +
+                        appMenu + appExit);
+                break;
+        }
     }
 
 
@@ -117,12 +154,37 @@ class BoCAppTest {
     }
 
 
+    //Author: Leshan Tan (sqylt2)
+    //Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
-    @Test
-
-    void listTransactionsForCategory() {
-
-
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void listTransactionsForCategory(int categoryNumber) {
+        String expectedOutput0 = "1) Rent - ¥850.00" + ln;
+        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln +
+                                 "3) Electricity Bill - ¥75.00" + ln;
+        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln +
+                                 "5) Tesco's Checkout - ¥7.24" + ln;
+        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln +
+                                 "7) The Mooch - ¥13.99" + ln;
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        BoCApp boc = new BoCApp();
+        boc.ListTransactionsForCategory(categoryNumber);
+        switch(categoryNumber){
+            case 0:
+                assertEquals(expectedOutput0, outContent.toString(), "The transaction list for category 0 is unexpected");
+                break;
+            case 1:
+                assertEquals(expectedOutput1, outContent.toString(), "The transaction list for category 1 is unexpected");
+                break;
+            case 2:
+                 assertEquals(expectedOutput2, outContent.toString(), "The transaction list for category 2 is unexpected");
+                break;
+            case 3:
+                assertEquals(expectedOutput3, outContent.toString(), "The transaction list for category 3 is unexpected");
+                break;
+        }
 
     }
 
@@ -231,28 +293,28 @@ class BoCAppTest {
     @ParameterizedTest
     @ValueSource(ints = {1,2})
     void AddTransaction(int input){
-        String invitesTitle = "What is the title of the transaction?\n";
-        String invitesValue = "What is the value of the transaction?\n";
-        String invitesCategory = "Which category do you want to add?\n";
-        String invitesVaild = "Invalid input. Please enter a valid number\n";
+        String invitesTitle = "What is the title of the transaction?" + ln;
+        String invitesValue = "What is the value of the transaction?" + ln;
+        String invitesCategory = "Which category do you want to add?" + ln;
+        String invitesVaild = "Invalid input. Please enter a valid number" + ln;
 
         switch (input) {
             case 1:
                 testOutcome("A\nElectricity Bill\n9.00\n2\nX\n",
-                        defaultCategoryOverview + appMenu + invitesTitle + invitesValue
+                        appMenu + invitesTitle + invitesValue
                                 + defaultCategoryOverview + invitesCategory +
-                                "[Electricity Bill](¥9.00) was added to [Bills]\n" +
+                                "[Electricity Bill](¥9.00) was added to [Bills]" + ln +
                                 appMenu + appExit );
                 break;
             case 2:
                 testOutcome("A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n",
-                        defaultCategoryOverview + appMenu + invitesTitle + invitesValue +
+                        appMenu + invitesTitle + invitesValue +
                                 invitesVaild + invitesValue + defaultCategoryOverview +
                                 invitesCategory + invitesVaild + defaultCategoryOverview +
                                 invitesCategory + invitesVaild + defaultCategoryOverview +
                                 invitesCategory+ "Invalid number. Category not exist" + ln
                                 + defaultCategoryOverview + invitesCategory +
-                                "[Water Bill](¥9.00) was added to [Bills]\n" + appMenu + appExit );
+                                "[Water Bill](¥9.00) was added to [Bills]" + ln + appMenu + appExit );
                 break;
         }
     }
