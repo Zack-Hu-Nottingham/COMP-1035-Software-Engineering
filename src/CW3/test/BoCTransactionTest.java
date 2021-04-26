@@ -20,9 +20,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoCTransactionTest {
 
     // Author: Leshan Tan (sqylt2)
-    // Last Modified: 2021/4/18
+    // Last Modified: 2021/4/26 9:10
+    // latest version of testing default constructor
     @Test
-    void BoCTransaction() throws NoSuchFieldException, IllegalAccessException{
+    @DisplayName("Test1 for default constructor")
+    void BoCTransaction(){
+        BoCTransaction boc = new BoCTransaction(); // create an instance with default constructor
+        assertEquals("[Pending Transaction]", boc.transactionName(), "Field transactionName didn't match");
+        assertNull( boc.transactionValue(),"Field transactionValue didn't match");
+        assertEquals(0, boc.transactionCategory(),"Field transactionCategory didn't match");
+        Date currentTime = new Date();
+        assertEquals(currentTime.getTime(),boc.transactionTime().getTime(),10,"Field transactionTime didn't match");
+    }
+
+    // old version of testing default constructor, disabled
+    @Disabled
+    @Test
+    void BoCTransactionIgnored() throws NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
         final Field fieldName = boc.getClass().getDeclaredField("transactionName");
         final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
