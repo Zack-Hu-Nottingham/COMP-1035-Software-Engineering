@@ -40,7 +40,7 @@ public class BoCApp {
 
 		// MAIN FUNCTION LOOP
 
-		CategoryOverview();
+		//CategoryOverview();
 		System.out.println(
 				"\nWhat do you want to do?\n O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it");
 		Scanner in = new Scanner(System.in);
