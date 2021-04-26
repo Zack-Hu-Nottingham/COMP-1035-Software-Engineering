@@ -38,6 +38,61 @@ class BoCTransactionTest {
         assertNull(fieldTime.get(boc),"Field transactionTime didn't match");
     }
 
+
+    // Author: Zixiang Hu (scyzh6)
+    // Last Modified: 2021/4/19 20:24
+    // test the time
+    @ParameterizedTest
+    @CsvSource({
+            "A test, 200, 2"
+    })
+    @DisplayName("Test for main constructor")
+    void MainBoCTransaction(String tName, BigDecimal tValue, int tCat) {
+        if (tName == null) { // Test if tName input is null
+            try {
+                BoCTransaction boc = new BoCTransaction(null, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                assertEquals(e.getMessage(), "Transaction name should not be null.");
+            }
+        }
+        if (tName.length() > 25) {
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
+            }
+        }
+        if (tCat < 0) {
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+            }
+        }
+        if (tValue.compareTo(new BigDecimal(0)) < 1 ) {
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+            }
+        }
+        BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+        Date timeTest = new Date();
+        assertNotNull(boc.transactionTime()); // Test if time is created
+        assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1); // Test whether time is accurate
+        assertAll("", () -> assertEquals(tName, boc.transactionName()),
+                                () -> assertEquals(tValue, boc.transactionValue(),
+                                () -> assertEquals(tCat, boc.transactionCategory()))
+                                ); // Normal test with input
+    }
+
+
+
+
     // Author: Zixiang Hu (scyzh6)
     // Last Modified: 2021/4/19 20:24
     // test the time
@@ -55,7 +110,7 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(),timeTest.getTime(), 10);
     }
 
-    // test illegal trans name
+    // test null trans name
     @Test
     @DisplayName("Test2 for main constructor")
     void MainBoCTransaction2() {
@@ -106,7 +161,7 @@ class BoCTransactionTest {
     @DisplayName("Test6 for main constructor")
     void MainBoCTransaction6() {
         try {
-            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
+            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(200), 2);
         } catch (IllegalArgumentException e) {
             assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
             return;
