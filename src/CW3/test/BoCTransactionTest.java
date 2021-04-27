@@ -27,7 +27,7 @@ class BoCTransactionTest {
     void BoCTransaction(){
         BoCTransaction boc = new BoCTransaction(); // create an instance with default constructor
         Date currentTime = new Date(); // get the current time
-        assertAll("Should return the fields of a transaction instance",
+        assertAll("Should return the fields of a transaction instance", // each fields should be what we expected
                 () -> assertEquals("[Pending Transaction]", boc.transactionName(), "Field transactionName didn't match"),
                 () -> assertNull( boc.transactionValue(),"Field transactionValue didn't match"),
                 () -> assertEquals(0, boc.transactionCategory(),"Field transactionCategory didn't match"),
@@ -258,15 +258,15 @@ class BoCTransactionTest {
     // Last modified: 2021/4/21
 
     @ParameterizedTest
-    @CsvFileSource(resources = {"transactionValue.csv"})
+    @CsvFileSource(resources = {"transactionValue.csv"}) // get the input  and output source
     @DisplayName("Test for transaction value getter")
     void transactionValue(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
-        final BoCTransaction boc = new BoCTransaction();
-        final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
-        fieldValue.setAccessible(true);
-        fieldValue.set(boc, new BigDecimal(input));
-        final BigDecimal result = boc.transactionValue();
-        assertEquals( new BigDecimal(expectation), boc.transactionValue(), "Field transactionValue wasn't retrieved properly");
+        final BoCTransaction boc = new BoCTransaction(); // create an instance using default constructor
+        final Field fieldValue = boc.getClass().getDeclaredField("transactionValue"); // get the field transactionValue
+        fieldValue.setAccessible(true); // enable to access this private field
+        fieldValue.set(boc, new BigDecimal(input)); // set it to the input value in source transactionValue.csv
+        final BigDecimal result = boc.transactionValue(); // get the result value from source transactionValue.csv
+        assertEquals( new BigDecimal(expectation), boc.transactionValue(), "Field transactionValue wasn't retrieved properly"); // field transactionValue should be what we expected
     }
 
 

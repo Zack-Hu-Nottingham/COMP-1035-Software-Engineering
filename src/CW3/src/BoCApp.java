@@ -92,10 +92,14 @@ public class BoCApp {
 
 	}
 
+	// Author: Leshan Tan (sqylt2)
+	// Last Modified: 2021/4/27 20:27
+	// Reason: add an if to test if the input category already in the list
 	public static void ListTransactionsForCategory(int chosenCategory) {
-		if (chosenCategory < 0 || chosenCategory > UserCategories.size() - 1)
+		// the category number should be already in the list, counting from 0 to UserCategories.size() - 1
+		if (chosenCategory < 0 || chosenCategory > UserCategories.size() - 1) // the category should be already in the list, counting from 0 to UserCategories.size() - 1
 		{
-			System.out.println("Cannot find transactions with category " + chosenCategory);
+			System.out.println("Cannot find transactions with category " + chosenCategory); // print corresponding error messages
 		}
 		for (int x = 0; x < UserTransactions.size(); x++) {
 			BoCTransaction temp = UserTransactions.get(x);

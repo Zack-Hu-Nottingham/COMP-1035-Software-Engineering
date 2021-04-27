@@ -24,10 +24,10 @@ class BoCCategoryTest {
         List BoCCategoryNameList = new ArrayList(); // create a list to store the name of the category instances
         int times = 0; // the count of instances to be created
         while(times < 10){
-            BoCCategory instance = new BoCCategory();
-            final Field fieldName = instance.getClass().getDeclaredField("CategoryName");
-            final Field fieldBudget = instance.getClass().getDeclaredField("CategoryBudget");
-            final Field fieldSpend = instance.getClass().getDeclaredField("CategorySpend");
+            BoCCategory instance = new BoCCategory(); // create an instance
+            final Field fieldName = instance.getClass().getDeclaredField("CategoryName"); // get the field CategoryName
+            final Field fieldBudget = instance.getClass().getDeclaredField("CategoryBudget"); // get the fieldBudget
+            final Field fieldSpend = instance.getClass().getDeclaredField("CategorySpend"); // get the fieldSpend
             fieldName.setAccessible(true); // get access to the private fields
             fieldBudget.setAccessible(true);
             fieldSpend.setAccessible(true);
@@ -38,7 +38,7 @@ class BoCCategoryTest {
             for (int n=0;n<times;n++){ // to check if the CategoryName if unique, hence comparing each name with all previous instances' names in the list
                 assertNotEquals(BoCCategoryNameList.get(n), name,"Constructor did not create unique Category Name");
             }
-            times++;
+            times++; // count ++
         }
     }
 
@@ -134,21 +134,21 @@ class BoCCategoryTest {
     // Last Modified: 2021/4/23
     @Test
     void categorySpend() throws  NoSuchFieldException{
-        final BoCCategory boc = new BoCCategory();
-        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
-        fieldSpend.setAccessible(true);
-        assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly");
+        final BoCCategory boc = new BoCCategory(); // create an instance using default constructor
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend"); // get the field CategorySpend
+        fieldSpend.setAccessible(true); // get access to private field
+        assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly"); // the initial CategorySpend should be BigDecimal("0.00")
     }
 
 
     @ParameterizedTest
-    @CsvFileSource(resources = {"categorySpend.csv"})
+    @CsvFileSource(resources = {"categorySpend.csv"}) // get the input  and output source
     void categorySpendWithInputs(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
-        final BoCCategory boc = new BoCCategory();
-        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
-        fieldSpend.setAccessible(true);
-        fieldSpend.set(boc, new BigDecimal(input));
-        assertEquals( new BigDecimal(expectation), boc.CategorySpend(), "Field CategorySpend wasn't retrieved properly");
+        final BoCCategory boc = new BoCCategory(); // create an instance using default constructor
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend"); // get the field CategorySpend
+        fieldSpend.setAccessible(true); // get access to private field
+        fieldSpend.set(boc, new BigDecimal(input)); // set the CategorySpend to the input value in categorySpend.csv
+        assertEquals( new BigDecimal(expectation), boc.CategorySpend(), "Field CategorySpend wasn't retrieved properly"); // field CategorySpend should be what we expected
     }
 
     //author: Yingxiao Huo
