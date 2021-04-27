@@ -351,7 +351,7 @@ class BoCAppTest {
     @ParameterizedTest
     @CsvSource({
             "'N\nCW3 is so easy\n100\n',1",
-            "'N\nBills\n100\n',2",
+            "'N\nBills\n',2",
             "'N\nblabla#$%%^&\n-100\n',3",
             "'N\nabc\nabc@#$\n',3",
             "'N\nRent\n999\n',4",
@@ -400,7 +400,7 @@ class BoCAppTest {
             System.setOut(System.out);
             System.setIn(System.in);
             String result = output1.toString();
-            assertEquals("This category is already exist.", result);
+            assertEquals(option_ch1 +"What is the title of the category?\r\n" +  "This category is already exist." + option_ch1, result);
 
         } else if (testNum == 3) {
             System.setIn(input1);
