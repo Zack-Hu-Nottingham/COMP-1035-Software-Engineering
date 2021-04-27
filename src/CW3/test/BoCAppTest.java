@@ -1,9 +1,8 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -13,6 +12,7 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,13 +47,13 @@ class BoCAppTest {
         // SETUP EXAMPLE DATA //
         BoCApp.UserCategories.add(new BoCCategory("Unknown"));
         BoCCategory BillsCategory = new BoCCategory("Bills");
-        BillsCategory.setCategoryBudget(new BigDecimal("120.00"));
+        BillsCategory.setCategoryBudget(120.00F);
         BoCApp.UserCategories.add(BillsCategory);
         BoCCategory Groceries = new BoCCategory("Groceries");
-        Groceries.setCategoryBudget(new BigDecimal("75.00"));
+        Groceries.setCategoryBudget(75.00F);
         BoCApp.UserCategories.add(Groceries);
         BoCCategory SocialSpending = new BoCCategory("Social");
-        SocialSpending.setCategoryBudget(new BigDecimal("100.00"));
+        SocialSpending.setCategoryBudget(100.00F);
         BoCApp.UserCategories.add(SocialSpending);
 
         BoCApp.UserTransactions.add(new BoCTransaction("Rent", new BigDecimal("850.00"), 0));
@@ -78,7 +78,7 @@ class BoCAppTest {
     }
 
     // Author: Ziyi Wang (scyzw10)
-    // Last modified: 2021/4/26 21:32
+    // Last modified: 2021/4/27 18:43
     @DisplayName("Test for Main Method.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2})
@@ -90,9 +90,11 @@ class BoCAppTest {
 
         switch (input) {
             case 1:
-                testOutcome("O\nT\n1\nX\n", appMenu + defaultCategoryOverview +
+                testOutcome("O\nT\n1\nrrr\n12\nX\n", appMenu + defaultCategoryOverview +
                         appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
-                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu + appExit);
+                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu +
+                        "Something went wrong: java.lang.NumberFormatException: For input string: "+ "\"rrr\"" + ln + ln +
+                        appMenu + "Cannot find transactions with category 12" + ln + appMenu + appExit);
                 break;
             case 2:
                 testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
@@ -159,7 +161,7 @@ class BoCAppTest {
     //Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1})
     void listTransactionsForCategory(int categoryNumber) {
         String expectedOutput0 = "1) Rent - ¥850.00" + ln;
         String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln +
@@ -168,10 +170,13 @@ class BoCAppTest {
                 "5) Tesco's Checkout - ¥7.24" + ln;
         String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln +
                 "7) The Mooch - ¥13.99" + ln;
+        String expectedErrorMessage = "Cannot find transactions with category ";
+
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         BoCApp boc = new BoCApp();
         boc.ListTransactionsForCategory(categoryNumber);
+
         switch (categoryNumber) {
             case 0:
                 assertEquals(expectedOutput0, outContent.toString(), "The transaction list for category 0 is unexpected");
@@ -185,12 +190,15 @@ class BoCAppTest {
             case 3:
                 assertEquals(expectedOutput3, outContent.toString(), "The transaction list for category 3 is unexpected");
                 break;
+            default:
+                assertEquals(expectedErrorMessage + categoryNumber + ln, outContent.toString(), "The output for category " + categoryNumber + " is unexpected");
         }
 
     }
 
     //Author: Yicun Duan
     //Last Modified: 2021/4/25 19:51
+    @Disabled
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
     @ValueSource(ints = {1, 2})

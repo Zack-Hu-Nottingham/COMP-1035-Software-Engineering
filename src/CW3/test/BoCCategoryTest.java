@@ -45,6 +45,7 @@ class BoCCategoryTest {
 
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/4/24 23:03
+    @DisplayName("tests for Main Constructor")
     @ParameterizedTest
     @CsvSource({"test1","test2","test3","testWithMoreThan15Chars"})
     void MainBocCategory(String cName) throws NoSuchFieldException, IllegalAccessException {
@@ -189,7 +190,27 @@ class BoCCategoryTest {
     
 
     // Author: Ziyi Wang
+    // Last modified: 2021/4/27 20:05
+    @DisplayName("tests for add setCategoryBudget")
+    @ParameterizedTest
+    @CsvFileSource(resources = { "Cate_setCategoryBudget.csv" })
+    void setCategoryBudget(float input1, String expect, int expectcomp) throws NoSuchFieldException, IllegalAccessException {
+        final BoCCategory setCBudget = new BoCCategory();    //new object
+
+        setCBudget.setCategoryBudget(input1);    // set the budget
+        // try to get the private variable CategoryBudget
+        final Field field = setCBudget.getClass().getDeclaredField("CategoryBudget");
+        field.setAccessible(true);
+
+        final BigDecimal nbud = new BigDecimal(expect);   // expected amount of new budget after setCategoryBudget()
+        BigDecimal result = (BigDecimal) field.get(setCBudget);  // store the CategoryBudget in result
+        int equals = result.compareTo(nbud); // compare the actual with nbud(expected number)
+        assertEquals(expectcomp,equals,"The budget set inside is incorrect.");
+    }
+    // Author: Ziyi Wang
     // Last modified: 2021/4/23 19:31
+    // test before fixing the source code
+//    @Ignore
 //    @Test
 //    void setCategoryBudget(){
 //        final BoCCategory stest = new BoCCategory();    //new object
@@ -314,6 +335,7 @@ class BoCCategoryTest {
 
     // Author: Ziyi Wang
     // Last modified: 4/25 12:31
+    @DisplayName("tests for remove Expense")
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
     void removeExpense(String input1,String input2, String expect, int expectation) throws NoSuchFieldException, IllegalAccessException {

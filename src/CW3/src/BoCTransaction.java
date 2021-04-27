@@ -32,7 +32,10 @@ public class BoCTransaction {
 		if (tCat < 0) {
 			throw new IllegalArgumentException("Transaction category should not be minus.");
 		}
-		if (tValue.compareTo(new BigDecimal(0)) < 1) {
+		if(tValue==null){
+			throw new IllegalArgumentException("Transaction budget should not be null.");
+		}
+		else if (tValue.compareTo(new BigDecimal(0)) < 1) {
 			throw new IllegalArgumentException("Transaction budget should greater than zero.");
 		}
 
