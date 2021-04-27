@@ -60,10 +60,12 @@ public class BoCApp {
 				} else if (s.equals("X")) {
 					System.out.println("Goodbye!");
 					break;
-				} else if (Integer.parseInt(s) != -1) {
-					ListTransactionsForCategory((int) Integer.parseInt(s));
 				} else {
-					System.out.println("Command not recognised");
+					try{
+						ListTransactionsForCategory(Integer.parseInt(s));
+					}catch (NumberFormatException exc){
+						System.out.println("Command not recognised");
+					}
 				}
 			} catch (Exception e) {
 				System.out.println("Something went wrong: " + e.toString() + "\n");
@@ -91,6 +93,10 @@ public class BoCApp {
 	}
 
 	public static void ListTransactionsForCategory(int chosenCategory) {
+		if (chosenCategory < 0 || chosenCategory > UserCategories.size() - 1)
+		{
+			System.out.println("Cannot find transactions with category " + chosenCategory);
+		}
 		for (int x = 0; x < UserTransactions.size(); x++) {
 			BoCTransaction temp = UserTransactions.get(x);
 			if (temp.transactionCategory() == chosenCategory) {
