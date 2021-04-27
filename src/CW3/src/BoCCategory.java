@@ -25,12 +25,11 @@ public class BoCCategory {
 		}else{
 			CategoryName = newTitle;
 		}
-
 	}
 
-	//Author: Yingxiao Huo (scyyh9)
-	//Last modified time: 2021/4/24 23:25
-	//Reason: Name can not longer than 15 characters, and name can not be null
+	// Author: Yingxiao Huo (scyyh9)
+	// Last modified time: 2021/4/24 23:25
+	// Reason: Name can not longer than 15 characters, and name can not be null
 	public String CategoryName() throws IllegalArgumentException{
 		if (CategoryName == null){
 			throw new IllegalArgumentException("Name is not set.");
@@ -51,8 +50,16 @@ public class BoCCategory {
 		return CategorySpend;
 	}
 
-	public void setCategoryName(String newName) {
-		CategoryName = newName;
+	public void setCategoryName(String newName) throws IllegalArgumentException{
+		if (newName == null || newName.isBlank()){
+			throw new IllegalArgumentException("Name can not be null");
+		}
+		else if (newName.length() > 15){
+			CategoryName = newName.substring(0,15);
+		}
+		else {
+			CategoryName = newName;
+		}
 	}
 
 	// Author: Ziyi Wang (scyzw10)
@@ -73,9 +80,9 @@ public class BoCCategory {
 //		}
 //	}
 
-	//Modifier: LinCHEN(biylc2)
-	//Last Modify:2021/04/25 11:20
-	//Reason: Cause when the valueToAdd is negative or null, it cannot be set. the previous function cannot catch the exception and print useful error message.
+	// Modifier: LinCHEN (biylc2)
+	// Last Modify:2021/04/25 11:20
+	// Reason: Cause when the valueToAdd is negative or null, it cannot be set. the previous function cannot catch the exception and print useful error message.
 
 	public void addExpense(BigDecimal valueToAdd) throws NullPointerException,IllegalArgumentException {
 		if(valueToAdd == null){
@@ -117,9 +124,9 @@ public class BoCCategory {
 		return remainingBudget;
 	}
 
-	//Modifier: LinCHEN(biylc2)
-	//Last Modify:2021/04/24
-	//Reason: Cause when the remaining budget is negative, the previous function will have a wrong output
+	// Modifier: LinCHEN (biylc2)
+	// Last Modify:2021/04/24
+	// Reason: Cause when the remaining budget is negative, the previous function will have a wrong output
 
 	@Override
 	public String toString() {

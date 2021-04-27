@@ -13,14 +13,33 @@ import java.math.BigDecimal;
 import java.util.Date;
 //import static org.hamcrest.CoreMatchers.containsString;
 //import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
     // Author: Leshan Tan (sqylt2)
-    // Last Modified: 2021/4/18
+    // Last modified: 2021/4/26 22:10
+    // latest version of testing default constructor, using assertAll to get all failures
     @Test
-    void BoCTransaction() throws NoSuchFieldException, IllegalAccessException{
+    @DisplayName("Test for default constructor")
+    void BoCTransaction(){
+        BoCTransaction boc = new BoCTransaction(); // create an instance with default constructor
+        Date currentTime = new Date(); // get the current time
+        assertAll("Should return the fields of a transaction instance",
+                () -> assertEquals("[Pending Transaction]", boc.transactionName(), "Field transactionName didn't match"),
+                () -> assertNull( boc.transactionValue(),"Field transactionValue didn't match"),
+                () -> assertEquals(0, boc.transactionCategory(),"Field transactionCategory didn't match"),
+                () -> assertEquals(currentTime.getTime(),boc.transactionTime().getTime(),10,"Field transactionTime didn't match")
+        );
+    }
+
+
+    // old version of testing default constructor, disabled
+    @Disabled
+    @Test
+    void BoCTransactionDisabled() throws NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
         final Field fieldName = boc.getClass().getDeclaredField("transactionName");
         final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
@@ -36,9 +55,80 @@ class BoCTransactionTest {
         assertNull(fieldTime.get(boc),"Field transactionTime didn't match");
     }
 
+
     // Author: Zixiang Hu (scyzh6)
-    // Last Modified: 2021/4/19 20:24
+    // Last modified: 2021/4/23 16:06
+
     // test the time
+    @ParameterizedTest
+    @CsvSource({
+            "Buy an apple, 2, 2",
+            "Buy an apple pen, 998, 3",
+            "Go to Apple store and buy an apple pen, 998, 3",
+            ", 998, 3",
+            "Buy an apple pen, 998, -3",
+            "Buy an apple pen, 0, 3",
+            "Buy an apple pen, -998, -3"
+    })
+    @DisplayName("Test for main constructor")
+    void MainBoCTransaction(String tName, BigDecimal tValue, int tCat) {
+        int isCaught = 0; // A flag indicate whether exception is caught
+        if (tName == null) { // Test if tName input is null
+            try {
+                BoCTransaction boc = new BoCTransaction(null, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertEquals(e.getMessage(), "Transaction name should not be null.");
+            }
+        }
+        else if (tName.length() > 25) { // Test if name is more than 25 char
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
+            }
+        }
+        else if (tCat < 0) { // Test if category is less than 0
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+            }
+        }
+        else if (tValue.compareTo(new BigDecimal(0)) < 1 ) { // Test if transaction value is <= 0
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+            }
+        }
+
+        if (isCaught == 0) {
+            BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
+            Date timeTest = new Date();
+            assertNotNull(boc.transactionTime()); // Test if time is created
+            assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1); // Test whether time is accurate
+            assertAll("", () -> assertEquals(tName, boc.transactionName()),
+                    () -> assertEquals(tValue.compareTo(boc.transactionValue()), 0) ,
+                    () -> assertEquals(tCat, boc.transactionCategory())
+            ); // Normal test with input
+        }
+    }
+
+
+
+    // Author: Zixiang Hu (scyzh6)
+    // Last modified: 2021/4/19 20:24
+
+    @Disabled // Older version, so we disabled it
+    // Test the time
     @ParameterizedTest
     @CsvSource({
             "A test, 200, 2"
@@ -53,12 +143,13 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(),timeTest.getTime(), 10);
     }
 
-    // test illegal trans name
+    @Disabled // Older version
+    // Test if transaction name is null
     @Test
     @DisplayName("Test2 for main constructor")
     void MainBoCTransaction2() {
         try {
-            BoCTransaction boc = new BoCTransaction("", new BigDecimal(200), 2);
+            BoCTransaction boc = new BoCTransaction(null, new BigDecimal(200), 2);
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "Transaction name should not be null.");
             return;
@@ -66,7 +157,8 @@ class BoCTransactionTest {
         fail("No exception thrown.");
     }
 
-    // test whether the time created is correct
+    @Disabled // Older version
+    // Test whether the time created is not null and accurate
     @Test
     @DisplayName("Test3 for main constructor")
     void MainBoCTransactio3() {
@@ -76,50 +168,60 @@ class BoCTransactionTest {
         assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1);
     }
 
-//    @Test
-//    @DisplayName("Test4 for main constructor")
-//    void MainBoCTransaction4() {
-//        try {
-//            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
-//        } catch (IllegalArgumentException e) {
-//            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
-//            return;
-//        }
-//        fail("No exception thrown.");
-//    }
+    @Disabled // Older version
+    // Test if category is less than 0
+    @Test
+    @DisplayName("Test4 for main constructor")
+    void MainBoCTransaction4() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(200), -2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction category should not be minus."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
 
-//    @Test
-//    @DisplayName("Test5 for main constructor")
-//    void MainBoCTransaction5() {
-//        try {
-//            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
-//        } catch (IllegalArgumentException e) {
-//            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
-//            return;
-//        }
-//        fail("No exception thrown.");
-//    }
+    @Disabled // Older version
+    // Test if transaction value less than 0
+    @Test
+    @DisplayName("Test5 for main constructor")
+    void MainBoCTransaction5() {
+        try {
+            BoCTransaction boc = new BoCTransaction("A test", new BigDecimal(-200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction budget should greater than zero."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
 
-//    @Test
-//    @DisplayName("Test6 for main constructor")
-//    void MainBoCTransaction6() {
-//        try {
-//            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(-200), 2);
-//        } catch (IllegalArgumentException e) {
-//            assertThat(e.getMessage(), containsString("Transaction name should be shorter than 25 characters."));
-//            return;
-//        }
-//        fail("No exception thrown.");
-//    }
+    @Disabled // Older version
+    // Test if transaction name is longer than 25 char
+    @Test
+    @DisplayName("Test6 for main constructor")
+    void MainBoCTransaction6() {
+        try {
+            BoCTransaction boc = new BoCTransaction("Transaction name with more than 25 char", new BigDecimal(200), 2);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Transaction name should be limited to 25 characters."));
+            return;
+        }
+        fail("No exception thrown.");
+    }
+
 
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
+
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
             ", name is not set.",
-            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters."
+            "awdwdadwadawdsdaawdwadasdwadawdwdw, Name can not longer than 25 characters.",
+            "U+1F605,U+1F605"
     })
+    @DisplayName("Test for transaction name getter")
     void transactionName(String name, String expection) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_getter = new BoCTransaction();
         final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
@@ -151,10 +253,13 @@ class BoCTransactionTest {
         }
     }
 
+
     // Author: Leshan Tan (sqylt2)
-    // Last Modified: 2021/4/21
+    // Last modified: 2021/4/21
+
     @ParameterizedTest
     @CsvFileSource(resources = {"transactionValue.csv"})
+    @DisplayName("Test for transaction value getter")
     void transactionValue(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
         final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
@@ -164,70 +269,74 @@ class BoCTransactionTest {
         assertEquals( new BigDecimal(expectation), boc.transactionValue(), "Field transactionValue wasn't retrieved properly");
     }
 
+
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/18 21:15
+
     @ParameterizedTest
     @ValueSource(ints = {0,1,5,100})
+    @DisplayName("Test for transaction category getter")
     void transactionCategory(int input) {
         final BoCTransaction tCate = new BoCTransaction("wzy", new BigDecimal("2000"), input);
         int num = tCate.transactionCategory();
         assertEquals(input,num);
     }
 
+
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
+
     @ParameterizedTest
     @CsvSource({
-            "A test, 200, 2",
-            "Another test, 200, 3",
-            ", , 0"
+            "Buy a bunch of flower, 20, 4",
+            "Shopping in mart, 150, 3",
     })
+    @DisplayName("Test for transaction time getter")
     void transactionTime(String transName, BigDecimal transValue, int transCate) {
         BoCTransaction test1 = new BoCTransaction(transName, transValue, transCate);
         Date testTime = new Date();
-        assertNotNull(test1.transactionTime());
-        assertEquals(test1.transactionTime().getTime(), testTime.getTime(), 1);
+        assertNotNull(test1.transactionTime()); // Check if the Date object is null
+        assertEquals(test1.transactionTime().getTime(), testTime.getTime(), 1); // Check if the Date object is accurate
     }
 
+
     // Author: Yicun Duan (scyyd3)
-    // Last modified: 2021/4/23 16:50
+    // Last modified: 2021/4/25 23:36
+
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
+    @DisplayName("Test for transaction name setter")
     void setTransactionName(String transName, BigDecimal transValue, int transCate, String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
         if (transName == null && transValue == null && transCate == 0) {
             final BoCTransaction test_instance = new BoCTransaction();
-            if (giveName == null) {
-                try {
-                    test_instance.setTransactionName(null);
-                    fail("IllegalArgumentException is not thrown out.");
-                } catch (Exception e) {
+                try{
+                    test_instance.setTransactionName(giveName);
+                }catch (Exception e) {
                     if (e instanceof IllegalArgumentException) {
                         assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
                     } else {
                         fail("Unexpected exception type.");
                     }
                 }
-            } else {
-                test_instance.setTransactionName(giveName);
 
                 final Field field = test_instance.getClass().getDeclaredField("transactionName");
                 field.setAccessible(true);
                 assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
-            }
 
             return;
-        }
+            }
 
         final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
 
         UnsupportedOperationException e = assertThrows(UnsupportedOperationException.class, ()->{test_instance.setTransactionName(giveName);});
         assertEquals("Transaction name cannot be repeatedly set.", e.getMessage());
-
     }
+
 
     @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
+
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
     void setTransactionValue1(int input,int expected) throws NoSuchFieldException, IllegalAccessException {
@@ -242,6 +351,7 @@ class BoCTransactionTest {
         int equals= result.compareTo(changedVal1);
         assertEquals(expected,equals);
     }
+
 
     @Disabled
     // Author: LinCHEN (biylc2)
@@ -259,6 +369,7 @@ class BoCTransactionTest {
         int equals= result.compareTo(changedVal2);
         assertEquals(expected,equals);
     }
+
 
     @Disabled
     // Author: LinCHEN (biylc2)
@@ -286,12 +397,12 @@ class BoCTransactionTest {
     }
 
 
-        // Author: LinCHEN (biylc2)
-        // Last modified: 2021/04/23
-        @DisplayName("tests for setTransactionValue")
-        @ParameterizedTest
-        @CsvFileSource(resources = "trans_setTransactionValueString.csv")
+    // Author: LinCHEN (biylc2)
+    // Last modified: 2021/04/23
 
+    @ParameterizedTest
+    @CsvFileSource(resources = "trans_setTransactionValueString.csv")
+    @DisplayName("Test for transaction value setter")
     void setTransactionValue(String str1,String expected) throws NoSuchFieldException, IllegalAccessException {
         BoCTransaction set1= new BoCTransaction();
         BigDecimal setData = null;
@@ -384,27 +495,45 @@ class BoCTransactionTest {
         }
     
 
-    // Author: Zixiang Hu
-    // Last modified: 2021/4/18
-    @ParameterizedTest
-    @CsvFileSource(resources = { "/Trans_setCategory.csv" })
+    // Author: Zixiang Hu (scyzh6)
+    // Last modified: 2021/4/18 21:49
 
-    void setTransactionCategory(int input, int expectation) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction trans = new BoCTransaction("wzy-hzx", new BigDecimal("2000"), 1);
-        trans.setTransactionCategory(input);
-        final Field field = trans.getClass().getDeclaredField("transactionCategory");
-        field.setAccessible(true);
-        assertEquals(expectation, field.get(trans), "Fields didn't match");
+    @ParameterizedTest
+    @CsvSource({"-100", "-50", "-25", "0", "1", "2", "3"})
+    @DisplayName("Test for transaction category setter")
+    void setTransactionCategory(int tCat) {
+        BoCTransaction defaultBoc = new BoCTransaction();
+        BoCTransaction parameterizedBoc = new BoCTransaction("Buy an apple pen", new BigDecimal("1000"), 3);
+        if (tCat <= 0) {
+            try {
+                parameterizedBoc.setTransactionCategory(tCat);
+                fail("No exception thrown");
+            } catch (IllegalArgumentException e) {
+                assertThat(e.getMessage(), containsString("Transaction category should greater than zero."));
+                return;
+            }
+        }
+        parameterizedBoc.setTransactionCategory(tCat);
+        assertEquals(parameterizedBoc.transactionCategory(), tCat);
     }
 
+
+    @Disabled
+    // Author: Zixiang Hu (scyzh6)
+    // Last modified: 2021/4/25 22:03
+
+    // Disabled this method because the time should not be set after the transaction is created
     @Test
     void setTransactionTime() {
     }
 
-    // Author: Yingxiao Huo
-    // Last modified: 2021/4/18
+
+    // Author: Yingxiao Huo (scyyh9)
+    // Last modified: 2021/4/21 16:44
+
     @ParameterizedTest
     @CsvFileSource(resources = {"/toStringTest.csv"})
+    @DisplayName("Test for method toString")
     void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction Test_toString = new BoCTransaction();
         final Field test1 = Test_toString.getClass().getDeclaredField("transactionName");
@@ -440,23 +569,50 @@ class BoCTransactionTest {
         }
     }
 
-        // Author: LinCHEN(biylc2)
-        // Last Modify: 2021/04/24 14:37
-        @DisplayName("tests for isComplete function")
-        @Test
-    void isCompleteTest(){
+
+    // Author: LinCHEN (biylc2)
+    // Last Modify: 2021/04/24 14:37
+
+    @Test
+    @DisplayName("Test for method isComplete")
+    void isCompleteTest() throws NoSuchFieldException, IllegalAccessException {
         String nameSet= "Tester";
         BigDecimal numSet= new BigDecimal("980.08");
         //Cases when using default constructor
-        BoCTransaction isCom1= new BoCTransaction();
-        BoCTransaction isCom2= new BoCTransaction(nameSet,null,0);
-        BoCTransaction isCom3= new BoCTransaction(null,numSet,0);
-        BoCTransaction isCom4= new BoCTransaction(nameSet,numSet,0);
 
-        assertEquals(isCom1.isComplete(),4);
-        assertEquals(isCom2.isComplete(),2);
-        assertEquals(isCom3.isComplete(),3);
-        assertEquals(isCom4.isComplete(),1);
 
+        final BoCTransaction isCom1 = new BoCTransaction();// With name and value are null
+
+        final BoCTransaction isCom2 = new BoCTransaction();
+        final Field fieldName2 = isCom2.getClass().getDeclaredField("transactionName");
+        final Field fieldValue2 = isCom2.getClass().getDeclaredField("transactionValue");
+        fieldName2.setAccessible(true);
+        fieldValue2.setAccessible(true);
+        fieldName2.set(isCom2, null);
+        fieldValue2.set(isCom2, numSet);
+
+        final BoCTransaction isCom3 = new BoCTransaction();
+        final Field fieldName3 = isCom3.getClass().getDeclaredField("transactionName");
+        final Field fieldValue3 = isCom3.getClass().getDeclaredField("transactionValue");
+        fieldName3.setAccessible(true);
+        fieldValue3.setAccessible(true);
+        fieldName3.set(isCom3, nameSet);
+        fieldValue3.set(isCom3, null);
+
+        final BoCTransaction isCom4 = new BoCTransaction();
+        final Field fieldName4 = isCom4.getClass().getDeclaredField("transactionName");
+        final Field fieldValue4 = isCom4.getClass().getDeclaredField("transactionValue");
+        fieldName4.setAccessible(true);
+        fieldValue4.setAccessible(true);
+        fieldName4.set(isCom4, nameSet);
+        fieldValue4.set(isCom4, numSet);
+
+        assertAll("Should return results of four examples",
+                () -> assertEquals(4, isCom1.isComplete()),
+                () -> assertEquals(3, isCom2.isComplete()),
+                () -> assertEquals(2, isCom3.isComplete()),
+                () -> assertEquals(1, isCom4.isComplete())
+
+        );
     }
 }
