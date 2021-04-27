@@ -12,7 +12,7 @@
 
 
 ### MileStone and the Time Line of our project
-![timeline.png](\timeline.png)
+![timeline.png](timeline.png)
 ### What is the processing flow of our group?
 We split the whole project can be split into ***two phase***: **unit test**  and **integration test**. <br>
 In the **unit test part**, we set 4 milestone in total. Firstly is write test script and test plan for the two class and then is fix the code according to the test result eg. which test failed and what made the test fail. <br>
