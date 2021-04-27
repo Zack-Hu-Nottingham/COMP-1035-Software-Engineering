@@ -161,7 +161,7 @@ class BoCAppTest {
     //Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1})
     void listTransactionsForCategory(int categoryNumber) {
         String expectedOutput0 = "1) Rent - ¥850.00" + ln;
         String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln +
@@ -170,10 +170,13 @@ class BoCAppTest {
                 "5) Tesco's Checkout - ¥7.24" + ln;
         String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln +
                 "7) The Mooch - ¥13.99" + ln;
+        String expectedErrorMessage = "Cannot find transactions with category ";
+
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         BoCApp boc = new BoCApp();
         boc.ListTransactionsForCategory(categoryNumber);
+
         switch (categoryNumber) {
             case 0:
                 assertEquals(expectedOutput0, outContent.toString(), "The transaction list for category 0 is unexpected");
@@ -187,6 +190,8 @@ class BoCAppTest {
             case 3:
                 assertEquals(expectedOutput3, outContent.toString(), "The transaction list for category 3 is unexpected");
                 break;
+            default:
+                assertEquals(expectedErrorMessage + categoryNumber + ln, outContent.toString(), "The output for category " + categoryNumber + " is unexpected");
         }
 
     }
