@@ -315,6 +315,7 @@ class BoCTransactionTest {
                 }catch (Exception e) {
                     if (e instanceof IllegalArgumentException) {
                         assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
+                        return;
                     } else {
                         fail("Unexpected exception type.");
                     }

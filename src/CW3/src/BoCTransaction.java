@@ -78,13 +78,14 @@ public class BoCTransaction {
 
 
 	public void setTransactionName(String tName) throws IllegalArgumentException, UnsupportedOperationException{
+		if (!transactionName.equals("[Pending Transaction]")) {
+			throw new UnsupportedOperationException("Transaction name cannot be repeatedly set.");
+		}
+
 		if (tName == null || tName.isBlank()) {
 			throw new IllegalArgumentException("The transactionName is invalid.");
 		}
 
-		if (transactionName != null) {
-			throw new UnsupportedOperationException("Transaction name cannot be repeatedly set.");
-		}
 
 		if (tName.length() > 25) {
 			tName = tName.substring(0, 25);
