@@ -7,6 +7,9 @@ public class BoCCategory {
 	private BigDecimal CategorySpend;
 	private static int categoryNum = 0;
 
+	// Author: Leshan Tan (sqylt2)
+	// Last modified: 2021/4/27 22:10
+	// Reason: the CategoryName should be unique among different instances, hence adding the variable categoryNum
 	public BoCCategory() {
 		CategoryName = "New Category" + categoryNum++;
 		CategoryBudget = new BigDecimal("0.00");

@@ -161,36 +161,36 @@ class BoCAppTest {
     //Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1})
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1}) // the input values
     void listTransactionsForCategory(int categoryNumber) {
-        String expectedOutput0 = "1) Rent - ¥850.00" + ln;
-        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln +
+        String expectedOutput0 = "1) Rent - ¥850.00" + ln; // the expected output string when categoryNumber == 0
+        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln + // the expected output string when categoryNumber == 1
                 "3) Electricity Bill - ¥75.00" + ln;
-        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln +
+        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln + // the expected output string when categoryNumber == 2
                 "5) Tesco's Checkout - ¥7.24" + ln;
-        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln +
+        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln + // the expected output string when categoryNumber == 3
                 "7) The Mooch - ¥13.99" + ln;
-        String expectedErrorMessage = "Cannot find transactions with category ";
+        String expectedErrorMessage = "Cannot find transactions with category "; // the expected output string when categoryNumber haven't been added to the list
 
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        BoCApp boc = new BoCApp();
-        boc.ListTransactionsForCategory(categoryNumber);
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // create the output stream outContent
+        System.setOut(new PrintStream(outContent)); // set the System output to this stream
+        BoCApp boc = new BoCApp(); // create an instance using default constructor
+        boc.ListTransactionsForCategory(categoryNumber); // invoke the method to be tested
 
         switch (categoryNumber) {
-            case 0:
+            case 0: // if categoryNumber == 0
                 assertEquals(expectedOutput0, outContent.toString(), "The transaction list for category 0 is unexpected");
                 break;
-            case 1:
+            case 1: // if categoryNumber == 1
                 assertEquals(expectedOutput1, outContent.toString(), "The transaction list for category 1 is unexpected");
                 break;
-            case 2:
+            case 2: // if categoryNumber == 2
                 assertEquals(expectedOutput2, outContent.toString(), "The transaction list for category 2 is unexpected");
                 break;
-            case 3:
+            case 3: // if categoryNumber == 3
                 assertEquals(expectedOutput3, outContent.toString(), "The transaction list for category 3 is unexpected");
                 break;
-            default:
+            default: // if categoryNumber haven't been added to the list, it should output corresponding error message
                 assertEquals(expectedErrorMessage + categoryNumber + ln, outContent.toString(), "The output for category " + categoryNumber + " is unexpected");
         }
 
