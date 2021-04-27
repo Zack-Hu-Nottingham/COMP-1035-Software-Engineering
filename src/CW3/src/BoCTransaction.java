@@ -98,19 +98,19 @@ public class BoCTransaction {
 	// Last Modify: 2021/04/25
 	// Reason: The previous function cannot handle the situation that when the value is non-positive and does not throw an exception as expected.
 	public void setTransactionValue(BigDecimal tValue) throws UnsupportedOperationException,NullPointerException,IllegalArgumentException,UnsupportedOperationException {
-
+		// There are 3 exception cases : the input is null, the value is negative, if the set value can be seted twice
 		if(tValue== null){
 			throw new NullPointerException("The value cannot be null.");
 		}else if(tValue.compareTo(BigDecimal.ZERO) <=0){
 			throw new IllegalArgumentException("The value should be a positive number, the set fails");
 		}else if(isComplete()==1 || isComplete()==3) {
+			// check whether the value can be set
 			throw new UnsupportedOperationException("The value cannot be set twice");
 		}else{
 			transactionValue = tValue;
-			if(transactionValue!=tValue){
-				throw new UnsupportedOperationException( "The set value is not the same as the expected one");
-			}
 		}
+
+
 	}
 
 
@@ -153,9 +153,11 @@ public class BoCTransaction {
 	//Last Modify:2021/04/24 14:37
 	//Reason: isComplete function is not
 	public int isComplete(){
-
+		// There are two cases meaning that the name haven't been set.
+		// The first case is using default constructor, in which case the name is "[Pending Transaction]" and it means it can be set
+		// The second case is when the transactionName is null
 		if (transactionName != "[Pending Transaction]"&& transactionName != null){
-
+			//The null transactionValue means that the value haven't been set yet.
 			if (transactionValue!= null){
 				return 1;
 			}

@@ -1,21 +1,22 @@
-import org.junit.Ignore;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-//import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.*;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Date;
-//import static org.hamcrest.CoreMatchers.containsString;
-//import static org.junit.Assert.assertThat;
+
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+
+//import jdk.nashorn.internal.ir.annotations.Ignore;
+//import static org.hamcrest.CoreMatchers.containsString;
+//import static org.junit.Assert.assertThat;
 
 class BoCTransactionTest {
 
@@ -405,31 +406,47 @@ class BoCTransactionTest {
     @DisplayName("Test for transaction value setter")
     void setTransactionValue(String str1,String expected) throws NoSuchFieldException, IllegalAccessException {
         BoCTransaction set1= new BoCTransaction();
-        BigDecimal setData = null;
+        BigDecimal setData = null; // naming a bigDecimal type value
         final Field field = set1.getClass().getDeclaredField("transactionValue");
-        field.setAccessible(true);
+        field.setAccessible(true);//to test the null situation by manually setting parameter to null
 
         // if the string is null, the NullPointerException is expected with the correct error message"The input Number cannot be null"
         if(str1==null) {
             try {
                 set1.setTransactionValue(new BigDecimal(str1));
                 assertNotNull(str1, "The input Number cannot be null");
-            } catch (NullPointerException e1) {
+            } // The first nullPointer Exception is the what happened in the process of parsing null into String
+            catch (NullPointerException e1) {
                 try{
                     set1.setTransactionValue(null);
-                    }catch(NullPointerException e2) {
+                    }// This null pointer Exception is the one caused by setting transaction value to null
+                catch(NullPointerException e2) {
                     assertTrue(e2.getMessage().contains(expected));
                     return;
                 }
             }
         }
-        //The following code is to test different type of values,and whether the negative value can be set
-        // If the value is non-positive, the IllegalArgumentException is expected and the error message should be "The value should be a positive number, the set fails"
-        boolean strResult1 = str1.matches("-?[0-9]+.?[0-9]*");
-        boolean strResult2=str1.matches("[+-]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
 
-        if(strResult1 == false){
-            if(strResult2 == false) {
+        //The following code is to test the format of string value by using regular expression, and the validation of the string value
+        // There are two cases of exception fail.
+        // One is the exception doesn't match both regular expressions.It is considered as Number Format Exception
+        // One is the exception is that the set value is non-positive
+
+        boolean strResult1 = str1.matches("[+-]?[0-9]?+.?[0-9]*");
+        boolean strResult2=str1.matches("[+-]?[0-9]+.?[0-9]*[Ee]?[+-]?[0-9]*");
+
+        if(strResult2 == false){
+            if(strResult1 == false ) {
+                    try {
+                        set1.setTransactionValue(new BigDecimal(str1));
+                        fail("No NumberFormat exception is caught");
+                    } catch (Exception e1) {
+                        assertTrue(e1 instanceof NumberFormatException, "Illegal value set is caught");
+                        return;
+                    }
+
+            }
+            else if(str1.trim().isEmpty()){
                 try {
                     set1.setTransactionValue(new BigDecimal(str1));
                     fail("No NumberFormat exception is caught");
@@ -439,58 +456,44 @@ class BoCTransactionTest {
                 }
             }
         }
-        else{
-            try {
-                setData = new BigDecimal(str1);
-                if (setData.compareTo(new BigDecimal("0.00")) <= 0) {
-                    Exception e3 = assertThrows(IllegalArgumentException.class, () -> {
-                            set1.setTransactionValue(new BigDecimal(str1));
-                        });
-                        //"The value should be a positive number, the set fails"
-                        assertEquals(expected, e3.getMessage());
-                        return;
-                    } else {
-                        set1.setTransactionValue(setData);
-                        BigDecimal result = (BigDecimal) field.get(set1);
-                        int equals = result.compareTo(setData);
 
-                        if (equals != 0) {
-                            Exception e4 = assertThrows(Exception.class, () -> {
-                                set1.setTransactionValue(new BigDecimal(str1));
-                            });
-                            //"The set value is not the same as the expected one"
-                            assertEquals(expected, e4.getMessage());
-                        }
-                    }
-                    }catch(Exception e) {
-                    assertEquals(expected, "The data cannot be set. An error occurs");
-                    return;
-                }
+        setData = new BigDecimal(str1);
+        if (setData.compareTo(new BigDecimal("0.00")) <= 0) {
 
-            }
+            Exception e3 = assertThrows(IllegalArgumentException.class, () -> {
+                set1.setTransactionValue(new BigDecimal(str1));
+            });
+            //"The value should be a positive number, the set fails"
+            assertEquals(expected, e3.getMessage());
+            return;
+        } else {
+            set1.setTransactionValue(setData);
+        }
+
+
+        // The following code is to test whether the value can be set twice.
+        // The failure will occur if the object with a set value can not be set twice.
 
         if ((BigDecimal) field.get(set1)==null){
-           // field.set(set1,new BigDecimal("300.00"));
             set1.setTransactionValue(new BigDecimal("300.00"));
 
         }
 
         //The following code is to test the value can only be set once in the condition of two constructors.
 
-            final BoCTransaction set2 = new BoCTransaction(null,new BigDecimal("200.00"),4);
+        final BoCTransaction set2 = new BoCTransaction("Tester",new BigDecimal("200.00"),4);
 
-            Exception e5 = assertThrows(UnsupportedOperationException.class, () -> {
-                set1.setTransactionValue(new BigDecimal("900.00"));
-            });
-
+        Exception e5 = assertThrows(UnsupportedOperationException.class, () -> {
+            set1.setTransactionValue(new BigDecimal("900.00"));
+        });
             //"The value cannot be set twice"
-            assertEquals(expected, e5.getMessage());
+        assertEquals(expected, e5.getMessage());
 
-            Exception e6 = assertThrows(UnsupportedOperationException.class, () -> {
-                set2.setTransactionValue(new BigDecimal("900.00"));
-            });
+        Exception e6 = assertThrows(UnsupportedOperationException.class, () -> {
+            set2.setTransactionValue(new BigDecimal("900.00"));
+        });
             //"The value cannot be set twice"
-            assertEquals(expected, e6.getMessage());
+        assertEquals(expected, e6.getMessage());
 
         }
     
@@ -582,6 +585,10 @@ class BoCTransactionTest {
         //Cases when using default constructor
         final BoCTransaction isCom1 = new BoCTransaction();
 
+        // Cause in the other function,it may have restrictions for value setting
+        // In order to avoid these problems, we should manually set the value to null.
+        // So as in the following cases
+
         final BoCTransaction isCom2 = new BoCTransaction();
         final Field fieldName2 = isCom2.getClass().getDeclaredField("transactionName");
         final Field fieldValue2 = isCom2.getClass().getDeclaredField("transactionValue");
@@ -606,6 +613,7 @@ class BoCTransactionTest {
         fieldName4.set(isCom4, nameSet);
         fieldValue4.set(isCom4, numSet);
 
+        // assertAll will pass if each situation has passes
         assertAll("Should return results of four examples",
                 () -> assertEquals(4, isCom1.isComplete()),
                 () -> assertEquals(3, isCom2.isComplete()),
