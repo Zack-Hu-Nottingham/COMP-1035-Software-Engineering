@@ -78,7 +78,7 @@ class BoCAppTest {
     }
 
     // Author: Ziyi Wang (scyzw10)
-    // Last modified: 2021/4/26 21:32
+    // Last modified: 2021/4/27 18:43
     @DisplayName("Test for Main Method.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2})
@@ -90,10 +90,11 @@ class BoCAppTest {
 
         switch (input) {
             case 1:
-                testOutcome("O\nT\n1\n\nX\n", appMenu + defaultCategoryOverview +
+                testOutcome("O\nT\n1\nrrr\n12\nX\n", appMenu + defaultCategoryOverview +
                         appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
-                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu + "Command not recognised" + ln +
-                        "Please Input again." + ln + appMenu + appExit);
+                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu +
+                        "Something went wrong: java.lang.NumberFormatException: For input string: "+ "\"rrr\"" + ln + ln +
+                        appMenu + "Cannot find transactions with category 12" + ln + appMenu + appExit);
                 break;
             case 2:
                 testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
