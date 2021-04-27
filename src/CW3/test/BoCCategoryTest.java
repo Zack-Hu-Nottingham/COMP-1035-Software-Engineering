@@ -208,7 +208,7 @@ class BoCCategoryTest {
     }
     // Author: Ziyi Wang
     // Last modified: 2021/4/23 19:31
-    // test before fix the source code
+    // test before fixing the source code
 //    @Ignore
 //    @Test
 //    void setCategoryBudget(){
