@@ -5,9 +5,10 @@ public class BoCCategory {
 	private String CategoryName;
 	private BigDecimal CategoryBudget;
 	private BigDecimal CategorySpend;
+	private static int categoryNum = 0;
 
 	public BoCCategory() {
-		CategoryName = "New Category";
+		CategoryName = "New Category" + categoryNum++;
 		CategoryBudget = new BigDecimal("0.00");
 		CategorySpend = new BigDecimal("0.00");
 	}
