@@ -947,11 +947,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 |TestID:  | TS-App 4-1 |
 |:---------                 |-----------------           |
 | **Constructor**           | setUpBeforeEach() |
-| **Inputs**                | <table><tr><th>chosenCategory</th></tr><tr><td>0</td></tr><tr><td>1</td></tr><tr><td>2</td></tr><tr><td>3</td></tr></table> |
-| **Expected Outcome**      | <table><tr><th>chosenCategory</th><th>outputString</th></tr><tr><td>0</td><td>"1) Rent - ¥850.00\n"</td></tr><tr><td>1</td><td>"2) Phone Bill - ¥37.99\n" <br> "3) Electricity Bill - ¥75.00\n"</td></tr><tr><td>2</td><td>"4) Sainsbury's Checkout - ¥23.76\n"<br>"5) Tesco's Checkout - ¥7.24\n"</td></tr><tr><td>3</td><td>"6) RockCity Drinks - ¥8.50\n"<br>"7) The Mooch - ¥13.99\n"</td></tr></table> |
-| **Test Outcome**          | <table><tr><th>chosenCategory</th><th>outputString</th></tr><tr><td>0</td><td>"1) Rent - ¥850.00\n"</td></tr><tr><td>1</td><td>"2) Phone Bill - ¥37.99\n" <br> "3) Electricity Bill - ¥75.00\n"</td></tr><tr><td>2</td><td>"4) Sainsbury's Checkout - ¥23.76\n"<br>"5) Tesco's Checkout - ¥7.24\n"</td></tr><tr><td>3</td><td>"6) RockCity Drinks - ¥8.50\n"<br>"7) The Mooch - ¥13.99\n"</td></tr></table> |
-| **Result**                       | Pass |
-| **Reason for Failure**           | \ |
+| **Inputs**                | <table><tr><th>chosenCategory</th></tr><tr><td>0</td></tr><tr><td>1</td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td></tr><tr><td>-1</td></tr></table> |
+| **Expected Outcome**      | <table><tr><th>chosenCategory</th><th>outputString</th></tr><tr><td>0</td><td>"1) Rent - ¥850.00\n"</td></tr><tr><td>1</td><td>"2) Phone Bill - ¥37.99\n" <br> "3) Electricity Bill - ¥75.00\n"</td></tr><tr><td>2</td><td>"4) Sainsbury's Checkout - ¥23.76\n"<br>"5) Tesco's Checkout - ¥7.24\n"</td></tr><tr><td>3</td><td>"6) RockCity Drinks - ¥8.50\n"<br>"7) The Mooch - ¥13.99\n"</td></tr><tr><td>4</td><td>"Cannot find transactions with category 4\n"</td></tr><tr><td>5</td><td>"Cannot find transactions with category 5\n"</td></tr><tr><td>-1</td><td>"Cannot find transactions with category -1\n"</td></tr></table> |
+| **Test Outcome**          | <table><tr><th>chosenCategory</th><th>outputString</th></tr><tr><td>0</td><td>"1) Rent - ¥850.00\n"</td></tr><tr><td>1</td><td>"2) Phone Bill - ¥37.99\n" <br> "3) Electricity Bill - ¥75.00\n"</td></tr><tr><td>2</td><td>"4) Sainsbury's Checkout - ¥23.76\n"<br>"5) Tesco's Checkout - ¥7.24\n"</td></tr><tr><td>3</td><td>"6) RockCity Drinks - ¥8.50\n"<br>"7) The Mooch - ¥13.99\n"</td></tr><tr><td>4</td><td>""</td></tr><tr><td>5</td><td>""</td></tr><tr><td>-1</td><td>""</td></tr></table> |
+| **Result**                       | Fail |
+| **Reason for Failure**           | The app did not output appropriate message if cannot find transactions with invalid category(category haven't added to the list) |
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
