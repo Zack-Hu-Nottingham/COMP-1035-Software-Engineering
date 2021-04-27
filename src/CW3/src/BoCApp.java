@@ -13,13 +13,19 @@ public class BoCApp {
 		// SETUP EXAMPLE DATA //
 		UserCategories.add(new BoCCategory("Unknown"));
 		BoCCategory BillsCategory = new BoCCategory("Bills");
-		BillsCategory.setCategoryBudget(new BigDecimal("120.00"));
+		// Modified: Ziyi Wang (scyzw10)
+		// Last modified: 2021/4/27 20:08
+		// Reason: The type of the parameter of the  .setCategoryBudget() should be Float
+		// original: BillsCategory.setCategoryBudget(new BigDecimal("120.00"));
+		BillsCategory.setCategoryBudget(120.00F);	// modified Ziyi Wang (2021/4/27 20:08)
 		UserCategories.add(BillsCategory);
 		BoCCategory Groceries = new BoCCategory("Groceries");
-		Groceries.setCategoryBudget(new BigDecimal("75.00"));
+		// original: Groceries.setCategoryBudget(new BigDecimal("75.00"));
+		Groceries.setCategoryBudget(75.00F);	// modified Ziyi Wang (2021/4/27 20:08)
 		UserCategories.add(Groceries);
 		BoCCategory SocialSpending = new BoCCategory("Social");
-		SocialSpending.setCategoryBudget(new BigDecimal("100.00"));
+		// original: SocialSpending.setCategoryBudget(new BigDecimal("100.00"));
+		SocialSpending.setCategoryBudget(100.00F);	// modified Ziyi Wang (2021/4/27 20:08)
 		UserCategories.add(SocialSpending);
 
 		UserTransactions.add(new BoCTransaction("Rent", new BigDecimal("850.00"), 0));
@@ -60,10 +66,12 @@ public class BoCApp {
 				} else if (s.equals("X")) {
 					System.out.println("Goodbye!");
 					break;
-				} else if (Integer.parseInt(s) != -1) {
-					ListTransactionsForCategory((int) Integer.parseInt(s));
 				} else {
-					System.out.println("Command not recognised");
+					try{
+						ListTransactionsForCategory(Integer.parseInt(s));
+					}catch (NumberFormatException exc){
+						System.out.println("Command not recognised");
+					}
 				}
 			} catch (Exception e) {
 				System.out.println("Something went wrong: " + e.toString() + "\n");
@@ -91,6 +99,10 @@ public class BoCApp {
 	}
 
 	public static void ListTransactionsForCategory(int chosenCategory) {
+		if (chosenCategory < 0 || chosenCategory > UserCategories.size() - 1)
+		{
+			System.out.println("Cannot find transactions with category " + chosenCategory);
+		}
 		for (int x = 0; x < UserTransactions.size(); x++) {
 			BoCTransaction temp = UserTransactions.get(x);
 			if (temp.transactionCategory() == chosenCategory) {
@@ -173,12 +185,16 @@ public class BoCApp {
 		System.out.println(oldCategory.toString());
 	}
 
+	// Modified: Ziyi Wang (scyzw10)
+	// Last modified: 2021/4/27 20:09
+	// Reason: The type of the parameter of the temp.setCategoryBudget() should be Float
 	private static void AddCategory(Scanner in) {
 		System.out.println("What is the title of the category?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
 		System.out.println("What is the budget for this category?");
-		BigDecimal cbudget = new BigDecimal(in.nextLine());
+		// original: BigDecimal cbudget = new BigDecimal(in.nextLine());
+		float cbudget = Float.parseFloat(in.nextLine());	// change the type of cbudget (Ziyi Wang 2021/4/27 20:09)
 		BoCCategory temp = new BoCCategory(title);
 		temp.setCategoryBudget(cbudget);
 		UserCategories.add(temp);

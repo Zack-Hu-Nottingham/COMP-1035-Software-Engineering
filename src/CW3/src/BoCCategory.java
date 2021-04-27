@@ -5,9 +5,10 @@ public class BoCCategory {
 	private String CategoryName;
 	private BigDecimal CategoryBudget;
 	private BigDecimal CategorySpend;
+	private static int categoryNum = 0;
 
 	public BoCCategory() {
-		CategoryName = "New Category";
+		CategoryName = "New Category" + categoryNum++;
 		CategoryBudget = new BigDecimal("0.00");
 		CategorySpend = new BigDecimal("0.00");
 	}
@@ -65,12 +66,18 @@ public class BoCCategory {
 	// Author: Ziyi Wang (scyzw10)
 	// Last modified: 2021/4/25 11:00
 	// Reason: The type of the parameter should be Float
-
-	public void setCategoryBudget(BigDecimal newValue) {
-//		BigDecimal newV = new BigDecimal(newValue);		//convert the Float type to BigDecimal
-		// 1 means bigger, -1 means smaller, 0 means same
-		if (newValue.compareTo(new BigDecimal("0.00")) == 1) {
-			CategoryBudget = newValue;
+	//original code
+	//	public void setCategoryBudget(BigDecimal newValue) {
+	//		// 1 means bigger, -1 means smaller, 0 means same
+	//		if (newValue.compareTo(new BigDecimal("0.00")) == 1) {
+	//			CategoryBudget = newValue;
+	//		}
+	//	}
+	public void setCategoryBudget(float newValue) {		// takes a float as parameter
+		BigDecimal newV = new BigDecimal(Float.toString(newValue));		//convert the Float type -> String -> BigDecimal
+		// if newValue (newV) > 0, the set the budget
+		if (newV.compareTo(new BigDecimal("0.00")) == 1) {
+			CategoryBudget = newV;
 		}
 	}
 
