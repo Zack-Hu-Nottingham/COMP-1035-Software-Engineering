@@ -1,17 +1,18 @@
-import org.junit.jupiter.api.DisplayName;
 import org.junit.Ignore;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.*;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.security.InvalidParameterException;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -229,7 +230,6 @@ class BoCCategoryTest {
     void addExpenseTest(String bigNumber,String expected) {
 
         BoCCategory addT1= new BoCCategory("Tester");
-        BigDecimal fiNum= null;
         //If bigNumber is null,the exception is expected with correct error message "Illegal input"
         if(bigNumber==null) {
             try {
@@ -247,7 +247,9 @@ class BoCCategoryTest {
 
 
         boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
+        System.out.println(strResult1);
         boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]*");
+        System.out.println(strResult2);
         // If the bigNumber is not using scientific notation or negative
         if(strResult1==false){
             //If the bigNumber is negative
@@ -264,8 +266,8 @@ class BoCCategoryTest {
         }
 
         // Compare the result with expected number
-        addT1.addExpense(fiNum);
-        BigDecimal expectedNum=new BigDecimal(expected);
+        addT1.addExpense(new BigDecimal(bigNumber));
+        BigDecimal expectedNum= new BigDecimal(expected);
         assertEquals(0,expectedNum.compareTo(addT1.CategorySpend()));
 
         //BigDecimal value = addT1.CategorySpend().add(fiNum);
