@@ -189,31 +189,23 @@ class BoCCategoryTest {
     
 
     // Author: Ziyi Wang
-    // Last modified: 2021/4/25 21:00
-//    @DisplayName("tests for add Expense")
-//    @ParameterizedTest
-//    @CsvFileSource(resources = { "Cate_setCategoryBudget.csv" })
-//    void setCategoryBudget1(float input1, float expect, float expectcomp) throws NoSuchFieldException, IllegalAccessException {
-//        final BoCCategory stest = new BoCCategory();    //new object
-//
-//        stest.setCategoryBudget(input1);    // set the budget
-//        // try to get the private variable CategoryBudget
-//        final Field field = stest.getClass().getDeclaredField("CategoryBudget");
-//        field.setAccessible(true);
-//
-//        final BigDecimal nbud = new BigDecimal(expect);   // expected amount of new budget after setCategoryBudget()
-//        BigDecimal result = (BigDecimal) field.get(stest);  // store the CategoryBudget in result
-//        int equals= result.compareTo(nbud); // compare the actual with nbud(expected number)
-//        assertEquals(expectcomp,equals);
-//    }
-//    @Test
-//    void setCategoryBudget(){
-//        final BoCCategory stest = new BoCCategory();    //new object
-//
-//        float input = 20.00F;
-//        //argument passed to setCategoryBudget is incompatible with the type expected
-//        stest.setCategoryBudget(input);    // set the budget with float type
-//    }
+    // Last modified: 2021/4/27 20:05
+    @DisplayName("tests for add setCategoryBudget")
+    @ParameterizedTest
+    @CsvFileSource(resources = { "Cate_setCategoryBudget.csv" })
+    void setCategoryBudget(float input1, String expect, int expectcomp) throws NoSuchFieldException, IllegalAccessException {
+        final BoCCategory setCBudget = new BoCCategory();    //new object
+
+        setCBudget.setCategoryBudget(input1);    // set the budget
+        // try to get the private variable CategoryBudget
+        final Field field = setCBudget.getClass().getDeclaredField("CategoryBudget");
+        field.setAccessible(true);
+
+        final BigDecimal nbud = new BigDecimal(expect);   // expected amount of new budget after setCategoryBudget()
+        BigDecimal result = (BigDecimal) field.get(setCBudget);  // store the CategoryBudget in result
+        int equals = result.compareTo(nbud); // compare the actual with nbud(expected number)
+        assertEquals(expectcomp,equals,"The budget set inside is incorrect.");
+    }
 
 
     // Author : LinCHEN(biylc2)

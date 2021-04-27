@@ -47,13 +47,13 @@ class BoCAppTest {
         // SETUP EXAMPLE DATA //
         BoCApp.UserCategories.add(new BoCCategory("Unknown"));
         BoCCategory BillsCategory = new BoCCategory("Bills");
-        BillsCategory.setCategoryBudget(new BigDecimal("120.00"));
+        BillsCategory.setCategoryBudget(120.00F);
         BoCApp.UserCategories.add(BillsCategory);
         BoCCategory Groceries = new BoCCategory("Groceries");
-        Groceries.setCategoryBudget(new BigDecimal("75.00"));
+        Groceries.setCategoryBudget(75.00F);
         BoCApp.UserCategories.add(Groceries);
         BoCCategory SocialSpending = new BoCCategory("Social");
-        SocialSpending.setCategoryBudget(new BigDecimal("100.00"));
+        SocialSpending.setCategoryBudget(100.00F);
         BoCApp.UserCategories.add(SocialSpending);
 
         BoCApp.UserTransactions.add(new BoCTransaction("Rent", new BigDecimal("850.00"), 0));

@@ -663,6 +663,15 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Reason for Failure**           | the type of the parameter is different                       |
 | **What is Done to Make it Pass** | change the type of the argument of **setCategoryBudget**(BigDecimal newValue) in the **BoCCatrgory.java** to float type. |
 
+##### Test After Fixing the Source Code
+| TestID:                          | TS-Category7-1                                               |
+| :------------------------------- | ------------------------------------------------------------ |
+|Modified & Test Date       | 2021/4/27 20:10      |
+| **Constructor**                  | Default constructor                                             |
+| **Inputs**                       | **setCategoryBudget**(*input1*)<table> <tr><th colspan = "17">*input1 (float)*</th></tr><tr><td> 0.1</td><td> 0.01</td><td> 0.001</td><td> 7.0</td><td>30.0</td><td>100.0</td><td>200.0</td><td>10000.0</td><td>10000000.0</td><td>-1.0</td><td>-3.0</td><td>-10.0</td><td>-100.0</td><td>-1000.0</td></tr></table> |
+| **Expected Outcome**             | <table> <tr><th colspan = "17">`CategorySpend`</th></tr><tr><td> 0.1</td><td> 0.01</td><td> 0.001</td><td> 7.0</td><td>30.0</td><td>100.0</td><td>200.0</td><td>10000.0</td><td>10000000.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr></table>|
+| **Test Outcome**                 | <table> <tr><td> 0.1</td><td> 0.01</td><td> 0.001</td><td> 7.0</td><td>30.0</td><td>100.0</td><td>200.0</td><td>10000.0</td><td>10000000.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr></table>|
+| **Result**                       | Pass |
 
 
 #### **Function :** &nbsp; addExpense()
