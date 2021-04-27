@@ -161,36 +161,36 @@ class BoCAppTest {
     //Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1})
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1}) // the input values
     void listTransactionsForCategory(int categoryNumber) {
-        String expectedOutput0 = "1) Rent - ¥850.00" + ln;
-        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln +
+        String expectedOutput0 = "1) Rent - ¥850.00" + ln; // the expected output string when categoryNumber == 0
+        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln + // the expected output string when categoryNumber == 1
                 "3) Electricity Bill - ¥75.00" + ln;
-        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln +
+        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln + // the expected output string when categoryNumber == 2
                 "5) Tesco's Checkout - ¥7.24" + ln;
-        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln +
+        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln + // the expected output string when categoryNumber == 3
                 "7) The Mooch - ¥13.99" + ln;
-        String expectedErrorMessage = "Cannot find transactions with category ";
+        String expectedErrorMessage = "Cannot find transactions with category "; // the expected output string when categoryNumber haven't been added to the list
 
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        BoCApp boc = new BoCApp();
-        boc.ListTransactionsForCategory(categoryNumber);
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // create the output stream outContent
+        System.setOut(new PrintStream(outContent)); // set the System output to this stream
+        BoCApp boc = new BoCApp(); // create an instance using default constructor
+        boc.ListTransactionsForCategory(categoryNumber); // invoke the method to be tested
 
         switch (categoryNumber) {
-            case 0:
+            case 0: // if categoryNumber == 0
                 assertEquals(expectedOutput0, outContent.toString(), "The transaction list for category 0 is unexpected");
                 break;
-            case 1:
+            case 1: // if categoryNumber == 1
                 assertEquals(expectedOutput1, outContent.toString(), "The transaction list for category 1 is unexpected");
                 break;
-            case 2:
+            case 2: // if categoryNumber == 2
                 assertEquals(expectedOutput2, outContent.toString(), "The transaction list for category 2 is unexpected");
                 break;
-            case 3:
+            case 3: // if categoryNumber == 3
                 assertEquals(expectedOutput3, outContent.toString(), "The transaction list for category 3 is unexpected");
                 break;
-            default:
+            default: // if categoryNumber haven't been added to the list, it should output corresponding error message
                 assertEquals(expectedErrorMessage + categoryNumber + ln, outContent.toString(), "The output for category " + categoryNumber + " is unexpected");
         }
 
@@ -351,16 +351,17 @@ class BoCAppTest {
     @ParameterizedTest
     @CsvSource({
             "'N\nCW3 is so easy\n100\n',1",
-            "'N\nBills\n100\n',2",
+            "'N\nBills\n',2",
             "'N\nblabla#$%%^&\n-100\n',3",
             "'N\nabc\nabc@#$\n',3",
-            "'N\nRent\n999\n',4"
+            "'N\nRent\n999\n',4",
+            "'N\n123451234512345123\n100', 5"
     })
     void testAddCategory(String input, int testNum) {
         String defaultCategory = "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n";
+                "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n";
         String option_ch1 = "\n" + "What do you want to do?" + "\n" +
                 " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
         String Input_string = "What is the title of the category?" + "\r\n" +
@@ -377,10 +378,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [CW3 is so easy](Budget: ¥100) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [CW3 is so easy](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -392,13 +393,14 @@ class BoCAppTest {
             String result = output1.toString();
             assertEquals(expectation, result);
         } else if (testNum == 2) {
+
             System.setIn(input1);
             System.setOut(new PrintStream(output1));
             BoCApp.main(null);
             System.setOut(System.out);
             System.setIn(System.in);
             String result = output1.toString();
-            assertEquals("This category is already exist.", result);
+            assertEquals(option_ch1 +"What is the title of the category?\r\n" +  "This category is already exist." + option_ch1, result);
 
         } else if (testNum == 3) {
             System.setIn(input1);
@@ -407,7 +409,7 @@ class BoCAppTest {
             System.setOut(System.out);
             System.setIn(System.in);
             String result = output1.toString();
-            assertEquals(option_ch1 + "Budget only can be positive number", result);
+            assertEquals(option_ch1  + Input_string + "Budget only can be positive number." + option_ch1, result);
 
         } else if (testNum == 4) {
             String expectation4 = "\n" +
@@ -417,10 +419,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [Rent](Budget: ¥999) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [Rent](Budget: ¥999.0) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -431,6 +433,28 @@ class BoCAppTest {
             System.setIn(System.in);
             String result = output1.toString();
             assertEquals(expectation4, result);
+        }
+        else if(testNum == 5){
+            String expectation5 = "\n" +
+                    "What do you want to do?" + "\n" +
+                    " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n" +
+                    "What is the title of the category?" + "\r\n" +
+                    "What is the budget for this category?" + "\r\n" +
+                    "[Category added]" + "\r\n" +
+                    "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
+                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [123451234512345](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "What do you want to do?" + "\n" +
+                    " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
+            System.setIn(input1);
+            System.setOut(new PrintStream(output1));
+            BoCApp.main(null);
+            System.setOut(System.out);
+            System.setIn(System.in);
+            String result = output1.toString();
+            assertEquals(expectation5, result);
         }
 
     }

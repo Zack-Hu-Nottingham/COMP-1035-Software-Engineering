@@ -1,18 +1,20 @@
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.Ignore;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.*;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.security.InvalidParameterException;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -25,10 +27,10 @@ class BoCCategoryTest {
         List BoCCategoryNameList = new ArrayList(); // create a list to store the name of the category instances
         int times = 0; // the count of instances to be created
         while(times < 10){
-            BoCCategory instance = new BoCCategory();
-            final Field fieldName = instance.getClass().getDeclaredField("CategoryName");
-            final Field fieldBudget = instance.getClass().getDeclaredField("CategoryBudget");
-            final Field fieldSpend = instance.getClass().getDeclaredField("CategorySpend");
+            BoCCategory instance = new BoCCategory(); // create an instance
+            final Field fieldName = instance.getClass().getDeclaredField("CategoryName"); // get the field CategoryName
+            final Field fieldBudget = instance.getClass().getDeclaredField("CategoryBudget"); // get the fieldBudget
+            final Field fieldSpend = instance.getClass().getDeclaredField("CategorySpend"); // get the fieldSpend
             fieldName.setAccessible(true); // get access to the private fields
             fieldBudget.setAccessible(true);
             fieldSpend.setAccessible(true);
@@ -39,7 +41,7 @@ class BoCCategoryTest {
             for (int n=0;n<times;n++){ // to check if the CategoryName if unique, hence comparing each name with all previous instances' names in the list
                 assertNotEquals(BoCCategoryNameList.get(n), name,"Constructor did not create unique Category Name");
             }
-            times++;
+            times++; // count ++
         }
     }
 
@@ -136,21 +138,21 @@ class BoCCategoryTest {
     // Last Modified: 2021/4/23
     @Test
     void categorySpend() throws  NoSuchFieldException{
-        final BoCCategory boc = new BoCCategory();
-        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
-        fieldSpend.setAccessible(true);
-        assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly");
+        final BoCCategory boc = new BoCCategory(); // create an instance using default constructor
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend"); // get the field CategorySpend
+        fieldSpend.setAccessible(true); // get access to private field
+        assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly"); // the initial CategorySpend should be BigDecimal("0.00")
     }
 
 
     @ParameterizedTest
-    @CsvFileSource(resources = {"categorySpend.csv"})
+    @CsvFileSource(resources = {"categorySpend.csv"}) // get the input  and output source
     void categorySpendWithInputs(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
-        final BoCCategory boc = new BoCCategory();
-        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend");
-        fieldSpend.setAccessible(true);
-        fieldSpend.set(boc, new BigDecimal(input));
-        assertEquals( new BigDecimal(expectation), boc.CategorySpend(), "Field CategorySpend wasn't retrieved properly");
+        final BoCCategory boc = new BoCCategory(); // create an instance using default constructor
+        final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend"); // get the field CategorySpend
+        fieldSpend.setAccessible(true); // get access to private field
+        fieldSpend.set(boc, new BigDecimal(input)); // set the CategorySpend to the input value in categorySpend.csv
+        assertEquals( new BigDecimal(expectation), boc.CategorySpend(), "Field CategorySpend wasn't retrieved properly"); // field CategorySpend should be what we expected
     }
 
     //author: Yingxiao Huo
@@ -230,7 +232,6 @@ class BoCCategoryTest {
     void addExpenseTest(String bigNumber,String expected) {
 
         BoCCategory addT1= new BoCCategory("Tester");
-        BigDecimal fiNum= null;
         //If bigNumber is null,the exception is expected with correct error message "Illegal input"
         if(bigNumber==null) {
             try {
@@ -248,7 +249,9 @@ class BoCCategoryTest {
 
 
         boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
+        System.out.println(strResult1);
         boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]*");
+        System.out.println(strResult2);
         // If the bigNumber is not using scientific notation or negative
         if(strResult1==false){
             //If the bigNumber is negative
@@ -265,8 +268,8 @@ class BoCCategoryTest {
         }
 
         // Compare the result with expected number
-        addT1.addExpense(fiNum);
-        BigDecimal expectedNum=new BigDecimal(expected);
+        addT1.addExpense(new BigDecimal(bigNumber));
+        BigDecimal expectedNum= new BigDecimal(expected);
         assertEquals(0,expectedNum.compareTo(addT1.CategorySpend()));
 
         //BigDecimal value = addT1.CategorySpend().add(fiNum);

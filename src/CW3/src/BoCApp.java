@@ -98,10 +98,14 @@ public class BoCApp {
 
 	}
 
+	// Author: Leshan Tan (sqylt2)
+	// Last Modified: 2021/4/27 20:27
+	// Reason: add an if to test if the input category already in the list
 	public static void ListTransactionsForCategory(int chosenCategory) {
-		if (chosenCategory < 0 || chosenCategory > UserCategories.size() - 1)
+		// the category number should be already in the list, counting from 0 to UserCategories.size() - 1
+		if (chosenCategory < 0 || chosenCategory > UserCategories.size() - 1) // the category should be already in the list, counting from 0 to UserCategories.size() - 1
 		{
-			System.out.println("Cannot find transactions with category " + chosenCategory);
+			System.out.println("Cannot find transactions with category " + chosenCategory); // print corresponding error messages
 		}
 		for (int x = 0; x < UserTransactions.size(); x++) {
 			BoCTransaction temp = UserTransactions.get(x);
@@ -185,19 +189,51 @@ public class BoCApp {
 		System.out.println(oldCategory.toString());
 	}
 
-	// Modified: Ziyi Wang (scyzw10)
-	// Last modified: 2021/4/27 20:09
-	// Reason: The type of the parameter of the temp.setCategoryBudget() should be Float
+	// Modified: Yingxiao Huo (scyyh9)
+	// Last modified: 2021/4/27 21:31
+	// Reason:  Name can not longer than 15 characters.
+	//  		value should be positive number.
+	// 			The type of the parameter of the temp.setCategoryBudget() should be Float.
 	private static void AddCategory(Scanner in) {
 		System.out.println("What is the title of the category?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
+		if (title.length() > 15) {
+			title = title.substring(0, 15);
+		}
+		try {
+			if(UserCategories.size() != 0){
+				for (int i = 0; i < UserCategories.size(); i++) {
+					String cateName = UserCategories.get(i).CategoryName();
+					if (cateName.equals(title)) {
+						throw new IllegalArgumentException("This category is already exist.");
+					}
+				}
+			}
+		} catch (IllegalArgumentException ex1) {
+			System.out.print("This category is already exist.");
+			return;
+		}
 		System.out.println("What is the budget for this category?");
-		// original: BigDecimal cbudget = new BigDecimal(in.nextLine());
-		float cbudget = Float.parseFloat(in.nextLine());	// change the type of cbudget (Ziyi Wang 2021/4/27 20:09)
-		BoCCategory temp = new BoCCategory(title);
-		temp.setCategoryBudget(cbudget);
-		UserCategories.add(temp);
+		try {
+			try {
+				// original: BigDecimal cbudget = new BigDecimal(in.nextLine());
+				float cbudget = Float.parseFloat(in.nextLine());    // change the type of cbudget (Ziyi Wang 2021/4/27 20:09)
+				if (cbudget < 0) {
+					throw new IllegalArgumentException("Budget only can be positive number.");
+				}
+				BoCCategory temp = new BoCCategory(title);
+				temp.setCategoryBudget(cbudget);
+				UserCategories.add(temp);
+			} catch (NumberFormatException ex2) {
+				System.out.print("Budget only can be positive number.");
+				return;
+			}
+		} catch (IllegalArgumentException ex3) {
+			System.out.print("Budget only can be positive number.");
+			return;
+		}
+
 		System.out.println("[Category added]");
 		CategoryOverview();
 	}
