@@ -105,7 +105,7 @@ public class BoCApp {
 		String title = in.nextLine();
 		System.out.println("What is the value of the transaction?");
 		BigDecimal tvalue = new BigDecimal(in.nextLine());
-		UserTransactions.add(new BoCTransaction(title, tvalue, 0));
+		//UserTransactions.add(new BoCTransaction(title, tvalue, 0));
 		System.out.println("[Transaction added]");
 	}
 

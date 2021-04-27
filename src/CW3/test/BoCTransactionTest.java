@@ -20,25 +20,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoCTransactionTest {
 
     // Author: Leshan Tan (sqylt2)
-    // Last modified: 2021/4/26 9:10
-
-    // latest version of testing default constructor
+    // Last modified: 2021/4/26 22:10
+    // latest version of testing default constructor, using assertAll to get all failures
     @Test
     @DisplayName("Test for default constructor")
     void BoCTransaction(){
         BoCTransaction boc = new BoCTransaction(); // create an instance with default constructor
-        assertEquals("[Pending Transaction]", boc.transactionName(), "Field transactionName didn't match");
-        assertNull( boc.transactionValue(),"Field transactionValue didn't match");
-        assertEquals(0, boc.transactionCategory(),"Field transactionCategory didn't match");
-        Date currentTime = new Date();
-        assertEquals(currentTime.getTime(),boc.transactionTime().getTime(),10,"Field transactionTime didn't match");
+        Date currentTime = new Date(); // get the current time
+        assertAll("Should return the fields of a transaction instance",
+                () -> assertEquals("[Pending Transaction]", boc.transactionName(), "Field transactionName didn't match"),
+                () -> assertNull( boc.transactionValue(),"Field transactionValue didn't match"),
+                () -> assertEquals(0, boc.transactionCategory(),"Field transactionCategory didn't match"),
+                () -> assertEquals(currentTime.getTime(),boc.transactionTime().getTime(),10,"Field transactionTime didn't match")
+        );
     }
 
 
     // old version of testing default constructor, disabled
     @Disabled
     @Test
-    void BoCTransactionIgnored() throws NoSuchFieldException, IllegalAccessException{
+    void BoCTransactionDisabled() throws NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction();
         final Field fieldName = boc.getClass().getDeclaredField("transactionName");
         final Field fieldValue = boc.getClass().getDeclaredField("transactionValue");
@@ -574,19 +575,44 @@ class BoCTransactionTest {
 
     @Test
     @DisplayName("Test for method isComplete")
-    void isCompleteTest(){
+    void isCompleteTest() throws NoSuchFieldException, IllegalAccessException {
         String nameSet= "Tester";
         BigDecimal numSet= new BigDecimal("980.08");
         //Cases when using default constructor
-        BoCTransaction isCom1= new BoCTransaction();
-        BoCTransaction isCom2= new BoCTransaction(nameSet,null,0);
-        BoCTransaction isCom3= new BoCTransaction(null,numSet,0);
-        BoCTransaction isCom4= new BoCTransaction(nameSet,numSet,0);
 
-        assertEquals(isCom1.isComplete(),4);
-        assertEquals(isCom2.isComplete(),2);
-        assertEquals(isCom3.isComplete(),3);
-        assertEquals(isCom4.isComplete(),1);
 
+        final BoCTransaction isCom1 = new BoCTransaction();// With name and value are null
+
+        final BoCTransaction isCom2 = new BoCTransaction();
+        final Field fieldName2 = isCom2.getClass().getDeclaredField("transactionName");
+        final Field fieldValue2 = isCom2.getClass().getDeclaredField("transactionValue");
+        fieldName2.setAccessible(true);
+        fieldValue2.setAccessible(true);
+        fieldName2.set(isCom2, null);
+        fieldValue2.set(isCom2, numSet);
+
+        final BoCTransaction isCom3 = new BoCTransaction();
+        final Field fieldName3 = isCom3.getClass().getDeclaredField("transactionName");
+        final Field fieldValue3 = isCom3.getClass().getDeclaredField("transactionValue");
+        fieldName3.setAccessible(true);
+        fieldValue3.setAccessible(true);
+        fieldName3.set(isCom3, nameSet);
+        fieldValue3.set(isCom3, null);
+
+        final BoCTransaction isCom4 = new BoCTransaction();
+        final Field fieldName4 = isCom4.getClass().getDeclaredField("transactionName");
+        final Field fieldValue4 = isCom4.getClass().getDeclaredField("transactionValue");
+        fieldName4.setAccessible(true);
+        fieldValue4.setAccessible(true);
+        fieldName4.set(isCom4, nameSet);
+        fieldValue4.set(isCom4, numSet);
+
+        assertAll("Should return results of four examples",
+                () -> assertEquals(4, isCom1.isComplete()),
+                () -> assertEquals(3, isCom2.isComplete()),
+                () -> assertEquals(2, isCom3.isComplete()),
+                () -> assertEquals(1, isCom4.isComplete())
+
+        );
     }
 }
