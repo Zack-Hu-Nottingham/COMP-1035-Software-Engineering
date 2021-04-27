@@ -526,32 +526,39 @@ class BoCTransactionTest {
     @CsvFileSource(resources = {"/toStringTest.csv"})
     @DisplayName("Test for method toString")
     void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction Test_toString = new BoCTransaction();
-        final Field test1 = Test_toString.getClass().getDeclaredField("transactionName");
-        final Field test2 = Test_toString.getClass().getDeclaredField("transactionValue");
+        final BoCTransaction testToString = new BoCTransaction();
+        final Date transDate = new Date();
+
+        final Field test1 = testToString.getClass().getDeclaredField("transactionName");
+        final Field test2 = testToString.getClass().getDeclaredField("transactionValue");
+        final Field test3 = testToString.getClass().getDeclaredField("transactionTime");
         test1.setAccessible(true);
         test2.setAccessible(true);
+        test3.setAccessible(true);
 
         if (transValue == null){
             try{
-                test1.set(Test_toString, transName);
-                test2.set(Test_toString, null);
-                final String foo = Test_toString.toString();
+                test1.set(testToString, transName);
+                test2.set(testToString, null);
+                test3.set(testToString, transDate);
+                final String foo = testToString.toString();
             }catch (Exception ex1){
                 assertEquals(resultStr, ex1.getMessage());
             }
         }
         else{
             if (Integer.parseInt(transValue) >= 0) {
-                test1.set(Test_toString, transName);
-                test2.set(Test_toString, new BigDecimal(transValue));
-                final String foo = Test_toString.toString();
-                assertEquals(resultStr, foo);
+                test1.set(testToString, transName);
+                test2.set(testToString, new BigDecimal(transValue));
+                test3.set(testToString, transDate);
+                final String foo = testToString.toString();
+                assertEquals(resultStr + " Date: " + transDate, foo);
             } else {
                 try {
-                    test1.set(Test_toString, transName);
-                    test2.set(Test_toString, new BigDecimal(transValue));
-                    final String foo = Test_toString.toString();
+                    test1.set(testToString, transName);
+                    test2.set(testToString, new BigDecimal(transValue));
+                    test3.set(testToString, transDate);
+                    final String foo = testToString.toString();
                     fail();
                 }catch (Exception ex){
                     assertEquals(resultStr, ex.getMessage());

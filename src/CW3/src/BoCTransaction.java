@@ -146,7 +146,7 @@ public class BoCTransaction {
 			throw new IllegalArgumentException("Value can not be negative number");
 		}
 
-		return transactionName + " - ¥" + transactionValue.toString();
+		return transactionName + " - ¥" + transactionValue.toString() + " Date: " + transactionTime;
 	}
 
 
