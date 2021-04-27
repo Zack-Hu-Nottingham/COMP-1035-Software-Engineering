@@ -206,6 +206,18 @@ class BoCCategoryTest {
         int equals = result.compareTo(nbud); // compare the actual with nbud(expected number)
         assertEquals(expectcomp,equals,"The budget set inside is incorrect.");
     }
+    // Author: Ziyi Wang
+    // Last modified: 2021/4/23 19:31
+    // test before fix the source code
+//    @Ignore
+//    @Test
+//    void setCategoryBudget(){
+//        final BoCCategory stest = new BoCCategory();    //new object
+//
+//        float input = 20.00F;
+//        //argument passed to setCategoryBudget is incompatible with the type expected
+//        stest.setCategoryBudget(input);    // set the budget with float type
+//    }
 
 
     // Author : LinCHEN(biylc2)
