@@ -476,7 +476,7 @@ class BoCTransactionTest {
 
         //The following code is to test the value can only be set once in the condition of two constructors.
 
-            final BoCTransaction set2 = new BoCTransaction(null,new BigDecimal("200.00"),4);
+            final BoCTransaction set2 = new BoCTransaction("Tester",new BigDecimal("200.00"),4);
 
             Exception e5 = assertThrows(UnsupportedOperationException.class, () -> {
                 set1.setTransactionValue(new BigDecimal("900.00"));

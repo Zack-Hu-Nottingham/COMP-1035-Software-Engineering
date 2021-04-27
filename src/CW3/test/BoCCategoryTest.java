@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
@@ -255,7 +256,7 @@ class BoCCategoryTest {
 
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/04/22 16:58
-    @Ignore
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
     void removeExpense1(String input1,String input2, String input3, int expectation) throws NoSuchFieldException, IllegalAccessException {
@@ -275,7 +276,7 @@ class BoCCategoryTest {
 
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/04/22 19:45
-    @Ignore
+    @Disabled
     @ParameterizedTest
     @ValueSource(strings = {"-20.0", "-30.0", "-50.0"})
     // the input number could not be negative
@@ -294,7 +295,7 @@ class BoCCategoryTest {
 
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/04/22 20:38
-    @Ignore
+    @Disabled
     @ParameterizedTest
     @CsvSource({"200.0, 300.0","200.0,400.0","1000.0,10000.0"})
     // the input number could not be larger than the original CategorySpend

@@ -1,0 +1,218 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BoCCategory</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BoCCategory (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BoCCategory</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (51/ 51)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.math.BigDecimal;
+<i>2</i>&nbsp;import java.security.InvalidParameterException;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;public class BoCCategory {
+<i>5</i>&nbsp;	private String CategoryName;
+<i>6</i>&nbsp;	private BigDecimal CategoryBudget;
+<i>7</i>&nbsp;	private BigDecimal CategorySpend;
+<i>8</i>&nbsp;
+<b class="fc"><i>9</i>&nbsp;	public BoCCategory() {</b>
+<b class="fc"><i>10</i>&nbsp;		CategoryName = &quot;New Category&quot;;</b>
+<b class="fc"><i>11</i>&nbsp;		CategoryBudget = new BigDecimal(&quot;0.00&quot;);</b>
+<b class="fc"><i>12</i>&nbsp;		CategorySpend = new BigDecimal(&quot;0.00&quot;);</b>
+<b class="fc"><i>13</i>&nbsp;	}</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;	// Author: Ziyi Wang (scyzw10)
+<i>16</i>&nbsp;	// Last modified: 2021/4/25
+<i>17</i>&nbsp;	// Reason: The length of the Category Name should be no more than 15 characters
+<i>18</i>&nbsp;	// 		   Add exception to the source code
+<b class="fc"><i>19</i>&nbsp;	public BoCCategory(String newTitle) throws InvalidParameterException{</b>
+<b class="fc"><i>20</i>&nbsp;		CategoryBudget = new BigDecimal(&quot;0.00&quot;);</b>
+<b class="fc"><i>21</i>&nbsp;		CategorySpend = new BigDecimal(&quot;0.00&quot;);</b>
+<i>22</i>&nbsp;		//if the length of the newTitle &gt; 15 , then throw exception
+<b class="fc"><i>23</i>&nbsp;		if (newTitle.length() &gt; 15){</b>
+<b class="fc"><i>24</i>&nbsp;			throw new InvalidParameterException(&quot;Category Name at most 15 characters.&quot;);</b>
+<i>25</i>&nbsp;		}else{
+<b class="fc"><i>26</i>&nbsp;			CategoryName = newTitle;</b>
+<i>27</i>&nbsp;		}
+<b class="fc"><i>28</i>&nbsp;	}</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;	// Author: Yingxiao Huo (scyyh9)
+<i>31</i>&nbsp;	// Last modified time: 2021/4/24 23:25
+<i>32</i>&nbsp;	// Reason: Name can not longer than 15 characters, and name can not be null
+<i>33</i>&nbsp;	public String CategoryName() throws IllegalArgumentException{
+<b class="fc"><i>34</i>&nbsp;		if (CategoryName == null){</b>
+<b class="fc"><i>35</i>&nbsp;			throw new IllegalArgumentException(&quot;Name is not set.&quot;);</b>
+<i>36</i>&nbsp; 		}
+<b class="fc"><i>37</i>&nbsp;		else if (CategoryName.length() &gt; 15){</b>
+<b class="fc"><i>38</i>&nbsp;			throw new IllegalArgumentException(&quot;Category name can not longer than 15 characters.&quot;);</b>
+<i>39</i>&nbsp;		}
+<i>40</i>&nbsp;		else {
+<b class="fc"><i>41</i>&nbsp;			return CategoryName;</b>
+<i>42</i>&nbsp;		}
+<i>43</i>&nbsp;	}
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;	public BigDecimal CategoryBudget() {
+<b class="fc"><i>46</i>&nbsp;		return CategoryBudget;</b>
+<i>47</i>&nbsp;	}
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;	public BigDecimal CategorySpend() {
+<b class="fc"><i>50</i>&nbsp;		return CategorySpend;</b>
+<i>51</i>&nbsp;	}
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;	public void setCategoryName(String newName) throws IllegalArgumentException{
+<b class="fc"><i>54</i>&nbsp;		if (newName == null || newName.isBlank()){</b>
+<b class="fc"><i>55</i>&nbsp;			throw new IllegalArgumentException(&quot;Name can not be null&quot;);</b>
+<i>56</i>&nbsp;		}
+<b class="fc"><i>57</i>&nbsp;		else if (newName.length() &gt; 15){</b>
+<b class="fc"><i>58</i>&nbsp;			CategoryName = newName.substring(0,15);</b>
+<i>59</i>&nbsp;		}
+<i>60</i>&nbsp;		else {
+<b class="fc"><i>61</i>&nbsp;			CategoryName = newName;</b>
+<i>62</i>&nbsp;		}
+<b class="fc"><i>63</i>&nbsp;	}</b>
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;	// Author: Ziyi Wang (scyzw10)
+<i>66</i>&nbsp;	// Last modified: 2021/4/25 11:00
+<i>67</i>&nbsp;	// Reason: The type of the parameter should be Float
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;	public void setCategoryBudget(BigDecimal newValue) {
+<i>70</i>&nbsp;//		BigDecimal newV = new BigDecimal(newValue);		//convert the Float type to BigDecimal
+<i>71</i>&nbsp;		// 1 means bigger, -1 means smaller, 0 means same
+<b class="fc"><i>72</i>&nbsp;		if (newValue.compareTo(new BigDecimal(&quot;0.00&quot;)) == 1) {</b>
+<b class="fc"><i>73</i>&nbsp;			CategoryBudget = newValue;</b>
+<i>74</i>&nbsp;		}
+<b class="fc"><i>75</i>&nbsp;	}</b>
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;	// Modifier: LinCHEN (biylc2)
+<i>78</i>&nbsp;	// Last Modify:2021/04/25 11:20
+<i>79</i>&nbsp;	// Reason: Cause when the valueToAdd is negative or null, it cannot be set. the previous function cannot catch the exception and print useful error message.
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;	public void addExpense(BigDecimal valueToAdd) throws NullPointerException,IllegalArgumentException {
+<b class="fc"><i>82</i>&nbsp;		if(valueToAdd == null){</b>
+<b class="fc"><i>83</i>&nbsp;			throw new NullPointerException(&quot;Illegal input&quot;);</b>
+<i>84</i>&nbsp;		}
+<b class="fc"><i>85</i>&nbsp;		if (valueToAdd.compareTo(BigDecimal.ZERO)==-1) {</b>
+<b class="fc"><i>86</i>&nbsp;			throw new IllegalArgumentException(&quot;Illegal input&quot;);</b>
+<i>87</i>&nbsp;		}else {
+<b class="fc"><i>88</i>&nbsp;			CategorySpend = CategorySpend.add(valueToAdd);</b>
+<i>89</i>&nbsp;		}
+<i>90</i>&nbsp;
+<b class="fc"><i>91</i>&nbsp;	}</b>
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;	// Author: Ziyi Wang (scyzw10)
+<i>94</i>&nbsp;	// Last modified: 2021/4/25 11:19
+<i>95</i>&nbsp;	// Reason: Both value of valueToRemove and the CategorySpend after remove could not less than zero
+<i>96</i>&nbsp;	// 		   Add exception to the source code
+<i>97</i>&nbsp;	public void removeExpense(BigDecimal valueToRemove)throws InvalidParameterException {
+<i>98</i>&nbsp;		//if valueToRemove &lt; 0, then comp = -1
+<b class="fc"><i>99</i>&nbsp;		int comp1 = valueToRemove.compareTo(new BigDecimal(0));</b>
+<b class="fc"><i>100</i>&nbsp;		if (comp1 == -1){</b>
+<b class="fc"><i>101</i>&nbsp;			throw new InvalidParameterException(&quot;The valueToRemove must be &gt;= 0&quot;);</b>
+<i>102</i>&nbsp;		}else{
+<b class="fc"><i>103</i>&nbsp;			CategorySpend = CategorySpend.subtract(valueToRemove);</b>
+<i>104</i>&nbsp;		}
+<i>105</i>&nbsp;		//if result(the value of CategorySpend after remove) &lt; 0, then comp = -1
+<b class="fc"><i>106</i>&nbsp;		int comp2 = CategorySpend.compareTo(new BigDecimal(0));</b>
+<b class="fc"><i>107</i>&nbsp;		if (comp2 == -1) {</b>
+<b class="fc"><i>108</i>&nbsp;			throw new InvalidParameterException(&quot;The CategorySpend is must be &gt;= 0&quot;);</b>
+<i>109</i>&nbsp;		}
+<b class="fc"><i>110</i>&nbsp;	}</b>
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;	public void resetBudgetSpend() {
+<b class="fc"><i>113</i>&nbsp;		CategorySpend = new BigDecimal(&quot;0.00&quot;);</b>
+<b class="fc"><i>114</i>&nbsp;	}</b>
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;	public BigDecimal getRemainingBudget() {
+<b class="fc"><i>117</i>&nbsp;		BigDecimal remainingBudget = CategoryBudget.subtract(CategorySpend);</b>
+<b class="fc"><i>118</i>&nbsp;		return remainingBudget;</b>
+<i>119</i>&nbsp;	}
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;	// Modifier: LinCHEN (biylc2)
+<i>122</i>&nbsp;	// Last Modify:2021/04/24
+<i>123</i>&nbsp;	// Reason: Cause when the remaining budget is negative, the previous function will have a wrong output
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;	@Override
+<i>126</i>&nbsp;	public String toString() {
+<b class="fc"><i>127</i>&nbsp;		if (getRemainingBudget().compareTo(new BigDecimal(&quot;0.00&quot;)) &gt; -1)</b>
+<b class="fc"><i>128</i>&nbsp;			return &quot;[&quot; + CategoryName + &quot;]&quot; + &quot;(Budget: ?&quot; + CategoryBudget.toPlainString() + &quot;) - ?&quot; + CategorySpend.toPlainString()</b>
+<b class="fc"><i>129</i>&nbsp;					+ &quot; (?&quot; + getRemainingBudget().toPlainString() + &quot; Remaining)&quot;;</b>
+<i>130</i>&nbsp;		else
+<b class="fc"><i>131</i>&nbsp;			return &quot;[&quot; + CategoryName + &quot;]&quot; + &quot;(Budget: ?&quot; + CategoryBudget.toPlainString() + &quot;) - ?&quot; + CategorySpend.toPlainString()</b>
+<b class="fc"><i>132</i>&nbsp;					+ &quot; (?&quot; + getRemainingBudget().abs().toPlainString() + &quot; Overspent)&quot;;</b>
+<i>133</i>&nbsp;	}
+<i>134</i>&nbsp;
+<i>135</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-04-27 20:26</div>
+</div>
+</body>
+</html>
