@@ -897,6 +897,27 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Class: BoCApp
 
+### **Function:** main()
+
+| Test Plan   | main()              |
+| :---------- | ------------------- |
+| Test Date : | 2021/04/27 14:45    |
+| Tester :    | Ziyi Wang (scyzw10) |
+
+
+
+| TestID:                          | TS-App 1-1 |
+| :------------------------------- | ---------- |
+| **Constructor**                  | main()     |
+| **Inputs**                       |            |
+| **Expected Outcome**             |            |
+| **Test Outcome**                 |            |
+| **Result**                       | Fail       |
+| **Reason for Failure**           | /          |
+| **What is Done to Make it Pass** | /          |
+
+
+
  ### **Function:** &nbsp; categoryOverview()
 
 | Test Plan | categoryOverview() |
@@ -987,4 +1008,23 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## Test Log
 &nbsp;
 
-### Class BoCTransaction
+
+
+### **Function:**  AddTransaction(Scanner in)
+
+| Test Plan   | AddTransaction(Scanner in) |
+| :---------- | -------------------------- |
+| Test Date : | 2021/04/26 14:39           |
+| Tester :    | Ziyi Wang (scyzw10)        |
+
+
+
+| TestID:                          | TS-App 6-1       |
+| :------------------------------- | ---------------- |
+| **Constructor**                  | AddTransaction() |
+| **Inputs**                       |                  |
+| **Expected Outcome**             |                  |
+| **Test Outcome**                 |                  |
+| **Result**                       | Fail             |
+| **Reason for Failure**           | /                |
+| **What is Done to Make it Pass** | /                |
