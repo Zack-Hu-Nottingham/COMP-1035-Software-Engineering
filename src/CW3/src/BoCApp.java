@@ -88,7 +88,7 @@ public class BoCApp {
 	public static void ListTransactions() {
 		for (int x = 0; x < UserTransactions.size(); x++) {
 			BoCTransaction temp = UserTransactions.get(x);
-			System.out.println((x + 1) + ") " + temp.transactionName()+"("+);
+			System.out.println((x + 1) + ") " + temp.transactionName()+" ("+UserCategories.get(temp.transactionCategory()).CategoryName()+") - ¥"+temp.transactionValue());
 		}
 	}
 
