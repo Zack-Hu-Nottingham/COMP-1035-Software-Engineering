@@ -76,21 +76,29 @@ public class BoCTransaction {
 		return transactionTime;
 	}
 
-
+	//Author: Yicun Duan (scyyd3)
+	//Last Modified: 2021/4/28 00:48
+	//Reason: The function can't check out the case where transaction name are set repeatedly.
+	//		  It cannot validate input "tName" yet.
+	//		  It cannot truncate string with length larger than 25 characters yet.
 	public void setTransactionName(String tName) throws IllegalArgumentException, UnsupportedOperationException{
+		//check whether transaction name is set as "[Pending Transaction]"
 		if (!transactionName.equals("[Pending Transaction]")) {
+			//if not, throw out an exception
 			throw new UnsupportedOperationException("Transaction name cannot be repeatedly set.");
 		}
 
+		//test whether input "tName" is valid
 		if (tName == null || tName.isBlank()) {
 			throw new IllegalArgumentException("The transactionName is invalid.");
 		}
 
-
+		//truncate the string if necessary
 		if (tName.length() > 25) {
 			tName = tName.substring(0, 25);
 		}
 
+		//reset the transaction name
 		transactionName = tName;
 	}
 

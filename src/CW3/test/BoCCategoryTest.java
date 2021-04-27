@@ -116,11 +116,14 @@ class BoCCategoryTest {
     }
 
     //Author: Yicun Duan (scyyd3)
-    //Last Modified: 2021/4/24 15:41
+    //Last Modified: 2021/4/28 01:17
+    //Reason: (1) Check whether the returned budget is expected.
+    //        (2) Check whether the type and format of the returned budget is correct.
     @ParameterizedTest
     @CsvFileSource(resources = {"getBudgetTest.csv"})
     void categoryBudget(BigDecimal budget, BigDecimal expectBudget) throws NoSuchFieldException, IllegalAccessException {
         if (budget != null || expectBudget != null) {
+            //test whether the returned budget is expected
             final BoCCategory budgetTest = new BoCCategory();
             final Field field = budgetTest.getClass().getDeclaredField("CategoryBudget");
             field.setAccessible(true);
@@ -129,6 +132,7 @@ class BoCCategoryTest {
             final BigDecimal result = budgetTest.CategoryBudget();
             assertEquals(result, expectBudget, "CategoryBudget() function doesn't return an expected result.");
         } else {
+            //test whether type and format are correct
             final BoCCategory test_instance = new BoCCategory();
             assertEquals(new BigDecimal("0.00"), test_instance.CategoryBudget(), "When using default constructor, CategoryBudget is not 0.00 (BigDecimal). Or it is not of type BigDecimal.");
         }
@@ -396,13 +400,16 @@ class BoCCategoryTest {
 
     //Author: Yicun Duan (scyyd3)
     //Last Modified: 2021/4/24 15:27
+    //Reason: Find whether the returned remaining budget is correct.
     @ParameterizedTest
     @CsvFileSource(resources = {"/getRemainingBudgetTest.csv"})
     void getRemainingBudget(BigDecimal budget, BigDecimal spend, BigDecimal expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
+        //get access to "CategoryBudget"
         final Field field_budget = remainTest.getClass().getDeclaredField("CategoryBudget");
         field_budget.setAccessible(true);
         field_budget.set(remainTest, budget);
+        //get access to "CategorySpend"
         final Field field_spend = remainTest.getClass().getDeclaredField("CategorySpend");
         field_spend.setAccessible(true);
         field_spend.set(remainTest, spend);

@@ -587,6 +587,14 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
+&nbsp;
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Category 4-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/23 19:00 | \ | Pass+ | Pass+ |
+| TS-Category 4-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/23 19:00 | \ | Pass+ | Pass+ |
+
+
 
 
  ### **Function:** &nbsp; CategorySpend()
@@ -841,6 +849,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
+&nbsp;
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-Category 11-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/23 20:00 | \ | Pass+ | Pass+ |
 
 
 
@@ -949,6 +962,13 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **What is Done to Make it Pass** | \ |
 &nbsp;
 
+&nbsp;
+## **Test Log**
+| TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
+| :-----------|-----|--------------|---|--|
+| TS-App 3-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/24 11:10 | \ | Pass+ | Pass+ |
+
+
 ### **Function:** &nbsp; ListTransactionsForCategory(int chosenCategory)
 
 | Test Plan | ListTransactionsForCategory(int chosenCategory) |
@@ -1010,15 +1030,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## **Test Log**
 | TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
 | :-----------|-----|--------------|---|--|
-| TS-Transaction 5-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 22:32 | \ | Fail | \ |
-| TS-Transaction 5-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 22:32 | \ | Fail | \ |
+| TS-App 5-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 22:32 | \ | Fail | Pass+ |
+| TS-App 5-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 22:32 | \ | Fail | Pass+ |
 
 
-## Test Log
 &nbsp;
-
-
-
 ### **Function:**  AddTransaction(Scanner in)
 
 | Test Plan   | AddTransaction(Scanner in) |

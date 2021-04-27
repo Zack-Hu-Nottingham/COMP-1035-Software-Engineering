@@ -303,17 +303,22 @@ class BoCTransactionTest {
 
     // Author: Yicun Duan (scyyd3)
     // Last modified: 2021/4/25 23:36
-
+    // Reason: (1) Test whether the program will generate expected output, supposing the valid input is given.
+    //         (2) Test whether the program could truncate the input string when it is too long.
+    //         (3) Test whether the program could deal with invalid input.
+    //         (4) Test whether the program could inhibit setting name twice.
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
     @DisplayName("Test for transaction name setter")
     void setTransactionName(String transName, BigDecimal transValue, int transCate, String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
         if (transName == null && transValue == null && transCate == 0) {
+            //use default constructor
             final BoCTransaction test_instance = new BoCTransaction();
                 try{
                     test_instance.setTransactionName(giveName);
                 }catch (Exception e) {
                     if (e instanceof IllegalArgumentException) {
+                        //if the input name is invalid, it should throw out an exception
                         assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
                         return;
                     } else {
@@ -321,6 +326,8 @@ class BoCTransactionTest {
                     }
                 }
 
+                //test whether the program will generate expected output, supposing the valid input is given
+                //test whether the program could truncate the input string when it is too long
                 final Field field = test_instance.getClass().getDeclaredField("transactionName");
                 field.setAccessible(true);
                 assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
@@ -328,6 +335,7 @@ class BoCTransactionTest {
             return;
             }
 
+        //test whether the program could inhibit setting name twice
         final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
 
         UnsupportedOperationException e = assertThrows(UnsupportedOperationException.class, ()->{test_instance.setTransactionName(giveName);});
