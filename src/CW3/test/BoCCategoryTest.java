@@ -3,14 +3,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -257,9 +256,7 @@ class BoCCategoryTest {
         }
 
         boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
-        System.out.println(strResult1);
         boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]*");
-        System.out.println(strResult2);
         // If the bigNumber is not using scientific notation or negative
         if(strResult1==false){
             //If the bigNumber is negative
@@ -278,9 +275,6 @@ class BoCCategoryTest {
         addT1.addExpense(new BigDecimal(bigNumber));
         BigDecimal expectedNum= new BigDecimal(expected);
         assertEquals(0,expectedNum.compareTo(addT1.CategorySpend()));
-
-        //BigDecimal value = addT1.CategorySpend().add(fiNum);
-        //assertEquals(value,addT1.CategorySpend());
     }
 
 
@@ -425,36 +419,34 @@ class BoCCategoryTest {
     }
 
 
-    // Author:LinCHEN (biylc2)
-    // Last Modify: 2021/04/24 00:15
-    @Test
-    void testToString() throws IllegalAccessException, NoSuchFieldException {
-        //default constructor
-        BoCCategory boc1= new BoCCategory();
-        String a="New Category(¥0.00) - ¥0.00 (¥0.00 Remaining)";
-        assertEquals(a,boc1.toString());
+    // Author:Lin Chen(biylc2)
+    // Last Modify:2021/04/28 0:11
 
-        //constructor with parameter
-        BoCCategory boc2= new BoCCategory("Positive");
-        Field field1=boc2.getClass().getDeclaredField("CategoryBudget");
+    static Stream <Arguments> compString() {
+        return Stream.of(
+                Arguments.of(new BoCCategory(), "", "", "[New Category0](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
+                Arguments.of(new BoCCategory("Positive"), "3457834.023423", "667433.00564", "[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"),
+                Arguments.of(new BoCCategory("Negative"), "10000.00", "20000.00", "[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)")
+        );
+    };
+
+    @ParameterizedTest
+    @MethodSource("compString")
+    void testToString(BoCCategory a,String budget,String spend,String expected) throws IllegalAccessException, NoSuchFieldException {
+        // Judge whether it is a default constructor
+        if(budget.equals("")){
+            assertEquals(expected,a.toString());
+            return;
+        }
+        // If they are using paramitive constructor
+        Field field1= a.getClass().getDeclaredField("CategoryBudget");
         ((Field) field1).setAccessible(true);
-        field1.set(boc2,new BigDecimal("3457834.023423"));
-        Field field2=boc2.getClass().getDeclaredField("CategorySpend");
+        field1.set(a,new BigDecimal(budget));
+        Field field2=a.getClass().getDeclaredField("CategorySpend");
         field2.setAccessible(true);
-        field2.set(boc2,new BigDecimal("667433.00564"));
+        field2.set(a,new BigDecimal(spend));
+        assertEquals(expected,a.toString());
 
-        String b="Positive(¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)";
-        assertEquals(b,boc2.toString());
 
-        BoCCategory boc3= new BoCCategory("Negative");
-        Field field3=boc3.getClass().getDeclaredField("CategoryBudget");
-        field3.setAccessible(true);
-        field3.set(boc3,new BigDecimal("10000.00"));
-        Field field4=boc3.getClass().getDeclaredField("CategorySpend");
-        field4.setAccessible(true);
-        field4.set(boc3,new BigDecimal("20000.00"));
-
-        String c="Negative(¥10000.00) - ¥20000.00 (¥10000.00 Overspent)";
-        assertEquals(c,boc3.toString());
     }
 }

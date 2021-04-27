@@ -389,7 +389,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: LinCHEN (biylc2)
+    // Author: Lin Chen (biylc2)
     // Last modified: 2021/04/23
     @ParameterizedTest
     @CsvFileSource(resources = "trans_setTransactionValueString.csv")
@@ -561,7 +561,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: LinCHEN (biylc2)
+    // Author: Lin Chen (biylc2)
     // Last Modify: 2021/04/24 14:37
     @Test
     @DisplayName("Test for method isComplete")
