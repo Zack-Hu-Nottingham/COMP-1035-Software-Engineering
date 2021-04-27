@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BoCAppTest {
-    //Author: Yicun Duan
+    //Author: Yicun Duan (scyyd3)
     //Last Modified: 2021/4/25 19:52
     private static String ln = System.lineSeparator();
     private static String appMenu = ln + "What do you want to do?" + ln
@@ -121,8 +121,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Lin Chen(biylc2)
-    //Last Modify:2021/04/25 20:27
+    // Author: Lin Chen (biylc2)
+    // Last Modify:2021/04/25 20:27
     @DisplayName("Test for list transactions")
     @Test
     void listTransactions() {
@@ -131,8 +131,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Yicun Duan (scyyd3)
-    //Last Modified: 2021/4/23 20:50
+    // Author: Yicun Duan (scyyd3)
+    // Last Modified: 2021/4/23 20:50
     @Test
     void categoryOverview() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -157,8 +157,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Leshan Tan (sqylt2)
-    //Last Modified: 2021/4/26 11:11
+    // Author: Leshan Tan (sqylt2)
+    // Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1}) // the input values
@@ -196,14 +196,14 @@ class BoCAppTest {
 
     }
 
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/25 19:51
+
+    // Author: Yicun Duan (scyyd3)
+    // Last Modified: 2021/4/25 19:51
     @Disabled
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
     @ValueSource(ints = {1, 2})
     void ChangeTransactionCategory(int testNumber) {
-
         switch (testNumber) {
             case 1:
                 testOutcome("C\n1\n4\nC\n3\n1\nC\n6\n3\nX\n",
@@ -329,8 +329,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/25 19:55
+    // Author: Yicun Duan (scyyd3)
+    // Last Modified: 2021/4/25 19:55
     private void testOutcome(String designedInput, String expectedOutcome) {
 
         InputStream alterInput = new ByteArrayInputStream(designedInput.getBytes());
@@ -456,7 +456,6 @@ class BoCAppTest {
             String result = output1.toString();
             assertEquals(expectation5, result);
         }
-
     }
 }
 

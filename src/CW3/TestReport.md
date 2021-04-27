@@ -275,9 +275,14 @@ Report here, by the end of the assignment, how the team has managed the project,
 |BoCCategory| | | |
 |BoCTransaction| | | |
 |BoCApp| | | |
+![testCoverage]()
+
+|Test ID|Test Type|Test schedule|Rationale|Inputs|Expected Outcome|Other Info|Importance|
+|----|--|---------|------|:----------------:|:------------:|----|:----:|
 
 
-
+|Test ID|Test Type|Test schedule|Rationale|Inputs|Expected Outcome|Other Info|Importance|
+|----|--|---------|------|:----------------:|:------------:|----|:----:|
 
 
 

@@ -59,7 +59,6 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/23 16:06
-
     // test the time
     @ParameterizedTest
     @CsvSource({
@@ -127,7 +126,6 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/19 20:24
-
     @Disabled // Older version, so we disabled it
     // Test the time
     @ParameterizedTest
@@ -214,7 +212,6 @@ class BoCTransactionTest {
 
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
-
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
@@ -257,7 +254,6 @@ class BoCTransactionTest {
 
     // Author: Leshan Tan (sqylt2)
     // Last modified: 2021/4/21
-
     @ParameterizedTest
     @CsvFileSource(resources = {"transactionValue.csv"}) // get the input  and output source
     @DisplayName("Test for transaction value getter")
@@ -273,7 +269,6 @@ class BoCTransactionTest {
 
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/18 21:15
-
     @ParameterizedTest
     @ValueSource(ints = {0,1,5,100})
     @DisplayName("Test for transaction category getter")
@@ -286,7 +281,6 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
-
     @ParameterizedTest
     @CsvSource({
             "Buy a bunch of flower, 20, 4",
@@ -303,7 +297,6 @@ class BoCTransactionTest {
 
     // Author: Yicun Duan (scyyd3)
     // Last modified: 2021/4/25 23:36
-
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
     @DisplayName("Test for transaction name setter")
@@ -335,10 +328,9 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
-
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
     void setTransactionValue1(int input,int expected) throws NoSuchFieldException, IllegalAccessException {
@@ -355,10 +347,9 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
-
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
     void setTransactionValue2(double input1,String input2,int expected) throws NoSuchFieldException, IllegalAccessException {
@@ -373,12 +364,11 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
-
-     @ParameterizedTest
-     @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
+    @Disabled
+    @ParameterizedTest
+    @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
     void setTransactionValue3(String input1,int expected) throws NoSuchFieldException, IllegalAccessException {
 
            try {
@@ -401,7 +391,6 @@ class BoCTransactionTest {
 
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/23
-
     @ParameterizedTest
     @CsvFileSource(resources = "trans_setTransactionValueString.csv")
     @DisplayName("Test for transaction value setter")
@@ -502,7 +491,6 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/18 21:49
-
     @ParameterizedTest
     @CsvSource({"-100", "-50", "-25", "0", "1", "2", "3"})
     @DisplayName("Test for transaction category setter")
@@ -523,10 +511,9 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/25 22:03
-
+    @Disabled
     // Disabled this method because the time should not be set after the transaction is created
     @Test
     void setTransactionTime() {
@@ -535,7 +522,6 @@ class BoCTransactionTest {
 
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/21 16:44
-
     @ParameterizedTest
     @CsvFileSource(resources = {"/toStringTest.csv"})
     @DisplayName("Test for method toString")
@@ -577,7 +563,6 @@ class BoCTransactionTest {
 
     // Author: LinCHEN (biylc2)
     // Last Modify: 2021/04/24 14:37
-
     @Test
     @DisplayName("Test for method isComplete")
     void isCompleteTest() throws NoSuchFieldException, IllegalAccessException {
