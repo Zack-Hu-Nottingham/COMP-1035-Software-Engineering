@@ -125,8 +125,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Lin Chen(biylc2)
-    //Last Modify:2021/04/25 20:27
+    // Author: Lin Chen (biylc2)
+    // Last Modify:2021/04/25 20:27
     @DisplayName("Test for list transactions")
     @Test
     void listTransactions() {
@@ -170,8 +170,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Leshan Tan (sqylt2)
-    //Last Modified: 2021/4/26 11:11
+    // Author: Leshan Tan (sqylt2)
+    // Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1}) // the input values
@@ -217,7 +217,6 @@ class BoCAppTest {
     @ValueSource(ints = {1, 2})
     //choose the test case
     void ChangeTransactionCategory(int testNumber) {
-
         switch (testNumber) {
             case 1:
                 //put in the designed input and expected outcome
@@ -475,7 +474,6 @@ class BoCAppTest {
             String result = output1.toString();
             assertEquals(expectation5, result);
         }
-
     }
 }
 
