@@ -578,10 +578,9 @@ class BoCTransactionTest {
     void isCompleteTest() throws NoSuchFieldException, IllegalAccessException {
         String nameSet= "Tester";
         BigDecimal numSet= new BigDecimal("980.08");
+
         //Cases when using default constructor
-
-
-        final BoCTransaction isCom1 = new BoCTransaction();// With name and value are null
+        final BoCTransaction isCom1 = new BoCTransaction();
 
         final BoCTransaction isCom2 = new BoCTransaction();
         final Field fieldName2 = isCom2.getClass().getDeclaredField("transactionName");
