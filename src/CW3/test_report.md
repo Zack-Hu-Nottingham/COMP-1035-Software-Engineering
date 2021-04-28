@@ -17,7 +17,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 * Teams for **BoCCategory class**
     * `Team A` 
         * **Lin Chen** (20215609 @biylc2)
-        * **Leshan Tan** ()
+        * **Leshan Tan** (20215578 @sqylt2)
     * `Team B`
         * **Ziyi Wang** ()
         * **Zixiang Hu** (20215538 @scyzh6)
@@ -34,7 +34,7 @@ Report here, by the end of the assignment, how the team has managed the project,
         * **Yicun Duan** ()
     * `Team B` 
         * **Ziyi Wang** ()
-        * **Leshan Tan** ()
+        * **Leshan Tan** (20215578 @sqylt2)
         * **Yingxiao Huo**()
 
 * Tasks:
@@ -285,7 +285,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test ID|Type|Inputs|Expected Outcome|Importance|
 |----|---------|------|----------------|-------|
-|**[TS-Transaction 1-1]**|**[Validdation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table>||
+|**[TS-Transaction 1-1]**|**[Validation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == new Date() // current time</td></tr></table>||
 |**[TS-Transaction 1-1]**|||||
 |**[TS-Transaction 2-1]**|||||
 |**[TS-Transaction 2-2]**|||||
@@ -295,7 +295,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 2-6]**|||||
 |**[TS-Transaction 3-1]**|||||
 |**[TS-Transaction 3-2]**|||||
-|**[TS-Transaction 4-1]**|||||
+|**[TS-Transaction 4-1]**|**[Validation Test]:**<br>Test the transactionValue() with default constructor| <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> ||
 |**[TS-Transaction 5-1]**|||||
 |**[TS-Transaction 6-1]**|||||
 |**[TS-Transaction 7-1]**|||||
@@ -309,39 +309,39 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 8-5]**|**[Defect Test]:**<br> Set value twice with both default constructor and main constructor|<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>setTransactionValue(new BigDecimal("900.00"))</td></tr></table> |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[UnsupportedOperationException]`:"The value cannot be set twice"</td></tr></table>||
 |**[TS-Transaction 9-1]**|||||
 |**[TS-Transaction 10-1]**|**[Validation Test]:**<br>Test the isComplete with default constructor|-|<table border="1"><tr><th>isComplete</th></tr><tr><td>4</td></tr></table>||
-|**[TS-Transaction 10-2]**|**[Validation Test]:**<br>Test the isComplete with main constructor by maually setting transactionName/transactionValue to null| <table border="1"><tr><th>isComplete</th></tr><tr><td>**transactionName:** "Tester" **transactionValue:** "980.98"</td></tr><tr><td>**transactionName:** null **transactionValue:** "980.98"</td></tr><tr><td>**transactionName:** "Tester" **transactionValue:** null</td></tr></table>|<table border="1"><tr><th>isComplete</th></tr><tr><td>1</td></tr><tr><td>3</td></tr><tr><td>2</td></tr></table>||
+|**[TS-Transaction 10-2]**|**[Validation Test]:**<br>Test the isComplete with main constructor by manually setting transactionName/transactionValue to null| <table border="1"><tr><th>isComplete</th></tr><tr><td>**transactionName:** "Tester" **transactionValue:** "980.98"</td></tr><tr><td>**transactionName:** null **transactionValue:** "980.98"</td></tr><tr><td>**transactionName:** "Tester" **transactionValue:** null</td></tr></table>|<table border="1"><tr><th>isComplete</th></tr><tr><td>1</td></tr><tr><td>3</td></tr><tr><td>2</td></tr></table>||
 |**[TS-Transaction 11-1]**|||||
 
 
 #### Test Log
 
-|Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
-|-|-|-|-|-|-|-|-|
-|**[TS-Transaction 1-1]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/18 16:54<br>**[Tester]:**<br>Leshan Tan (sqylt2) **[Platform]**: MacOS-IDEA| **[Modifier]:**<br> Leshan Tan (sqylt2) **[Content (M)]:**<br> ***Before:*** <br>`transactionName = null;`<br> ***After:*** <br> `transactionName = "[Pending Transaction]";`|**[Result]:** `Pass` **[Time]:**<br>2021/04/22 18:12<br>**[Tester]:**<br>Leshan Tan (sqylt2) **[Platform]**: MacOS-IDEA|-|-|-|
-|**[TS-Transaction 2-1]**||||||
-|**[TS-Transaction 2-2]**||||||
-|**[TS-Transaction 2-3]**||||||
-|**[TS-Transaction 2-4]**||||||
-|**[TS-Transaction 2-5]**||||||
-|**[TS-Transaction 2-6]**||||||
-|**[TS-Transaction 3-1]**||||||
-|**[TS-Transaction 3-2]**||||||
-|**[TS-Transaction 4-1]**||||||
-|**[TS-Transaction 5-1]**||||||
-|**[TS-Transaction 6-1]**||||||
-|**[TS-Transaction 7-1]**||||||
-|**[TS-Transaction 7-2]**||||||
-|**[TS-Transaction 7-3]**||||||
-|**[TS-Transaction 7-4]**||||||
-|**[TS-Transaction 8-1]**||||||
-|**[TS-Transaction 8-2]**||||||
-|**[TS-Transaction 8-3]**||||||
-|**[TS-Transaction 8-4]**||||||
-|**[TS-Transaction 8-5]**||||||
-|**[TS-Transaction 9-1]**||||||
-|**[TS-Transaction 10-1]**||||||
-|**[TS-Transaction 10-2]**||||||
-|**[TS-Transaction 11-1]**||||||
+|Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
+|---|---|---|---|---|---|---|---|
+|**[TS-Transaction 1-1]**|**[Result]:** `Fail`<br> **[Time]**:`2021/04/18 16:54`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`| **[Modifier]**: `Leshan Tan (sqylt2)`<br> **[Content (M)]**:<br> ***Before***: `transactionName = null;`<br> ***After***:  `transactionName = "[Pending Transaction]";`|**[Result]**: `Pass` <br> **[Time]**: `2021/04/22 18:12`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|**[Result]**: `Pass` <br> **[Time]**: `2021/04/26 9:05`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|-|
+|**[TS-Transaction 2-1]**||||||||
+|**[TS-Transaction 2-2]**||||||||
+|**[TS-Transaction 2-3]**||||||||
+|**[TS-Transaction 2-4]**||||||||
+|**[TS-Transaction 2-5]**||||||||
+|**[TS-Transaction 2-6]**||||||||
+|**[TS-Transaction 3-1]**||||||||
+|**[TS-Transaction 3-2]**||||||||
+|**[TS-Transaction 4-1]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/18 16:54`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|||||||
+|**[TS-Transaction 5-1]**||||||||
+|**[TS-Transaction 6-1]**||||||||
+|**[TS-Transaction 7-1]**||||||||
+|**[TS-Transaction 7-2]**||||||||
+|**[TS-Transaction 7-3]**||||||||
+|**[TS-Transaction 7-4]**||||||||
+|**[TS-Transaction 8-1]**||||||||
+|**[TS-Transaction 8-2]**||||||||
+|**[TS-Transaction 8-3]**||||||||
+|**[TS-Transaction 8-4]**||||||||
+|**[TS-Transaction 8-5]**||||||||
+|**[TS-Transaction 9-1]**||||||||
+|**[TS-Transaction 10-1]**||||||||
+|**[TS-Transaction 10-2]**||||||||
+|**[TS-Transaction 11-1]**||||||||
 
 
 ### Class: `BoCCategory`

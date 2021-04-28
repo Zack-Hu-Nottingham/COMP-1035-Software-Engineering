@@ -37,7 +37,7 @@ class BoCTransactionTest {
     }
 
 
-    // old version of testing default constructor, disabled
+    // old version of testing default constructor, have errors therefore disabled
     @Disabled
     @Test
     void BoCTransactionDisabled() throws NoSuchFieldException, IllegalAccessException{
