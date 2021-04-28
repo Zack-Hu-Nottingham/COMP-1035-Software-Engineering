@@ -1,4 +1,3 @@
-file:///c%3A/Users/VIOLETTE/Desktop/TestReport.md {"mtime":1619430890021,"ctime":1619430890021,"size":0,"etag":"36pfjspqe0","orphaned":false}
 # Test Report
 
 | Contents                                               |
@@ -95,7 +94,7 @@ Report here, by the end of the assignment, how the team has managed the project,
     * **[Discussion]** ~ Discuss how to test the `BigDecimal` type using as it can accept 4 types.
     * **[Discussion]** ~Discuss how to test main constructor in just one method
     * **[OfficeHour]** ~Ask teacher the list of 
-    problems we encountered [Question](Question.md)
+    problems we encountered [Question](question.md)
     * **[Meeting]** How to combine separate methods into one file. 
     * **[+ [Review] +]** Check all the functions are tested and swap to check others' codings. Check the variety use of assert functions.
     * **[+ [Merge] +]** After each issue is solved, we merge that branch of issue into master.
@@ -243,7 +242,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 1. Include timeouts when calling external components 
 1. Name all constants that represent real-world values
 
-![Detailed](standardsForChecking.png)
+![Detailed](standards_for_check.png)
 
 ### Methods
 [Docs for using methods](junit.md)
@@ -285,33 +284,34 @@ Report here, by the end of the assignment, how the team has managed the project,
 ### Class: `BoCTransaction`
 
 |Test ID|Type|Inputs|Expected Outcome|Importance|
-|----|---------|------|----------------|-------|----|
-|**[TS-Transaction 1-1]**|**[Validdation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table>|||
-|**[TS-Transaction 1-1]**||||||
-|**[TS-Transaction 2-1]**||||||
-|**[TS-Transaction 2-2]**||||||
-|**[TS-Transaction 2-3]**||||||
-|**[TS-Transaction 2-4]**||||||
-|**[TS-Transaction 2-5]**||||||
-|**[TS-Transaction 2-6]**||||||
-|**[TS-Transaction 3-1]**||||||
-|**[TS-Transaction 3-2]**||||||
-|**[TS-Transaction 4-1]**||||||
-|**[TS-Transaction 5-1]**||||||
-|**[TS-Transaction 6-1]**||||||
-|**[TS-Transaction 7-1]**||||||
-|**[TS-Transaction 7-2]**||||||
-|**[TS-Transaction 7-3]**||||||
-|**[TS-Transaction 7-4]**||||||
-|**[TS-Transaction 8-1]**||||||
-|**[TS-Transaction 8-2]**||||||
-|**[TS-Transaction 8-3]**||||||
-|**[TS-Transaction 8-4]**||||||
-|**[TS-Transaction 8-5]**||||||
-|**[TS-Transaction 9-1]**||||||
-|**[TS-Transaction 10-1]**||||||
-|**[TS-Transaction 10-2]**||||||
-|**[TS-Transaction 11-1]**||||||
+|----|---------|------|----------------|-------|
+|**[TS-Transaction 1-1]**|**[Validdation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table>||
+|**[TS-Transaction 1-1]**|||||
+|**[TS-Transaction 2-1]**|||||
+|**[TS-Transaction 2-2]**|||||
+|**[TS-Transaction 2-3]**|||||
+|**[TS-Transaction 2-4]**|||||
+|**[TS-Transaction 2-5]**|||||
+|**[TS-Transaction 2-6]**|||||
+|**[TS-Transaction 3-1]**|||||
+|**[TS-Transaction 3-2]**|||||
+|**[TS-Transaction 4-1]**|||||
+|**[TS-Transaction 5-1]**|||||
+|**[TS-Transaction 6-1]**|||||
+|**[TS-Transaction 7-1]**|||||
+|**[TS-Transaction 7-2]**|||||
+|**[TS-Transaction 7-3]**|||||
+|**[TS-Transaction 7-4]**|||||
+|**[TS-Transaction 8-1]**|**[Defect Test]:**<br>Test value set to be null| <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>null</td></tr></table> |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NullPointerException]`:"The value cannot be null"</td></tr></table> ||
+|**[TS-Transaction 8-2]**|**[Defect Test]:**<br>Test value set to contain invalid characters|<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"123hello"</td><td>"test"</td><td>" "</td></tr><tr></table>|<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NumberFormatException]`:to be thrown</td></tr></table>||
+|**[TS-Transaction 8-3]**|**[Defect Test]:**<br>Test non-positive value number |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"-0e2"</td><td>""0e2"</td><td>"0e14"</td><td>"-0.0"--"-0.0000000000000000"</td></tr><tr><td>"0000"</td><td>"+0"</td><td>"-0"</td><td>"+.0"</td><td>"-.0"</td></tr><tr><td>"-214414123471.17649173641"</td><td>"-1.0"</td><td>"-209.00"</td><td>"-1.23E10"</td><td>"-0.1"--"-0.0000000000000001"</td></tr><tr></table>|<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value should be a positive number, the set fails"</td></tr></table> ||
+|**[TS-Transaction 8-4]**|**[Validation Test]:**<br>Test to set the positive number once with default constructor| <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>"1e+3"</td><td>"1e3"</td><td>"1.E+3"</td><td>"1.25e+3"</td><td>"0.1"-"0.0000000000000001"</td></tr><tr><td>"2147483647.000002"</td><td>"9812457361.34653734"</td><td>"1.00"</td><td>"20.01"</td></tr></table> | <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>The test pass</td></tr></table>||
+|**[TS-Transaction 8-5]**|**[Defect Test]:**<br> Set value twice with both default constructor and main constructor|<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>setTransactionValue(new BigDecimal("900.00"))</td></tr></table> |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[UnsupportedOperationException]`:"The value cannot be set twice"</td></tr></table>||
+|**[TS-Transaction 9-1]**|||||
+|**[TS-Transaction 10-1]**|**[Validation Test]:**<br>Test the isComplete with default constructor|-|<table border="1"><tr><th>isComplete</th></tr><tr><td>4</td></tr></table>||
+|**[TS-Transaction 10-2]**|**[Validation Test]:**<br>Test the isComplete with main constructor by maually setting transactionName/transactionValue to null| <table border="1"><tr><th>isComplete</th></tr><tr><td>**transactionName:** "Tester" **transactionValue:** "980.98"</td></tr><tr><td>**transactionName:** null **transactionValue:** "980.98"</td></tr><tr><td>**transactionName:** "Tester" **transactionValue:** null</td></tr></table>|<table border="1"><tr><th>isComplete</th></tr><tr><td>1</td></tr><tr><td>3</td></tr><tr><td>2</td></tr></table>||
+|**[TS-Transaction 11-1]**|||||
+
 
 #### Test Log
 
@@ -349,26 +349,26 @@ Report here, by the end of the assignment, how the team has managed the project,
 #### Test Plan
 
 |Test ID|Type|Inputs|Expected Outcome|Importance|
-|----|---------|------|----------------|-------|----|
-|**[TS-Category 1-1]**||||||
-|**[TS-Category 2-1]**||||||
-|**[TS-Category 3-1]**||||||
-|**[TS-Category 4-1]**||||||
-|**[TS-Category 5-1]**||||||
-|**[TS-Category 5-2]**||||||
-|**[TS-Category 6-1]**||||||
-|**[TS-Category 7-1]**||||||
-|**[TS-Category 8-1]**||||||
-|**[TS-Category 8-2]**||||||
-|**[TS-Category 8-3]**||||||
-|**[TS-Category 9-1]**||||||
-|**[TS-Category 9-2]**||||||
-|**[TS-Category 9-3]**||||||
-|**[TS-Category 10-1]**||||||
-|**[TS-Category 11-1]**||||||
-|**[TS-Category 12-1]**||||||
-|**[TS-Category 12-2]**||||||
-|**[TS-Category 12-3]**||||||
+|----|---------|------|----------------|-------|
+|**[TS-Category 1-1]**|||||
+|**[TS-Category 2-1]**|||||
+|**[TS-Category 3-1]**|||||
+|**[TS-Category 4-1]**|||||
+|**[TS-Category 5-1]**|||||
+|**[TS-Category 5-2]**|||||
+|**[TS-Category 6-1]**|||||
+|**[TS-Category 7-1]**|||||
+|**[TS-Category 8-1]**|**[Defect Test]:**<br>Test add value set to be null |<table border="1"><tr><th>addExpense</th></tr><tr><td>null</td></tr></table> |<table border="1"><tr><th>addExpense</th></tr><tr><td>`[NullPointerException]`:"Illegal input"</td></tr></table>||
+|**[TS-Category 8-2]**|**[Defect Test]:**<br>Test add value set to be negative number|<table border="1"><tr><th>addExpense</th></tr><tr><td>"-2e12"</td><td>"-2.134"</td></tr></table>|<table border="1"><tr><th>addExpense</th></tr><tr><td>`[IllegalArgumentException]`:"Illegal input"</td></tr></table>||
+|**[TS-Category 8-3]**|**[Validation Test]:**<br>Test add value set to be negative number |<table border="1"><tr><th>addExpense</th></tr><tr><td>"0.00</td><td>"2.13443343"</td><td>"2e12"</td><td>"2147483647.0012343</td><td>"+.0"</td></tr></table> |<table border="1"><tr><th>addExpense</th></tr><tr><td>"0.00</td><td>"2.13443343"</td><td>"2e12"</td><td>"2147483647.0012343</td><td>"+.0"</td></tr></table> ||
+|**[TS-Category 9-1]**|||||
+|**[TS-Category 9-2]**|||||
+|**[TS-Category 9-3]**|||||
+|**[TS-Category 10-1]**|**[Validation Test]:**<br>Test with spend number set|<table border="1"><tr><th>resetBudgetSpend</th></tr><tr><td>CategorySpend = new BigDecimal("20000.0292")</td></tr></table>|<table border="1"><tr><th>resetBudgetSpend</th></tr><tr><td> "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"</td></tr></table>||
+|**[TS-Category 11-1]**|||||
+|**[TS-Category 12-1]**|**[Validation Test]:**<br>Test with spend number set|-|<table border="1"><th>toString</th></tr><tr><td>"[New Category0](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"</td></tr></table>||
+|**[TS-Category 12-2]**||<table border="1"><th>toString</th></tr><tr><td>**CategoryBudget :** "3457834.023423" **CategorySpend :** "667433.00564"</td></tr></table>|<table border="1"><th>toString</th></tr><tr><td>"[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"</td></tr></table>||
+|**[TS-Category 12-3]**||<table border="1"><th>toString</th></tr><tr><td>**CategoryBudget :** "10000.00" **CategorySpend :** "20000.00"</td></tr></table>|<table border="1"><th>toString</th></tr><tr><td>""[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)"</td></tr></table>||
 
 
 
@@ -402,15 +402,15 @@ Report here, by the end of the assignment, how the team has managed the project,
 #### Test Plan
 
 |Test ID|Type|Inputs|Expected Outcome|Importance|
-|----|---------|------|----------------|-------|----|
-|**[TS-App 1-1]**||||||
-|**[TS-App 2-1]**||||||
-|**[TS-App 3-1]**||||||
-|**[TS-App 4-1]**||||||
-|**[TS-App 5-1]**||||||
-|**[TS-App 5-2]**||||||
-|**[TS-App 6-1]**||||||
-|**[TS-App 7-1]**||||||
+|----|---------|------|----------------|-------|
+|**[TS-App 1-1]**|||||
+|**[TS-App 2-1]**|||||
+|**[TS-App 3-1]**|||||
+|**[TS-App 4-1]**|||||
+|**[TS-App 5-1]**|||||
+|**[TS-App 5-2]**|||||
+|**[TS-App 6-1]**|||||
+|**[TS-App 7-1]**|||||
 
 #### Test Log
 |Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|

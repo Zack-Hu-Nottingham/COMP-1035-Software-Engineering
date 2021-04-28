@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
@@ -83,7 +82,7 @@ class BoCCategoryTest {
     // Author: Yingxiao Huo (scyyh9)
     // Last Modified time: 2021/4/21 11:23
     @ParameterizedTest
-    @CsvFileSource(resources = {"/categoryNameGetter.csv"})
+    @CsvFileSource(resources = {"/cate_categoryNameGetter.csv"})
     @DisplayName("Test for category name getter")
     void categoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_getter = new BoCCategory();
@@ -126,7 +125,7 @@ class BoCCategoryTest {
     //Reason: (1) Check whether the returned budget is expected.
     //        (2) Check whether the type and format of the returned budget is correct.
     @ParameterizedTest
-    @CsvFileSource(resources = {"getBudgetTest.csv"})
+    @CsvFileSource(resources = {"cate_getBudget.csv"})
     @DisplayName("Test for category budget getter")
     void categoryBudget(BigDecimal budget, BigDecimal expectBudget) throws NoSuchFieldException, IllegalAccessException {
         if (budget != null || expectBudget != null) {
@@ -158,7 +157,7 @@ class BoCCategoryTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = {"categorySpend.csv"}) // get the input  and output source
+    @CsvFileSource(resources = {"cate_categorySpend.csv"}) // get the input  and output source
     @DisplayName("Test for category spend getter with parameters")
     void categorySpendWithInputs(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
         final BoCCategory boc = new BoCCategory(); // create an instance using default constructor
@@ -172,7 +171,7 @@ class BoCCategoryTest {
     //author: Yingxiao Huo (scyyh9)
     //Last modified time: 2021/4/21
     @ParameterizedTest
-    @CsvFileSource(resources = {"/categoryNameSetter.csv"})
+    @CsvFileSource(resources = {"/cate_categoryNameSetter.csv"})
     @DisplayName("Test for category name setter")
     void setCategoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_setter = new BoCCategory();
@@ -212,7 +211,7 @@ class BoCCategoryTest {
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/27 20:05
     @ParameterizedTest
-    @CsvFileSource(resources = { "Cate_setCategoryBudget.csv" })
+    @CsvFileSource(resources = { "cate_setCategoryBudget.csv" })
     @DisplayName("Test for category budget setter")
     void setCategoryBudget(float input1, String expect, int expectcomp) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory setCBudget = new BoCCategory();    //new object
@@ -411,7 +410,7 @@ class BoCCategoryTest {
     //Last Modified: 2021/4/24 15:27
     //Reason: Find whether the returned remaining budget is correct.
     @ParameterizedTest
-    @CsvFileSource(resources = {"/getRemainingBudgetTest.csv"})
+    @CsvFileSource(resources = {"/cate_getRemainingBudget.csv"})
     void getRemainingBudget(BigDecimal budget, BigDecimal spend, BigDecimal expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
         //get access to "CategoryBudget"
