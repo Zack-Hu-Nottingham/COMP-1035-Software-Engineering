@@ -71,7 +71,7 @@ public class BoCTransaction {
 	public BigDecimal transactionValue() throws IllegalArgumentException{
 		int flag = transactionValue.compareTo(new BigDecimal("0.00")); // get the result of value compared to 0
 		if (flag == 0 || flag == -1){ // if transactionValue <= 0, throw exception
-			throw new IllegalArgumentException("transactionValue can not be less than or equal to zero.");
+			throw new IllegalArgumentException("transactionValue should be larger than zero.");
 		}
 		return transactionValue;
 	}
