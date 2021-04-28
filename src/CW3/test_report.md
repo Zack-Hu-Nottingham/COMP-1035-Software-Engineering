@@ -415,7 +415,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-App 5-1]**|**[Validation Test]:**<br>Test changing transaction name with normal input |<center>C<br>1<br>4<br>C<br>3<br>1<br>C<br>6<br>3<br>X</center> |![Expected_outcome_ChangeTransactionCategory_1]()||
 |**[TS-App 5-2]**|**[Validation Test]:**<br>Test changing transaction name with invalid input |<center>C<br>jbl<br>-23<br>-12345678912345689<br>'\ue250'<br>1<br>-199<br>233<br>123456789123456789<br>4<br>X</center> |![Expected_outcome_ChangeTransactionCategory_2]()||
 |**[TS-App 6-1]**|||||
-|**[TS-App 7-1]**|**[Defect test]:**<br>Test when name is null, name is too long, value is negative, value is not digital, name is exist|<table border = "1"><tr><th>CategoryName</th><th>Budget</th></tr><tr><td>CW3 is so easy</td><td>100</td></tr><tr><td>Bills</td><td>null</td></tr><tr><td>blabla#$%%^&</td><td>-100</td></tr><tr><td>abc</td><td>abc@#</td></tr><tr><td>Rent</td><td>999</td></tr><tr><td>123451234512345123</td><td>100</td></tr></table>|![expected/expected_AddCategory.png]()||
+|**[TS-App 7-1]**|**[Defect test]:**<br>Test when name is null, name is too long, value is negative, value is not digital, name is exist|<table border = "1"><tr><th>CategoryName</th><th>Budget</th></tr><tr><td>CW3 is so easy</td><td>100</td></tr><tr><td>Bills</td><td>null</td></tr><tr><td>blabla#$%%^&</td><td>-100</td></tr><tr><td>abc</td><td>abc@#</td></tr><tr><td>Rent</td><td>999</td></tr><tr><td>123451234512345123</td><td>100</td></tr></table>|![expected/expected_AddCategory]()||
 
 #### Test Log
 |Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
@@ -427,7 +427,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-App 5-1]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/26 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA| **[Modifier]:**<br> Yicun Duan(scyyd3) <br> **[Content (A)]:**<br> ![Fix_ChangeTransactionCategory_code_1]() <br> ***Before:*** <br> ![Fix_ChangeTransactionCategory_before_1]()<br> ***After:*** <br> ![Fix_ChangeTransactionCategory_after_1]()|**[Result]:** `Pass` **[Time]:**<br>2021/04/26 23:50<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
 |**[TS-App 5-2]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/26 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA| **[Modifier]:**<br> Yicun Duan(scyyd3) <br> **[Content (A)]:**<br> ![Fix_ChangeTransactionCategory_code_2]() <br> ***Before:*** <br> ![Fix_ChangeTransactionCategory_before_2]()<br> ***After:*** <br> ![Fix_ChangeTransactionCategory_after_2]()|**[Result]:** `Pass` **[Time]:**<br>2021/04/26 23:50<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
 |**[TS-App 6-1]**||||||
-|**[TS-App 7-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/4/28 15:12<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows10-IDEA|**[Modifier]:**<br>Yingxiao Huo(scyyh9)<br>**[Content(M)]:**<br>**Before:**<br>![testLog/TS-App-7-1-before]()<br>**After:**<br>![testLog/TS-App-7-1-after-1]<br>[testLog/TS-App-7-1-after-2]<br>||||
+|**[TS-App 7-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/4/28 15:12<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows10-IDEA|**[Modifier]:**<br>Yingxiao Huo(scyyh9)<br>**[Content(M)]:**<br>**Before:**<br>![testLog/TS-App-7-1-before]() <br>**After:**<br>![testLog/TS-App-7-1-after-1]() <br>![testLog/TS-App-7-1-after-2]()<br>||||
 
 
 
