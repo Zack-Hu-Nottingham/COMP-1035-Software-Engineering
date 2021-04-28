@@ -18,7 +18,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 * Teams for **BoCCategory class**
     * `Team A` 
         * **Lin Chen** (20215609 @biylc2)
-        * **Leshan Tan** ()
+        * **Leshan Tan** (20215578 @sqylt2)
     * `Team B`
         * **Ziyi Wang** ()
         * **Zixiang Hu** (20215538 @scyzh6)
@@ -35,7 +35,7 @@ Report here, by the end of the assignment, how the team has managed the project,
         * **Yicun Duan** ()
     * `Team B` 
         * **Ziyi Wang** ()
-        * **Leshan Tan** ()
+        * **Leshan Tan** (20215578 @sqylt2)
         * **Yingxiao Huo**()
 
 * Tasks:
@@ -45,8 +45,8 @@ Report here, by the end of the assignment, how the team has managed the project,
         * Write the unit tests that are complied and sufficiently good enough.
         * Write the production codes that pass the unit tests.
 
-    2. Work in paires to test functions and fix bugs.
-        * One person checkes / reviews while other person codes.
+    2. Work in pairs to test functions and fix bugs.
+        * One person checks / reviews while other person codes.
         * Take turns to write functions and check codes.
         * For both team members,after testing, filling the test report is expected.  
 
@@ -284,7 +284,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Class: `BoCTransaction`
 
-|Test ID|Type|Inputs|Expected Outcome|Importance|
+| Test ID | Type | Inputs | Expected Outcome | Importance |
 |----|---------|------|----------------|-------|----|
 |**[TS-Transaction 1-1]**|**[Validdation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table>|||
 |**[TS-Transaction 1-1]**||||||
