@@ -97,7 +97,7 @@ class BoCAppTest {
                         "Cannot find transactions with category 12" + ln + appMenu + appExit);
                 break;
             case 2:
-                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
+                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.0000\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
                         appMenu + defaultTransactionOverview + appMenu +    // list Transaction overview
                                 inviteAddCategory + "[Category added]" + ln + defaultCategoryOverview +  // new category -> add category first and print the new category overview
                                 "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +       // add transaction
@@ -331,7 +331,7 @@ class BoCAppTest {
                                 ln + appMenu + appExit);
                 break;
             case 2:
-                testOutcome("A\nWater Bill\naaa\n-1.0\n9.00\nrr\n-1\n100\n2\nX\n",
+                testOutcome("A\nWater Bill\naaa\n-1.0\n9.0000\nrr\n-1\n100\n2\nX\n",
                         appMenu + invitesTitle + invitesValue +
                                 invitesVaild + invitesValue + "Invalid number. The value must bigger than zero." +
                                 ln + invitesValue +defaultCategoryOverview +
