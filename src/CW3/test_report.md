@@ -327,7 +327,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 3-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:24<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||||
 |**[TS-Transaction 3-2]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>22:30<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if(transactionName == null;){`<br>`throw new IllegalArgumentException("Name is not set");}`<br>`else if(name.length() > 25){`<br>`throw new IllegalArgumentException("Name can not be longer than 25 characters.");}` |**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:34<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||
 |**[TS-Transaction 4-1]**||||||
-|**[TS-Transaction 5-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/4/18<br>21:15<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|-|-|
+|**[TS-Transaction 5-1]**|**[Result]:**<br>`Pass`<br>**[Time]:**<br>2021/4/18<br>21:15<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|-|-|
 |**[TS-Transaction 6-1]**||||||
 |**[TS-Transaction 7-1]**||||||
 |**[TS-Transaction 7-2]**||||||
@@ -377,8 +377,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
 |-|-|-|-|-|-|-|-|
 |**[TS-Category 1-1]**||||||
-|**[TS-Category 2-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/24<br>23:07<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|-|-|
-|**[TS-Category 2-2]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/24<br>23:07<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Ziyi Wang(scyzw10)<br>**[Content(A)]:**<br>`if (newTitle.length() > 15){`<br>`throw new InvalidParameterException("Category Name at most 15 characters.");`<br>`}else{`<br>`CategoryName = newTitle;`<br>`}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/4/24<br>23:13<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|
+|**[TS-Category 2-1]**|**[Result]:**<br>`Pass`<br>**[Time]:**<br>2021/04/24<br>23:07<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|-|-|
+|**[TS-Category 2-2]**|**[Result]:**<br>`Fail`<br>**[Time]:**<br>2021/04/24<br>23:07<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Ziyi Wang(scyzw10)<br>**[Content(A)]:**<br>`if (newTitle.length() > 15){`<br>`throw new InvalidParameterException("Category Name at most 15 characters.");`<br>`}else{`<br>`CategoryName = newTitle;`<br>`}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/4/24<br>23:13<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|
 |**[TS-Category 3-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/23<br>20:41<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (categoryName == null){`<br>`throw new IllegalException("Name is not set.");}`<br>`else if (CategoryName.length() > 15){`<br>`throw new IllegalArgumentException("Category name can not longer than 15 characters.");}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/23<br>22:07<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||||
 |**[TS-Category 4-1]**||||||
 |**[TS-Category 5-1]**||||||
