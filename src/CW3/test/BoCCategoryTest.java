@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoCCategoryTest {
     // Author: Lin Chen (biylc2)
     // Last Modified: 2021/04/28
+    // Reason: Cause the Category0 is unique, so if I want to test Unknown category, the categoryNum should be set to 0 after each testing")
     @AfterEach
     void teardown() throws NoSuchFieldException, IllegalAccessException {
         BoCCategory instance = new BoCCategory();
