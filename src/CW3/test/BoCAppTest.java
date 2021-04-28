@@ -90,14 +90,14 @@ class BoCAppTest {
 
         switch (input) {
             case 1:
-                testOutcome("O\nT\n1\nrrr\n12\nX\n", appMenu + defaultCategoryOverview +
+                testOutcome("O\nT\n1\nX\n", appMenu + defaultCategoryOverview +
                         appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
-                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu +
-                        "Command not recognised" + ln + appMenu +
-                        "Cannot find transactions with category 12" + ln + appMenu + appExit);
+                        "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu + appExit);
+                        //"Command not recognised" + ln + appMenu +
+
                 break;
             case 2:
-                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.0000\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
+                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.0000\n5\nT\nO\nC\n8\n1\nT\nO\nrrr\nX\n",
                         appMenu + defaultTransactionOverview + appMenu +    // list Transaction overview
                                 inviteAddCategory + "[Category added]" + ln + defaultCategoryOverview +  // new category -> add category first and print the new category overview
                                 "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +       // add transaction
@@ -120,7 +120,7 @@ class BoCAppTest {
                                 "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
                                 "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + ln +
                                 "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln +
-                                appMenu + appExit);
+                                appMenu + "Command not recognised" + ln + appMenu +appExit);
                 break;
         }
     }
