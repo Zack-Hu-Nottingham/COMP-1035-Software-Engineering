@@ -67,6 +67,7 @@ public class BoCTransaction {
 
 	// Author: Leshan Tan (sqylt2)
 	// Last modify: 22021/4/29 2:45
+	// Reason: transactionValue should be larger than zero, so if transactionValue <= 0, throw an exception
 	public BigDecimal transactionValue() throws IllegalArgumentException{
 		int flag = transactionValue.compareTo(new BigDecimal("0.00")); // get the result of value compared to 0
 		if (flag == 0 || flag == -1){ // if transactionValue <= 0, throw exception
