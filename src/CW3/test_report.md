@@ -351,7 +351,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test ID|Type|Inputs|Expected Outcome|Importance|
 |----|---------|------|----------------|-------|
 |**[TS-Category 1-1]**|||||
-|**[TS-Category 2-1]**|||||
+|**[TS-Category 2-1]**|**[Validation Test]:**<br>Test to see the CategoryName, CategoryBudget and CategorySpend set correctly.|<table border="1"><tr><th>cName</th></tr><tr><td>"test1"</td></tr><tr><td>"test2" </td></tr><td>"test3" </td></tr></table>|<table border="1"> <tr><th>CategoryName</th><th>CategoryBudget</th><th>CategorySpend</th></tr><tr><td>"test1"</td><td>new BigDecimal("0.00")</td><td>new BigDecimal("0.00")</td></tr><tr><td>"test2"</td><td>new BigDecimal("0.00")</td><td>new BigDecimal("0.00")</td></tr><tr><td>"test3"</td><td>new BigDecimal("0.00")</td><td>new BigDecimal("0.00")</td></tr></table>||
+|**[TS-Category 2-2]**|**[Defect Test]:**<br>Category Name at most 15 characters.|<table border="1"><tr><th>cName</th></tr><tr><tr><td>"testWithMoreThan15Chars" </td></tr></table>|Throw an exception containsString(*"Category Name at most 15 characters."*)||
 |**[TS-Category 3-1]**|**[Defect Test]:**<br>set name is null, is longer than 15 characters.|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>Category name can not longer than 15 characters.</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/>|
 |**[TS-Category 4-1]**|||||
 |**[TS-Category 5-1]**|||||
@@ -376,7 +377,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
 |-|-|-|-|-|-|-|-|
 |**[TS-Category 1-1]**||||||
-|**[TS-Category 2-1]**||||||
+|**[TS-Category 2-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/24<br>23:07<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|-|-|
+|**[TS-Category 2-2]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/24<br>23:07<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Ziyi Wang(scyzw10)<br>**[Content(A)]:**<br>`if (newTitle.length() > 15){`<br>`throw new InvalidParameterException("Category Name at most 15 characters.");`<br>`}else{`<br>`CategoryName = newTitle;`<br>`}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/4/24<br>23:13<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|
 |**[TS-Category 3-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/23<br>20:41<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (categoryName == null){`<br>`throw new IllegalException("Name is not set.");}`<br>`else if (CategoryName.length() > 15){`<br>`throw new IllegalArgumentException("Category name can not longer than 15 characters.");}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/23<br>22:07<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||||
 |**[TS-Category 4-1]**||||||
 |**[TS-Category 5-1]**||||||
