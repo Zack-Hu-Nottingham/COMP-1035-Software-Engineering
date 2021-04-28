@@ -160,7 +160,7 @@ class BoCCategoryTest {
 
 
     // Author: Leshan Tan (sqylt2)
-    // Last Modified: 2021/4/23
+    // Last Modified: 2021/4/23 13:15
     @Test
     @DisplayName("Test for category spend getter")
     void categorySpend() throws  NoSuchFieldException{
@@ -449,7 +449,7 @@ class BoCCategoryTest {
                 Arguments.of(new BoCCategory(), "", "", "[Unknown](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
                 Arguments.of(new BoCCategory(), "", "", "[New Category1](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
                 Arguments.of(new BoCCategory("Positive"), "3457834.023423", "667433.00564", "[Positive](Budget: ¥3457834.02) - ¥667433.01 (¥2790401.02 Remaining)"),
-                Arguments.of(new BoCCategory("Negative"), "10000.00", "20000.00", "[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)")
+                Arguments.of(new BoCCategory("Negative"), "10000.0", "20000.0", "[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)")
         );
     };
 

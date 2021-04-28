@@ -325,7 +325,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | TestID |CodeModification|Reviewer| Attempt1 |Attempt2 |
 | :-----------|-----|--------------|---|--|
 | TS-Transaction 7-1|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Pass+ | Pass+ |
-| TS-Transaction 7-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Pass+ | Pass+ |
+| TS-Transaction 7-2|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Fail | Pass+ |
 | TS-Transaction 7-3|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Fail | Pass+ |
 | TS-Transaction 7-4|**Modifier:** Yicun Duan(scyyd3) **Modify Time:** 2021/04/25 23:51 | \ | Fail | Pass+ |
 
