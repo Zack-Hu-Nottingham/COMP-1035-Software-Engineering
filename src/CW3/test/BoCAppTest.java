@@ -97,7 +97,7 @@ class BoCAppTest {
                         "Cannot find transactions with category 12" + ln + appMenu + appExit);
                 break;
             case 2:
-                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
+                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.0000\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
                         appMenu + defaultTransactionOverview + appMenu +    // list Transaction overview
                                 inviteAddCategory + "[Category added]" + ln + defaultCategoryOverview +  // new category -> add category first and print the new category overview
                                 "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +       // add transaction
@@ -109,7 +109,7 @@ class BoCAppTest {
                                 appMenu + defaultCategoryOverview +
                                 "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +  //check the new category list after adding
                                 appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +     // change the category -> first print the transaction list
-                                inviteChangeTCate1 + "\t- " + "Breakfast - ¥5.00 date: " +
+                                inviteChangeTCate1 + "\t- " + "Breakfast - ¥5.00 Date: " +
                                 BoCApp.UserTransactions.get(5).transactionTime() + ln +   // the Transaction that the user want to change
                                 defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +    // print the category list and let the user to choose
                                 inviteChangeTcate2 + "[Unknown](Budget: ¥0.00) - ¥855.00 (¥855.00 Overspent)" + ln +  // print the result of new cate and the old one
@@ -331,7 +331,7 @@ class BoCAppTest {
                                 ln + appMenu + appExit);
                 break;
             case 2:
-                testOutcome("A\nWater Bill\naaa\n-1.0\n9.00\nrr\n-1\n100\n2\nX\n",
+                testOutcome("A\nWater Bill\naaa\n-1.0\n9.0000\nrr\n-1\n100\n2\nX\n",
                         appMenu + invitesTitle + invitesValue +
                                 invitesVaild + invitesValue + "Invalid number. The value must bigger than zero." +
                                 ln + invitesValue +defaultCategoryOverview +
@@ -404,10 +404,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [CW3 is so easy](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [CW3 is so easy](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -449,10 +449,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [Rent](Budget: ¥999.0) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [Rent](Budget: ¥999.00) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -473,10 +473,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [123451234512345](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [123451234512345](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
             System.setIn(input1);
