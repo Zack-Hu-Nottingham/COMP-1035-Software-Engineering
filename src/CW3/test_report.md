@@ -326,7 +326,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 2-6]**||||||||
 |**[TS-Transaction 3-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:24<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||||||
 |**[TS-Transaction 3-2]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>22:30<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if(transactionName == null;){`<br>`throw new IllegalArgumentException("Name is not set");}`<br>`else if(name.length() > 25){`<br>`throw new IllegalArgumentException("Name can not be longer than 25 characters.");}` |**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:34<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||||
-|**[TS-Transaction 4-1]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/18 16:54`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|||||||
+|**[TS-Transaction 4-1]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/19 17:24`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|**[Result]:** `Pass`<br> **[Time]**:`2021/04/21 14:20`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|-|-||
 |**[TS-Transaction 5-1]**||||||||
 |**[TS-Transaction 6-1]**||||||||
 |**[TS-Transaction 7-1]**||||||||
@@ -350,12 +350,12 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test ID|Type|Inputs|Expected Outcome|Importance|
 |----|---------|------|----------------|-------|
-|**[TS-Category 1-1]**|||||
+|**[TS-Category 1-1]**|**[Validation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>CategoryName = "Unknown" // if is the first instance </td></tr><tr><td>CategoryName = "New Category" + categoryNum // otherwise</td></tr><tr><td>CategoryBudget == new BigDecimal("0.00")</td></tr><tr><td>CategorySpend == new BigDecimal("0.00")</td></tr></table>||
 |**[TS-Category 2-1]**|||||
 |**[TS-Category 3-1]**|**[Defect Test]:**<br>set name is null, is longer than 15 characters.|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>Category name can not longer than 15 characters.</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/>|
 |**[TS-Category 4-1]**|||||
-|**[TS-Category 5-1]**|||||
-|**[TS-Category 5-2]**|||||
+|**[TS-Category 5-1]**|**[Validation Test]:**<br> Test categorySpend() with default constructor|-|<table><tr><th>CategorySpend</th></tr><tr><td>CategorySpend == new BigDecimal("0.00")</td></tr></table>||
+|**[TS-Category 5-2]**|**[Validation Test]:**<br> Test categorySpend() with input parameters source|<table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table>|<table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table>||
 |**[TS-Category 6-1]**|**[Defect Test]:**<br>Test when name is null, is longer than 15 character, is special characters.|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawdasdascsgrsrgdrsgdgg</td></tr><tr><td>null</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawda</td></tr><tr><td>name can not be null</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawdasdascsgrsrgdrsgdgg</td></tr><tr><td>null</td></tr></table> <br/>|
 |**[TS-Category 7-1]**|||||
 |**[TS-Category 8-1]**|**[Defect Test]:**<br>Test add value set to be null |<table border="1"><tr><th>addExpense</th></tr><tr><td>null</td></tr></table> |<table border="1"><tr><th>addExpense</th></tr><tr><td>`[NullPointerException]`:"Illegal input"</td></tr></table>||
@@ -373,14 +373,14 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 #### Test Log
-|Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
-|-|-|-|-|-|-|-|-|
-|**[TS-Category 1-1]**||||||
+|Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
+|---|---|---|---|---|---|---|---|
+|**[TS-Category 1-1]**|**[Result]:** `Fail`<br> **[Time]**:`2021/04/21 11:51`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`| **[Modifier]**: `Leshan Tan (sqylt2)`<br> **[Content (M)]**:<br> ***Before***: `CategoryName = "New Category"`<br> ***After***: `CategoryName = "Unknown"` or <br>`CategoryName = "New Category" + categoryNum`|**[Result]**: `Pass` <br> **[Time]**: `2021/04/28 19:43`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|-|-||
 |**[TS-Category 2-1]**||||||
 |**[TS-Category 3-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/23<br>20:41<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (categoryName == null){`<br>`throw new IllegalException("Name is not set.");}`<br>`else if (CategoryName.length() > 15){`<br>`throw new IllegalArgumentException("Category name can not longer than 15 characters.");}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/23<br>22:07<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||||
 |**[TS-Category 4-1]**||||||
-|**[TS-Category 5-1]**||||||
-|**[TS-Category 5-2]**||||||
+|**[TS-Category 5-1]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/23 13:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|-|-|-|-||
+|**[TS-Category 5-2]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/23 13:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|-|-|-|-||
 |**[TS-Category 6-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>18:16<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (categoryName == null or newName.isBlank()){`<br>`throw new IllegalException("Name is not set.");}`<br>`else if (CategoryName.length() > 15){`<br>`CategoryName = newName.substring(0,15);}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/28<br>22:26<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||||
 |**[TS-Category 7-1]**||||||
 |**[TS-Category 8-1]**||||||
@@ -413,7 +413,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-App 7-1]**|||||
 
 #### Test Log
-|Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
+|Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
 |-|-|-|-|-|-|-|-|
 |**[TS-App 1-1]**||||||
 |**[TS-App 2-1]**||||||
