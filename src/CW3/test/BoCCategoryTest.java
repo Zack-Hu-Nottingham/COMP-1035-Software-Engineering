@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,6 @@ import org.junit.jupiter.params.provider.*;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -16,6 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class BoCCategoryTest {
+    // Author: Lin Chen (biylc2)
+    // Last Modified: 2021/04/28
+    // Reason: Cause the Category0 is unique, so if I want to test Unknown category, the categoryNum should be set to 0 after each testing")
+    @AfterEach
+    void teardown() throws NoSuchFieldException, IllegalAccessException {
+        BoCCategory instance = new BoCCategory();
+        final Field field = instance.getClass().getDeclaredField("categoryNum");
+        field.setAccessible(true);
+        field.set(instance,0);
+    }
 
     // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/28 19:43
@@ -77,7 +87,6 @@ class BoCCategoryTest {
                 fail("it failed");
             }catch (Exception e){
                 assertThat(e.getMessage(),containsString("Category Name at most 15 characters."));
-                System.out.println("The Exception has been thrown!");
             }
         }
 
@@ -180,38 +189,38 @@ class BoCCategoryTest {
     @DisplayName("Test for category name setter")
     void setCategoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_setter = new BoCCategory();
-            //If name is null, program should throw a exception with a message "Name is not set."
-            if (name == null){
-                try {
-                    Test_setter.setCategoryName(null);
-                    fail();
-                }catch (Exception ex1){
-                    assertEquals(expection, ex1.getMessage());
-                }
+        //If name is null, program should throw a exception with a message "Name is not set."
+        if (name == null){
+            try {
+                Test_setter.setCategoryName(null);
+                fail();
+            }catch (Exception ex1){
+                assertEquals(expection, ex1.getMessage());
             }
-            else {
-                if (name.length() > 15){
-                    //try {
-                    //    Test_setter.setCategoryName(name);
-                    //    fail();
-                    //}catch (Exception ex2){
-                    //    assertEquals(expection, ex2.getMessage());
-                    //}
-                    //if user enter a name longer than 15 characters, take substring which is 15 characters.
-                    Test_setter.setCategoryName(name);
-                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
-                    field_setname.setAccessible(true);
-                    assertEquals(expection, field_setname.get(Test_setter));
-                }else {
-                    //Normal case.
-                    Test_setter.setCategoryName(name);
-                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
-                    field_setname.setAccessible(true);
-                    assertEquals(expection, field_setname.get(Test_setter));
-                }
+        }
+        else {
+            if (name.length() > 15){
+                //try {
+                //    Test_setter.setCategoryName(name);
+                //    fail();
+                //}catch (Exception ex2){
+                //    assertEquals(expection, ex2.getMessage());
+                //}
+                //if user enter a name longer than 15 characters, take substring which is 15 characters.
+                Test_setter.setCategoryName(name);
+                final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                field_setname.setAccessible(true);
+                assertEquals(expection, field_setname.get(Test_setter));
+            }else {
+                //Normal case.
+                Test_setter.setCategoryName(name);
+                final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                field_setname.setAccessible(true);
+                assertEquals(expection, field_setname.get(Test_setter));
             }
+        }
     }
-    
+
 
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/27 20:05
@@ -245,9 +254,9 @@ class BoCCategoryTest {
 //    }
 
 
-    // Author : LinCHEN (biylc2)
+    // Author : Lin Chen (biylc2)
     // Last Modify: 2021/04/24 20:44
-    @DisplayName("tests for add Expense")
+    @DisplayName("Tests for add Expense")
     @ParameterizedTest
     @CsvSource({",Illegal input","-2e12,Illegal input","-2.134,Illegal input","0.00,0.00","+.0,+.0","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
     void addExpenseTest(String bigNumber,String expected) {
@@ -326,7 +335,6 @@ class BoCCategoryTest {
             fail("it failed");
         } catch(Exception e) {
             assertThat(e.getMessage(),containsString("The valueToRemove must be >= 0"));
-            System.out.println("The Exception has been thrown!");
         }
         //fail("it failed");
     }
@@ -346,7 +354,6 @@ class BoCCategoryTest {
             ttt.removeExpense(new BigDecimal(input2));     // the actual value
         } catch(Exception e) {
             assertThat(e.getMessage(),containsString("The CategorySpend is must be >= 0"));
-            System.out.println("The Exception has been thrown!");
         }
         //fail("it failed");
     }
@@ -354,7 +361,7 @@ class BoCCategoryTest {
 
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 4/25 12:31
-    @DisplayName("tests for remove Expense")
+    @DisplayName("Tests for remove Expense")
     @ParameterizedTest
     @CsvFileSource(resources = {"cate_removeExpense.csv"})
     void removeExpense(String input1,String input2, String expect, int expectation) throws NoSuchFieldException, IllegalAccessException {
@@ -376,7 +383,6 @@ class BoCCategoryTest {
                 removeE.removeExpense(new BigDecimal(input2));     // the actual value
             } catch(Exception e) {
                 assertThat(e.getMessage(),containsString("The CategorySpend is must be >= 0"));
-                System.out.println("The Exception has been thrown!");
             }
             //  fail("it failed");
         }else if (comp2 == -1){     // if BigDecimal(input2) < 0
@@ -384,7 +390,6 @@ class BoCCategoryTest {
                 removeE.removeExpense(new BigDecimal(input2));
             } catch (Exception e) {
                 assertThat(e.getMessage(), containsString("The valueToRemove must be >= 0"));
-                System.out.println("The Exception has been thrown!");
             }
             // fail("it failed");
         }else{  // if all the input is correct then compare the result
@@ -396,9 +401,10 @@ class BoCCategoryTest {
     }
 
 
-    // Author:LinCHEN (biylc2)
+    // Author:Lin Chen (biylc2)
     // Last Modify: 2021/04/21 22:14
     @Test
+    @DisplayName("Tests for reset budget")
     void resetBudgetSpend() throws NoSuchFieldException, IllegalAccessException {
         BoCCategory reset1= new BoCCategory("Reset");
         Field field1=reset1.getClass().getDeclaredField("CategorySpend");
@@ -416,6 +422,7 @@ class BoCCategoryTest {
     //Reason: Find whether the returned remaining budget is correct.
     @ParameterizedTest
     @CsvFileSource(resources = {"/cate_getRemainingBudget.csv"})
+    @DisplayName("Tests for get remaining budget")
     void getRemainingBudget(BigDecimal budget, BigDecimal spend, BigDecimal expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
         //get access to "CategoryBudget"
@@ -439,14 +446,16 @@ class BoCCategoryTest {
 
     static Stream <Arguments> compString() {
         return Stream.of(
-                Arguments.of(new BoCCategory(), "", "", "[New Category0](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
-                Arguments.of(new BoCCategory("Positive"), "3457834.023423", "667433.00564", "[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"),
+                Arguments.of(new BoCCategory(), "", "", "[Unknown](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
+                Arguments.of(new BoCCategory(), "", "", "[New Category1](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
+                Arguments.of(new BoCCategory("Positive"), "3457834.023423", "667433.00564", "[Positive](Budget: ¥3457834.02) - ¥667433.01 (¥2790401.02 Remaining)"),
                 Arguments.of(new BoCCategory("Negative"), "10000.00", "20000.00", "[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)")
         );
     };
 
     @ParameterizedTest
     @MethodSource("compString")
+    @DisplayName("Test for toString")
     void testToString(BoCCategory a,String budget,String spend,String expected) throws IllegalAccessException, NoSuchFieldException {
         // Judge whether it is a default constructor
         if(budget.equals("")){
@@ -454,6 +463,7 @@ class BoCCategoryTest {
             return;
         }
         // If they are using paramitive constructor
+        // It should can only have two decimal numbers
         Field field1= a.getClass().getDeclaredField("CategoryBudget");
         ((Field) field1).setAccessible(true);
         field1.set(a,new BigDecimal(budget));

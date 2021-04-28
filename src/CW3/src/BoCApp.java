@@ -131,6 +131,7 @@ public class BoCApp {
 			System.out.println("What is the value of the transaction?");	// ask the user to input
 			try {
 				tvalue = new BigDecimal(in.nextLine());		// try to convert the string -> BigDecimal
+				tvalue = tvalue.setScale(2);	// keep 2 decimal places
 			}catch(NumberFormatException e){	// couldn't convert the string -> BigDecimal
 				System.out.println("Invalid input. Please enter a valid number.");	//ask the user to input again
 				continue;

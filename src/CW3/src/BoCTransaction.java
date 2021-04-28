@@ -129,7 +129,7 @@ public class BoCTransaction {
 	// Last modified: 4/25 19:01
 	// Reason: If category input is less than or equal to zero, it should throw an exception to handle it.
 	public void setTransactionCategory(int tCat) {
-		if (tCat > 0) {
+		if (tCat >= 0) {	// CategoryNumber could be equal to zero[Modified Ziyi Wang (2021/4/28 20:34)]
 			transactionCategory = tCat;
 		} else {
 			throw new IllegalArgumentException("Transaction category should greater than zero.");
