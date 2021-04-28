@@ -321,8 +321,6 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
 |---|---|---|---|---|---|---|---|
-
-
 |**[TS-Transaction 1-1]**|**[Result]:** `Fail`<br> **[Time]**:`2021/04/18 16:54`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`<br>![](testLog\TS-Transaction-1-1.png)| **[Modifier]**: `Leshan Tan (sqylt2)`<br> **[Content (M)]**:<br> ***Before***: `transactionName = null;`<br> ***After***:  `transactionName = "[Pending Transaction]";`|**[Result]**: `Pass` <br> **[Time]**: `2021/04/22 18:12`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`<br> |-|**[Result]**: `Pass` <br> **[Time]**: `2021/04/26 9:05`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|-|
 |**[TS-Transaction 2-1]**|**[Result]:**<br>`Pass`<br>**[Time]:**<br>`2021/4/18`<br>`14:06`<br>**[Tester]:**<br>`Zixiang Hu`<br>`(scyzh6)`<br>**[Platform]:**<br>`Windows10-IDEA`|-|-|||
 |**[TS-Transaction 2-2]**|**[Result]:**<br>`Pass`<br>**[Time]:**<br>`2021/4/18`<br>`14:06`<br>**[Tester]:**<br>`Zixiang Hu`<br>`(scyzh6)`<br>**[Platform]:**<br>`Windows10-IDEA`|-|-|||
