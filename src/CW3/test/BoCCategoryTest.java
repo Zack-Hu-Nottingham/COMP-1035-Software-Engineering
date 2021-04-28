@@ -19,13 +19,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoCCategoryTest {
 
     // Author: Leshan Tan (sqylt2)
-    // Last Modified: 2021/4/28 19:20
+    // Last Modified: 2021/4/28 19:43
     @Test
     @DisplayName("Test for default constructor")
     void BocCategory()throws NoSuchFieldException, IllegalAccessException{
         ArrayList<String> BoCCategoryNameList = new ArrayList<String>(); // create a list to store the name of the category instances
         int times = 0; // the count of instances to be created
-        while(times < 2){
+        while(times < 10){
             BoCCategory instance = new BoCCategory(); // create an instance
             final Field fieldName = instance.getClass().getDeclaredField("CategoryName"); // get the field CategoryName
             final Field fieldBudget = instance.getClass().getDeclaredField("CategoryBudget"); // get the fieldBudget
@@ -37,8 +37,8 @@ class BoCCategoryTest {
             BoCCategoryNameList.add(name); // add name to the list
             if (times == 0){ // when it is the first category instance, its name should be "Unknown"
                 assertEquals("Unknown", fieldName.get(instance),"Field CategoryName for the first instance didn't match" );
-            } else { // otherwise, its name will be "New Category0", "New Category1" etc.
-                assertEquals("New Category" + (times - 1), fieldName.get(instance),"Field CategoryName didn't match" );
+            } else { // otherwise, its name will be "New Category1", "New Category2" etc.
+                assertEquals("New Category" + times, fieldName.get(instance),"Field CategoryName didn't match" );
             }
             assertEquals(new BigDecimal("0.00"),fieldBudget.get(instance),"Field CategoryBudget didn't match"); // check CategoryBudget
             assertEquals(new BigDecimal("0.00"), fieldSpend.get(instance),"Field CategorySpend didn't match"); // check CategorySpend
