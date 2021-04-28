@@ -67,7 +67,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><td>test.transactionName == null</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | The transactionName of the instance created by default constructor should be "[Pending Transaction]", not null |
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** | By default, transactionName is set to "[Pending Transaction]" and trsactionTime is set to current time using "new Date()" |
 
 &nbsp;
 &nbsp;
@@ -488,7 +488,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table border="1"><tr><td>test.CategoryName is the same among different instances</td></tr><tr><td>test.CategoryBudget == new BigDecimal("0.00")</td></tr><tr><td>test.CategorySpend == new BigDecimal("0.00")</td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | The implementation of Category Default Constructor is wrong, since it always create instances with the same name "New Category" |
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** | Add a static variable categoryNum, each new instance will have the CategoryName set to "New Category" + categoryNum++ |
 &nbsp;
 
   
@@ -968,7 +968,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 | **Test Outcome**          | <table><tr><th>chosenCategory</th><th>outputString</th></tr><tr><td>0</td><td>"1) Rent - ¥850.00\n"</td></tr><tr><td>1</td><td>"2) Phone Bill - ¥37.99\n" <br> "3) Electricity Bill - ¥75.00\n"</td></tr><tr><td>2</td><td>"4) Sainsbury's Checkout - ¥23.76\n"<br>"5) Tesco's Checkout - ¥7.24\n"</td></tr><tr><td>3</td><td>"6) RockCity Drinks - ¥8.50\n"<br>"7) The Mooch - ¥13.99\n"</td></tr><tr><td>4</td><td>""</td></tr><tr><td>5</td><td>""</td></tr><tr><td>-1</td><td>""</td></tr></table> |
 | **Result**                       | Fail |
 | **Reason for Failure**           | The app did not output appropriate message if cannot find transactions with invalid category(category haven't added to the list) |
-| **What is Done to Make it Pass** | \ |
+| **What is Done to Make it Pass** | Add a conditional judgement to check if the category number exits, if not exist, output appropriate error message |
 &nbsp;
 
  ### **Function:** &nbsp; ChangeTransactionCategory(Scanner in)
