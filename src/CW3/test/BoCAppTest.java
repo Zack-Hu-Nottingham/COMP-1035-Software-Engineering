@@ -176,13 +176,13 @@ class BoCAppTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1}) // the input values
     void listTransactionsForCategory(int categoryNumber) {
-        String expectedOutput0 = "1) Rent - ¥850.00" + ln; // the expected output string when categoryNumber == 0
-        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln + // the expected output string when categoryNumber == 1
-                "3) Electricity Bill - ¥75.00" + ln;
-        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln + // the expected output string when categoryNumber == 2
-                "5) Tesco's Checkout - ¥7.24" + ln;
-        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln + // the expected output string when categoryNumber == 3
-                "7) The Mooch - ¥13.99" + ln;
+        String expectedOutput0 = "1) Rent (Unknown) - ¥850.00" + ln; // the expected output string when categoryNumber == 0
+        String expectedOutput1 = "2) Phone Bill (Bills) - ¥37.99" + ln + // the expected output string when categoryNumber == 1
+                "3) Electricity Bill (Bills) - ¥75.00" + ln;
+        String expectedOutput2 = "4) Sainsbury's Checkout (Groceries) - ¥23.76" + ln + // the expected output string when categoryNumber == 2
+                "5) Tesco's Checkout (Groceries) - ¥7.24" + ln;
+        String expectedOutput3 = "6) RockCity Drinks (Social) - ¥8.50" + ln + // the expected output string when categoryNumber == 3
+                "7) The Mooch (Social) - ¥13.99" + ln;
         String expectedErrorMessage = "Cannot find transactions with category "; // the expected output string when categoryNumber haven't been added to the list
 
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // create the output stream outContent

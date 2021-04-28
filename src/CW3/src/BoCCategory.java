@@ -10,12 +10,18 @@ public class BoCCategory {
 	private static int categoryNum = 0;
 
 	// Author: Leshan Tan (sqylt2)
-	// Last modified: 2021/4/27 22:10
+	// Last modified: 2021/4/28 19:42
 	// Reason: the CategoryName should be unique among different instances, hence adding the variable categoryNum
+	// The first category instance's CategoryName should be "Unknown"
 	public BoCCategory() {
-		CategoryName = "New Category" + categoryNum++;
-		CategoryBudget = new BigDecimal("0.00");
-		CategorySpend = new BigDecimal("0.00");
+		if (categoryNum == 0){
+			CategoryName = "Unknown"; // when it is the first category instance, its name should be "Unknown"
+		} else{
+			CategoryName = "New Category" + categoryNum; // otherwise, its name will be "New Category1", "New Category2" etc.
+		}
+		CategoryBudget = new BigDecimal("0.00"); // by default, CategoryBudget should be BigDecimal("0.00")
+		CategorySpend = new BigDecimal("0.00"); // by default, CategorySpend should be BigDecimal("0.00")
+		categoryNum++; // the number of category increases
 	}
 
 	// Author: Ziyi Wang (scyzw10)
