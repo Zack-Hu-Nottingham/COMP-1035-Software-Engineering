@@ -1,5 +1,7 @@
 import java.math.BigDecimal;
 import java.security.InvalidParameterException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class BoCCategory {
 	private String CategoryName;
@@ -8,12 +10,18 @@ public class BoCCategory {
 	private static int categoryNum = 0;
 
 	// Author: Leshan Tan (sqylt2)
-	// Last modified: 2021/4/27 22:10
+	// Last modified: 2021/4/28 19:42
 	// Reason: the CategoryName should be unique among different instances, hence adding the variable categoryNum
+	// The first category instance's CategoryName should be "Unknown"
 	public BoCCategory() {
-		CategoryName = "New Category" + categoryNum++;
-		CategoryBudget = new BigDecimal("0.00");
-		CategorySpend = new BigDecimal("0.00");
+		if (categoryNum == 0){
+			CategoryName = "Unknown"; // when it is the first category instance, its name should be "Unknown"
+		} else{
+			CategoryName = "New Category" + categoryNum; // otherwise, its name will be "New Category1", "New Category2" etc.
+		}
+		CategoryBudget = new BigDecimal("0.00"); // by default, CategoryBudget should be BigDecimal("0.00")
+		CategorySpend = new BigDecimal("0.00"); // by default, CategorySpend should be BigDecimal("0.00")
+		categoryNum++; // the number of category increases
 	}
 
 	// Author: Ziyi Wang (scyzw10)
@@ -38,7 +46,7 @@ public class BoCCategory {
 		//name can not be null.
 		if (CategoryName == null){
 			throw new IllegalArgumentException("Name is not set.");
- 		}
+		}
 		//Name can not longer than 15 characters, in setCategoryName, if user enter a String longer than 15 characters
 		//the program will take the substring of the input string, so in this method, name should not longer than 25 characters.
 		else if (CategoryName.length() > 15){
@@ -86,7 +94,8 @@ public class BoCCategory {
 	//		}
 	//	}
 	public void setCategoryBudget(float newValue) {		// takes a float as parameter
-		BigDecimal newV = new BigDecimal(Float.toString(newValue));		//convert the Float type -> String -> BigDecimal
+		NumberFormat formatter = new DecimalFormat("0.00");	// keep two decimal places
+		BigDecimal newV = new BigDecimal(String.valueOf(formatter.format(newValue)));		//convert the Float type -> String -> BigDecimal
 		// if newValue (newV) > 0, the set the budget
 		if (newV.compareTo(new BigDecimal("0.00")) == 1) {
 			CategoryBudget = newV;
@@ -139,18 +148,31 @@ public class BoCCategory {
 	}
 
 	// Modifier: LinCHEN (biylc2)
-	// Last Modify:2021/04/24
+	// Last Modify:2021/04/28 21:12
 	// Reason: Cause when the remaining budget is negative, the previous function will have a wrong output
+	// And the format should only have two decimal left
 
 	@Override
 	public String toString() {
-		if (getRemainingBudget().compareTo(new BigDecimal("0.00")) > -1)
-			return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBudget.toPlainString() + ") - ¥" + CategorySpend.toPlainString()
-					+ " (¥" + getRemainingBudget().toPlainString() + " Remaining)";
+		if (getRemainingBudget().compareTo(new BigDecimal("0.00")) > -1) {
+			DecimalFormat convers=new DecimalFormat("0.00");
+			String afterBugdet =convers.format(CategoryBudget);
+			String afterSpend =convers.format(CategorySpend);
+			String afterRemain =convers.format(getRemainingBudget());
+			return "[" + CategoryName + "]" + "(Budget: ¥" + afterBugdet + ") - ¥" + afterSpend
+					+ " (¥" + afterRemain + " Remaining)";
+
+		}
 		// if the budget is overspend
 		else
-			return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBudget.toPlainString() + ") - ¥" + CategorySpend.toPlainString()
-					+ " (¥" + getRemainingBudget().abs().toPlainString() + " Overspent)";
+		{
+			DecimalFormat convers=new DecimalFormat("0.00");
+			String afterBugdet =convers.format(CategoryBudget);
+			String afterSpend =convers.format(CategorySpend);
+			String afterRemain =convers.format(getRemainingBudget().abs());
+			return "[" + CategoryName + "]" + "(Budget: ¥" + afterBugdet + ") - ¥" + afterSpend
+					+ " (¥" + afterRemain + " Overspent)";
+		}
 	}
 
 }

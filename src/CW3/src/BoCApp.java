@@ -101,7 +101,7 @@ public class BoCApp {
 	}
 
 	// Author: Leshan Tan (sqylt2)
-	// Last Modified: 2021/4/27 20:27
+	// Last Modified: 2021/4/28 19:10
 	// Reason: add an if to test if the input category already in the list
 	public static void ListTransactionsForCategory(int chosenCategory) {
 		// the category number should be already in the list, counting from 0 to UserCategories.size() - 1
@@ -112,19 +112,66 @@ public class BoCApp {
 		for (int x = 0; x < UserTransactions.size(); x++) {
 			BoCTransaction temp = UserTransactions.get(x);
 			if (temp.transactionCategory() == chosenCategory) {
-				System.out.println((x + 1) + ") " + temp.toString());
+				System.out.println((x + 1) + ") " + temp.transactionName()+" ("+UserCategories.get(temp.transactionCategory()).CategoryName()+") - ¥"+temp.transactionValue());
 			}
 		}
 	}
 
+	// Author: Ziyi Wang(scyzw10)
+	// Last Modified: 2021/4/28 19:47
+	// Reason: add exception to the source code => check the input
+	//		   add the transaction to the Category
 	private static void AddTransaction(Scanner in) {
 		System.out.println("What is the title of the transaction?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
-		System.out.println("What is the value of the transaction?");
-		BigDecimal tvalue = new BigDecimal(in.nextLine());
-		//UserTransactions.add(new BoCTransaction(title, tvalue, 0));
+		boolean flag = true;	// variable to stop the loop
+		BigDecimal tvalue = new BigDecimal("0.00");	// store the value of the transaction
+		while (flag){
+			System.out.println("What is the value of the transaction?");	// ask the user to input
+			try {
+				tvalue = new BigDecimal(in.nextLine());		// try to convert the string -> BigDecimal
+				tvalue = tvalue.setScale(2);	// keep 2 decimal places
+			}catch(NumberFormatException e){	// couldn't convert the string -> BigDecimal
+				System.out.println("Invalid input. Please enter a valid number.");	//ask the user to input again
+				continue;
+			}
+			if (tvalue.compareTo(new BigDecimal("0.00")) == -1 ) {	// value must > 0
+				System.out.println("Invalid number. The value must bigger than zero.");
+				continue;
+			}
+			flag = false;
+		}
+
+		int tCat = 0;	// variable to store the CategoryNumber
+		flag = true;	// variable to stop the loop
+		while (flag){
+			CategoryOverview();		// ask the user to input
+			System.out.println("Which category do you want to add?");
+			try{
+				tCat = Integer.parseInt(in.nextLine());		// get input and convert string -> integer
+			}catch (NumberFormatException exc){		// could not convert: input not an integer
+				System.out.println("Invalid input. Please enter a valid number.");
+				continue;
+			}
+			// input an integer but not correct categoryNumber
+			if (tCat > UserCategories.size() || tCat < 0) {
+				System.out.println("Invalid number. Category not exist.");
+				continue;
+			}
+			flag = false;
+		}
+
+		// Add transaction to the UserTransactions
+		UserTransactions.add(new BoCTransaction(title, tvalue, tCat-1));
+		// Add transaction to the UserCategories
+		BoCCategory tCategory = UserCategories.get(tCat-1);
+		tCategory.addExpense(tvalue);
+		UserCategories.set(tCat-1, tCategory);
+
 		System.out.println("[Transaction added]");
+		System.out.println("[" + title + "](¥" + tvalue.toString() + ") was added to [" +
+		UserCategories.get(tCat-1).CategoryName() + "]");
 	}
 
 	//Author: Yicun Duan (scyyd3)

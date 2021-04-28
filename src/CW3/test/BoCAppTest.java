@@ -93,19 +93,24 @@ class BoCAppTest {
                 testOutcome("O\nT\n1\nrrr\n12\nX\n", appMenu + defaultCategoryOverview +
                         appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
                         "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu +
-                        "Something went wrong: java.lang.NumberFormatException: For input string: "+ "\"rrr\"" + ln + ln +
-                        appMenu + "Cannot find transactions with category 12" + ln + appMenu + appExit);
+                        "Command not recognised" + ln + appMenu +
+                        "Cannot find transactions with category 12" + ln + appMenu + appExit);
                 break;
             case 2:
-                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
+                testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.0000\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
                         appMenu + defaultTransactionOverview + appMenu +    // list Transaction overview
                                 inviteAddCategory + "[Category added]" + ln + defaultCategoryOverview +  // new category -> add category first and print the new category overview
                                 "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +       // add transaction
-                                inviteAddTransaction + "Which category do you want to add?" + ln + "[Breakfast](¥5.00) was added to [Food]" +
+                                inviteAddTransaction + defaultCategoryOverview +
+                                "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln +
+                                "Which category do you want to add?" + ln + "[Transaction added]" + ln +
+                                "[Breakfast](¥5.00) was added to [Food]" +
                                 ln + appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +    // check the new transaction list after adding
-                                appMenu + defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +  //check the new category list after adding
+                                appMenu + defaultCategoryOverview +
+                                "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +  //check the new category list after adding
                                 appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +     // change the category -> first print the transaction list
-                                inviteChangeTCate1 + "\t- " + "Breakfast - ¥5.00 date: " + BoCApp.UserTransactions.get(5).transactionTime() + ln +   // the Transaction that the user want to change
+                                inviteChangeTCate1 + "\t- " + "Breakfast - ¥5.00 Date: " +
+                                BoCApp.UserTransactions.get(5).transactionTime() + ln +   // the Transaction that the user want to change
                                 defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +    // print the category list and let the user to choose
                                 inviteChangeTcate2 + "[Unknown](Budget: ¥0.00) - ¥855.00 (¥855.00 Overspent)" + ln +  // print the result of new cate and the old one
                                 "[Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +
@@ -171,13 +176,13 @@ class BoCAppTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1}) // the input values
     void listTransactionsForCategory(int categoryNumber) {
-        String expectedOutput0 = "1) Rent - ¥850.00" + ln; // the expected output string when categoryNumber == 0
-        String expectedOutput1 = "2) Phone Bill - ¥37.99" + ln + // the expected output string when categoryNumber == 1
-                "3) Electricity Bill - ¥75.00" + ln;
-        String expectedOutput2 = "4) Sainsbury's Checkout - ¥23.76" + ln + // the expected output string when categoryNumber == 2
-                "5) Tesco's Checkout - ¥7.24" + ln;
-        String expectedOutput3 = "6) RockCity Drinks - ¥8.50" + ln + // the expected output string when categoryNumber == 3
-                "7) The Mooch - ¥13.99" + ln;
+        String expectedOutput0 = "1) Rent (Unknown) - ¥850.00" + ln; // the expected output string when categoryNumber == 0
+        String expectedOutput1 = "2) Phone Bill (Bills) - ¥37.99" + ln + // the expected output string when categoryNumber == 1
+                "3) Electricity Bill (Bills) - ¥75.00" + ln;
+        String expectedOutput2 = "4) Sainsbury's Checkout (Groceries) - ¥23.76" + ln + // the expected output string when categoryNumber == 2
+                "5) Tesco's Checkout (Groceries) - ¥7.24" + ln;
+        String expectedOutput3 = "6) RockCity Drinks (Social) - ¥8.50" + ln + // the expected output string when categoryNumber == 3
+                "7) The Mooch (Social) - ¥13.99" + ln;
         String expectedErrorMessage = "Cannot find transactions with category "; // the expected output string when categoryNumber haven't been added to the list
 
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // create the output stream outContent
@@ -314,24 +319,27 @@ class BoCAppTest {
         String invitesTitle = "What is the title of the transaction?" + ln;
         String invitesValue = "What is the value of the transaction?" + ln;
         String invitesCategory = "Which category do you want to add?" + ln;
-        String invitesVaild = "Invalid input. Please enter a valid number" + ln;
+        String invitesVaild = "Invalid input. Please enter a valid number." + ln;
 
         switch (input) {
             case 1:
-                testOutcome("A\nElectricity Bill\n9.00\n2\nX\n",
-                        appMenu + invitesTitle + invitesValue
-                                + defaultCategoryOverview + invitesCategory +
-                                "[Electricity Bill](¥9.00) was added to [Bills]" + ln +
-                                appMenu + appExit);
+                testOutcome("A\nElectricity Bill\n-2.0\naa\n9.00\n2\nX\n",
+                        appMenu + invitesTitle + invitesValue +
+                                "Invalid number. The value must bigger than zero." + ln + invitesValue +
+                                invitesVaild + invitesValue + defaultCategoryOverview + invitesCategory +
+                                "[Transaction added]" + ln + "[Electricity Bill](¥9.00) was added to [Bills]" +
+                                ln + appMenu + appExit);
                 break;
             case 2:
-                testOutcome("A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n",
+                testOutcome("A\nWater Bill\naaa\n-1.0\n9.0000\nrr\n-1\n100\n2\nX\n",
                         appMenu + invitesTitle + invitesValue +
-                                invitesVaild + invitesValue + defaultCategoryOverview +
+                                invitesVaild + invitesValue + "Invalid number. The value must bigger than zero." +
+                                ln + invitesValue +defaultCategoryOverview +
                                 invitesCategory + invitesVaild + defaultCategoryOverview +
-                                invitesCategory + invitesVaild + defaultCategoryOverview +
-                                invitesCategory + "Invalid number. Category not exist" + ln
-                                + defaultCategoryOverview + invitesCategory +
+                                invitesCategory + "Invalid number. Category not exist." + ln +
+                                defaultCategoryOverview + invitesCategory +
+                                "Invalid number. Category not exist." + ln
+                                + defaultCategoryOverview + invitesCategory + "[Transaction added]" + ln +
                                 "[Water Bill](¥9.00) was added to [Bills]" + ln + appMenu + appExit);
                 break;
         }
@@ -396,10 +404,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [CW3 is so easy](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [CW3 is so easy](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -441,10 +449,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [Rent](Budget: ¥999.0) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [Rent](Budget: ¥999.00) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -465,10 +473,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [123451234512345](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [123451234512345](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
             System.setIn(input1);
