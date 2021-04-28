@@ -189,38 +189,38 @@ class BoCCategoryTest {
     @DisplayName("Test for category name setter")
     void setCategoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_setter = new BoCCategory();
-            //If name is null, program should throw a exception with a message "Name is not set."
-            if (name == null){
-                try {
-                    Test_setter.setCategoryName(null);
-                    fail();
-                }catch (Exception ex1){
-                    assertEquals(expection, ex1.getMessage());
-                }
+        //If name is null, program should throw a exception with a message "Name is not set."
+        if (name == null){
+            try {
+                Test_setter.setCategoryName(null);
+                fail();
+            }catch (Exception ex1){
+                assertEquals(expection, ex1.getMessage());
             }
-            else {
-                if (name.length() > 15){
-                    //try {
-                    //    Test_setter.setCategoryName(name);
-                    //    fail();
-                    //}catch (Exception ex2){
-                    //    assertEquals(expection, ex2.getMessage());
-                    //}
-                    //if user enter a name longer than 15 characters, take substring which is 15 characters.
-                    Test_setter.setCategoryName(name);
-                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
-                    field_setname.setAccessible(true);
-                    assertEquals(expection, field_setname.get(Test_setter));
-                }else {
-                    //Normal case.
-                    Test_setter.setCategoryName(name);
-                    final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
-                    field_setname.setAccessible(true);
-                    assertEquals(expection, field_setname.get(Test_setter));
-                }
+        }
+        else {
+            if (name.length() > 15){
+                //try {
+                //    Test_setter.setCategoryName(name);
+                //    fail();
+                //}catch (Exception ex2){
+                //    assertEquals(expection, ex2.getMessage());
+                //}
+                //if user enter a name longer than 15 characters, take substring which is 15 characters.
+                Test_setter.setCategoryName(name);
+                final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                field_setname.setAccessible(true);
+                assertEquals(expection, field_setname.get(Test_setter));
+            }else {
+                //Normal case.
+                Test_setter.setCategoryName(name);
+                final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
+                field_setname.setAccessible(true);
+                assertEquals(expection, field_setname.get(Test_setter));
             }
+        }
     }
-    
+
 
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/27 20:05
@@ -448,7 +448,7 @@ class BoCCategoryTest {
         return Stream.of(
                 Arguments.of(new BoCCategory(), "", "", "[Unknown](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
                 Arguments.of(new BoCCategory(), "", "", "[New Category1](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
-                Arguments.of(new BoCCategory("Positive"), "3457834.023423", "667433.00564", "[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"),
+                Arguments.of(new BoCCategory("Positive"), "3457834.023423", "667433.00564", "[Positive](Budget: ¥3457834.02) - ¥667433.01 (¥2790401.02 Remaining)"),
                 Arguments.of(new BoCCategory("Negative"), "10000.00", "20000.00", "[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)")
         );
     };
@@ -463,6 +463,7 @@ class BoCCategoryTest {
             return;
         }
         // If they are using paramitive constructor
+        // It should can only have two decimal numbers
         Field field1= a.getClass().getDeclaredField("CategoryBudget");
         ((Field) field1).setAccessible(true);
         field1.set(a,new BigDecimal(budget));

@@ -404,10 +404,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [CW3 is so easy](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [CW3 is so easy](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -449,10 +449,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [Rent](Budget: ¥999.0) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [Rent](Budget: ¥999.00) - ¥0.00 (¥999.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
@@ -473,10 +473,10 @@ class BoCAppTest {
                     "What is the budget for this category?" + "\r\n" +
                     "[Category added]" + "\r\n" +
                     "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                    "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                    "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                    "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
-                    "5) [123451234512345](Budget: ¥100.0) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
+                    "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
+                    "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
+                    "4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining)" + "\r\n" +
+                    "5) [123451234512345](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + "\r\n" + "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
             System.setIn(input1);
