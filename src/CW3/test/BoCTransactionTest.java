@@ -236,6 +236,8 @@ class BoCTransactionTest {
         final BoCTransaction Test_getter = new BoCTransaction();
         final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
         field_getter.setAccessible(true);
+
+        //If name is null, program should throw a exception with a message "Name is not set."
         if(name == null){
             try {
                 field_getter.set(Test_getter, name);
@@ -246,6 +248,8 @@ class BoCTransactionTest {
             }
         }
         else {
+            //if user enter a name longer than 25 characters,
+            // program should throw a exception with a message "Name can not longer than 25 characters."
             if(name.length() > 25){
                 try {
                     field_getter.set(Test_getter, name);
@@ -256,6 +260,7 @@ class BoCTransactionTest {
                 }
             }
             else {
+                //Normal case.
                 field_getter.set(Test_getter, name);
                 final String result = Test_getter.transactionName();
                 assertEquals(expection, result);
@@ -309,16 +314,22 @@ class BoCTransactionTest {
 
     // Author: Yicun Duan (scyyd3)
     // Last modified: 2021/4/25 23:36
+    // Reason: (1) Test whether the program will generate expected output, supposing the valid input is given.
+    //         (2) Test whether the program could truncate the input string when it is too long.
+    //         (3) Test whether the program could deal with invalid input.
+    //         (4) Test whether the program could inhibit setting name twice.
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
     @DisplayName("Test for transaction name setter")
     void setTransactionName(String transName, BigDecimal transValue, int transCate, String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
         if (transName == null && transValue == null && transCate == 0) {
+            //use default constructor
             final BoCTransaction test_instance = new BoCTransaction();
                 try{
                     test_instance.setTransactionName(giveName);
                 }catch (Exception e) {
                     if (e instanceof IllegalArgumentException) {
+                        //if the input name is invalid, it should throw out an exception
                         assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
                         return;
                     } else {
@@ -326,6 +337,8 @@ class BoCTransactionTest {
                     }
                 }
 
+                //test whether the program will generate expected output, supposing the valid input is given
+                //test whether the program could truncate the input string when it is too long
                 final Field field = test_instance.getClass().getDeclaredField("transactionName");
                 field.setAccessible(true);
                 assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
@@ -333,6 +346,7 @@ class BoCTransactionTest {
             return;
             }
 
+        //test whether the program could inhibit setting name twice
         final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
 
         UnsupportedOperationException e = assertThrows(UnsupportedOperationException.class, ()->{test_instance.setTransactionName(giveName);});
@@ -538,32 +552,43 @@ class BoCTransactionTest {
     @CsvFileSource(resources = {"/toStringTest.csv"})
     @DisplayName("Test for method toString")
     void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction Test_toString = new BoCTransaction();
-        final Field test1 = Test_toString.getClass().getDeclaredField("transactionName");
-        final Field test2 = Test_toString.getClass().getDeclaredField("transactionValue");
+        final BoCTransaction testToString = new BoCTransaction();
+        final Date transDate = new Date();
+
+        //Set 3 field of transaction name, value and time, set accessible is true.
+        final Field test1 = testToString.getClass().getDeclaredField("transactionName");
+        final Field test2 = testToString.getClass().getDeclaredField("transactionValue");
+        final Field test3 = testToString.getClass().getDeclaredField("transactionTime");
         test1.setAccessible(true);
         test2.setAccessible(true);
+        test3.setAccessible(true);
 
+        //Transaction value can not be null.
         if (transValue == null){
             try{
-                test1.set(Test_toString, transName);
-                test2.set(Test_toString, null);
-                final String foo = Test_toString.toString();
+                test1.set(testToString, transName);
+                test2.set(testToString, null);
+                test3.set(testToString, transDate);
+                final String foo = testToString.toString();
             }catch (Exception ex1){
                 assertEquals(resultStr, ex1.getMessage());
             }
         }
         else{
+            //Transaction value should be a positive number.
             if (Integer.parseInt(transValue) >= 0) {
-                test1.set(Test_toString, transName);
-                test2.set(Test_toString, new BigDecimal(transValue));
-                final String foo = Test_toString.toString();
-                assertEquals(resultStr, foo);
+                test1.set(testToString, transName);
+                test2.set(testToString, new BigDecimal(transValue));
+                test3.set(testToString, transDate);
+                final String foo = testToString.toString();
+                assertEquals(resultStr + " Date: " + transDate, foo);
             } else {
+                //To test when transaction value is a negative number.
                 try {
-                    test1.set(Test_toString, transName);
-                    test2.set(Test_toString, new BigDecimal(transValue));
-                    final String foo = Test_toString.toString();
+                    test1.set(testToString, transName);
+                    test2.set(testToString, new BigDecimal(transValue));
+                    test3.set(testToString, transDate);
+                    final String foo = testToString.toString();
                     fail();
                 }catch (Exception ex){
                     assertEquals(resultStr, ex.getMessage());

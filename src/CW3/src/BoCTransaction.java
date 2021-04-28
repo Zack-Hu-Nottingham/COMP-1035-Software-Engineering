@@ -50,12 +50,16 @@ public class BoCTransaction {
 	// Last modify: 22021/4/24 18:44
 	// Reason: When transaction name is null or is longer than 25 characters, the program should report an error.
 	public String transactionName() throws IllegalArgumentException{
+		//When name is not set, throw a IllegalArgumentException.
 		if (transactionName == null){
 			throw new IllegalArgumentException("name is not set.");
 		}
+		//Name can not longer than 25 characters, in setTransactionName, if user enter a String longer than 25 characters
+		//the program will take the substring of the input string, so in this method, name should not longer than 25 characters.
 		else if (transactionName.length() > 25){
 			throw new IllegalArgumentException("Name can not longer than 25 characters.");
 		}
+		//normal case.
 		else{
 			return transactionName;
 		}
@@ -76,22 +80,29 @@ public class BoCTransaction {
 		return transactionTime;
 	}
 
-
-	// Author: Yicun Duan (scyyd3)
-	// Last modified: 2021/4/26 23:38
+	//Author: Yicun Duan (scyyd3)
+	//Last Modified: 2021/4/28 00:48
+	//Reason: The function can't check out the case where transaction name are set repeatedly.
+	//		  It cannot validate input "tName" yet.
+	//		  It cannot truncate string with length larger than 25 characters yet.
 	public void setTransactionName(String tName) throws IllegalArgumentException, UnsupportedOperationException{
+		//check whether transaction name is set as "[Pending Transaction]"
 		if (!transactionName.equals("[Pending Transaction]")) {
+			//if not, throw out an exception
 			throw new UnsupportedOperationException("Transaction name cannot be repeatedly set.");
 		}
 
+		//test whether input "tName" is valid
 		if (tName == null || tName.isBlank()) {
 			throw new IllegalArgumentException("The transactionName is invalid.");
 		}
 
+		//truncate the string if necessary
 		if (tName.length() > 25) {
 			tName = tName.substring(0, 25);
 		}
 
+		//reset the transaction name
 		transactionName = tName;
 	}
 
@@ -132,17 +143,21 @@ public class BoCTransaction {
 	// Reason: when transaction value is null, program should print Unknown value, and value can not be negative.
 	@Override
 	public String toString() throws IllegalArgumentException{
+		//When transaction value is not set, return unknown value.
 		if (transactionValue == null){
 			return transactionName + " - ¥" + "Unknownvalue";
 		}
+//		compare two bigDecimal can use .compareTo()
 //		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
 //			throw new IllegalArgumentException("Value can not be negative number");
 //		}
+		//transaction value can not be negative number.
 		if (transactionValue.compareTo(new BigDecimal("0.00")) == -1) {
 			throw new IllegalArgumentException("Value can not be negative number");
 		}
 
-		return transactionName + " - ¥" + transactionValue.toString();
+		//return name value and date.
+		return transactionName + " - ¥" + transactionValue.toString() + " Date: " + transactionTime;
 	}
 
 
