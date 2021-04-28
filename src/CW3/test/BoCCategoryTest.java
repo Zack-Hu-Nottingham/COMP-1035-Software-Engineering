@@ -20,7 +20,6 @@ class BoCCategoryTest {
 
     // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/24 21:17
-
     @Test
     @DisplayName("Test for default constructor")
     void BocCategory()throws NoSuchFieldException, IllegalAccessException{
@@ -82,7 +81,7 @@ class BoCCategoryTest {
 
 
     // Author: Yingxiao Huo (scyyh9)
-    // Last Modified time: 2021/4/21
+    // Last Modified time: 2021/4/21 11:23
     @ParameterizedTest
     @CsvFileSource(resources = {"/categoryNameGetter.csv"})
     @DisplayName("Test for category name getter")
@@ -236,7 +235,6 @@ class BoCCategoryTest {
     @DisplayName("tests for add Expense")
     @ParameterizedTest
     @CsvSource({",Illegal input","-2e12,Illegal input","-2.134,Illegal input","0.00,0.00","+.0,+.0","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
-
     void addExpenseTest(String bigNumber,String expected) {
 
         BoCCategory addT1= new BoCCategory("Tester");

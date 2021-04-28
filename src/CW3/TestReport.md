@@ -278,15 +278,151 @@ Report here, by the end of the assignment, how the team has managed the project,
 |BoCApp| | | |
 ![testCoverage]()
 
-|Test ID|Test Type|Test schedule|Rationale|Inputs|Expected Outcome|Other Info|Importance|
-|----|--|---------|------|:----------------:|:------------:|----|:----:|
-
-
-|Test ID|Test Type|Test schedule|Rationale|Inputs|Expected Outcome|Other Info|Importance|
-|----|--|---------|------|:----------------:|:------------:|----|:----:|
-
 
 
 ## Test Plan and Test Log
 
 ### Class: `BoCTransaction`
+
+|Test ID|Type|Inputs|Expected Outcome|Importance|
+|----|---------|------|----------------|-------|----|
+|**[TS-Transaction 1-1]**|**[Validdation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table>|||
+|**[TS-Transaction 1-1]**||||||
+|**[TS-Transaction 2-1]**||||||
+|**[TS-Transaction 2-2]**||||||
+|**[TS-Transaction 2-3]**||||||
+|**[TS-Transaction 2-4]**||||||
+|**[TS-Transaction 2-5]**||||||
+|**[TS-Transaction 2-6]**||||||
+|**[TS-Transaction 3-1]**||||||
+|**[TS-Transaction 3-2]**||||||
+|**[TS-Transaction 4-1]**||||||
+|**[TS-Transaction 5-1]**||||||
+|**[TS-Transaction 6-1]**||||||
+|**[TS-Transaction 7-1]**||||||
+|**[TS-Transaction 7-2]**||||||
+|**[TS-Transaction 7-3]**||||||
+|**[TS-Transaction 7-4]**||||||
+|**[TS-Transaction 8-1]**||||||
+|**[TS-Transaction 8-2]**||||||
+|**[TS-Transaction 8-3]**||||||
+|**[TS-Transaction 8-4]**||||||
+|**[TS-Transaction 8-5]**||||||
+|**[TS-Transaction 9-1]**||||||
+|**[TS-Transaction 10-1]**||||||
+|**[TS-Transaction 10-2]**||||||
+|**[TS-Transaction 11-1]**||||||
+
+#### Test Log
+
+|Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
+|-|-|-|-|-|-|-|-|
+|**[TS-Transaction 1-1]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/18 16:54<br>**[Tester]:**<br>Leshan Tan (sqylt2) **[Platform]**: MacOS-IDEA| **[Modifier]:**<br> Leshan Tan (sqylt2) **[Content (M)]:**<br> ***Before:*** <br>`transactionName = null;`<br> ***After:*** <br> `transactionName = "[Pending Transaction]";`|**[Result]:** `Pass` **[Time]:**<br>2021/04/22 18:12<br>**[Tester]:**<br>Leshan Tan (sqylt2) **[Platform]**: MacOS-IDEA|-|-|-|
+|**[TS-Transaction 2-1]**||||||
+|**[TS-Transaction 2-2]**||||||
+|**[TS-Transaction 2-3]**||||||
+|**[TS-Transaction 2-4]**||||||
+|**[TS-Transaction 2-5]**||||||
+|**[TS-Transaction 2-6]**||||||
+|**[TS-Transaction 3-1]**||||||
+|**[TS-Transaction 3-2]**||||||
+|**[TS-Transaction 4-1]**||||||
+|**[TS-Transaction 5-1]**||||||
+|**[TS-Transaction 6-1]**||||||
+|**[TS-Transaction 7-1]**||||||
+|**[TS-Transaction 7-2]**||||||
+|**[TS-Transaction 7-3]**||||||
+|**[TS-Transaction 7-4]**||||||
+|**[TS-Transaction 8-1]**||||||
+|**[TS-Transaction 8-2]**||||||
+|**[TS-Transaction 8-3]**||||||
+|**[TS-Transaction 8-4]**||||||
+|**[TS-Transaction 8-5]**||||||
+|**[TS-Transaction 9-1]**||||||
+|**[TS-Transaction 10-1]**||||||
+|**[TS-Transaction 10-2]**||||||
+|**[TS-Transaction 11-1]**||||||
+
+
+### Class: `BoCCategory`
+
+#### Test Plan
+
+|Test ID|Type|Inputs|Expected Outcome|Importance|
+|----|---------|------|----------------|-------|----|
+|**[TS-Category 1-1]**||||||
+|**[TS-Category 2-1]**||||||
+|**[TS-Category 3-1]**||||||
+|**[TS-Category 4-1]**||||||
+|**[TS-Category 5-1]**||||||
+|**[TS-Category 5-2]**||||||
+|**[TS-Category 6-1]**||||||
+|**[TS-Category 7-1]**||||||
+|**[TS-Category 8-1]**||||||
+|**[TS-Category 8-2]**||||||
+|**[TS-Category 8-3]**||||||
+|**[TS-Category 9-1]**||||||
+|**[TS-Category 9-2]**||||||
+|**[TS-Category 9-3]**||||||
+|**[TS-Category 10-1]**||||||
+|**[TS-Category 11-1]**||||||
+|**[TS-Category 12-1]**||||||
+|**[TS-Category 12-2]**||||||
+|**[TS-Category 12-3]**||||||
+
+
+
+#### Test Log
+|Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
+|-|-|-|-|-|-|-|-|
+|**[TS-Category 1-1]**||||||
+|**[TS-Category 2-1]**||||||
+|**[TS-Category 3-1]**||||||
+|**[TS-Category 4-1]**||||||
+|**[TS-Category 5-1]**||||||
+|**[TS-Category 5-2]**||||||
+|**[TS-Category 6-1]**||||||
+|**[TS-Category 7-1]**||||||
+|**[TS-Category 8-1]**||||||
+|**[TS-Category 8-2]**||||||
+|**[TS-Category 8-3]**||||||
+|**[TS-Category 9-1]**||||||
+|**[TS-Category 9-2]**||||||
+|**[TS-Category 9-3]**||||||
+|**[TS-Category 10-1]**||||||
+|**[TS-Category 11-1]**||||||
+|**[TS-Category 12-1]**||||||
+|**[TS-Category 12-2]**||||||
+|**[TS-Category 12-3]**||||||
+
+
+
+### Class: `BoCApp`
+
+#### Test Plan
+
+|Test ID|Type|Inputs|Expected Outcome|Importance|
+|----|---------|------|----------------|-------|----|
+|**[TS-App 1-1]**||||||
+|**[TS-App 2-1]**||||||
+|**[TS-App 3-1]**||||||
+|**[TS-App 4-1]**||||||
+|**[TS-App 5-1]**||||||
+|**[TS-App 5-2]**||||||
+|**[TS-App 6-1]**||||||
+|**[TS-App 7-1]**||||||
+
+#### Test Log
+|Test ID|Attemp-1|Modification|Attemp-2|Modification|Attemp-3|Modification|Integration Test|
+|-|-|-|-|-|-|-|-|
+|**[TS-App 1-1]**||||||
+|**[TS-App 2-1]**||||||
+|**[TS-App 3-1]**||||||
+|**[TS-App 4-1]**||||||
+|**[TS-App 5-1]**||||||
+|**[TS-App 5-2]**||||||
+|**[TS-App 6-1]**||||||
+|**[TS-App 7-1]**||||||
+
+
+

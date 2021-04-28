@@ -67,6 +67,7 @@ class BoCTransactionTest {
             "Go to Apple store and buy an apple pen, 998, 3",
             ", 998, 3",
             "Buy an apple pen, 998, -3",
+            "Buy an apple pen, , -3",
             "Buy an apple pen, 0, 3",
             "Buy an apple pen, -998, -3"
     })
@@ -101,6 +102,17 @@ class BoCTransactionTest {
             }
         }
         else if (tValue.compareTo(new BigDecimal(0)) < 1 ) { // Test if transaction value is <= 0
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, null, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction budget should not be null."));
+            }
+        }
+        // Last modified: 4/28 1:48 by Zixiang Hu
+        // Modification: Add the case of tValue == null
+        else if (tValue == null ) { // Test if transaction value is null
             try {
                 BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
                 fail("No exception thrown.");
