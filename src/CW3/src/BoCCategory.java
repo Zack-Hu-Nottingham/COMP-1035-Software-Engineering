@@ -46,7 +46,7 @@ public class BoCCategory {
 		//name can not be null.
 		if (CategoryName == null){
 			throw new IllegalArgumentException("Name is not set.");
- 		}
+		}
 		//Name can not longer than 15 characters, in setCategoryName, if user enter a String longer than 15 characters
 		//the program will take the substring of the input string, so in this method, name should not longer than 25 characters.
 		else if (CategoryName.length() > 15){
@@ -148,18 +148,31 @@ public class BoCCategory {
 	}
 
 	// Modifier: LinCHEN (biylc2)
-	// Last Modify:2021/04/24
+	// Last Modify:2021/04/28 21:12
 	// Reason: Cause when the remaining budget is negative, the previous function will have a wrong output
+	// And the format should only have two decimal left
 
 	@Override
 	public String toString() {
-		if (getRemainingBudget().compareTo(new BigDecimal("0.00")) > -1)
-			return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBudget.toPlainString() + ") - ¥" + CategorySpend.toPlainString()
-					+ " (¥" + getRemainingBudget().toPlainString() + " Remaining)";
+		if (getRemainingBudget().compareTo(new BigDecimal("0.00")) > -1) {
+			DecimalFormat convers=new DecimalFormat("0.00");
+			String afterBugdet =convers.format(CategoryBudget);
+			String afterSpend =convers.format(CategorySpend);
+			String afterRemain =convers.format(getRemainingBudget());
+			return "[" + CategoryName + "]" + "(Budget: ¥" + afterBugdet + ") - ¥" + afterSpend
+					+ " (¥" + afterRemain + " Remaining)";
+
+		}
 		// if the budget is overspend
 		else
-			return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBudget.toPlainString() + ") - ¥" + CategorySpend.toPlainString()
-					+ " (¥" + getRemainingBudget().abs().toPlainString() + " Overspent)";
+		{
+			DecimalFormat convers=new DecimalFormat("0.00");
+			String afterBugdet =convers.format(CategoryBudget);
+			String afterSpend =convers.format(CategorySpend);
+			String afterRemain =convers.format(getRemainingBudget().abs());
+			return "[" + CategoryName + "]" + "(Budget: ¥" + afterBugdet + ") - ¥" + afterSpend
+					+ " (¥" + afterRemain + " Overspent)";
+		}
 	}
 
 }
