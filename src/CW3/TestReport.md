@@ -142,11 +142,12 @@ Report here, by the end of the assignment, how the team has managed the project,
     * **[Discussion]** ~Discuss about other methods for testing the I/O
     * **[Meeting]** ~ Discuss all the possible situations that may happen in the AppTest.
 * **[+ [Coverage Test] +]** ~ Check the test code coverage using `run with Coverage` in the IDEA.
-    
+  
 1. **[Milestone]**:  ***"Write the test script for BoCApp Main Class"***
-    
+   
     * **[Assign]**:  ***"Apr 27, 2021"***
     * **[Meeting]** Refactor main method together.
+    * **[Discussion]** ~Discuss how to solve the problem caused by the difference between'\r\n' '\n' in windows and linux system(one of our teammate use ubutu to write & run the code)
 
 
 ### 3. `GitLab` Usage

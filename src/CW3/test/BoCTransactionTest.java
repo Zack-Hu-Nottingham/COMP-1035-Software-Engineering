@@ -495,9 +495,9 @@ class BoCTransactionTest {
     @CsvSource({"-100", "-50", "-25", "0", "1", "2", "3"})
     @DisplayName("Test for transaction category setter")
     void setTransactionCategory(int tCat) {
-        BoCTransaction defaultBoc = new BoCTransaction();
+        BoCTransaction defaultBoc = new BoCTransaction(); // Create an new object with no parameters input
         BoCTransaction parameterizedBoc = new BoCTransaction("Buy an apple pen", new BigDecimal("1000"), 3);
-        if (tCat <= 0) {
+        if (tCat <= 0) { // Invalid input, if less than or equal to zero
             try {
                 parameterizedBoc.setTransactionCategory(tCat);
                 fail("No exception thrown");
