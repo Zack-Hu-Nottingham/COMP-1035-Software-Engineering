@@ -285,14 +285,14 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |Test ID|Type|Inputs|Expected Outcome|Importance|
 |----|---------|------|----------------|-------|
-|**[TS-Transaction 1-1]**|**[Validdation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table>||
-|**[TS-Transaction 1-1]**|||||
-|**[TS-Transaction 2-1]**|||||
-|**[TS-Transaction 2-2]**|||||
-|**[TS-Transaction 2-3]**|||||
-|**[TS-Transaction 2-4]**|||||
-|**[TS-Transaction 2-5]**|||||
-|**[TS-Transaction 2-6]**|||||
+|**[TS-Transaction 1-1]**|**[Validation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table >||
+|**[TS-Transaction 2-1]**|**[Validation Test]:**<br>Test main constructor with **normal** input parameters |<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Buy an apple"</td><td>2</td><td>2</td></tr></table>|<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Buy an apple"</td><td>2</td><td>2</td></tr></table>||
+|**[TS-Transaction 2-2]**|**[Validation Test]:**<br>Test main constructor with **normal** input parameters |<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Buy an apple pen"</td><td>998</td><td>3</td></tr></table>|<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Buy an apple pen"</td><td>998</td><td>3</td></tr></table>||
+|**[TS-Transaction 2-2]**|**[Defect Test]:**<br>Test main constructor with input transaction name **longer than 25 character**|<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Go to Apple store and buy an apple pen"</td><td>998</td><td>3</td></tr></table>|Throw `[IllegalArgumentException]`:<br> "Transaction name should be limited to 25 characters."|||
+|**[TS-Transaction 2-3]**|**[Defect Test]:**<br>Test main constructor with **null input** transaction name|<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>***null***</td><td>998</td><td>3</td></tr></table>|Throw `[IllegalArgumentException]`: <br>"Transaction name should not be null."||
+|**[TS-Transaction 2-4]**|**[Defect Test]:**<br>Test main constructor with **null transaction budget**|<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Buy an apple pen"</td><td>***null***</td><td>3</td></tr></table>|Throw `[IllegalArgumentException]`: <br>"Transaction budget should not be null."||
+|**[TS-Transaction 2-5]**|**[Defect Test]:**<br>Test main constructor with **transaction category less than zero**|<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Buy an apple pen"</td><td>988</td><td>-3</td></tr></table>|Throw `[IllegalArgumentException]`: <br>"Transaction category should not be minus."||
+|**[TS-Transaction 2-6]**|**[Defect Test]:**<br>Test main constructor with transaction budget less than or equal to zero|<table border="1"><tr><th>transactionName: </th><th>transactionBudget</th><th>transactioncategory</th><tr><td>"Buy an apple pen"</td><td>0</td><td>3</td></tr><tr><td>"Buy an apple pen"</td><td>-998</td><td>3</td></tr></table>|Throw `[IllegalArgumentException]`: <br>"Transaction budget should greater than zero."||
 |**[TS-Transaction 3-1]**|[Validation Test]|Yingxiao Huo|Yingxiao Huo||
 |**[TS-Transaction 3-2]**|[Defect Test]|null|name is not set.||
 |**[TS-Transaction 4-1]**|||||
