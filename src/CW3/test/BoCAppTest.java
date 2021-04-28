@@ -101,12 +101,16 @@ class BoCAppTest {
                         appMenu + defaultTransactionOverview + appMenu +    // list Transaction overview
                                 inviteAddCategory + "[Category added]" + ln + defaultCategoryOverview +  // new category -> add category first and print the new category overview
                                 "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +       // add transaction
-                                inviteAddTransaction + defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" +
-                                ln + "Which category do you want to add?" + ln + "[Breakfast](¥5.00) was added to [Food]" +
+                                inviteAddTransaction + defaultCategoryOverview +
+                                "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln +
+                                "Which category do you want to add?" + ln + "[Transaction added]" + ln +
+                                "[Breakfast](¥5.00) was added to [Food]" +
                                 ln + appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +    // check the new transaction list after adding
-                                appMenu + defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +  //check the new category list after adding
+                                appMenu + defaultCategoryOverview +
+                                "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +  //check the new category list after adding
                                 appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +     // change the category -> first print the transaction list
-                                inviteChangeTCate1 + "\t- " + "Breakfast - ¥5.00 date: " + BoCApp.UserTransactions.get(5).transactionTime() + ln +   // the Transaction that the user want to change
+                                inviteChangeTCate1 + "\t- " + "Breakfast - ¥5.00 date: " +
+                                BoCApp.UserTransactions.get(5).transactionTime() + ln +   // the Transaction that the user want to change
                                 defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +    // print the category list and let the user to choose
                                 inviteChangeTcate2 + "[Unknown](Budget: ¥0.00) - ¥855.00 (¥855.00 Overspent)" + ln +  // print the result of new cate and the old one
                                 "[Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +

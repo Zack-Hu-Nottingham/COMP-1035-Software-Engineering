@@ -118,7 +118,7 @@ public class BoCApp {
 	}
 
 	// Author: Ziyi Wang(scyzw10)
-	// Last Modified: 2021/4/28 18:02
+	// Last Modified: 2021/4/28 19:47
 	// Reason: add exception to the source code => check the input
 	//		   add the transaction to the Category
 	private static void AddTransaction(Scanner in) {
