@@ -298,10 +298,10 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 4-1]**|**[Validation Test]:**<br>Test the transactionValue() with default constructor| <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> ||
 |**[TS-Transaction 5-1]**|||||
 |**[TS-Transaction 6-1]**|||||
-|**[TS-Transaction 7-1]**|||||
-|**[TS-Transaction 7-2]**|||||
-|**[TS-Transaction 7-3]**|||||
-|**[TS-Transaction 7-4]**|||||
+|**[TS-Transaction 7-1]**|**[Validdation Test]:**<br>Test setting transaction name to different values|<table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table>|<table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr><tr><td>"你好"</td></tr><tr><td>"\alpha"</td></tr><tr><td>" "</td></tr><tr><td>"\&nbsp;"</td></tr><tr><td>"86"</td></tr><tr><td>"'\ue108' '\ue411'"</td></tr></table>||
+|**[TS-Transaction 7-2]**|**[Validdation Test]:**<br>Test setting transaction name to string longer than 25 characters|<table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnopqrst"</td></tr><tr><td>"What have you done? Eren! You killed all people! No, just 80%. Thank you, Eren."</td></tr></table>|<table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnop"</td></tr><tr><td>"What have you done? Eren!"</td></tr></table>||
+|**[TS-Transaction 7-3]**|**[Defect Test]:**<br>Test setting transaction name to invalid values|<table border="1"><tr><th>transactionName: </th></tr><tr><td>" "</td></tr><tr><td>""</td></tr><tr><td>null</td></tr></table>|Throw `[IllegalArgumentException]`: "The transactionName is invalid."||
+|**[TS-Transaction 7-4]**|**[Defect Test]:**<br>Test setting transaction name twice|<table border="1"><tr><th>transactionName: </th></tr><tr><td>"Eren Joker"</td></tr></table>|Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set."||
 |**[TS-Transaction 8-1]**|**[Defect Test]:**<br>Test value set to be null| <table border="1"><tr><th>setTransactionValue</th></tr><tr><td>null</td></tr></table> |<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NullPointerException]`:"The value cannot be null"</td></tr></table> ||
 |**[TS-Transaction 8-2]**|**[Defect Test]:**<br>Test value set to contain invalid characters|<table border="1"><tr><th colspan="3">setTransactionValue</th></tr><tr><td>"123hello"</td><td>"test"</td><td>" "</td></tr><tr></table>|<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[NumberFormatException]`:to be thrown</td></tr></table>||
 |**[TS-Transaction 8-3]**|**[Defect Test]:**<br>Test non-positive value number |<table border="1"><tr><th colspan="5">setTransactionValue</th></tr><tr><td>"-0e2"</td><td>""0e2"</td><td>"0e14"</td><td>"-0.0"--"-0.0000000000000000"</td><td></td></tr><tr><td>"0000"</td><td>"+0"</td><td>"-0"</td><td>"+.0"</td><td>"-.0"</td></tr><tr><td>"-214414123471.17649173641"</td><td>"-1.0"</td><td>"-209.00"</td><td>"-1.23E10"</td><td>"-0.1"--"-0.0000000000000001"</td></tr><tr></table>|<table border="1"><tr><th>setTransactionValue</th></tr><tr><td>`[IllegalArgumentException]`:"The value should be a positive number, the set fails"</td></tr></table> ||
@@ -318,30 +318,30 @@ Report here, by the end of the assignment, how the team has managed the project,
 |Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
 |---|---|---|---|---|---|---|---|
 |**[TS-Transaction 1-1]**|**[Result]:** `Fail`<br> **[Time]**:`2021/04/18 16:54`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`| **[Modifier]**: `Leshan Tan (sqylt2)`<br> **[Content (M)]**:<br> ***Before***: `transactionName = null;`<br> ***After***:  `transactionName = "[Pending Transaction]";`|**[Result]**: `Pass` <br> **[Time]**: `2021/04/22 18:12`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|**[Result]**: `Pass` <br> **[Time]**: `2021/04/26 9:05`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|-|
-|**[TS-Transaction 2-1]**||||||||
-|**[TS-Transaction 2-2]**||||||||
-|**[TS-Transaction 2-3]**||||||||
-|**[TS-Transaction 2-4]**||||||||
-|**[TS-Transaction 2-5]**||||||||
-|**[TS-Transaction 2-6]**||||||||
-|**[TS-Transaction 3-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:24<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||||||
-|**[TS-Transaction 3-2]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>22:30<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if(transactionName == null;){`<br>`throw new IllegalArgumentException("Name is not set");}`<br>`else if(name.length() > 25){`<br>`throw new IllegalArgumentException("Name can not be longer than 25 characters.");}` |**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:34<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||||
+|**[TS-Transaction 2-1]**||||||
+|**[TS-Transaction 2-2]**||||||
+|**[TS-Transaction 2-3]**||||||
+|**[TS-Transaction 2-4]**||||||
+|**[TS-Transaction 2-5]**||||||
+|**[TS-Transaction 2-6]**||||||
+|**[TS-Transaction 3-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:24<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||||
+|**[TS-Transaction 3-2]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>22:30<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if(transactionName == null;){`<br>`throw new IllegalArgumentException("Name is not set");}`<br>`else if(name.length() > 25){`<br>`throw new IllegalArgumentException("Name can not be longer than 25 characters.");}` |**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:34<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||
 |**[TS-Transaction 4-1]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/19 17:24`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|**[Result]:** `Pass`<br> **[Time]**:`2021/04/21 14:20`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|-|-||
-|**[TS-Transaction 5-1]**||||||||
-|**[TS-Transaction 6-1]**||||||||
-|**[TS-Transaction 7-1]**||||||||
-|**[TS-Transaction 7-2]**||||||||
-|**[TS-Transaction 7-3]**||||||||
-|**[TS-Transaction 7-4]**||||||||
-|**[TS-Transaction 8-1]**||||||||
-|**[TS-Transaction 8-2]**||||||||
-|**[TS-Transaction 8-3]**||||||||
-|**[TS-Transaction 8-4]**||||||||
-|**[TS-Transaction 8-5]**||||||||
-|**[TS-Transaction 9-1]**||||||||
-|**[TS-Transaction 10-1]**||||||||
-|**[TS-Transaction 10-2]**||||||||
-|**[TS-Transaction 11-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>16:44<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (transactionName == null){`<br>`throw new IllegalException("Name is not set.");}`<br>`if (transactionValue.compareTo(new BigDecimal("0.00")) == -1){`<br>`throw new IllegalArgumentException("Value can not be negative number");}`|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>16:57<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(M)]:**<br>***Before:*** <br>`return transactionName + " - ¥" + transactionValue.toString();`<br> ***After:*** <br> `return transactionName + " - ¥" + transactionValue.toString() + " Date: " + transactionTime;`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/27<br>21:17<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||||
+|**[TS-Transaction 5-1]**||||||
+|**[TS-Transaction 6-1]**||||||
+|**[TS-Transaction 7-1]**|**[Result]:** `Pass` **[Time]:**<br>2021/04/25 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/25 23:51<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
+|**[TS-Transaction 7-2]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/25 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|**[Modifier]:**<br> Yicun Duan(scyyd3) <br> **[Content (A)]:**<br> if (tName.length() > 25) { tName = tName.substring(0, 25); } <br> ***Before:*** <br><table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnopqrst"</td></tr><tr><td>"What have you done? Eren! You killed all people! No, just 80%. Thank you, Eren."</td></tr></table><br> ***After:*** <br> <table border="1"><tr><th>transactionName: </th></tr><tr><td>"123456789abcdefghijklmnop"</td></tr><tr><td>"What have you done? Eren!"</td></tr></table>|**[Result]:** `Pass` **[Time]:**<br>2021/04/25 23:51<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
+|**[TS-Transaction 7-3]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/25 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA| **[Modifier]:**<br> Yicun Duan(scyyd3) <br> **[Content (A)]:**<br> if (tName == null or tName.isBlank()) { throw new IllegalArgumentException("The transactionName is invalid."); } <br> ***Before:*** <br>`"IllegalArgumentException is not thrown out."`<br> ***After:*** <br> `Throw `[IllegalArgumentException]`: "The transactionName is invalid."`|**[Result]:** `Pass` **[Time]:**<br>2021/04/25 23:51<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
+|**[TS-Transaction 7-4]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/25 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA| **[Modifier]:**<br> Yicun Duan(scyyd3) <br> **[Content (A)]:**<br> if (!transactionName.equals("[Pending Transaction]")) { throw new UnsupportedOperationException("Transaction name cannot be repeatedly set."); } <br> ***Before:*** <br>"Expected java.lang.Exception to be thrown, but nothing was thrown."<br> ***After:*** <br> Throw `[UnsupportedOperationException]`: "Transaction name cannot be repeatedly set."|**[Result]:** `Pass` **[Time]:**<br>2021/04/25 23:51<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
+|**[TS-Transaction 8-1]**||||||
+|**[TS-Transaction 8-2]**||||||
+|**[TS-Transaction 8-3]**||||||
+|**[TS-Transaction 8-4]**||||||
+|**[TS-Transaction 8-5]**||||||
+|**[TS-Transaction 9-1]**||||||
+|**[TS-Transaction 10-1]**||||||
+|**[TS-Transaction 10-2]**||||||
+|**[TS-Transaction 11-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>16:44<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (transactionName == null){`<br>`throw new IllegalException("Name is not set.");}`<br>`if (transactionValue.compareTo(new BigDecimal("0.00")) == -1){`<br>`throw new IllegalArgumentException("Value can not be negative number");}`|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>16:57<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(M)]:**<br>***Before:*** <br>`return transactionName + " - ¥" + transactionValue.toString();`<br> ***After:*** <br> `return transactionName + " - ¥" + transactionValue.toString() + " Date: " + transactionTime;`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/27<br>21:17<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||
 
 
 ### Class: `BoCCategory`
@@ -353,7 +353,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 1-1]**|**[Validation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>CategoryName = "Unknown" // if is the first instance </td></tr><tr><td>CategoryName = "New Category" + categoryNum // otherwise</td></tr><tr><td>CategoryBudget == new BigDecimal("0.00")</td></tr><tr><td>CategorySpend == new BigDecimal("0.00")</td></tr></table>||
 |**[TS-Category 2-1]**|||||
 |**[TS-Category 3-1]**|**[Defect Test]:**<br>set name is null, is longer than 15 characters.|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>Category name can not longer than 15 characters.</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>^%&^%^</td></tr><tr><td>()*&*%Abc</td></tr><tr><td>12345</td></tr><tr><td>asdddasdasdasdacacwawcacw</td></tr></table> <br/>|
-|**[TS-Category 4-1]**|||||
+|**[TS-Category 4-1]**|**[Validation Test]:**<br>Test whether the returned budget is expected |<table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("7.77E+10")</td></tr><tr><td>BigDecimal("456e-9")</td></tr><tr><td>BigDecimal("01010101000")</td></tr><tr><td>BigDecimal("314.15926")</td></tr></table> |<table border="1"><tr><th>CategoryBudget: </th></tr><tr><td>BigDecimal("100")</td></tr><tr><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("7.77E+10")</td></tr><tr><td>BigDecimal("456e-9")</td></tr><tr><td>BigDecimal("01010101000")</td></tr><tr><td>BigDecimal("314.15926")</td></tr></table>||
+|**[TS-Category 4-2]**|**[Validation Test]:**<br>Test whether the returned budget is in correct type and format | BigDecimal("0.00") |BigDecimal("0.00")||
 |**[TS-Category 5-1]**|**[Validation Test]:**<br> Test categorySpend() with default constructor|-|<table><tr><th>CategorySpend</th></tr><tr><td>CategorySpend == new BigDecimal("0.00")</td></tr></table>||
 |**[TS-Category 5-2]**|**[Validation Test]:**<br> Test categorySpend() with input parameters source|<table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table>|<table border="1"><tr><th>CategorySpend: </th></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("0.000")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table>||
 |**[TS-Category 6-1]**|**[Defect Test]:**<br>Test when name is null, is longer than 15 character, is special characters.|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawdasdascsgrsrgdrsgdgg</td></tr><tr><td>null</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawda</td></tr><tr><td>name can not be null</td></tr></table> <br/>|<table border="1"><tr><th>Yingxiao Huo </th></tr><tr><td>Yicun Duan</td></tr><tr><td>Zixiang Hu</td></tr><tr><td>Lin Chen</td></tr><tr><td>Leshan Tan</td></tr><tr><td>Ziyi Wang</td></tr><tr><td>Boon Giin Lee</td></tr><tr><td>//awdaw</td></tr><tr><td>^$^$^&%</td></tr><tr><td>asdsadadwadawdasdascsgrsrgdrsgdgg</td></tr><tr><td>null</td></tr></table> <br/>|
@@ -365,7 +366,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 9-2]**|||||
 |**[TS-Category 9-3]**|||||
 |**[TS-Category 10-1]**|**[Validation Test]:**<br>Test with spend number set|<table border="1"><tr><th>resetBudgetSpend</th></tr><tr><td>CategorySpend = new BigDecimal("20000.0292")</td></tr></table>|<table border="1"><tr><th>resetBudgetSpend</th></tr><tr><td> "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"</td></tr></table>||
-|**[TS-Category 11-1]**|||||
+|**[TS-Category 11-1]**|**[Validation Test]:**<br>Test whether the returned remaining budget is expected |<table border="1"><tr><th>CategoryBudget: </th><th>CategorySpend: </th></tr><tr><td>BigDecimal("100")</td><td>BigDecimal("99")</td></tr><tr><td>BigDecimal("100000000000")</td><td>BigDecimal("100000000000")</td></tr><tr><td>BigDecimal("3.1415926")</td><td>BigDecimal("4.1415926")</td></tr></table> | <table border="1"><tr><th>RemainingBudget: </th></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("0")</td></tr><tr><td>BigDecimal("-1.0000000")</td></tr></table>||
 |**[TS-Category 12-1]**|**[Validation Test]:**<br>Test with spend number set|-|<table border="1"><th>toString</th></tr><tr><td>"[New Category0](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"</td></tr></table>||
 |**[TS-Category 12-2]**||<table border="1"><th>toString</th></tr><tr><td>**CategoryBudget :** "3457834.023423" **CategorySpend :** "667433.00564"</td></tr></table>|<table border="1"><th>toString</th></tr><tr><td>"[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"</td></tr></table>||
 |**[TS-Category 12-3]**||<table border="1"><th>toString</th></tr><tr><td>**CategoryBudget :** "10000.00" **CategorySpend :** "20000.00"</td></tr></table>|<table border="1"><th>toString</th></tr><tr><td>""[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)"</td></tr></table>||
@@ -378,7 +379,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 1-1]**|**[Result]:** `Fail`<br> **[Time]**:`2021/04/21 11:51`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`| **[Modifier]**: `Leshan Tan (sqylt2)`<br> **[Content (M)]**:<br> ***Before***: `CategoryName = "New Category"`<br> ***After***: `CategoryName = "Unknown"` or <br>`CategoryName = "New Category" + categoryNum`|**[Result]**: `Pass` <br> **[Time]**: `2021/04/28 19:43`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|-|-||
 |**[TS-Category 2-1]**||||||
 |**[TS-Category 3-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/23<br>20:41<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (categoryName == null){`<br>`throw new IllegalException("Name is not set.");}`<br>`else if (CategoryName.length() > 15){`<br>`throw new IllegalArgumentException("Category name can not longer than 15 characters.");}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/23<br>22:07<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||||
-|**[TS-Category 4-1]**||||||
+|**[TS-Category 4-1]**|**[Result]:** `Pass` **[Time]:**<br>2021/04/23 19:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/24 20:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
+|**[TS-Category 4-2]**|**[Result]:** `Pass` **[Time]:**<br>2021/04/23 19:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/24 20:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
 |**[TS-Category 5-1]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/23 13:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|-|-|-|-||
 |**[TS-Category 5-2]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/23 13:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|-|-|-|-||
 |**[TS-Category 6-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>18:16<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (categoryName == null or newName.isBlank()){`<br>`throw new IllegalException("Name is not set.");}`<br>`else if (CategoryName.length() > 15){`<br>`CategoryName = newName.substring(0,15);}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/28<br>22:26<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA||||
@@ -390,7 +392,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 9-2]**||||||
 |**[TS-Category 9-3]**||||||
 |**[TS-Category 10-1]**||||||
-|**[TS-Category 11-1]**||||||
+|**[TS-Category 11-1]**|**[Result]:** `Pass` **[Time]:**<br>2021/04/23 19:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/24 20:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
 |**[TS-Category 12-1]**||||||
 |**[TS-Category 12-2]**||||||
 |**[TS-Category 12-3]**||||||
@@ -405,22 +407,22 @@ Report here, by the end of the assignment, how the team has managed the project,
 |----|---------|------|----------------|-------|
 |**[TS-App 1-1]**|||||
 |**[TS-App 2-1]**|||||
-|**[TS-App 3-1]**|||||
+|**[TS-App 3-1]**|**[Validation Test]:**<br>Test whether the outcome of category overview is correct |<table><tr><th>CategoryName: </th><th>CategoryBudget: </th></tr><tr><td>"Unknown"</td><td>&nbsp;</td></tr><tr><td>"Bills"</td><td>BigDecimal("120.00")</td></tr><tr><td>"Groceries"</td><td>BigDecimal("75.00")</td></tr><tr><td>"Soical"</td><td>BigDecimal("100.00")</td></tr></table> |<p>1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)<br>2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)<br>3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)<br>4) [Social](Budget: ¥100.00) - ¥22.49 (¥77.51 Remaining) </p>||
 |**[TS-App 4-1]**|||||
-|**[TS-App 5-1]**|||||
-|**[TS-App 5-2]**|||||
+|**[TS-App 5-1]**|**[Validation Test]:**<br>Test changing transaction name with normal input |<center>C<br>1<br>4<br>C<br>3<br>1<br>C<br>6<br>3<br>X</center> |![Expected_outcome_ChangeTransactionCategory_1]()||
+|**[TS-App 5-2]**|**[Validation Test]:**<br>Test changing transaction name with invalid input |<center>C<br>jbl<br>-23<br>-12345678912345689<br>'\ue250'<br>1<br>-199<br>233<br>123456789123456789<br>4<br>X</center> |![Expected_outcome_ChangeTransactionCategory_2]()||
 |**[TS-App 6-1]**|||||
 |**[TS-App 7-1]**|||||
 
 #### Test Log
 |Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
-|-|-|-|-|-|-|-|-|
+|---|---|---|---|---|---|---|---|
 |**[TS-App 1-1]**||||||
 |**[TS-App 2-1]**||||||
-|**[TS-App 3-1]**||||||
+|**[TS-App 3-1]**|**[Result]:** `Pass` **[Time]:**<br>2021/04/26 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/26 23:50<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
 |**[TS-App 4-1]**||||||
-|**[TS-App 5-1]**||||||
-|**[TS-App 5-2]**||||||
+|**[TS-App 5-1]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/26 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA| **[Modifier]:**<br> Yicun Duan(scyyd3) <br> **[Content (A)]:**<br> ![Fix_ChangeTransactionCategory_code_1]() <br> ***Before:*** <br> ![Fix_ChangeTransactionCategory_before_1]()<br> ***After:*** <br> ![Fix_ChangeTransactionCategory_after_1]()|**[Result]:** `Pass` **[Time]:**<br>2021/04/26 23:50<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
+|**[TS-App 5-2]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/26 22:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA| **[Modifier]:**<br> Yicun Duan(scyyd3) <br> **[Content (A)]:**<br> ![Fix_ChangeTransactionCategory_code_2]() <br> ***Before:*** <br> ![Fix_ChangeTransactionCategory_before_2]()<br> ***After:*** <br> ![Fix_ChangeTransactionCategory_after_2]()|**[Result]:** `Pass` **[Time]:**<br>2021/04/26 23:50<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
 |**[TS-App 6-1]**||||||
 |**[TS-App 7-1]**||||||
 
