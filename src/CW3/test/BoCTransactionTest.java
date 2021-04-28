@@ -223,7 +223,7 @@ class BoCTransactionTest {
 
 
     // Author: Yingxiao Huo (scyyh9)
-    // Last modified: 2021/4/18
+    // Last modified: 2021/4/28 22:13
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
@@ -524,7 +524,7 @@ class BoCTransactionTest {
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/18 21:49
     @ParameterizedTest
-    @CsvSource({"-100", "-50", "-25", "0", "1", "2", "3"})
+    @CsvSource({"-100", "-50", "-25", "0", "1", "50", "100"})
     @DisplayName("Test for transaction category setter")
     void setTransactionCategory(int tCat) {
         BoCTransaction defaultBoc = new BoCTransaction(); // Create an new object with no parameters input
