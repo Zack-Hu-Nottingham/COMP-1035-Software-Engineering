@@ -1,5 +1,7 @@
 import java.math.BigDecimal;
 import java.security.InvalidParameterException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class BoCCategory {
 	private String CategoryName;
@@ -92,7 +94,8 @@ public class BoCCategory {
 	//		}
 	//	}
 	public void setCategoryBudget(float newValue) {		// takes a float as parameter
-		BigDecimal newV = new BigDecimal(Float.toString(newValue));		//convert the Float type -> String -> BigDecimal
+		NumberFormat formatter = new DecimalFormat("0.00");	// keep two decimal places
+		BigDecimal newV = new BigDecimal(String.valueOf(formatter.format(newValue)));		//convert the Float type -> String -> BigDecimal
 		// if newValue (newV) > 0, the set the budget
 		if (newV.compareTo(new BigDecimal("0.00")) == 1) {
 			CategoryBudget = newV;
