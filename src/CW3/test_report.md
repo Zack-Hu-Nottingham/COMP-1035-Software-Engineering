@@ -19,7 +19,7 @@ Report here, by the end of the assignment, how the team has managed the project,
         * **Lin Chen** (20215609 @biylc2)
         * **Leshan Tan** ()
     * `Team B`
-        * **Ziyi Wang** ()
+        * **Ziyi Wang** (20215785 @scyzw10)
         * **Zixiang Hu** (20215538 @scyzh6)
     * `Team C` 
         * **Yicun Duan** ()
@@ -33,7 +33,7 @@ Report here, by the end of the assignment, how the team has managed the project,
         * **Lin Chen** (20215609 @biylc2)
         * **Yicun Duan** ()
     * `Team B` 
-        * **Ziyi Wang** ()
+        * **Ziyi Wang** (20215785 @scyzw10)
         * **Leshan Tan** ()
         * **Yingxiao Huo**()
 
@@ -296,7 +296,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 3-1]**|[Validation Test]|Yingxiao Huo|Yingxiao Huo||
 |**[TS-Transaction 3-2]**|[Defect Test]|null|name is not set.||
 |**[TS-Transaction 4-1]**|||||
-|**[TS-Transaction 5-1]**|||||
+|**[TS-Transaction 5-1]**|**[Validation Test]:**<br>Test to set whether the number get is correct or not|<table border="1"><tr><th colspan = "4">*input*</th></tr><tr><td>0</td></tr><tr><td>1</td></tr><tr><td>5</td></tr><tr><td>100</td></tr></table>|<table border="1"><tr><th>*.**transactionCategory()**</th></td><tr><td>0</td></tr><tr><td>1</td></tr><tr><td>5</td></tr><tr><td>100</td></tr></table>||
 |**[TS-Transaction 6-1]**|||||
 |**[TS-Transaction 7-1]**|||||
 |**[TS-Transaction 7-2]**|||||
@@ -327,7 +327,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 3-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:24<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||||
 |**[TS-Transaction 3-2]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>22:30<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if(transactionName == null;){`<br>`throw new IllegalArgumentException("Name is not set");}`<br>`else if(name.length() > 25){`<br>`throw new IllegalArgumentException("Name can not be longer than 25 characters.");}` |**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/21<br>22:34<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows-IDEA|||
 |**[TS-Transaction 4-1]**||||||
-|**[TS-Transaction 5-1]**||||||
+|**[TS-Transaction 5-1]**|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/4/18<br>21:15<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows-IDEA|-|-|-|-|
 |**[TS-Transaction 6-1]**||||||
 |**[TS-Transaction 7-1]**||||||
 |**[TS-Transaction 7-2]**||||||
