@@ -125,35 +125,51 @@ public class BoCApp {
 		System.out.println("[Transaction added]");
 	}
 
+	//Author: Yicun Duan (scyyd3)
+	//Last Modified: 2021/4/28 00:13
+	//Reason: The output of this function is not the same as the expected output.
+	//		  It can't handle invalid input and it can't check the boundary yet.
+	//		  Unable to calculate the remaining amount of old category after changing category is also a problem.
 	private static void ChangeTransactionCategory(Scanner in) {
+		//read the input from next line
 		in.nextLine();
+		//set the default transaction id (actual: tID - 1) and category id (actual: category id -1)
 		int tID = 0;
 		int newCat = 0;
+		//set the "runAgain" to control the loop
 		boolean runAgain = true;
 
 		while (runAgain) {
+			//list transactions
 			ListTransactions();
 			System.out.println("Which transaction ID?");
 			try{
+				//parse the input as integer
 				tID = Integer.parseInt(in.nextLine());
 			} catch (NumberFormatException e){
+				//if the input can be parsed as an integer, print a warning
 				System.out.println("Invalid input. Please input a valid integer.");
 				continue;
 			}
 
 			if (tID <= 0 || tID > UserTransactions.size()) {
+				//if the input id is out of boundary, print a warning
 				System.out.println("Transaction doesn't exist. Please input again.");
 				continue;
 			}
 
+			//end the loop
 			runAgain = false;
 		}
 
+		//print out the selected transaction
 		System.out.println("\t- " + UserTransactions.get(tID - 1).toString());
 
+		//reset the loop controller
 		runAgain = true;
 
 		while (runAgain) {
+			//print out the categories
 			CategoryOverview();
 			System.out.println("Which category will it move to?");
 			try{
@@ -170,22 +186,35 @@ public class BoCApp {
 			runAgain = false;
 		}
 
+		//find the actual new category id
 		int newCatNum = newCat - 1;
 
+		//get the selected transaction
 		BoCTransaction curTrans = UserTransactions.get(tID - 1);
+		//find the actual old category id
 		int oldCatNum = curTrans.transactionCategory();
+		//reset the category of selected transaction
 		curTrans.setTransactionCategory(newCatNum);
+		//put the changed transaction back to array
 		UserTransactions.set(tID - 1, curTrans);
 
+		//get the new category
 		BoCCategory newCategory = UserCategories.get(newCatNum);
+		//add expense to new category
 		newCategory.addExpense(curTrans.transactionValue());
+		//put the changed category back to array
 		UserCategories.set(newCatNum, newCategory);
 
+		//get the old category
 		BoCCategory oldCategory = UserCategories.get(oldCatNum);
+		//remove expense from old category
 		oldCategory.removeExpense(curTrans.transactionValue());
+		//put the changed old category back to array
 		UserCategories.set(oldCatNum, oldCategory);
 
+		//print out the new category
 		System.out.println(newCategory.toString());
+		//print out the old category
 		System.out.println(oldCategory.toString());
 	}
 

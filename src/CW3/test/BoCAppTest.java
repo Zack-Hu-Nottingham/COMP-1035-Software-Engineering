@@ -17,9 +17,13 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BoCAppTest {
+
     //Author: Yicun Duan (scyyd3)
-    //Last Modified: 2021/4/25 19:52
+    //Last Modified: 2021/4/28 00:58
+
+    //set "ln" as the default line separator
     private static String ln = System.lineSeparator();
+    //previously set some frequently used strings
     private static String appMenu = ln + "What do you want to do?" + ln
             + " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
             + ln;
@@ -131,24 +135,33 @@ class BoCAppTest {
     }
 
 
-    // Author: Yicun Duan (scyyd3)
-    // Last Modified: 2021/4/23 20:50
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/23 20:50
+    //Reason: Test whether this function could generate an expected outcome.
     @Test
     void categoryOverview() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+        //build a new outstream
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        //reset the outstream
         System.setOut(new PrintStream(outContent));
 
+        //use default constructor
         BoCApp test_instance = new BoCApp();
 
+        //get access to private method
         Method m_categoryOverview = test_instance.getClass().getDeclaredMethod("CategoryOverview");
         m_categoryOverview.setAccessible(true);
 
+        //call the private function
         m_categoryOverview.invoke(test_instance);
 
+        //transfer the outContent to string
         String result = outContent.toString();
 
+        //reset the system outstream
         System.setOut(System.out);
 
+        //check whether outcome is expected.
         assertEquals("1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + ln +
                 "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
                 "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
@@ -196,16 +209,17 @@ class BoCAppTest {
 
     }
 
-
-    // Author: Yicun Duan (scyyd3)
-    // Last Modified: 2021/4/25 19:51
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/28 00:56
     @Disabled
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
     @ValueSource(ints = {1, 2})
+    //choose the test case
     void ChangeTransactionCategory(int testNumber) {
         switch (testNumber) {
             case 1:
+                //put in the designed input and expected outcome
                 testOutcome("C\n1\n4\nC\n3\n1\nC\n6\n3\nX\n",
                         defaultCategoryOverview
                                 + appMenu
@@ -329,22 +343,26 @@ class BoCAppTest {
     }
 
 
-    // Author: Yicun Duan (scyyd3)
-    // Last Modified: 2021/4/25 19:55
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/28 00:09
     private void testOutcome(String designedInput, String expectedOutcome) {
 
+        //reset the input and output stream
+        //this step is to simulate user input and get output from screen
         InputStream alterInput = new ByteArrayInputStream(designedInput.getBytes());
         OutputStream outContent = new ByteArrayOutputStream();
         PrintStream outPrint = new PrintStream(outContent);
-
         System.setIn(alterInput);
         System.setOut(outPrint);
 
+        //call the main function
         BoCApp.main(null);
 
+        //reset the input and output stream to default
         System.setOut(System.out);
         System.setIn(System.in);
 
+        //check whether outcome is expected
         assertEquals(expectedOutcome, outContent.toString(), "The outcome is unexpected.");
     }
 
