@@ -37,12 +37,16 @@ public class BoCCategory {
 	// Last modified time: 2021/4/24 23:25
 	// Reason: Name can not longer than 15 characters, and name can not be null
 	public String CategoryName() throws IllegalArgumentException{
+		//name can not be null.
 		if (CategoryName == null){
 			throw new IllegalArgumentException("Name is not set.");
  		}
+		//Name can not longer than 15 characters, in setCategoryName, if user enter a String longer than 15 characters
+		//the program will take the substring of the input string, so in this method, name should not longer than 25 characters.
 		else if (CategoryName.length() > 15){
 			throw new IllegalArgumentException("Category name can not longer than 15 characters.");
 		}
+		//normal case.
 		else {
 			return CategoryName;
 		}
@@ -56,13 +60,18 @@ public class BoCCategory {
 		return CategorySpend;
 	}
 
+	//Author: Yingxiao Huo
+	//Last modify: 2021/4/28
 	public void setCategoryName(String newName) throws IllegalArgumentException{
+		//if user enter nothing or enter some blank space, program will throw an IllegalArgumentException.
 		if (newName == null || newName.isBlank()){
 			throw new IllegalArgumentException("Name can not be null");
 		}
+		//if user enter a string longer than 15 characters, program will take substring of the string which is 15 characters long.
 		else if (newName.length() > 15){
 			CategoryName = newName.substring(0,15);
 		}
+		//normal case.
 		else {
 			CategoryName = newName;
 		}
