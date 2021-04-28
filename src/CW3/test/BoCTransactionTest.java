@@ -224,6 +224,8 @@ class BoCTransactionTest {
         final BoCTransaction Test_getter = new BoCTransaction();
         final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
         field_getter.setAccessible(true);
+
+        //If name is null, program should throw a exception with a message "Name is not set."
         if(name == null){
             try {
                 field_getter.set(Test_getter, name);
@@ -234,6 +236,8 @@ class BoCTransactionTest {
             }
         }
         else {
+            //if user enter a name longer than 25 characters,
+            // program should throw a exception with a message "Name can not longer than 25 characters."
             if(name.length() > 25){
                 try {
                     field_getter.set(Test_getter, name);
@@ -244,6 +248,7 @@ class BoCTransactionTest {
                 }
             }
             else {
+                //Normal case.
                 field_getter.set(Test_getter, name);
                 final String result = Test_getter.transactionName();
                 assertEquals(expection, result);
@@ -529,6 +534,7 @@ class BoCTransactionTest {
         final BoCTransaction testToString = new BoCTransaction();
         final Date transDate = new Date();
 
+        //Set 3 field of transaction name, value and time, set accessible is true.
         final Field test1 = testToString.getClass().getDeclaredField("transactionName");
         final Field test2 = testToString.getClass().getDeclaredField("transactionValue");
         final Field test3 = testToString.getClass().getDeclaredField("transactionTime");
@@ -536,6 +542,7 @@ class BoCTransactionTest {
         test2.setAccessible(true);
         test3.setAccessible(true);
 
+        //Transaction value can not be null.
         if (transValue == null){
             try{
                 test1.set(testToString, transName);
@@ -547,6 +554,7 @@ class BoCTransactionTest {
             }
         }
         else{
+            //Transaction value should be a positive number.
             if (Integer.parseInt(transValue) >= 0) {
                 test1.set(testToString, transName);
                 test2.set(testToString, new BigDecimal(transValue));
@@ -554,6 +562,7 @@ class BoCTransactionTest {
                 final String foo = testToString.toString();
                 assertEquals(resultStr + " Date: " + transDate, foo);
             } else {
+                //To test when transaction value is a negative number.
                 try {
                     test1.set(testToString, transName);
                     test2.set(testToString, new BigDecimal(transValue));

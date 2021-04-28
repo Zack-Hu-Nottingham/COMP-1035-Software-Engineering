@@ -90,6 +90,7 @@ class BoCCategoryTest {
         final BoCCategory Test_getter = new BoCCategory();
         final Field field_getName = Test_getter.getClass().getDeclaredField("CategoryName");
         field_getName.setAccessible(true);
+        //If name is null, program should throw a exception with a message "Name is not set."
         if (name == null){
             try {
                 field_getName.set(Test_getter, name);
@@ -100,6 +101,9 @@ class BoCCategoryTest {
             }
         }
         else{
+            //Because if user enter a string longer than 15 characters, category setter will take a substring which is 15 characters.
+            //So, category name getter should not get a name longer than 15 characters.
+            //If name longer than 15 characters, program should throw a exception with a message "Category name can not longer than 15 characters."
             if (name.length() > 15){
                 try {
                     field_getName.set(Test_getter, name);
@@ -109,6 +113,7 @@ class BoCCategoryTest {
                     assertEquals(expection, ex2.getMessage());
                 }
             }
+            //Normal case.
             else {
                 field_getName.set(Test_getter, name);
                 final String result = Test_getter.CategoryName();
@@ -169,6 +174,7 @@ class BoCCategoryTest {
     @DisplayName("Test for category name setter")
     void setCategoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_setter = new BoCCategory();
+            //If name is null, program should throw a exception with a message "Name is not set."
             if (name == null){
                 try {
                     Test_setter.setCategoryName(null);
@@ -185,11 +191,13 @@ class BoCCategoryTest {
                     //}catch (Exception ex2){
                     //    assertEquals(expection, ex2.getMessage());
                     //}
+                    //if user enter a name longer than 15 characters, take substring which is 15 characters.
                     Test_setter.setCategoryName(name);
                     final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
                     field_setname.setAccessible(true);
                     assertEquals(expection, field_setname.get(Test_setter));
                 }else {
+                    //Normal case.
                     Test_setter.setCategoryName(name);
                     final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
                     field_setname.setAccessible(true);
