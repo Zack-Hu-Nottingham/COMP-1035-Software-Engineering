@@ -211,7 +211,6 @@ class BoCAppTest {
 
     //Author: Yicun Duan (scyyd3)
     //Last Modified: 2021/4/28 00:56
-    @Disabled
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
     @ValueSource(ints = {1, 2})
@@ -221,8 +220,7 @@ class BoCAppTest {
             case 1:
                 //put in the designed input and expected outcome
                 testOutcome("C\n1\n4\nC\n3\n1\nC\n6\n3\nX\n",
-                        defaultCategoryOverview
-                                + appMenu
+                        appMenu
                                 + defaultTransactionOverview +
                                 "Which transaction ID?" + ln
                                 + "\t- " + BoCApp.UserTransactions.get(0).toString() + ln
@@ -269,31 +267,28 @@ class BoCAppTest {
 
                                 + appMenu
                                 + appExit);
-
+                break;
 
             case 2:
-                testOutcome("C\njbl\n-23\n-12345678912345689\n'\ue250'\n1\n-199\n233\n123456789123456789\n4\nX\n",
-                        defaultCategoryOverview
-                                + appMenu
-                                + defaultTransactionOverview +
-                                "Which transaction ID?" + ln + "Invalid input. Please input a valid integer." + ln
-                                + defaultTransactionOverview +
-                                "Which transaction ID?" + ln + "Invalid input. Please input a valid integer." + ln
-                                + defaultTransactionOverview +
-                                "Which transaction ID?" + ln + "Invalid input. Please input a valid integer." + ln
+                testOutcome("C\njbl\n-23\n-12345678912345689\n'\ue250'\n1\n-199\n233\nooooo\n4\nX\n",
+                        appMenu
                                 + defaultTransactionOverview +
                                 "Which transaction ID?" + ln + "Invalid input. Please input a valid integer." + ln
                                 + defaultTransactionOverview +
                                 "Which transaction ID?" + ln + "Transaction doesn't exist. Please input again." + ln
                                 + defaultTransactionOverview +
+                                "Which transaction ID?" + ln + "Invalid input. Please input a valid integer." + ln
+                                + defaultTransactionOverview +
+                                "Which transaction ID?" + ln + "Invalid input. Please input a valid integer." + ln
+                                + defaultTransactionOverview +
                                 "Which transaction ID?" + ln
                                 + "\t- " + BoCApp.UserTransactions.get(0).toString() + ln
                                 + defaultCategoryOverview +
+                                "Which category will it move to?" + ln + "Category doesn't exist. Please input again." + ln
+                                + defaultCategoryOverview +
+                                "Which category will it move to?" + ln + "Category doesn't exist. Please input again." + ln
+                                + defaultCategoryOverview +
                                 "Which category will it move to?" + ln + "Invalid input. Please input a valid integer." + ln
-                                + defaultCategoryOverview +
-                                "Which category will it move to?" + ln + "Category doesn't exist. Please input again." + ln
-                                + defaultCategoryOverview +
-                                "Which category will it move to?" + ln + "Category doesn't exist. Please input again." + ln
                                 + defaultCategoryOverview +
                                 "Which category will it move to?" + ln
                                 + "[Social](Budget: ¥100.00) - ¥872.49 (¥772.49 Overspent)" + ln
