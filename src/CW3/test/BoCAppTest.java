@@ -319,11 +319,12 @@ class BoCAppTest {
 
         switch (input) {
             case 1:
-                testOutcome("A\nElectricity Bill\n9.00\n2\nX\n",
-                        appMenu + invitesTitle + invitesValue
-                                + defaultCategoryOverview + invitesCategory +
-                                "[Electricity Bill](¥9.00) was added to [Bills]" + ln +
-                                appMenu + appExit);
+                testOutcome("A\nElectricity Bill\n-2.0\naa\n9.00\n2\nX\n",
+                        appMenu + invitesTitle + invitesValue +
+                                "Invalid number. The value must bigger than zero." + ln + invitesValue +
+                                invitesVaild + invitesValue + defaultCategoryOverview + invitesCategory +
+                                "[Transaction added]" + ln + "[Electricity Bill](¥9.00) was added to [Bills]" +
+                                ln + appMenu + appExit);
                 break;
             case 2:
                 testOutcome("A\nWater Bill\naaa\n-1.0\n9.00\nrr\n-1\n100\n2\nX\n",
@@ -334,7 +335,7 @@ class BoCAppTest {
                                 invitesCategory + "Invalid number. Category not exist." + ln +
                                 defaultCategoryOverview + invitesCategory +
                                 "Invalid number. Category not exist." + ln
-                                + defaultCategoryOverview + invitesCategory +
+                                + defaultCategoryOverview + invitesCategory + "[Transaction added]" + ln +
                                 "[Water Bill](¥9.00) was added to [Bills]" + ln + appMenu + appExit);
                 break;
         }

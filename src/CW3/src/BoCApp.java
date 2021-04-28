@@ -118,53 +118,57 @@ public class BoCApp {
 	}
 
 	// Author: Ziyi Wang(scyzw10)
-	// Last Modified: 2021/4/28 14:11
-	// Reason:
+	// Last Modified: 2021/4/28 18:02
+	// Reason: add exception to the source code => check the input
+	//		   add the transaction to the Category
 	private static void AddTransaction(Scanner in) {
 		System.out.println("What is the title of the transaction?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
-		System.out.println("What is the value of the transaction?");
-		BigDecimal tvalue;	// store the value of the transaction
-		while (true){
+		boolean flag = true;	// variable to stop the loop
+		BigDecimal tvalue = new BigDecimal("0.00");	// store the value of the transaction
+		while (flag){
+			System.out.println("What is the value of the transaction?");	// ask the user to input
 			try {
 				tvalue = new BigDecimal(in.nextLine());		// try to convert the string -> BigDecimal
-				while (tvalue.compareTo(new BigDecimal("0.00")) == -1 ){
-					System.out.println("Invalid number. The value must bigger than zero.");
-					System.out.println("What is the value of the transaction?");
-					tvalue = new BigDecimal(in.nextLine());
-				}
-				break;
-			}catch(NumberFormatException e){
-				System.out.println("Invalid input. Please enter a valid number.");
-				System.out.println("What is the value of the transaction?");
+			}catch(NumberFormatException e){	// couldn't convert the string -> BigDecimal
+				System.out.println("Invalid input. Please enter a valid number.");	//ask the user to input again
+				continue;
 			}
+			if (tvalue.compareTo(new BigDecimal("0.00")) == -1 ) {	// value must > 0
+				System.out.println("Invalid number. The value must bigger than zero.");
+				continue;
+			}
+			flag = false;
 		}
-		CategoryOverview();
-		System.out.println("Which category do you want to add?");
-		int tCat;
-		while (true){
+
+		int tCat = 0;	// variable to store the CategoryNumber
+		flag = true;	// variable to stop the loop
+		while (flag){
+			CategoryOverview();		// ask the user to input
+			System.out.println("Which category do you want to add?");
 			try{
-				tCat = Integer.parseInt(in.nextLine());
-				while (tCat > UserCategories.size() || tCat < 0 ){
-					System.out.println("Invalid number. Category not exist.");
-					CategoryOverview();
-					System.out.println("Which category do you want to add?");
-					tCat = Integer.parseInt(in.nextLine());
-				}
-				break;
-			}catch (NumberFormatException exc){
+				tCat = Integer.parseInt(in.nextLine());		// get input and convert string -> integer
+			}catch (NumberFormatException exc){		// could not convert: input not an integer
 				System.out.println("Invalid input. Please enter a valid number.");
-				CategoryOverview();
-				System.out.println("Which category do you want to add?");
+				continue;
 			}
+			// input an integer but not correct categoryNumber
+			if (tCat > UserCategories.size() || tCat < 0) {
+				System.out.println("Invalid number. Category not exist.");
+				continue;
+			}
+			flag = false;
 		}
+
+		// Add transaction to the UserTransactions
 		UserTransactions.add(new BoCTransaction(title, tvalue, tCat-1));
+		// Add transaction to the UserCategories
 		BoCCategory tCategory = UserCategories.get(tCat-1);
 		tCategory.addExpense(tvalue);
 		UserCategories.set(tCat-1, tCategory);
 
-		// original: System.out.println("[Transaction added]");
+		System.out.println("[Transaction added]");
 		System.out.println("[" + title + "](¥" + tvalue.toString() + ") was added to [" +
 		UserCategories.get(tCat-1).CategoryName() + "]");
 	}
