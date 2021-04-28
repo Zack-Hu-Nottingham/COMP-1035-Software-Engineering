@@ -50,12 +50,16 @@ public class BoCTransaction {
 	// Last modify: 22021/4/24
 	// Reason: When transaction name is null or is longer than 25 characters, the program should report an error.
 	public String transactionName() throws IllegalArgumentException{
+		//When name is not set, throw a IllegalArgumentException.
 		if (transactionName == null){
 			throw new IllegalArgumentException("name is not set.");
 		}
+		//Name can not longer than 25 characters, in setTransactionName, if user enter a String longer than 25 characters
+		//the program will take the substring of the input string, so in this method, name should not longer than 25 characters.
 		else if (transactionName.length() > 25){
 			throw new IllegalArgumentException("Name can not longer than 25 characters.");
 		}
+		//normal case.
 		else{
 			return transactionName;
 		}
@@ -136,16 +140,20 @@ public class BoCTransaction {
 	//Reason: when transaction value is null, program should print Unknown value, and value can not be negative.
 	@Override
 	public String toString() throws IllegalArgumentException{
+		//When transaction value is not set, return unknown value.
 		if (transactionValue == null){
 			return transactionName + " - ¥" + "Unknownvalue";
 		}
+//		compare two bigDecimal can use .compareTo()
 //		if (Integer.parseInt(String.valueOf(transactionValue)) < 0){
 //			throw new IllegalArgumentException("Value can not be negative number");
 //		}
+		//transaction value can not be negative number.
 		if (transactionValue.compareTo(new BigDecimal("0.00")) == -1) {
 			throw new IllegalArgumentException("Value can not be negative number");
 		}
 
+		//return name value and date.
 		return transactionName + " - ¥" + transactionValue.toString() + " Date: " + transactionTime;
 	}
 

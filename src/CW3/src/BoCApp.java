@@ -198,9 +198,12 @@ public class BoCApp {
 		System.out.println("What is the title of the category?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
+
+		//if user enter a string longer than 15 characters, program will take substring of the string which is 15 characters long.
 		if (title.length() > 15) {
 			title = title.substring(0, 15);
 		}
+		//if user enter a name which is already exist, program throws a IllegalArgumentException, catch the exception, and return to the main menu.
 		try {
 			if(UserCategories.size() != 0){
 				for (int i = 0; i < UserCategories.size(); i++) {
@@ -215,6 +218,9 @@ public class BoCApp {
 			return;
 		}
 		System.out.println("What is the budget for this category?");
+
+		//if user enter a string which is not digital, program throw a NumberFormatException and catch it, return to the main menu.
+		//if user enter a negative number, throw and catch an IllegalArgumentException, and return to the main menu.
 		try {
 			try {
 				// original: BigDecimal cbudget = new BigDecimal(in.nextLine());
@@ -234,6 +240,7 @@ public class BoCApp {
 			return;
 		}
 
+		//valid input, print the new category list.
 		System.out.println("[Category added]");
 		CategoryOverview();
 	}
