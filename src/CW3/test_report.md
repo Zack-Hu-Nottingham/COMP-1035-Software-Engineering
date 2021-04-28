@@ -272,12 +272,13 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 |  | Method Coverage | Line Coverage |
 |----|--|---|-- |
-|BoCCategory| | | |
-|BoCTransaction| | | |
-|BoCApp| | | |
-[Click here to see coverage report]()
-![testCoverage]()
+|BoCCategory| 100% | 98% |
+|BoCTransaction| 100% | 100% |
+|BoCApp| 100% | 100% |
+[Click here to see coverage report](/coverageReport/.empty/index.html)
+![testCoverage](coverage.png)
 
+***Note:*** Previous code implementation did not handle exceptions in methods well, so  they need to be handled in main. But after the modification, all the exceptions can be handled in methods without being thrown in main, therefore the catch statement in main will never be reached at present. **Therefore, there is 2% of line can not be reached, as this two line is ment for exception handling.**
 
 
 ## Test Plan and Test Log

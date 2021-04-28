@@ -1,0 +1,284 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BoCTransaction</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BoCTransaction (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BoCTransaction</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (66/ 66)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.math.BigDecimal;
+<i>2</i>&nbsp;import java.util.Date;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;public class BoCTransaction {
+<i>5</i>&nbsp;	private String transactionName;
+<i>6</i>&nbsp;	private BigDecimal transactionValue;
+<i>7</i>&nbsp;	private int transactionCategory;
+<i>8</i>&nbsp;	private Date transactionTime;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;	// Author: Leshan Tan (sqylt2)
+<i>12</i>&nbsp;	// Last modified: 4/26 9:05
+<i>13</i>&nbsp;	// Reason: The initial transactionName should be &quot;Pending Transaction]&quot; and transaction Date should be the current time.
+<b class="fc"><i>14</i>&nbsp;	public BoCTransaction() {</b>
+<b class="fc"><i>15</i>&nbsp;		transactionName = &quot;[Pending Transaction]&quot;;</b>
+<b class="fc"><i>16</i>&nbsp;		transactionValue = null;</b>
+<b class="fc"><i>17</i>&nbsp;		transactionCategory = 0;</b>
+<b class="fc"><i>18</i>&nbsp;		transactionTime = new Date();</b>
+<b class="fc"><i>19</i>&nbsp;	}</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;	// Author: Zixiang Hu (scyzh6)
+<i>23</i>&nbsp;	// Last modified: 4/25 19:01
+<i>24</i>&nbsp;	// Reason: If illegal value are entered it should throw exception to handle it.
+<b class="fc"><i>25</i>&nbsp;	public BoCTransaction(String tName, BigDecimal tValue, int tCat) throws IllegalArgumentException{</b>
+<b class="fc"><i>26</i>&nbsp;		if (tName == null) {</b>
+<b class="fc"><i>27</i>&nbsp;			throw new IllegalArgumentException(&quot;Transaction name should not be null.&quot;);</b>
+<i>28</i>&nbsp;		}
+<b class="fc"><i>29</i>&nbsp;		if(tValue==null){</b>
+<b class="fc"><i>30</i>&nbsp;			throw new IllegalArgumentException(&quot;Transaction budget should not be null.&quot;);</b>
+<i>31</i>&nbsp;		}
+<b class="fc"><i>32</i>&nbsp;		if (tName.length() &gt; 25) {</b>
+<b class="fc"><i>33</i>&nbsp;			throw new IllegalArgumentException(&quot;Transaction name should be limited to 25 characters.&quot;);</b>
+<i>34</i>&nbsp;		}
+<b class="fc"><i>35</i>&nbsp;		if (tCat &lt; 0) {</b>
+<b class="fc"><i>36</i>&nbsp;			throw new IllegalArgumentException(&quot;Transaction category should not be minus.&quot;);</b>
+<i>37</i>&nbsp;		}
+<b class="fc"><i>38</i>&nbsp;		if (tValue.compareTo(new BigDecimal(0)) &lt; 1) {</b>
+<b class="fc"><i>39</i>&nbsp;			throw new IllegalArgumentException(&quot;Transaction budget should greater than zero.&quot;);</b>
+<i>40</i>&nbsp;		}
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;		transactionName = tName;</b>
+<b class="fc"><i>45</i>&nbsp;		transactionValue = tValue;</b>
+<b class="fc"><i>46</i>&nbsp;		transactionCategory = tCat;</b>
+<b class="fc"><i>47</i>&nbsp;		transactionTime = new Date();</b>
+<b class="fc"><i>48</i>&nbsp;	}</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;	// Author: Yingxiao Huo
+<i>52</i>&nbsp;	// Last modify: 22021/4/24 18:44
+<i>53</i>&nbsp;	// Reason: When transaction name is null or is longer than 25 characters, the program should report an error.
+<i>54</i>&nbsp;	public String transactionName() throws IllegalArgumentException{
+<i>55</i>&nbsp;		//When name is not set, throw a IllegalArgumentException.
+<b class="fc"><i>56</i>&nbsp;		if (transactionName == null){</b>
+<b class="fc"><i>57</i>&nbsp;			throw new IllegalArgumentException(&quot;name is not set.&quot;);</b>
+<i>58</i>&nbsp;		}
+<i>59</i>&nbsp;		//Name can not longer than 25 characters, in setTransactionName, if user enter a String longer than 25 characters
+<i>60</i>&nbsp;		//the program will take the substring of the input string, so in this method, name should not longer than 25 characters.
+<b class="fc"><i>61</i>&nbsp;		else if (transactionName.length() &gt; 25){</b>
+<b class="fc"><i>62</i>&nbsp;			throw new IllegalArgumentException(&quot;Name can not longer than 25 characters.&quot;);</b>
+<i>63</i>&nbsp;		}
+<i>64</i>&nbsp;		//normal case.
+<i>65</i>&nbsp;		else{
+<b class="fc"><i>66</i>&nbsp;			return transactionName;</b>
+<i>67</i>&nbsp;		}
+<i>68</i>&nbsp;	}
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;	// Author: Leshan Tan (sqylt2)
+<i>71</i>&nbsp;	// Last modify: 22021/4/29 3:53
+<i>72</i>&nbsp;	// Reason: transactionValue should be larger than zero, so if transactionValue &lt;= 0, throw an exception
+<i>73</i>&nbsp;	public BigDecimal transactionValue() throws IllegalArgumentException{
+<b class="fc"><i>74</i>&nbsp;		if (transactionValue != null) {</b>
+<b class="fc"><i>75</i>&nbsp;			int flag = transactionValue.compareTo(new BigDecimal(&quot;0.00&quot;)); // get the result of value compared to 0</b>
+<b class="fc"><i>76</i>&nbsp;			if (flag == 0 || flag == -1) { // if transactionValue &lt;= 0, throw exception</b>
+<b class="fc"><i>77</i>&nbsp;				throw new IllegalArgumentException(&quot;transactionValue should be larger than zero.&quot;);</b>
+<i>78</i>&nbsp;			}
+<i>79</i>&nbsp;		}
+<b class="fc"><i>80</i>&nbsp;		return transactionValue; // if transactionValue == null or did not throw exception</b>
+<i>81</i>&nbsp;	}
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;	public int transactionCategory() {
+<b class="fc"><i>85</i>&nbsp;		return transactionCategory;</b>
+<i>86</i>&nbsp;	}
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;	public Date transactionTime() {
+<b class="fc"><i>90</i>&nbsp;		return transactionTime;</b>
+<i>91</i>&nbsp;	}
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;	//Author: Yicun Duan (scyyd3)
+<i>94</i>&nbsp;	//Last Modified: 2021/4/28 00:48
+<i>95</i>&nbsp;	//Reason: The function can&#39;t check out the case where transaction name are set repeatedly.
+<i>96</i>&nbsp;	//		  It cannot validate input &quot;tName&quot; yet.
+<i>97</i>&nbsp;	//		  It cannot truncate string with length larger than 25 characters yet.
+<i>98</i>&nbsp;	public void setTransactionName(String tName) throws IllegalArgumentException, UnsupportedOperationException{
+<i>99</i>&nbsp;		//check whether transaction name is set as &quot;[Pending Transaction]&quot;
+<b class="fc"><i>100</i>&nbsp;		if (!transactionName.equals(&quot;[Pending Transaction]&quot;)) {</b>
+<i>101</i>&nbsp;			//if not, throw out an exception
+<b class="fc"><i>102</i>&nbsp;			throw new UnsupportedOperationException(&quot;Transaction name cannot be repeatedly set.&quot;);</b>
+<i>103</i>&nbsp;		}
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;		//test whether input &quot;tName&quot; is valid
+<b class="fc"><i>106</i>&nbsp;		if (tName == null || tName.isBlank()) {</b>
+<b class="fc"><i>107</i>&nbsp;			throw new IllegalArgumentException(&quot;The transactionName is invalid.&quot;);</b>
+<i>108</i>&nbsp;		}
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;		//truncate the string if necessary
+<b class="fc"><i>111</i>&nbsp;		if (tName.length() &gt; 25) {</b>
+<b class="fc"><i>112</i>&nbsp;			tName = tName.substring(0, 25);</b>
+<i>113</i>&nbsp;		}
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;		//reset the transaction name
+<b class="fc"><i>116</i>&nbsp;		transactionName = tName;</b>
+<b class="fc"><i>117</i>&nbsp;	}</b>
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;
+<i>120</i>&nbsp;	// Author: LinCHEN (biylc2)
+<i>121</i>&nbsp;	// Last Modify: 2021/04/25
+<i>122</i>&nbsp;	// Reason: The previous function cannot handle the situation that when the value is non-positive and does not throw an exception as expected.
+<i>123</i>&nbsp;	public void setTransactionValue(BigDecimal tValue) throws UnsupportedOperationException,NullPointerException,IllegalArgumentException,UnsupportedOperationException {
+<i>124</i>&nbsp;		// There are 3 exception cases : the input is null, the value is negative, if the set value can be seted twice
+<b class="fc"><i>125</i>&nbsp;		if (tValue== null) {</b>
+<b class="fc"><i>126</i>&nbsp;			throw new NullPointerException(&quot;The value cannot be null.&quot;);</b>
+<b class="fc"><i>127</i>&nbsp;		} else if (tValue.compareTo(BigDecimal.ZERO) &lt;=0){</b>
+<b class="fc"><i>128</i>&nbsp;			throw new IllegalArgumentException(&quot;The value should be a positive number, the set fails&quot;);</b>
+<b class="fc"><i>129</i>&nbsp;		} else if (isComplete()==1 || isComplete()==3) {</b>
+<i>130</i>&nbsp;			// check whether the value can be set
+<b class="fc"><i>131</i>&nbsp;			throw new UnsupportedOperationException(&quot;The value cannot be set twice&quot;);</b>
+<i>132</i>&nbsp;		} else {
+<b class="fc"><i>133</i>&nbsp;			transactionValue = tValue;</b>
+<i>134</i>&nbsp;		}
+<b class="fc"><i>135</i>&nbsp;	}</b>
+<i>136</i>&nbsp;
+<i>137</i>&nbsp;
+<i>138</i>&nbsp;	// Author: Zixiang Hu (scyzh6)
+<i>139</i>&nbsp;	// Last modified: 4/25 19:01
+<i>140</i>&nbsp;	// Reason: If category input is less than or equal to zero, it should throw an exception to handle it.
+<i>141</i>&nbsp;	public void setTransactionCategory(int tCat) {
+<b class="fc"><i>142</i>&nbsp;		if (tCat &gt;= 0) {	// CategoryNumber could be equal to zero[Modified Ziyi Wang (2021/4/28 20:34)]</b>
+<b class="fc"><i>143</i>&nbsp;			transactionCategory = tCat;</b>
+<i>144</i>&nbsp;		} else {
+<b class="fc"><i>145</i>&nbsp;			throw new IllegalArgumentException(&quot;Transaction category should greater than zero.&quot;);</b>
+<i>146</i>&nbsp;		}
+<b class="fc"><i>147</i>&nbsp;	}</b>
+<i>148</i>&nbsp;
+<i>149</i>&nbsp;
+<i>150</i>&nbsp;
+<i>151</i>&nbsp;	// Author: Yingxiao Huo (scyyh9)
+<i>152</i>&nbsp;	// Last modify: 2021/4/24
+<i>153</i>&nbsp;	// Reason: when transaction value is null, program should print Unknown value, and value can not be negative.
+<i>154</i>&nbsp;	@Override
+<i>155</i>&nbsp;	public String toString() throws IllegalArgumentException{
+<i>156</i>&nbsp;		//When transaction value is not set, return unknown value.
+<b class="fc"><i>157</i>&nbsp;		if (transactionValue == null){</b>
+<b class="fc"><i>158</i>&nbsp;			return transactionName + &quot; - ?&quot; + &quot;Unknownvalue&quot;;</b>
+<i>159</i>&nbsp;		}
+<i>160</i>&nbsp;//		compare two bigDecimal can use .compareTo()
+<i>161</i>&nbsp;//		if (Integer.parseInt(String.valueOf(transactionValue)) &lt; 0){
+<i>162</i>&nbsp;//			throw new IllegalArgumentException(&quot;Value can not be negative number&quot;);
+<i>163</i>&nbsp;//		}
+<i>164</i>&nbsp;		//transaction value can not be negative number.
+<b class="fc"><i>165</i>&nbsp;		if (transactionValue.compareTo(new BigDecimal(&quot;0.00&quot;)) == -1) {</b>
+<b class="fc"><i>166</i>&nbsp;			throw new IllegalArgumentException(&quot;Value can not be negative number&quot;);</b>
+<i>167</i>&nbsp;		}
+<i>168</i>&nbsp;
+<i>169</i>&nbsp;		//return name value and date.
+<b class="fc"><i>170</i>&nbsp;		return transactionName + &quot; - ?&quot; + transactionValue.toString() + &quot; Date: &quot; + transactionTime;</b>
+<i>171</i>&nbsp;	}
+<i>172</i>&nbsp;
+<i>173</i>&nbsp;
+<i>174</i>&nbsp;	// Author :LinCHEN(biylc2)
+<i>175</i>&nbsp;	// Last Modify:2021/04/24 14:37
+<i>176</i>&nbsp;	// Reason: isComplete function is not
+<i>177</i>&nbsp;	public int isComplete(){
+<i>178</i>&nbsp;		// There are two cases meaning that the name haven&#39;t been set.
+<i>179</i>&nbsp;		// The first case is using default constructor, in which case the name is &quot;[Pending Transaction]&quot; and it means it can be set
+<i>180</i>&nbsp;		// The second case is when the transactionName is null
+<b class="fc"><i>181</i>&nbsp;		if (transactionName != &quot;[Pending Transaction]&quot;&amp;&amp; transactionName != null){</b>
+<i>182</i>&nbsp;			//The null transactionValue means that the value haven&#39;t been set yet.
+<b class="fc"><i>183</i>&nbsp;			if (transactionValue!= null){</b>
+<b class="fc"><i>184</i>&nbsp;				return 1;</b>
+<i>185</i>&nbsp;			}
+<i>186</i>&nbsp;			else{
+<b class="fc"><i>187</i>&nbsp;				return 2;</b>
+<i>188</i>&nbsp;			}
+<i>189</i>&nbsp;		}
+<i>190</i>&nbsp;		else {
+<b class="fc"><i>191</i>&nbsp;			if (transactionValue!= null){</b>
+<b class="fc"><i>192</i>&nbsp;				return 3;</b>
+<i>193</i>&nbsp;			}
+<i>194</i>&nbsp;			else{
+<b class="fc"><i>195</i>&nbsp;				return 4;</b>
+<i>196</i>&nbsp;			}
+<i>197</i>&nbsp;		}
+<i>198</i>&nbsp;
+<i>199</i>&nbsp;	}
+<i>200</i>&nbsp;
+<i>201</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-04-29 04:11</div>
+</div>
+</body>
+</html>
