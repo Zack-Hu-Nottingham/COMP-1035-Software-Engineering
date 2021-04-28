@@ -282,11 +282,13 @@ Report here, by the end of the assignment, how the team has managed the project,
 ## Test Plan and Test Log
 
 ### Class: `BoCTransaction`
+`Test Schedule:` <br>
+***"Write test script for BoC Transaction Class"***<br>
+***"Fix script for BoC Transaction Class"***
 
 |Test ID|Type|Inputs|Expected Outcome|Importance|
 |----|---------|------|----------------|-------|
 |**[TS-Transaction 1-1]**|**[Validdation Test]:**<br>Test constructor with no parameters|-|<table border="1"><tr><td>test.transactionName == "[Pending Transaction]"</td></tr><tr><td>test.transactionValue == null</td></tr><tr><td>test.transactionCategory == 0</td></tr><tr><td>test.transactionTime == null</td></tr></table>||
-|**[TS-Transaction 1-1]**|||||
 |**[TS-Transaction 2-1]**|||||
 |**[TS-Transaction 2-2]**|||||
 |**[TS-Transaction 2-3]**|||||
@@ -366,8 +368,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 9-3]**|||||
 |**[TS-Category 10-1]**|**[Validation Test]:**<br>Test with spend number set|<table border="1"><tr><th>resetBudgetSpend</th></tr><tr><td>CategorySpend = new BigDecimal("20000.0292")</td></tr></table>|<table border="1"><tr><th>resetBudgetSpend</th></tr><tr><td> "New Category(¥0.00) - Est. ¥0.00 (¥0.00 Remaining)"</td></tr></table>||
 |**[TS-Category 11-1]**|||||
-|**[TS-Category 12-1]**|**[Validation Test]:**<br>Test with spend number set|-|<table border="1"><th>toString</th></tr><tr><td>"[New Category0](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"</td></tr></table>||
-|**[TS-Category 12-2]**||<table border="1"><th>toString</th></tr><tr><td>**CategoryBudget :** "3457834.023423" **CategorySpend :** "667433.00564"</td></tr></table>|<table border="1"><th>toString</th></tr><tr><td>"[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"</td></tr></table>||
+|**[TS-Category 12-1]**|**[Validation Test]:**<br>Test with spend number unset|-|<table border="1"><th>toString</th></tr><tr><td>"[New Category0](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"</td></tr></table>||
+|**[TS-Category 12-2]**|**[Validation Test]:**<br>Test with spend number set|<table border="1"><th>toString</th></tr><tr><td>**CategoryBudget :** "3457834.023423" **CategorySpend :** "667433.00564"</td></tr></table>|<table border="1"><th>toString</th></tr><tr><td>"[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"</td></tr></table>||
 |**[TS-Category 12-3]**||<table border="1"><th>toString</th></tr><tr><td>**CategoryBudget :** "10000.00" **CategorySpend :** "20000.00"</td></tr></table>|<table border="1"><th>toString</th></tr><tr><td>""[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)"</td></tr></table>||
 
 
