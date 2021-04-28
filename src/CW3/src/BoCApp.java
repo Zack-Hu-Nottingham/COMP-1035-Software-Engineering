@@ -82,11 +82,13 @@ public class BoCApp {
 		}
 		in.close();
 	}
-
+	// Author: Lin Chen (biylc2)
+	// Last Modified : 2021/04/28 0:33
+	// Reason: The format of the output is not matched to the expected ones.
 	public static void ListTransactions() {
 		for (int x = 0; x < UserTransactions.size(); x++) {
 			BoCTransaction temp = UserTransactions.get(x);
-			System.out.println((x + 1) + ") " + temp.toString());
+			System.out.println((x + 1) + ") " + temp.transactionName()+" ("+UserCategories.get(temp.transactionCategory()).CategoryName()+") - ¥"+temp.transactionValue());
 		}
 	}
 
