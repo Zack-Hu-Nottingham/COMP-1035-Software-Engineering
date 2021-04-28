@@ -66,9 +66,9 @@ public class BoCApp {
 				} else if (s.equals("X")) {
 					System.out.println("Goodbye!");
 					break;
-				} else {
-					try{
-						ListTransactionsForCategory(Integer.parseInt(s));
+				} else { // Author: Leshan Tan (sqylt2)
+					try{ // Last Modified: 2021/4/27 13:54
+						ListTransactionsForCategory(Integer.parseInt(s)); // Reason: Previous code did not handle this condition correctly
 					}catch (NumberFormatException exc){
 						System.out.println("Command not recognised");
 					}
