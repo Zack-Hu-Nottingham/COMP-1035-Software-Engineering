@@ -1,17 +1,15 @@
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.Ignore;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,6 +21,7 @@ class BoCCategoryTest {
     // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/24 21:17
     @Test
+    @DisplayName("Test for default constructor")
     void BocCategory()throws NoSuchFieldException, IllegalAccessException{
         List BoCCategoryNameList = new ArrayList(); // create a list to store the name of the category instances
         int times = 0; // the count of instances to be created
@@ -45,11 +44,12 @@ class BoCCategoryTest {
         }
     }
 
+
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/4/24 23:03
-    @DisplayName("tests for Main Constructor")
     @ParameterizedTest
     @CsvSource({"test1","test2","test3","testWithMoreThan15Chars"})
+    @DisplayName("Test for Main Constructor")
     void MainBocCategory(String cName) throws NoSuchFieldException, IllegalAccessException {
         if (cName.length() <= 15) {
             BoCCategory cMain1 = new BoCCategory(cName);
@@ -80,14 +80,16 @@ class BoCCategoryTest {
     }
 
 
-    //author: Yingxiao Huo
-    //Last Modified time: 2021/4/21
+    // Author: Yingxiao Huo (scyyh9)
+    // Last Modified time: 2021/4/21 11:23
     @ParameterizedTest
     @CsvFileSource(resources = {"/categoryNameGetter.csv"})
+    @DisplayName("Test for category name getter")
     void categoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_getter = new BoCCategory();
         final Field field_getName = Test_getter.getClass().getDeclaredField("CategoryName");
         field_getName.setAccessible(true);
+        //If name is null, program should throw a exception with a message "Name is not set."
         if (name == null){
             try {
                 field_getName.set(Test_getter, name);
@@ -98,6 +100,9 @@ class BoCCategoryTest {
             }
         }
         else{
+            //Because if user enter a string longer than 15 characters, category setter will take a substring which is 15 characters.
+            //So, category name getter should not get a name longer than 15 characters.
+            //If name longer than 15 characters, program should throw a exception with a message "Category name can not longer than 15 characters."
             if (name.length() > 15){
                 try {
                     field_getName.set(Test_getter, name);
@@ -107,6 +112,7 @@ class BoCCategoryTest {
                     assertEquals(expection, ex2.getMessage());
                 }
             }
+            //Normal case.
             else {
                 field_getName.set(Test_getter, name);
                 final String result = Test_getter.CategoryName();
@@ -116,11 +122,15 @@ class BoCCategoryTest {
     }
 
     //Author: Yicun Duan (scyyd3)
-    //Last Modified: 2021/4/24 15:41
+    //Last Modified: 2021/4/28 01:17
+    //Reason: (1) Check whether the returned budget is expected.
+    //        (2) Check whether the type and format of the returned budget is correct.
     @ParameterizedTest
     @CsvFileSource(resources = {"getBudgetTest.csv"})
+    @DisplayName("Test for category budget getter")
     void categoryBudget(BigDecimal budget, BigDecimal expectBudget) throws NoSuchFieldException, IllegalAccessException {
         if (budget != null || expectBudget != null) {
+            //test whether the returned budget is expected
             final BoCCategory budgetTest = new BoCCategory();
             final Field field = budgetTest.getClass().getDeclaredField("CategoryBudget");
             field.setAccessible(true);
@@ -129,14 +139,17 @@ class BoCCategoryTest {
             final BigDecimal result = budgetTest.CategoryBudget();
             assertEquals(result, expectBudget, "CategoryBudget() function doesn't return an expected result.");
         } else {
+            //test whether type and format are correct
             final BoCCategory test_instance = new BoCCategory();
             assertEquals(new BigDecimal("0.00"), test_instance.CategoryBudget(), "When using default constructor, CategoryBudget is not 0.00 (BigDecimal). Or it is not of type BigDecimal.");
         }
     }
 
-    // Author: Leshan Tan
+
+    // Author: Leshan Tan (sqylt2)
     // Last Modified: 2021/4/23
     @Test
+    @DisplayName("Test for category spend getter")
     void categorySpend() throws  NoSuchFieldException{
         final BoCCategory boc = new BoCCategory(); // create an instance using default constructor
         final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend"); // get the field CategorySpend
@@ -144,9 +157,9 @@ class BoCCategoryTest {
         assertEquals(new BigDecimal("0.00"), boc.CategorySpend(),"Field CategorySpend wasn't retrieved properly"); // the initial CategorySpend should be BigDecimal("0.00")
     }
 
-
     @ParameterizedTest
     @CsvFileSource(resources = {"categorySpend.csv"}) // get the input  and output source
+    @DisplayName("Test for category spend getter with parameters")
     void categorySpendWithInputs(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
         final BoCCategory boc = new BoCCategory(); // create an instance using default constructor
         final Field fieldSpend = boc.getClass().getDeclaredField("CategorySpend"); // get the field CategorySpend
@@ -155,12 +168,15 @@ class BoCCategoryTest {
         assertEquals( new BigDecimal(expectation), boc.CategorySpend(), "Field CategorySpend wasn't retrieved properly"); // field CategorySpend should be what we expected
     }
 
-    //author: Yingxiao Huo
+
+    //author: Yingxiao Huo (scyyh9)
     //Last modified time: 2021/4/21
     @ParameterizedTest
     @CsvFileSource(resources = {"/categoryNameSetter.csv"})
+    @DisplayName("Test for category name setter")
     void setCategoryName(String name, String expection) throws NoSuchFieldException, IllegalAccessException{
         final BoCCategory Test_setter = new BoCCategory();
+            //If name is null, program should throw a exception with a message "Name is not set."
             if (name == null){
                 try {
                     Test_setter.setCategoryName(null);
@@ -177,11 +193,13 @@ class BoCCategoryTest {
                     //}catch (Exception ex2){
                     //    assertEquals(expection, ex2.getMessage());
                     //}
+                    //if user enter a name longer than 15 characters, take substring which is 15 characters.
                     Test_setter.setCategoryName(name);
                     final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
                     field_setname.setAccessible(true);
                     assertEquals(expection, field_setname.get(Test_setter));
                 }else {
+                    //Normal case.
                     Test_setter.setCategoryName(name);
                     final Field field_setname = Test_setter.getClass().getDeclaredField("CategoryName");
                     field_setname.setAccessible(true);
@@ -191,11 +209,11 @@ class BoCCategoryTest {
     }
     
 
-    // Author: Ziyi Wang
+    // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/27 20:05
-    @DisplayName("tests for add setCategoryBudget")
     @ParameterizedTest
     @CsvFileSource(resources = { "Cate_setCategoryBudget.csv" })
+    @DisplayName("Test for category budget setter")
     void setCategoryBudget(float input1, String expect, int expectcomp) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory setCBudget = new BoCCategory();    //new object
 
@@ -223,12 +241,11 @@ class BoCCategoryTest {
 //    }
 
 
-    // Author : LinCHEN(biylc2)
+    // Author : LinCHEN (biylc2)
     // Last Modify: 2021/04/24 20:44
     @DisplayName("tests for add Expense")
     @ParameterizedTest
     @CsvSource({",Illegal input","-2e12,Illegal input","-2.134,Illegal input","0.00,0.00","+.0,+.0","2e12,2e12","2.13443343,2.13443343","2147483647.0012343,2147483647.0012343"})
-
     void addExpenseTest(String bigNumber,String expected) {
 
         BoCCategory addT1= new BoCCategory("Tester");
@@ -247,11 +264,8 @@ class BoCCategoryTest {
             }
         }
 
-
         boolean strResult1= bigNumber.matches("[+]?[0-9]+.?[0-9]{0,32}[Ee]?[+-]?[0-9]?[1-9]");
-        System.out.println(strResult1);
         boolean strResult2 = bigNumber.matches("[+]?[0-9]{0,12}+.?[0-9]*");
-        System.out.println(strResult2);
         // If the bigNumber is not using scientific notation or negative
         if(strResult1==false){
             //If the bigNumber is negative
@@ -263,7 +277,6 @@ class BoCCategoryTest {
                     assertTrue(e2.getMessage().contains(expected));
                     return;
                 }
-
             }
         }
 
@@ -271,12 +284,8 @@ class BoCCategoryTest {
         addT1.addExpense(new BigDecimal(bigNumber));
         BigDecimal expectedNum= new BigDecimal(expected);
         assertEquals(0,expectedNum.compareTo(addT1.CategorySpend()));
-
-        //BigDecimal value = addT1.CategorySpend().add(fiNum);
-        //assertEquals(value,addT1.CategorySpend());
-
-
     }
+
 
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/04/22 16:58
@@ -298,6 +307,7 @@ class BoCCategoryTest {
         assertEquals(expectation,equals);
     }
 
+
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/04/22 19:45
     @Disabled
@@ -316,6 +326,7 @@ class BoCCategoryTest {
         }
         //fail("it failed");
     }
+
 
     // Author: Ziyi Wang (scyzw10)
     // Last Modified: 2021/04/22 20:38
@@ -336,7 +347,8 @@ class BoCCategoryTest {
         //fail("it failed");
     }
 
-    // Author: Ziyi Wang
+
+    // Author: Ziyi Wang (scyzw10)
     // Last modified: 4/25 12:31
     @DisplayName("tests for remove Expense")
     @ParameterizedTest
@@ -379,8 +391,9 @@ class BoCCategoryTest {
         }
     }
 
-    //Author:LinCHEN(biylc2)
-    //Last Modify:2021/04/21
+
+    // Author:LinCHEN (biylc2)
+    // Last Modify: 2021/04/21 22:14
     @Test
     void resetBudgetSpend() throws NoSuchFieldException, IllegalAccessException {
         BoCCategory reset1= new BoCCategory("Reset");
@@ -396,13 +409,16 @@ class BoCCategoryTest {
 
     //Author: Yicun Duan (scyyd3)
     //Last Modified: 2021/4/24 15:27
+    //Reason: Find whether the returned remaining budget is correct.
     @ParameterizedTest
     @CsvFileSource(resources = {"/getRemainingBudgetTest.csv"})
     void getRemainingBudget(BigDecimal budget, BigDecimal spend, BigDecimal expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
+        //get access to "CategoryBudget"
         final Field field_budget = remainTest.getClass().getDeclaredField("CategoryBudget");
         field_budget.setAccessible(true);
         field_budget.set(remainTest, budget);
+        //get access to "CategorySpend"
         final Field field_spend = remainTest.getClass().getDeclaredField("CategorySpend");
         field_spend.setAccessible(true);
         field_spend.set(remainTest, spend);
@@ -413,41 +429,35 @@ class BoCCategoryTest {
 
     }
 
-    // Author:LinCHEN(biylc2)
-    // Last Modify:2021/04/24
 
-    @Test
-    void testToString() throws IllegalAccessException, NoSuchFieldException {
-        //default constructor
-        BoCCategory boc1= new BoCCategory();
-        String a="New Category(¥0.00) - ¥0.00 (¥0.00 Remaining)";
-        assertEquals(a,boc1.toString());
+    // Author:Lin Chen(biylc2)
+    // Last Modify:2021/04/28 0:11
 
-        //constructor with parameter
-        BoCCategory boc2= new BoCCategory("Positive");
-        Field field1=boc2.getClass().getDeclaredField("CategoryBudget");
+    static Stream <Arguments> compString() {
+        return Stream.of(
+                Arguments.of(new BoCCategory(), "", "", "[New Category0](Budget: ¥0.00) - ¥0.00 (¥0.00 Remaining)"),
+                Arguments.of(new BoCCategory("Positive"), "3457834.023423", "667433.00564", "[Positive](Budget: ¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)"),
+                Arguments.of(new BoCCategory("Negative"), "10000.00", "20000.00", "[Negative](Budget: ¥10000.00) - ¥20000.00 (¥10000.00 Overspent)")
+        );
+    };
+
+    @ParameterizedTest
+    @MethodSource("compString")
+    void testToString(BoCCategory a,String budget,String spend,String expected) throws IllegalAccessException, NoSuchFieldException {
+        // Judge whether it is a default constructor
+        if(budget.equals("")){
+            assertEquals(expected,a.toString());
+            return;
+        }
+        // If they are using paramitive constructor
+        Field field1= a.getClass().getDeclaredField("CategoryBudget");
         ((Field) field1).setAccessible(true);
-        field1.set(boc2,new BigDecimal("3457834.023423"));
-        Field field2=boc2.getClass().getDeclaredField("CategorySpend");
+        field1.set(a,new BigDecimal(budget));
+        Field field2=a.getClass().getDeclaredField("CategorySpend");
         field2.setAccessible(true);
-        field2.set(boc2,new BigDecimal("667433.00564"));
+        field2.set(a,new BigDecimal(spend));
+        assertEquals(expected,a.toString());
 
-        String b="Positive(¥3457834.023423) - ¥667433.00564 (¥2790401.017783 Remaining)";
-        assertEquals(b,boc2.toString());
-
-        BoCCategory boc3= new BoCCategory("Negative");
-        Field field3=boc3.getClass().getDeclaredField("CategoryBudget");
-        field3.setAccessible(true);
-        field3.set(boc3,new BigDecimal("10000.00"));
-        Field field4=boc3.getClass().getDeclaredField("CategorySpend");
-        field4.setAccessible(true);
-        field4.set(boc3,new BigDecimal("20000.00"));
-
-        String c="Negative(¥10000.00) - ¥20000.00 (¥10000.00 Overspent)";
-        assertEquals(c,boc3.toString());
 
     }
-
-
-
 }

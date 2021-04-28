@@ -59,7 +59,6 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/23 16:06
-
     // test the time
     @ParameterizedTest
     @CsvSource({
@@ -68,6 +67,7 @@ class BoCTransactionTest {
             "Go to Apple store and buy an apple pen, 998, 3",
             ", 998, 3",
             "Buy an apple pen, 998, -3",
+            "Buy an apple pen, , -3",
             "Buy an apple pen, 0, 3",
             "Buy an apple pen, -998, -3"
     })
@@ -103,6 +103,17 @@ class BoCTransactionTest {
         }
         else if (tValue.compareTo(new BigDecimal(0)) < 1 ) { // Test if transaction value is <= 0
             try {
+                BoCTransaction boc = new BoCTransaction(tName, null, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException e) {
+                isCaught = 1;
+                assertThat(e.getMessage(), containsString("Transaction budget should not be null."));
+            }
+        }
+        // Last modified: 4/28 1:48 by Zixiang Hu
+        // Modification: Add the case of tValue == null
+        else if (tValue == null ) { // Test if transaction value is null
+            try {
                 BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
                 fail("No exception thrown.");
             } catch (IllegalArgumentException e) {
@@ -127,7 +138,6 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/19 20:24
-
     @Disabled // Older version, so we disabled it
     // Test the time
     @ParameterizedTest
@@ -214,7 +224,6 @@ class BoCTransactionTest {
 
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/18
-
     @ParameterizedTest
     @CsvSource({
             "Yingxiao Huo, Yingxiao Huo",
@@ -227,6 +236,8 @@ class BoCTransactionTest {
         final BoCTransaction Test_getter = new BoCTransaction();
         final Field field_getter = Test_getter.getClass().getDeclaredField("transactionName");
         field_getter.setAccessible(true);
+
+        //If name is null, program should throw a exception with a message "Name is not set."
         if(name == null){
             try {
                 field_getter.set(Test_getter, name);
@@ -237,6 +248,8 @@ class BoCTransactionTest {
             }
         }
         else {
+            //if user enter a name longer than 25 characters,
+            // program should throw a exception with a message "Name can not longer than 25 characters."
             if(name.length() > 25){
                 try {
                     field_getter.set(Test_getter, name);
@@ -247,6 +260,7 @@ class BoCTransactionTest {
                 }
             }
             else {
+                //Normal case.
                 field_getter.set(Test_getter, name);
                 final String result = Test_getter.transactionName();
                 assertEquals(expection, result);
@@ -257,7 +271,6 @@ class BoCTransactionTest {
 
     // Author: Leshan Tan (sqylt2)
     // Last modified: 2021/4/21
-
     @ParameterizedTest
     @CsvFileSource(resources = {"transactionValue.csv"}) // get the input  and output source
     @DisplayName("Test for transaction value getter")
@@ -273,7 +286,6 @@ class BoCTransactionTest {
 
     // Author: Ziyi Wang (scyzw10)
     // Last modified: 2021/4/18 21:15
-
     @ParameterizedTest
     @ValueSource(ints = {0,1,5,100})
     @DisplayName("Test for transaction category getter")
@@ -286,7 +298,6 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/21 22:33
-
     @ParameterizedTest
     @CsvSource({
             "Buy a bunch of flower, 20, 4",
@@ -303,17 +314,22 @@ class BoCTransactionTest {
 
     // Author: Yicun Duan (scyyd3)
     // Last modified: 2021/4/25 23:36
-
+    // Reason: (1) Test whether the program will generate expected output, supposing the valid input is given.
+    //         (2) Test whether the program could truncate the input string when it is too long.
+    //         (3) Test whether the program could deal with invalid input.
+    //         (4) Test whether the program could inhibit setting name twice.
     @ParameterizedTest
     @CsvFileSource(resources = {"setTransactionNameTest.csv"})
     @DisplayName("Test for transaction name setter")
     void setTransactionName(String transName, BigDecimal transValue, int transCate, String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
         if (transName == null && transValue == null && transCate == 0) {
+            //use default constructor
             final BoCTransaction test_instance = new BoCTransaction();
                 try{
                     test_instance.setTransactionName(giveName);
                 }catch (Exception e) {
                     if (e instanceof IllegalArgumentException) {
+                        //if the input name is invalid, it should throw out an exception
                         assertEquals("The transactionName is invalid.", e.getMessage(), "The message in IllegalArgumentException is not expected.");
                         return;
                     } else {
@@ -321,6 +337,8 @@ class BoCTransactionTest {
                     }
                 }
 
+                //test whether the program will generate expected output, supposing the valid input is given
+                //test whether the program could truncate the input string when it is too long
                 final Field field = test_instance.getClass().getDeclaredField("transactionName");
                 field.setAccessible(true);
                 assertEquals(expectName, field.get(test_instance), "Transaction name doesn't match.");
@@ -328,6 +346,7 @@ class BoCTransactionTest {
             return;
             }
 
+        //test whether the program could inhibit setting name twice
         final BoCTransaction test_instance = new BoCTransaction(transName, transValue, transCate);
 
         UnsupportedOperationException e = assertThrows(UnsupportedOperationException.class, ()->{test_instance.setTransactionName(giveName);});
@@ -335,10 +354,9 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
-
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueInt.csv"})
     void setTransactionValue1(int input,int expected) throws NoSuchFieldException, IllegalAccessException {
@@ -355,10 +373,9 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
-
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_setTransactionValueDouble.csv"})
     void setTransactionValue2(double input1,String input2,int expected) throws NoSuchFieldException, IllegalAccessException {
@@ -373,12 +390,11 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: LinCHEN (biylc2)
     // Last modified: 2021/04/18
-
-     @ParameterizedTest
-     @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
+    @Disabled
+    @ParameterizedTest
+    @CsvFileSource(resources = {"trans_setTransactionValueString.csv"})
     void setTransactionValue3(String input1,int expected) throws NoSuchFieldException, IllegalAccessException {
 
            try {
@@ -399,9 +415,8 @@ class BoCTransactionTest {
     }
 
 
-    // Author: LinCHEN (biylc2)
+    // Author: Lin Chen (biylc2)
     // Last modified: 2021/04/23
-
     @ParameterizedTest
     @CsvFileSource(resources = "trans_setTransactionValueString.csv")
     @DisplayName("Test for transaction value setter")
@@ -502,14 +517,13 @@ class BoCTransactionTest {
 
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/18 21:49
-
     @ParameterizedTest
     @CsvSource({"-100", "-50", "-25", "0", "1", "2", "3"})
     @DisplayName("Test for transaction category setter")
     void setTransactionCategory(int tCat) {
-        BoCTransaction defaultBoc = new BoCTransaction();
+        BoCTransaction defaultBoc = new BoCTransaction(); // Create an new object with no parameters input
         BoCTransaction parameterizedBoc = new BoCTransaction("Buy an apple pen", new BigDecimal("1000"), 3);
-        if (tCat <= 0) {
+        if (tCat <= 0) { // Invalid input, if less than or equal to zero
             try {
                 parameterizedBoc.setTransactionCategory(tCat);
                 fail("No exception thrown");
@@ -523,10 +537,9 @@ class BoCTransactionTest {
     }
 
 
-    @Disabled
     // Author: Zixiang Hu (scyzh6)
     // Last modified: 2021/4/25 22:03
-
+    @Disabled
     // Disabled this method because the time should not be set after the transaction is created
     @Test
     void setTransactionTime() {
@@ -535,37 +548,47 @@ class BoCTransactionTest {
 
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/21 16:44
-
     @ParameterizedTest
     @CsvFileSource(resources = {"/toStringTest.csv"})
     @DisplayName("Test for method toString")
     void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
-        final BoCTransaction Test_toString = new BoCTransaction();
-        final Field test1 = Test_toString.getClass().getDeclaredField("transactionName");
-        final Field test2 = Test_toString.getClass().getDeclaredField("transactionValue");
+        final BoCTransaction testToString = new BoCTransaction();
+        final Date transDate = new Date();
+
+        //Set 3 field of transaction name, value and time, set accessible is true.
+        final Field test1 = testToString.getClass().getDeclaredField("transactionName");
+        final Field test2 = testToString.getClass().getDeclaredField("transactionValue");
+        final Field test3 = testToString.getClass().getDeclaredField("transactionTime");
         test1.setAccessible(true);
         test2.setAccessible(true);
+        test3.setAccessible(true);
 
+        //Transaction value can not be null.
         if (transValue == null){
             try{
-                test1.set(Test_toString, transName);
-                test2.set(Test_toString, null);
-                final String foo = Test_toString.toString();
+                test1.set(testToString, transName);
+                test2.set(testToString, null);
+                test3.set(testToString, transDate);
+                final String foo = testToString.toString();
             }catch (Exception ex1){
                 assertEquals(resultStr, ex1.getMessage());
             }
         }
         else{
+            //Transaction value should be a positive number.
             if (Integer.parseInt(transValue) >= 0) {
-                test1.set(Test_toString, transName);
-                test2.set(Test_toString, new BigDecimal(transValue));
-                final String foo = Test_toString.toString();
-                assertEquals(resultStr, foo);
+                test1.set(testToString, transName);
+                test2.set(testToString, new BigDecimal(transValue));
+                test3.set(testToString, transDate);
+                final String foo = testToString.toString();
+                assertEquals(resultStr + " Date: " + transDate, foo);
             } else {
+                //To test when transaction value is a negative number.
                 try {
-                    test1.set(Test_toString, transName);
-                    test2.set(Test_toString, new BigDecimal(transValue));
-                    final String foo = Test_toString.toString();
+                    test1.set(testToString, transName);
+                    test2.set(testToString, new BigDecimal(transValue));
+                    test3.set(testToString, transDate);
+                    final String foo = testToString.toString();
                     fail();
                 }catch (Exception ex){
                     assertEquals(resultStr, ex.getMessage());
@@ -575,9 +598,8 @@ class BoCTransactionTest {
     }
 
 
-    // Author: LinCHEN (biylc2)
+    // Author: Lin Chen (biylc2)
     // Last Modify: 2021/04/24 14:37
-
     @Test
     @DisplayName("Test for method isComplete")
     void isCompleteTest() throws NoSuchFieldException, IllegalAccessException {

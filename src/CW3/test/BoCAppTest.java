@@ -12,9 +12,13 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BoCAppTest {
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/25 19:52
+
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/28 00:58
+
+    //set "ln" as the default line separator
     private static String ln = System.lineSeparator();
+    //previously set some frequently used strings
     private static String appMenu = ln + "What do you want to do?" + ln
             + " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
             + ln;
@@ -117,8 +121,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Lin Chen(biylc2)
-    //Last Modify:2021/04/25 20:27
+    // Author: Lin Chen (biylc2)
+    // Last Modify:2021/04/25 20:27
     @DisplayName("Test for list transactions")
     @Test
     void listTransactions() {
@@ -128,22 +132,31 @@ class BoCAppTest {
 
     //Author: Yicun Duan (scyyd3)
     //Last Modified: 2021/4/23 20:50
+    //Reason: Test whether this function could generate an expected outcome.
     @Test
     void categoryOverview() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+        //build a new outstream
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        //reset the outstream
         System.setOut(new PrintStream(outContent));
 
+        //use default constructor
         BoCApp test_instance = new BoCApp();
 
+        //get access to private method
         Method m_categoryOverview = test_instance.getClass().getDeclaredMethod("CategoryOverview");
         m_categoryOverview.setAccessible(true);
 
+        //call the private function
         m_categoryOverview.invoke(test_instance);
 
+        //transfer the outContent to string
         String result = outContent.toString();
 
+        //reset the system outstream
         System.setOut(System.out);
 
+        //check whether outcome is expected.
         assertEquals("1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + ln +
                 "2) [Bills](Budget: ¥120.00) - ¥112.99 (¥7.01 Remaining)" + ln +
                 "3) [Groceries](Budget: ¥75.00) - ¥31.00 (¥44.00 Remaining)" + ln +
@@ -152,8 +165,8 @@ class BoCAppTest {
     }
 
 
-    //Author: Leshan Tan (sqylt2)
-    //Last Modified: 2021/4/26 11:11
+    // Author: Leshan Tan (sqylt2)
+    // Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, -1}) // the input values
@@ -191,16 +204,17 @@ class BoCAppTest {
 
     }
 
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/25 19:51
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/28 00:56
     @Disabled
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
     @ValueSource(ints = {1, 2})
+    //choose the test case
     void ChangeTransactionCategory(int testNumber) {
-
         switch (testNumber) {
             case 1:
+                //put in the designed input and expected outcome
                 testOutcome("C\n1\n4\nC\n3\n1\nC\n6\n3\nX\n",
                         defaultCategoryOverview
                                 + appMenu
@@ -324,25 +338,32 @@ class BoCAppTest {
     }
 
 
-    //Author: Yicun Duan
-    //Last Modified: 2021/4/25 19:55
+    //Author: Yicun Duan (scyyd3)
+    //Last Modified: 2021/4/28 00:09
     private void testOutcome(String designedInput, String expectedOutcome) {
 
+        //reset the input and output stream
+        //this step is to simulate user input and get output from screen
         InputStream alterInput = new ByteArrayInputStream(designedInput.getBytes());
         OutputStream outContent = new ByteArrayOutputStream();
         PrintStream outPrint = new PrintStream(outContent);
-
         System.setIn(alterInput);
         System.setOut(outPrint);
 
+        //call the main function
         BoCApp.main(null);
 
+        //reset the input and output stream to default
         System.setOut(System.out);
         System.setIn(System.in);
 
+        //check whether outcome is expected
         assertEquals(expectedOutcome, outContent.toString(), "The outcome is unexpected.");
     }
 
+    //Author: Yingxiao Huo
+    //Last modify: 2021/4/28 15:12
+    @DisplayName("Test for AddCategory")
     @ParameterizedTest
     @CsvSource({
             "'N\nCW3 is so easy\n100\n',1",
@@ -352,20 +373,22 @@ class BoCAppTest {
             "'N\nRent\n999\n',4",
             "'N\n123451234512345123\n100', 5"
     })
+    //Because if use reflect to invoke private method, input and output stream is difficult to handle, so this test use main\
+    //Method to test AddCategory method.
     void testAddCategory(String input, int testNum) {
-        String defaultCategory = "1) [Unknown](Budget: ¥0.00) - ¥850.00 (¥850.00 Overspent)" + "\r\n" +
-                "2) [Bills](Budget: ¥120.0) - ¥112.99 (¥7.01 Remaining)" + "\r\n" +
-                "3) [Groceries](Budget: ¥75.0) - ¥31.00 (¥44.00 Remaining)" + "\r\n" +
-                "4) [Social](Budget: ¥100.0) - ¥22.49 (¥77.51 Remaining)" + "\r\n";
+        //String which made up expectation.
         String option_ch1 = "\n" + "What do you want to do?" + "\n" +
                 " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
         String Input_string = "What is the title of the category?" + "\r\n" +
                 "What is the budget for this category?" + "\r\n";
-        ByteArrayOutputStream output1 = new ByteArrayOutputStream();
 
+        ByteArrayOutputStream output1 = new ByteArrayOutputStream();
         InputStream input1 = new ByteArrayInputStream(input.getBytes());
 
         if (testNum == 1) {
+            //Normal case, to test if the method can run normally.
+
+            //Because there are two kinds of line separators which is "\r\n" and "\n", the expectation can not just use ln.
             String expectation = "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n" +
@@ -380,6 +403,7 @@ class BoCAppTest {
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n";
 
+            //Call main method to test.
             System.setIn(input1);
             System.setOut(new PrintStream(output1));
             BoCApp.main(null);
@@ -388,7 +412,7 @@ class BoCAppTest {
             String result = output1.toString();
             assertEquals(expectation, result);
         } else if (testNum == 2) {
-
+            //To test when user enter a name which is aalready exist.
             System.setIn(input1);
             System.setOut(new PrintStream(output1));
             BoCApp.main(null);
@@ -398,6 +422,8 @@ class BoCAppTest {
             assertEquals(option_ch1 +"What is the title of the category?\r\n" +  "This category is already exist." + option_ch1, result);
 
         } else if (testNum == 3) {
+            //To test when user enter a invalid budget:
+            //negative number and a string.
             System.setIn(input1);
             System.setOut(new PrintStream(output1));
             BoCApp.main(null);
@@ -407,6 +433,7 @@ class BoCAppTest {
             assertEquals(option_ch1  + Input_string + "Budget only can be positive number." + option_ch1, result);
 
         } else if (testNum == 4) {
+            //Normal case, practical significance.
             String expectation4 = "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n" +
@@ -430,6 +457,7 @@ class BoCAppTest {
             assertEquals(expectation4, result);
         }
         else if(testNum == 5){
+            //To test when user enter a name longer than 15 characters.
             String expectation5 = "\n" +
                     "What do you want to do?" + "\n" +
                     " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it" + "\r\n" +
@@ -451,7 +479,6 @@ class BoCAppTest {
             String result = output1.toString();
             assertEquals(expectation5, result);
         }
-
     }
 }
 
