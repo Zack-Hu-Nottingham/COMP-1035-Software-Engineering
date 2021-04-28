@@ -397,7 +397,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 9-2]**||||||
 |**[TS-Category 9-3]**||||||
 |**[TS-Category 10-1]**||||||
-|**[TS-Category 11-1]**|**[Result]:** `Pass` **[Time]:**<br>2021/04/23 19:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/24 20:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-|-|
+|**[TS-Category 11-1]**|**[Result]:** `Pass` **[Time]:**<br>2021/04/23 19:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/24 20:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|-||
 |**[TS-Category 12-1]**||||||
 |**[TS-Category 12-2]**||||||
 |**[TS-Category 12-3]**||||||
