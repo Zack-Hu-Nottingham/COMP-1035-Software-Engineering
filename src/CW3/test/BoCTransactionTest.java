@@ -37,7 +37,7 @@ class BoCTransactionTest {
     }
 
 
-    // old version of testing default constructor, disabled
+    // old version of testing default constructor, have errors therefore disabled
     @Disabled
     @Test
     void BoCTransactionDisabled() throws NoSuchFieldException, IllegalAccessException{
@@ -270,7 +270,7 @@ class BoCTransactionTest {
 
 
     // Author: Leshan Tan (sqylt2)
-    // Last modified: 2021/4/21
+    // Last modified: 2021/4/21 14:20
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_transactionValue.csv"}) // get the input  and output source
     @DisplayName("Test for transaction value getter")
