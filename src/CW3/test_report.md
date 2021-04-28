@@ -293,8 +293,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 2-4]**|||||
 |**[TS-Transaction 2-5]**|||||
 |**[TS-Transaction 2-6]**|||||
-|**[TS-Transaction 3-1]**|[Validation Test]|Yingxiao Huo|Yingxiao Huo||
-|**[TS-Transaction 3-2]**|[Defect Test]|null|name is not set.||
+|**[TS-Transaction 3-1]**|**[Validation Test]:**<br>Test transaction name|Yingxiao Huo|Yingxiao Huo||
+|**[TS-Transaction 3-2]**|**[Defect Test]:**<br>test when transaction name is null|null|name is not set.||
 |**[TS-Transaction 4-1]**|||||
 |**[TS-Transaction 5-1]**|||||
 |**[TS-Transaction 6-1]**|||||
