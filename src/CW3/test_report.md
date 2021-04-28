@@ -260,11 +260,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 | Importance Level |   Importance   | Description                                                  | Example                                                      |
 | :--------------: | :------------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|        1         |   **`Low`**    | whether the program provides smooth **user experience**      | Spelling errors in prompt messages.                          |
-|        2         | **`Moderate`** | whther the program properly handles **rare exceptional usage** | A transaction value of 3E9.                                  |
-|        3         |  **`Major`**   | whether the program properly handles **common exceptional usage** | A negative transaction value.                                |
-|        4         | **`Critical`** | whether the program processes **normal usage** as expected   | A normal transaction record.                                 |
-|        5         |  **`Fatal`**   | whether the program properly handles exceptions which may **mess up user data** | When user edits a transaction, another transaction is actually modified. |
+|        1         |   **`Low`**    | whether the program could interact with user in a **human-friendly** way  | e.g. Confusing prompt message                          |
+|        2         | **`Moderate`** | whther the program is able to get through some **few-reach cases** | e.g. The input is BigDecimal("0110101010")                                  |
+|        3         |  **`Major`**   | whether the program could deal with **common exceptions** | e.g. A negative transaction value                                |
+|        4         | **`Critical`** | whether the program meets users' **basic requirements**   | e.g. A normal transaction record                                 |
+|        5         |  **`Fatal`**   | whether the program hinters the **ridicular outcome** | e.g. When user changes the category of a transaction, the expense of its original is unchanged. |
 
 `Note that "mess up user data" is of highest importance because this is a FINANCIAL app where wrong data is severer than program crash.`
 
