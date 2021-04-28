@@ -22,8 +22,8 @@ Report here, by the end of the assignment, how the team has managed the project,
         * **Ziyi Wang** (20215785 @scyzw10)
         * **Zixiang Hu** (20215538 @scyzh6)
     * `Team C` 
-        * **Yicun Duan** ()
-        * **Yingxiao Huo** ()
+        * **Yicun Duan** (20216268 @scyyd3)
+        * **Yingxiao Huo** (20216910 @scyyh9)
 
 * Teams for **BoCTransaction / BoCApp class**
 
@@ -31,11 +31,11 @@ Report here, by the end of the assignment, how the team has managed the project,
 
     * `Team A` 
         * **Lin Chen** (20215609 @biylc2)
-        * **Yicun Duan** ()
+        * **Yicun Duan** (20216268 @scyyd3)
     * `Team B` 
         * **Ziyi Wang** (20215785 @scyzw10)
         * **Leshan Tan** (20215578 @sqylt2)
-        * **Yingxiao Huo**()
+        * **Yingxiao Huo**(20216910 @scyyh9)
 
 * Tasks:
 
