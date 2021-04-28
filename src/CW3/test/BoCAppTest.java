@@ -318,10 +318,9 @@ class BoCAppTest {
 
         switch (input) {
             case 1:
-                testOutcome("A\nElectricity Bill\n-2.0\naa\n9.00\n2\nX\n",
+                testOutcome("A\nElectricity Bill\n9.00\n2\nX\n",
                         appMenu + invitesTitle + invitesValue +
-                                "Invalid number. The value must bigger than zero." + ln + invitesValue +
-                                invitesVaild + invitesValue + defaultCategoryOverview + invitesCategory +
+                                defaultCategoryOverview + invitesCategory +
                                 "[Transaction added]" + ln + "[Electricity Bill](¥9.00) was added to [Bills]" +
                                 ln + appMenu + appExit);
                 break;
