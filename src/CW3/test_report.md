@@ -264,7 +264,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |        2         | **`Moderate`** | whther the program is able to get through some **few-reach cases** | e.g. The input is BigDecimal("0110101010")                                  |
 |        3         |  **`Major`**   | whether the program could deal with **common exceptions** | e.g. A negative transaction value                                |
 |        4         | **`Critical`** | whether the program meets users' **basic requirements**   | e.g. A normal transaction record                                 |
-|        5         |  **`Fatal`**   | whether the program hinters the **ridicular outcome** | e.g. When user changes the category of a transaction, the expense of its original is unchanged. |
+|        5         |  **`Fatal`**   | whether the program hinters the **ridicular outcome** | e.g. When user changes the category of a transaction, the expense of its original category is unchanged. |
 
 `Note that "mess up user data" is of highest importance because this is a FINANCIAL app where wrong data is severer than program crash.`
 
