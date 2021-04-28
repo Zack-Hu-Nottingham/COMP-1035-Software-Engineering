@@ -93,8 +93,6 @@ class BoCAppTest {
                 testOutcome("O\nT\n1\nX\n", appMenu + defaultCategoryOverview +
                         appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
                         "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu + appExit);
-                        //"Command not recognised" + ln + appMenu +
-
                 break;
             case 2:
                 testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.0000\n5\nT\nO\nC\n8\n1\nT\nO\nrrr\nX\n",
