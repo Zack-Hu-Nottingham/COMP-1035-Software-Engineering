@@ -272,7 +272,7 @@ class BoCTransactionTest {
     // Author: Leshan Tan (sqylt2)
     // Last modified: 2021/4/21
     @ParameterizedTest
-    @CsvFileSource(resources = {"transactionValue.csv"}) // get the input  and output source
+    @CsvFileSource(resources = {"trans_transactionValue.csv"}) // get the input  and output source
     @DisplayName("Test for transaction value getter")
     void transactionValue(String input, String expectation) throws  NoSuchFieldException, IllegalAccessException{
         final BoCTransaction boc = new BoCTransaction(); // create an instance using default constructor
@@ -319,7 +319,7 @@ class BoCTransactionTest {
     //         (3) Test whether the program could deal with invalid input.
     //         (4) Test whether the program could inhibit setting name twice.
     @ParameterizedTest
-    @CsvFileSource(resources = {"setTransactionNameTest.csv"})
+    @CsvFileSource(resources = {"trans_setTransactionName.csv"})
     @DisplayName("Test for transaction name setter")
     void setTransactionName(String transName, BigDecimal transValue, int transCate, String giveName, String expectName) throws NoSuchFieldException, IllegalAccessException {
         if (transName == null && transValue == null && transCate == 0) {
@@ -354,7 +354,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: LinCHEN (biylc2)
+    // Author: Lin Chen (biylc2)
     // Last modified: 2021/04/18
     @Disabled
     @ParameterizedTest
@@ -373,7 +373,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: LinCHEN (biylc2)
+    // Author: Lin Chen (biylc2)
     // Last modified: 2021/04/18
     @Disabled
     @ParameterizedTest
@@ -390,7 +390,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: LinCHEN (biylc2)
+    // Author: Lin Chen (biylc2)
     // Last modified: 2021/04/18
     @Disabled
     @ParameterizedTest
@@ -549,7 +549,7 @@ class BoCTransactionTest {
     // Author: Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/21 16:44
     @ParameterizedTest
-    @CsvFileSource(resources = {"/toStringTest.csv"})
+    @CsvFileSource(resources = {"/trans_toString.csv"})
     @DisplayName("Test for method toString")
     void testToString(String transName, String transValue, String resultStr) throws NoSuchFieldException, IllegalAccessException {
         final BoCTransaction testToString = new BoCTransaction();
