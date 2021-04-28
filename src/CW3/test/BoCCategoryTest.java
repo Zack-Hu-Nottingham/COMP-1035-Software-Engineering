@@ -421,7 +421,7 @@ class BoCCategoryTest {
     //Last Modified: 2021/4/24 15:27
     //Reason: Find whether the returned remaining budget is correct.
     @ParameterizedTest
-    @CsvFileSource(resources = {"/cate_getRemainingBudget.csv"})
+    @MethodSource("parameterGenerator")
     @DisplayName("Tests for get remaining budget")
     void getRemainingBudget(BigDecimal budget, BigDecimal spend, BigDecimal expectRemain) throws NoSuchFieldException, IllegalAccessException {
         final BoCCategory remainTest =  new BoCCategory();
@@ -438,6 +438,12 @@ class BoCCategoryTest {
 
         assertEquals(result, expectRemain);
 
+    }
+
+    private static Stream<Arguments> parameterGenerator() {
+        return Stream.of(Arguments.of(new BigDecimal("100"), new BigDecimal("99"), new BigDecimal("1")),
+                         Arguments.of(new BigDecimal("100000000000"), new BigDecimal("100000000000"), new BigDecimal("0")),
+                         Arguments.of(new BigDecimal("3.1415926"), new BigDecimal("4.1415926"), new BigDecimal("-1.0000000")));
     }
 
 
