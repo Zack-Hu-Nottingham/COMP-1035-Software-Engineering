@@ -19,7 +19,7 @@ class BoCAppTest {
     //set "ln" as the default line separator
     private static String ln = System.lineSeparator();
     //previously set some frequently used strings
-    private static String appMenu = ln + "What do you want to do?" + ln
+    private static String appMenu = "\n" + "What do you want to do?" + "\n"
             + " O = [O]verview, T = List All [T]ransactions, [num] = Show Category [num], C = [C]hange Transaction Category, A = [A]dd Transaction, N = [N]ew Category, X = E[x]it"
             + ln;
     private static String appExit = "Goodbye!" + ln;
