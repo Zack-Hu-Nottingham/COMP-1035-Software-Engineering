@@ -115,14 +115,56 @@ public class BoCApp {
 		}
 	}
 
+	// Author: Ziyi Wang(scyzw10)
+	// Last Modified: 2021/4/28 14:11
+	// Reason:
 	private static void AddTransaction(Scanner in) {
 		System.out.println("What is the title of the transaction?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
 		System.out.println("What is the value of the transaction?");
-		BigDecimal tvalue = new BigDecimal(in.nextLine());
-		//UserTransactions.add(new BoCTransaction(title, tvalue, 0));
-		System.out.println("[Transaction added]");
+		BigDecimal tvalue;	// store the value of the transaction
+		while (true){
+			try {
+				tvalue = new BigDecimal(in.nextLine());		// try to convert the string -> BigDecimal
+				while (tvalue.compareTo(new BigDecimal("0.00")) == -1 ){
+					System.out.println("Invalid number. The value must bigger than zero.");
+					System.out.println("What is the value of the transaction?");
+					tvalue = new BigDecimal(in.nextLine());
+				}
+				break;
+			}catch(NumberFormatException e){
+				System.out.println("Invalid input. Please enter a valid number.");
+				System.out.println("What is the value of the transaction?");
+			}
+		}
+		CategoryOverview();
+		System.out.println("Which category do you want to add?");
+		int tCat;
+		while (true){
+			try{
+				tCat = Integer.parseInt(in.nextLine());
+				while (tCat > UserCategories.size() || tCat < 0 ){
+					System.out.println("Invalid number. Category not exist.");
+					CategoryOverview();
+					System.out.println("Which category do you want to add?");
+					tCat = Integer.parseInt(in.nextLine());
+				}
+				break;
+			}catch (NumberFormatException exc){
+				System.out.println("Invalid input. Please enter a valid number.");
+				CategoryOverview();
+				System.out.println("Which category do you want to add?");
+			}
+		}
+		UserTransactions.add(new BoCTransaction(title, tvalue, tCat-1));
+		BoCCategory tCategory = UserCategories.get(tCat-1);
+		tCategory.addExpense(tvalue);
+		UserCategories.set(tCat-1, tCategory);
+
+		// original: System.out.println("[Transaction added]");
+		System.out.println("[" + title + "](¥" + tvalue.toString() + ") was added to [" +
+		UserCategories.get(tCat-1).CategoryName() + "]");
 	}
 
 	private static void ChangeTransactionCategory(Scanner in) {

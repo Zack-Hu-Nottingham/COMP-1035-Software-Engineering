@@ -93,15 +93,16 @@ class BoCAppTest {
                 testOutcome("O\nT\n1\nrrr\n12\nX\n", appMenu + defaultCategoryOverview +
                         appMenu + defaultTransactionOverview + appMenu + "2) Phone Bill (Bills) - ¥37.99" + ln +
                         "3) Electricity Bill (Bills) - ¥75.00" + ln + appMenu +
-                        "Something went wrong: java.lang.NumberFormatException: For input string: "+ "\"rrr\"" + ln + ln +
-                        appMenu + "Cannot find transactions with category 12" + ln + appMenu + appExit);
+                        "Command not recognised" + ln + appMenu +
+                        "Cannot find transactions with category 12" + ln + appMenu + appExit);
                 break;
             case 2:
                 testOutcome("T\nN\nFood\n100.00\nA\nBreakfast\n5.00\n5\nT\nO\nC\n8\n1\nT\nO\nX\n",
                         appMenu + defaultTransactionOverview + appMenu +    // list Transaction overview
                                 inviteAddCategory + "[Category added]" + ln + defaultCategoryOverview +  // new category -> add category first and print the new category overview
                                 "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" + ln + appMenu +       // add transaction
-                                inviteAddTransaction + "Which category do you want to add?" + ln + "[Breakfast](¥5.00) was added to [Food]" +
+                                inviteAddTransaction + defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥0.00 (¥100.00 Remaining)" +
+                                ln + "Which category do you want to add?" + ln + "[Breakfast](¥5.00) was added to [Food]" +
                                 ln + appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +    // check the new transaction list after adding
                                 appMenu + defaultCategoryOverview + "5) [Food](Budget: ¥100.00) - ¥5.00 (¥95.00 Remaining)" + ln +  //check the new category list after adding
                                 appMenu + defaultTransactionOverview + "8) Breakfast (Food) - ¥5.00" + ln +     // change the category -> first print the transaction list
@@ -305,7 +306,7 @@ class BoCAppTest {
         String invitesTitle = "What is the title of the transaction?" + ln;
         String invitesValue = "What is the value of the transaction?" + ln;
         String invitesCategory = "Which category do you want to add?" + ln;
-        String invitesVaild = "Invalid input. Please enter a valid number" + ln;
+        String invitesVaild = "Invalid input. Please enter a valid number." + ln;
 
         switch (input) {
             case 1:
@@ -316,12 +317,14 @@ class BoCAppTest {
                                 appMenu + appExit);
                 break;
             case 2:
-                testOutcome("A\nWater Bill\ndje\n9.00\nrr\n-1\n100\n2\nX\n",
+                testOutcome("A\nWater Bill\naaa\n-1.0\n9.00\nrr\n-1\n100\n2\nX\n",
                         appMenu + invitesTitle + invitesValue +
-                                invitesVaild + invitesValue + defaultCategoryOverview +
+                                invitesVaild + invitesValue + "Invalid number. The value must bigger than zero." +
+                                ln + invitesValue +defaultCategoryOverview +
                                 invitesCategory + invitesVaild + defaultCategoryOverview +
-                                invitesCategory + invitesVaild + defaultCategoryOverview +
-                                invitesCategory + "Invalid number. Category not exist" + ln
+                                invitesCategory + "Invalid number. Category not exist." + ln +
+                                defaultCategoryOverview + invitesCategory +
+                                "Invalid number. Category not exist." + ln
                                 + defaultCategoryOverview + invitesCategory +
                                 "[Water Bill](¥9.00) was added to [Bills]" + ln + appMenu + appExit);
                 break;
