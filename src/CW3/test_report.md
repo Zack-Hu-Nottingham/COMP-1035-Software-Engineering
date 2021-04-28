@@ -293,8 +293,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 2-4]**|||||
 |**[TS-Transaction 2-5]**|||||
 |**[TS-Transaction 2-6]**|||||
-|**[TS-Transaction 3-1]**|[Validation Test]|Yingxiao Huo|Yingxiao Huo||
-|**[TS-Transaction 3-2]**|[Defect Test]|null|name is not set.||
+|**[TS-Transaction 3-1]**|**[Validation Test]:**<br>Test transaction name|Yingxiao Huo|Yingxiao Huo||
+|**[TS-Transaction 3-2]**|**[Defect Test]:**<br>test when transaction name is null|null|name is not set.||
 |**[TS-Transaction 4-1]**|**[Validation Test]:**<br>Test the transactionValue() with default constructor| <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> | <table border="1"><tr><th>TransactionValue: </th></tr><tr><td>BigDecimal("0.001")</td></tr><tr><td>BigDecimal("1")</td></tr><tr><td>BigDecimal("1.00000")</td></tr><tr><td>BigDecimal("100000")</td></tr><tr><td>BigDecimal("100000.00000")</td></tr><tr><td>BigDecimal("999999999999999")</td></tr><tr><td>BigDecimal("999999999999999.999999999999999")</td></tr><tr><td>BigDecimal("0001010010")</td></tr><tr><td>BigDecimal("3.1415926535E+8")</td></tr><tr><td>BigDecimal("3.1415926535E-8")</td></tr></table> ||
 |**[TS-Transaction 5-1]**|||||
 |**[TS-Transaction 6-1]**|||||
