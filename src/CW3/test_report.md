@@ -270,11 +270,12 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Test Coverage
 
-| Line Coverage | Function Coverage | Condition Coverage |Path Coverage |
+|  | Method Coverage | Line Coverage |
 |----|--|---|-- |
 |BoCCategory| | | |
 |BoCTransaction| | | |
 |BoCApp| | | |
+[Click here to see coverage report]()
 ![testCoverage]()
 
 

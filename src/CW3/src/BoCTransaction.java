@@ -26,18 +26,20 @@ public class BoCTransaction {
 		if (tName == null) {
 			throw new IllegalArgumentException("Transaction name should not be null.");
 		}
+		if(tValue==null){
+			throw new IllegalArgumentException("Transaction budget should not be null.");
+		}
 		if (tName.length() > 25) {
 			throw new IllegalArgumentException("Transaction name should be limited to 25 characters.");
 		}
 		if (tCat < 0) {
 			throw new IllegalArgumentException("Transaction category should not be minus.");
 		}
-		if(tValue==null){
-			throw new IllegalArgumentException("Transaction budget should not be null.");
-		}
-		else if (tValue.compareTo(new BigDecimal(0)) < 1) {
+		if (tValue.compareTo(new BigDecimal(0)) < 1) {
 			throw new IllegalArgumentException("Transaction budget should greater than zero.");
 		}
+
+
 
 		transactionName = tName;
 		transactionValue = tValue;

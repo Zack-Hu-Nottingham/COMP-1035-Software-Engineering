@@ -72,8 +72,24 @@ class BoCTransactionTest {
             "Buy an apple pen, -998, -3"
     })
     @DisplayName("Test for main constructor")
-    void MainBoCTransaction(String tName, BigDecimal tValue, int tCat) {
+    void MainBoCTransaction(String tName, String fortValue, int tCat) {
         int isCaught = 0; // A flag indicate whether exception is caught
+        BigDecimal tValue = null;
+        // Last modified: 4/28 1:48 by Zixiang Hu
+        // Modification: Add the case of tValue == null
+        try {
+            tValue = new BigDecimal(fortValue);
+        } catch (NullPointerException e) { // If catch that transaction budget is null
+            try {
+                BoCTransaction boc = new BoCTransaction(tName, null, tCat);
+                fail("No exception thrown.");
+            } catch (IllegalArgumentException error) {
+                isCaught = 1;
+                assertThat(error.getMessage(), containsString("Transaction budget should not be null."));
+                return;
+            }
+        }
+
         if (tName == null) { // Test if tName input is null
             try {
                 BoCTransaction boc = new BoCTransaction(null, tValue, tCat);
@@ -103,17 +119,6 @@ class BoCTransactionTest {
         }
         else if (tValue.compareTo(new BigDecimal(0)) < 1 ) { // Test if transaction value is <= 0
             try {
-                BoCTransaction boc = new BoCTransaction(tName, null, tCat);
-                fail("No exception thrown.");
-            } catch (IllegalArgumentException e) {
-                isCaught = 1;
-                assertThat(e.getMessage(), containsString("Transaction budget should not be null."));
-            }
-        }
-        // Last modified: 4/28 1:48 by Zixiang Hu
-        // Modification: Add the case of tValue == null
-        else if (tValue == null ) { // Test if transaction value is null
-            try {
                 BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
                 fail("No exception thrown.");
             } catch (IllegalArgumentException e) {
@@ -122,13 +127,16 @@ class BoCTransactionTest {
             }
         }
 
+
+
         if (isCaught == 0) {
             BoCTransaction boc = new BoCTransaction(tName, tValue, tCat);
             Date timeTest = new Date();
             assertNotNull(boc.transactionTime()); // Test if time is created
             assertEquals(boc.transactionTime().getTime(), timeTest.getTime(), 1); // Test whether time is accurate
+            final int tValueResult = tValue.compareTo(boc.transactionValue());
             assertAll("", () -> assertEquals(tName, boc.transactionName()),
-                    () -> assertEquals(tValue.compareTo(boc.transactionValue()), 0) ,
+                    () -> assertEquals(0, tValueResult) ,
                     () -> assertEquals(tCat, boc.transactionCategory())
             ); // Normal test with input
         }
