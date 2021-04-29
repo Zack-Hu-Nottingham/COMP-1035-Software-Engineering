@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoCTransactionTest {
 
-    // Author: Leshan Tan (sqylt2)
+    // Author: Leshan Tan (sqylt2), Lin Chen (biylc2)
     // Last modified: 2021/4/26 22:10
     // latest version of testing default constructor, using assertAll to get all failures
     @Test
@@ -230,7 +230,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Yingxiao Huo (scyyh9)
+    // Author: Yingxiao Huo (scyyh9) , Yicun Duan (scyyd3)
     // Last modified: 2021/4/28 22:13
     @ParameterizedTest
     @CsvSource({
@@ -277,7 +277,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Leshan Tan (sqylt2)
+    // Author: Leshan Tan (sqylt2), Lin Chen (biylc2)
     // Last modified: 2021/4/29 2:33
     @ParameterizedTest
     @CsvFileSource(resources = {"trans_transactionValue.csv"}) // get the input  and output source
@@ -310,7 +310,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Zixiang Hu (scyzh6)
+    // Author: Zixiang Hu (scyzh6), Ziyi Wang (scyzw10)
     // Last modified: 2021/4/21 22:33
     @ParameterizedTest
     @CsvSource({
@@ -326,7 +326,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Yicun Duan (scyyd3)
+    // Author: Yicun Duan (scyyd3), Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/25 23:36
     // Reason: (1) Test whether the program will generate expected output, supposing the valid input is given.
     //         (2) Test whether the program could truncate the input string when it is too long.
@@ -529,7 +529,7 @@ class BoCTransactionTest {
         }
     
 
-    // Author: Zixiang Hu (scyzh6)
+    // Author: Zixiang Hu (scyzh6), Ziyi Wang (scyzw10)
     // Last modified: 2021/4/18 21:49
     @ParameterizedTest
     @CsvSource({"-100", "-50", "-25", "0", "1", "50", "100"})
@@ -560,7 +560,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Yingxiao Huo (scyyh9)
+    // Author: Yingxiao Huo (scyyh9), Yicun Duan (scyyd3)
     // Last modified: 2021/4/21 16:44
     @ParameterizedTest
     @CsvFileSource(resources = {"/trans_toString.csv"})
@@ -612,7 +612,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Lin Chen (biylc2)
+    // Author: Lin Chen (biylc2), Leshan Tan (sqylt2)
     // Last Modify: 2021/04/24 14:37
     @Test
     @DisplayName("Test for method isComplete")

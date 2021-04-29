@@ -168,7 +168,7 @@ class BoCAppTest {
     }
 
 
-    // Author: Leshan Tan (sqylt2)
+    // Author: Leshan Tan (sqylt2), Ziyi Wang (scyzw10)
     // Last Modified: 2021/4/26 11:11
     @DisplayName("Test for ListTransactionsForCategory")
     @ParameterizedTest
@@ -207,7 +207,7 @@ class BoCAppTest {
 
     }
 
-    //Author: Yicun Duan (scyyd3)
+    //Author: Yicun Duan (scyyd3), Lin Chen (biylc2)
     //Last Modified: 2021/4/28 00:56
     @DisplayName("Test for ChangeTransactionCategory")
     @ParameterizedTest
@@ -303,7 +303,7 @@ class BoCAppTest {
     }
 
 
-    // Author: Ziyi Wang (scyzw10)
+    // Author: Ziyi Wang (scyzw10), Leshan Tan (sqylt2)
     // Last modified: 2021/4/26 14；39
     @DisplayName("Test for AddTransaction function.")
     @ParameterizedTest
@@ -338,7 +338,7 @@ class BoCAppTest {
     }
 
 
-    //Author: Yicun Duan (scyyd3)
+    //Author: Yicun Duan (scyyd3), Lin Chen (biylc2)
     //Last Modified: 2021/4/28 00:09
     private void testOutcome(String designedInput, String expectedOutcome) {
 
@@ -361,7 +361,7 @@ class BoCAppTest {
         assertEquals(expectedOutcome, outContent.toString(), "The outcome is unexpected.");
     }
 
-    //Author: Yingxiao Huo
+    //Author: Yingxiao Huo (scyyh9), Leshan Tan (sqylt2)
     //Last modify: 2021/4/28 15:12
     @DisplayName("Test for AddCategory")
     @ParameterizedTest

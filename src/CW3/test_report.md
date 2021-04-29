@@ -198,7 +198,7 @@ Report here, by the end of the assignment, how the team has managed the project,
   * Unique IDs are assign to each test plan and test log
 
     **Format**:
-    * `TS`-test
+    * `TS` - test, `IN`- integration test
     * Class name
     * `The number of the subtest according to the requirements` - `its test case number`.
 
@@ -283,6 +283,8 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ## Test Plan and Test Log
 
+***Note:*** 
+- In the Test Log's Modification column, the character in \[Content ()\] have three options: M stands for modification, A stands for addition, D stands for deletion
 
 ### *Class:* `BoCTransaction`
 ### **Test Plan**

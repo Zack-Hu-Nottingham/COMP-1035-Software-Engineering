@@ -27,7 +27,7 @@ class BoCCategoryTest {
         field.set(instance,0);
     }
 
-    // Author: Leshan Tan (sqylt2)
+    // Author: Leshan Tan (sqylt2), Yingxiao Huo (scyyh9)
     // Last Modified: 2021/4/28 19:43
     @Test
     @DisplayName("Test for default constructor")
@@ -59,7 +59,7 @@ class BoCCategoryTest {
     }
 
 
-    // Author: Ziyi Wang (scyzw10)
+    // Author: Ziyi Wang (scyzw10), Leshan Tan (sqylt2)
     // Last Modified: 2021/4/24 23:03
     @ParameterizedTest
     @CsvSource({"test1","test2","test3","testWithMoreThan15Chars"})
@@ -93,7 +93,7 @@ class BoCCategoryTest {
     }
 
 
-    // Author: Yingxiao Huo (scyyh9)
+    // Author: Yingxiao Huo (scyyh9), Leshan Tan (sqylt2)
     // Last Modified time: 2021/4/21 11:23
     @ParameterizedTest
     @CsvFileSource(resources = {"/cate_categoryNameGetter.csv"})
@@ -134,7 +134,7 @@ class BoCCategoryTest {
         }
     }
 
-    //Author: Yicun Duan (scyyd3)
+    //Author: Yicun Duan (scyyd3), Lin Chen(biylc2)
     //Last Modified: 2021/4/28 01:17
     //Reason: (1) Check whether the returned budget is expected.
     //        (2) Check whether the type and format of the returned budget is correct.
@@ -159,7 +159,7 @@ class BoCCategoryTest {
     }
 
 
-    // Author: Leshan Tan (sqylt2)
+    // Author: Leshan Tan (sqylt2), Ziyi Wang (scyzw10)
     // Last Modified: 2021/4/23 13:15
     @Test
     @DisplayName("Test for category spend getter")
@@ -182,7 +182,7 @@ class BoCCategoryTest {
     }
 
 
-    //author: Yingxiao Huo (scyyh9)
+    //author: Yingxiao Huo (scyyh9), Ziyi Wang (scyzw10)
     //Last modified time: 2021/4/21
     @ParameterizedTest
     @CsvFileSource(resources = {"/cate_categoryNameSetter.csv"})
@@ -222,7 +222,7 @@ class BoCCategoryTest {
     }
 
 
-    // Author: Ziyi Wang (scyzw10)
+    // Author: Ziyi Wang (scyzw10), Yingxiao Huo (scyyh9)
     // Last modified: 2021/4/27 20:05
     @ParameterizedTest
     @CsvFileSource(resources = { "cate_setCategoryBudget.csv" })
@@ -254,7 +254,7 @@ class BoCCategoryTest {
 //    }
 
 
-    // Author : Lin Chen (biylc2)
+    // Author : Lin Chen (biylc2), Yicun Duan (scyyd3)
     // Last Modify: 2021/04/24 20:44
     @DisplayName("Tests for add Expense")
     @ParameterizedTest
@@ -401,7 +401,7 @@ class BoCCategoryTest {
     }
 
 
-    // Author:Lin Chen (biylc2)
+    // Author:Lin Chen (biylc2), Yicun Duan (biylc2)
     // Last Modify: 2021/04/21 22:14
     @Test
     @DisplayName("Tests for reset budget")
@@ -447,7 +447,7 @@ class BoCCategoryTest {
     }
 
 
-    // Author:Lin Chen(biylc2)
+    // Author:Lin Chen (biylc2)
     // Last Modify:2021/04/28 0:11
 
     static Stream <Arguments> compString() {
