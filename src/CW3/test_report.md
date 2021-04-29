@@ -72,11 +72,12 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### 2. Workflow and Discussions
 
-1. **[Overview]**
+**[Overview]**
 
     <img src="timeline.png" height = 400>
 
-1. **[Meeting]** All members discuss and design a template documentation of test plan and test log.
+ **[Meeting]** All members discuss and design a template documentation of test plan and test log.
+
 
 1. **[Milestone]** :  ***"Write test script for BoC Transaction Class"***
 
@@ -132,8 +133,24 @@ Report here, by the end of the assignment, how the team has managed the project,
     * **[+ [Merge] +]** The report with test log and refactored function.
     * **[Meeting]** ~ Change the format of the test function and test log.
     * **[+[Review]+]** ~ Swap to check team members' function and give some suggestions
+4. **[Milestone]**:  ***"Fix script for BoC Transaction Class && BoC Category Class"***
 
-4. **[Milestone]**:  ***"Write the test script for BoC App Main Class"***
+   **[Duedate]**:  ***"Apr 27, 2021"***
+
+    * **[Assign & [+ Branch +]]** `Team A`: ~Issue Assigned: #44, #45, #48 Each team member fix corresponding part of `BoCCategory` following TDD on a separated branch.
+    * **[Assign & [+ Branch +]]** `Team B`: ~Issue Assigned: #21, #28, #37, #46, #47 Each team member fix corresponding part of `BoCCategory` following TDD on a separated branch.
+    * **[Discussion]** ~When to fix bugs: before the app test or after the app test
+    * **[Meeting]** ~ How to create unique default constructor.
+    * **[Comment]** ~When to fix setCategoryBudget as it will influence BoCApp.
+    * **[Meeting]** ~Refactoring code together
+    * **[+ [Review] +]** ~ Completeness of our function test
+    * **[Comment]** ~Change for the return type of isComplete function .
+    * **[Discussion]** ~ Discuss the format of the test log.
+    * **[+ [Merge] +]** The report with test log and refactored function.
+    * **[Meeting]** ~ Change the format of the test function and test log.
+    * **[+[Review]+]** ~ Swap to check team members' function and give some suggestions
+
+5. **[Milestone]**:  ***"Write the test script for BoC App Main Class"***
     **[Duedate]**:  ***"Apr 27, 2021"***
     
     * **[Assign]** ~ Done
@@ -142,7 +159,7 @@ Report here, by the end of the assignment, how the team has managed the project,
     * **[Meeting]** ~ Discuss all the possible situations that may happen in the AppTest.
 * **[+ [Coverage Test] +]** ~ Check the test code coverage using `run with Coverage` in the IDEA.
   
-1. **[Milestone]**:  ***"Fix script for BoC App Main Class"***
+6. **[Milestone]**:  ***"Fix script for BoC App Main Class"***
    
     * **[Assign]**:  ***"Apr 27, 2021"***
     * **[Meeting]** Refactor main method together.
