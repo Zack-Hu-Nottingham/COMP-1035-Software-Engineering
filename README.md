@@ -33,3 +33,5 @@
 - [CW2](cw2/docs/cw2.md)
 - [version log for cw2](cw2/docs/versionLog.md)
 
+- [CW3](src/CW3/test_report.md)
+
