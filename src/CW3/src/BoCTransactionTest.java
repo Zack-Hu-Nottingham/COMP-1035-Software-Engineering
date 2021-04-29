@@ -57,7 +57,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Zixiang Hu (scyzh6)
+    // Author: Zixiang Hu (scyzh6), Ziyi Wang (scyzw10)
     // Last modified: 2021/4/23 16:06
     // test the time
     @ParameterizedTest
@@ -298,7 +298,7 @@ class BoCTransactionTest {
     }
 
 
-    // Author: Ziyi Wang (scyzw10)
+    // Author: Ziyi Wang (scyzw10), Zixiang Hu (scyzh6)
     // Last modified: 2021/4/18 21:15
     @ParameterizedTest
     @ValueSource(ints = {0,1,5,100})

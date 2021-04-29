@@ -72,7 +72,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### 2. Workflow and Discussions
 
-**[Overview]**
+**[Overview]**<br>
     <img src="timeline.png" height = 400>
 
  **[Meeting]** All members discuss and design a template documentation of test plan and test log.
