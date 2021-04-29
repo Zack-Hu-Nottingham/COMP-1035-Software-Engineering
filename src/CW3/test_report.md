@@ -206,7 +206,6 @@ Report here, by the end of the assignment, how the team has managed the project,
 * Theses IDs are referenced among:
     * `Test Plan` and `Test Log` documentation, where these IDs are defined;
     * `JUnit` test code using `@DisplayName` before each test;
-    * `[Bug reports]`
 
 #### 5.2 History
   * Code modifications:
@@ -270,14 +269,14 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ### Test Coverage
 
-|  | Method Coverage | Line Coverage |
+| Class | Method Coverage | Line Coverage |
 |----|--|---|
 |BoCCategory| 100% | 98% |
 |BoCTransaction| 100% | 100% |
 |BoCApp| 100% | 100% |
 
 
-[Click here to see coverage report](/coverageReport/.empty/index.html)
+[Click here to see coverage report](coverageReport/.empty/index.html)
 ![testCoverage](coverage.png)
 
 ***Note:*** Previous code implementation did not handle exceptions in methods well, so  they need to be handled in main. But after the modification, all the exceptions can be handled in methods without being thrown in main, therefore the catch statement in main will never be reached at present. **Therefore, there is 2% of line can not be reached, as this two line is ment for exception handling.**
@@ -285,7 +284,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 ## Test Plan and Test Log
 
-### Class: `BoCTransaction`
+
+### *Class:* `BoCTransaction`
+### **Test Plan**
 `Test Schedule:` <br>
 ***"Write test script for BoC Transaction Class"***<br>
 ***"Fix script for BoC Transaction Class && BoC Category Class"***
@@ -321,7 +322,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 11-1]**|**[Defect Test]:**<br>Test when value is negative number, value is null.<br>**[Validation Test]:**<br>Test the toString maually.|<table border="1"><tr><th>transactionName</th><th>transactionValue</th></tr><tr><td>"Yingxiao Huo"</td><td>100</td></tr><tr><td>"Yicun Duan"</td><td>9999999</td></tr><tr><td>"Zixiang Hu"</td><td>-123123</td></tr><tr><td>"Boon Giin Lee"</td><td>0</td></tr><tr><td>null</td><td>1</td></tr><tr><td>Bob</td><td>null</td></tr></table>|<table border="1"><th>toString</th><tr><td>"Yingxiao Huo - ¥100 Date: [CURRENT DATE]"</td></tr><tr><td>"Yicun Duan - ¥9999999 Date: [CURRENT DATE]"</td></tr><tr><td>"Value can not be negative number"</td></tr><tr><td>"Boon Giin Lee - ¥0 Date: [CURRENT DATE]"</td></tr><tr><td>"Unknown Name - ¥1 Date: [CURRENT DATE]"</td></tr><tr><td>"Bob - ¥Uknown value Date: [CURRENT DATE]"</td></tr> </table>|4|
 
 
-#### Test Log
+### **Test Log**
 
 |Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
 |---|---|---|---|---|---|---|---|
@@ -353,9 +354,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Transaction 11-1]**|**[Result]:**<br>`Fail`<br>**[Time]:**<br>2021/04/21<br>16:44<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows10-IDEA<br>![](testLog/TS-Transaction-11-2.png)|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (transactionName == null){`<br>`throw new IllegalException("Name is not set.");}`<br>`if (transactionValue.compareTo(new BigDecimal("0.00")) == -1){`<br>`throw new IllegalArgumentException("Value can not be negative number");}`|**[Result]:**<br>`Fail`<br>**[Time]:**<br>2021/04/21<br>16:57<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows10-IDEA|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(M)]:**<br>***Before:*** <br>`return transactionName + " - ¥" + transactionValue.toString();`<br> ***After:*** <br> `return transactionName + " - ¥" + transactionValue.toString() + " Date: " + transactionTime;`|**[Result]:**<br>`Pass`<br>**[Time]:**<br>2021/04/27<br>21:17<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows10-IDEA||
 
 
-### Class: `BoCCategory`
+### *Class:* `BoCCategory`
 
-#### **Test Plan**
+### **Test Plan**
 `Test Schedule:` <br>
 ***"Write test script for BoC Category Class"***<br>
 ***"Fix script for BoC Transaction Class && BoC Category Class"***
@@ -387,7 +388,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 
 
 
-#### Test Log
+### **Test Log**
 |Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
 |---|---|---|---|---|---|---|---|
 |**[TS-Category 1-1]**|**[Result]:** `Fail`<br> **[Time]**:`2021/04/21 11:51`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`<br>![](testLog/TS-Category-1-1.png)| **[Modifier]**: `Leshan Tan (sqylt2)`<br> **[Content (M)]**:<br> ***Before***: `CategoryName = "New Category"`<br> ***After***: `CategoryName = "Unknown"` or <br>`CategoryName = "New Category" + categoryNum`|**[Result]**: `Pass` <br> **[Time]**: `2021/04/28 19:43`<br> **[Tester]**: `Leshan Tan (sqylt2)`<br> **[Platform]**: `MacOS-IDEA`|-|-|-||
@@ -397,7 +398,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 4-1]**|**[Result]:** `Pass` <br>**[Time]:**<br>2021/04/23 19:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` <br>**[Time]:**<br>2021/04/24 20:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` <br>**[Time]:**<br>2021/04/25 17:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) <br>**[Platform]**: <br>Ubuntu-IDEA|-|
 |**[TS-Category 4-2]**|**[Result]:** `Pass` <br>**[Time]:**<br>2021/04/23 19:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` <br>**[Time]:**<br>2021/04/24 20:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) **[Platform]**: Ubuntu-IDEA|-|**[Result]:** `Pass` <br>**[Time]:**<br>2021/04/25 17:00<br>**[Tester]:**<br>Yicun Duan(scyyd3) <br>**[Platform]**: <br>Ubuntu-IDEA|-|
 |**[TS-Category 5-1]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/23 13:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|**[Result]:** `Pass`<br> **[Time]**:`2021/04/25 20:45`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|-|-||
-|**[TS-Category 5-2]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/23 13:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|**[Result]:** `Pass`<br> **[Time]**:`2021/04/25 20:45`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|**[Result]:** `Pass`<br> **[Time]**:`2021/04/29 09:25`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-||
+|**[TS-Category 5-2]**|**[Result]:** `Pass`<br> **[Time]**:`2021/04/23 13:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|**[Result]:** `Pass`<br> **[Time]**:`2021/04/25 20:45`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-|**[Result]:** `Pass`<br> **[Time]**:`2021/04/29 08:15`<br>**[Tester]**:`Leshan Tan (sqylt2)` <br>**[Platform]**: `MacOS-IDEA`|-||
 |**[TS-Category 6-1]**|**[Result]:**<br>Fail<br>**[Time]:**<br>2021/04/21<br>18:16<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows10-IDEA<br>![](testLog/TS-Category-6-1.png)|**[Modifier]**<br>Yingxiao Huo(scyyh9)<br>**[Content(A)]:**<br>`if (categoryName == null or newName.isBlank()){`<br>`throw new IllegalException("Name is not set.");}`<br>`else if (CategoryName.length() > 15){`<br>`CategoryName = newName.substring(0,15);}`|**[Result]:**<br>Pass<br>**[Time]:**<br>2021/04/28<br>22:26<br>**[Tester]:**<br>Yingxiao Huo<br>(scyyh9)<br>**[Platform]:**<br>Windows10-IDEA||||
 **[TS-Category 7-1]**|**[Result]:**<br>`Fail`<br>**[Time]:**<br>2021/4/23<br>19：24<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows10-IDEA|**[Modifier]**<br>Ziyi Wang(scyzw10)<br>**[Content(M)]:**<br>***Before***: `public void setCategoryBudget(BigDecimal newValue) {`<br>`if (newValue.compareTo(new BigDecimal("0.00")) == 1){`<br>`CategoryBudget = newValue;`<br>***After***: `public void setCategoryBudget(float newValue) {`<br>`NumberFormat formatter = new DecimalFormat("0.00");`<br>`BigDecimal newV = new BigDecimal(String.valueOf(formatter.format(newValue)));`<br>`if (newV.compareTo(new BigDecimal("0.00")) == 1){`<br>`CategoryBudget = newV;`<br>|**[Result]:**<br>`Pass`<br>**[Time]:**<br>2021/4/25<br>11:00<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows10-IDEA|-|-||
 |**[TS-Category 8-1]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/24 18:12<br>**[Tester]:**<br>Lin Chen (biylc2) **[Platform]**: Windows10-IDEA|**[Modifier]:**<br> Lin Chen (biylc2) <br> **[Content (A)]:**<br>`if(valueToAdd == null){throw new NullPointerException("Illegal input");}`<br> |**[Result]:** `Pass` <br> **[Time]:**<br>2021/04/24 16:15<br>**[Tester]:**<br>Lin Chen (biylc2) **[Platform]**: Windows10-IDEA|-|**[Result]:** `Pass` <br> **[Time]:**<br>2021/04/24 20:49<br>**[Tester]:**<br>Lin Chen (biylc2) **[Platform]**: Windows10-IDEA|-|
@@ -414,9 +415,9 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-Category 12-4]**|**[Result]:** `Fail` **[Time]:**<br>2021/04/27 23:39<br>**[Tester]:**<br>Lin Chen (biylc2) **[Platform]**: Windows10-IDEA ![](testLog/TS-Category-12-1.png)|**[Modifier]:**<br> Lin Chen (biylc2) <br> **[Content (A)]:**<br>`if (getRemainingBudget().compareTo(new BigDecimal("0.00")) > -1) {return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBugdet + ") - ¥" + CategotySpend+ " (¥" + Category.getRemainingBuget() + " Remaining)";}`<br>|**[Result]:** `Fail` **[Time]:**<br>2021/04/28 20:40<br>**[Tester]:**<br>Lin Chen (biylc2) **[Platform]**: Windows10-IDEA|**[Modifier]:**<br> Lin Chen (biylc2) <br> **[Content (M)]:**<br> ***Before:***<br>`if (getRemainingBudget().compareTo(new BigDecimal("0.00")) > -1) {return "[" + CategoryName + "]" + "(Budget: ¥" + CategoryBugdet + ") - ¥" + CategotySpend+ " (¥" + Category.getRemainingBuget() + " Remaining)";}`<br>***After:*** <br>`if (getRemainingBudget().compareTo(new BigDecimal("0.00"))>-1){DecimalFormat convers=new DecimalFormat("0.00");`<br>`String afterBugdet =convers.format(CategoryBudget);`<br>`String afterSpend =convers.format(CategorySpend);`<br>`String afterRemain =convers.format(getRemainingBudget());`<br>`return "[" + CategoryName + "]" + "(Budget: ¥" + afterBugdet + ") - ¥" + afterSpend + " (¥" + afterRemain + " Remaining)";}`<br>|-|**[Result]:** `Pass` **[Time]:**<br>2021/04/29 00:12<br>**[Tester]:**<br>Lin Chen (biylc2) **[Platform]**: Windows10-IDEA|-|
 
 
-### Class: `BoCApp`
+### *Class:* `BoCApp`
 
-#### Test Plan
+### **Test Plan**
 `Test Schedule:` <br>
 - `Milestone:` ***"Write test script for BoC App Class"*** <br>
 - `Milestone:` ***"Fix script for BoC App Class"***
@@ -434,7 +435,7 @@ Report here, by the end of the assignment, how the team has managed the project,
 |**[TS-App 6-2]**|**[Defect test]:**<br>Test when transaction value is not a number, value is negative, categoryNumber is not a number or not exist |<table border="1"><tr><th>UserInput</th><tr><td>A</td></tr><tr><td>Water Bill</td></tr><tr><td>aaa</td></tr><tr><td>-1.0</td></tr><tr><td>9.0000</td></tr><tr><td>rr</td></tr><tr><td>-1</td></tr><tr><td>100</td></tr><tr><td>2</td></tr></table>|<table><tr><td>AddTransaction</td></tr><tr><td>![expected_AddTransaction_2](expected/expected_AddTransaction_2.png)![expected_AddTransaction_3](expected/expected_AddTransaction_3.png)</td></tr></table>|5|
 |**[TS-App 7-1]**|**[Defect test]:**<br>Test when name is null, name is too long, value is negative, value is not digital, name is exist|<table border = "1"><tr><th>CategoryName</th><th>Budget</th></tr><tr><td>CW3 is so easy</td><td>100</td></tr><tr><td>Bills</td><td>null</td></tr><tr><td>blabla#$%%^&</td><td>-100</td></tr><tr><td>abc</td><td>abc@#</td></tr><tr><td>Rent</td><td>999</td></tr><tr><td>123451234512345123</td><td>100</td></tr></table>|![expected/expected_AddCategory](expected/expected_AddCategory.png)|5|
 
-#### Test Log
+### **Test Log**
 |Test ID|Attempt-1|Modification|Attempt-2|Modification|Attempt-3|Modification|Integration Test|
 |---|---|---|---|---|---|---|---|
 |**[TS-App 1-1]**|**[Result]:**<br>`Fail`<br>**[Time]:**<br>2021/04/27<br>14:45<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows10-IDEA![](testLog/TS-App-1-1.png)|**[Modifier]:**<br>Leshan Tan(sqylt2) <br> **[Content (M)]:**<br> ***Before:*** <br> `System.out.println("Command not recognised");`<br>***After:***<br>`try{`<br>`ListTransactionsForCategory(Integer.parseInt(s));`<br>`}catch (NumberFormatException exc){`<br>`System.out.println("Command not recognised");`<br>`}`|**[Result]:**<br>`Pass`<br>**[Time]:**<br>2021/04/28<br>17:45<br>**[Tester]:**<br>Ziyi Wang<br>(scyzw10)<br>**[Platform]:**<br>Windows10-IDEA|||
